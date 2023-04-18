@@ -8,8 +8,13 @@ public class Clickable : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private MaskSpawner spawner;
 
-
+    private MeshRenderer _rendered;
     private int curClicks = 0;
+
+    private void Start()
+    {
+        _rendered = GetComponent<MeshRenderer>();
+    }
 
     private void OnMouseDown()
     {
@@ -20,6 +25,8 @@ public class Clickable : MonoBehaviour
             Debug.Log($"Clicked! {gameObject.name}");
             if (spawner != null)
                 spawner.SpawnMask(_camera.ScreenPointToRay(Input.mousePosition), gameObject);
+
+            _rendered.material.color = Color.red;
             
         }
     }

@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class NavAgentController : MonoBehaviour
 {
     [SerializeField] private Vector3[] waypoints;
-    [SerializeField] private float speed = 0.3f;
 
     private NavMeshAgent _navMeshAgent;
     private int _curIndex = 0;
