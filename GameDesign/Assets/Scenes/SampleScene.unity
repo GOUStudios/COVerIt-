@@ -842,6 +842,7 @@ GameObject:
   - component: {fileID: 2033528599}
   - component: {fileID: 2033528598}
   - component: {fileID: 2033528600}
+  - component: {fileID: 2033528601}
   m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
@@ -991,6 +992,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a73023e15f615924d83b773f2479edd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2033528601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033528592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06fabeb523ce454d91489a679ff5d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2096849382
