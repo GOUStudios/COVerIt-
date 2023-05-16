@@ -2,31 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaserController : MonoBehaviour
-{
+public class TaserController : MonoBehaviour{
+
+    //Taser variables
+    [SerializeField] private int taserBattery;
+    [SerializeField] private int taserCost = 20;
+    [SerializeField] private int taserMaxBattery = 100;
+    [SerializeField] private bool trigerIsFree = true;
+    [SerializeField] private int chargePerSecond = 2;
 
     private MeshRenderer _rendered;
     private Color originalColor;
+    
 
     // Start is called before the first frame update
-    private void Start()
-    
-    {
+    private void Start(){
         _rendered = GetComponent<MeshRenderer>();
         originalColor = Color.blue;
         _rendered.material.color = originalColor;
+        InvokeRepeating("ChargeBattery", 1.0f, 1.0f);
     }
-
     
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButton(0))
+    private void OnMouseOver(){
+        if (Input.GetMouseButton(1) && trigerIsFree)
         {
-            Debug.Log($"Left Clicked! {Input.GetMouseButton(0)}");
-            _rendered.material.color = Color.red;
-        }else if(Input.GetMouseButton(1)){
-            Debug.Log($"Right Clicked! {Input.GetMouseButton(1)}");
-            _rendered.material.color = Color.yellow;
+            trigerIsFree = false;
+            if (taserBattery>=taserCost )
+            {
+                taserBattery = taserBattery - taserCost;
+                _rendered.material.color = Color.yellow;
+            }
+            Debug.Log($"Decreased battery to: {taserBattery}");
         }else
         {
             _rendered.material.color = originalColor;
@@ -34,6 +40,15 @@ public class TaserController : MonoBehaviour
     }
 
     private void OnMouseExit(){
-        
+        trigerIsFree = true;
+        _rendered.material.color = originalColor;
+    }
+
+    private void ChargeBattery(){
+        if (taserBattery < taserMaxBattery)
+        {
+            taserBattery += chargePerSecond;
+            Debug.Log($"Taser Battery = {taserBattery}");
+        }
     }
 }
