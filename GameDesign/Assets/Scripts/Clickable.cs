@@ -10,17 +10,14 @@ public class Clickable : MonoBehaviour
 
     private MeshRenderer _rendered;
     private int curClicks = 0;
-    private BossAnger bossAnger;
 
     private void Start()
     {
         _rendered = GetComponent<MeshRenderer>();
-        bossAnger = GameObject.FindObjectOfType<BossAnger>();
     }
 
     private void OnMouseDown()
     {
-        BossAnger.coveredIt = true;
         curClicks += 1;
         if(curClicks == _numClicks)
         {
