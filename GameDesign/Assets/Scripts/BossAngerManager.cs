@@ -2,52 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAngerManager : MonoBehaviour
+public class BossAngerManager
 {
-    [SerializeField] public int _maxNumAngry = 10; //To be defined on each level
-    [SerializeField] public int _maxNumGameOver = 6; //To be defined on each level
-
-    private static BossAngerManager instance;
+    
+    private static BossAngerManager _instance;
+    
+    public int _maxNumAngry = 10; //To be defined on each level
+    public int _maxNumGameOver = 6; //To be defined on each level
 
     public int angryCounter;
     public int gameOverCounter;
     public bool isAngry;
 
+    public BossAngerManager()
+    {
+        angryCounter = 0;
+        gameOverCounter = 0;
+        isAngry = false;
+    }
+
     public static BossAngerManager Instance
     {
         get
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = FindObjectOfType<BossAngerManager>();
-                if (instance == null)
-                {
-                    GameObject bossObject = new GameObject(typeof(BossAngerManager).Name);
-                    instance = bossObject.AddComponent<BossAngerManager>();
-                    instance.angryCounter = 0;
-                    instance.gameOverCounter = 0;
-                    instance.isAngry = false;
-                }
+                _instance = new BossAngerManager();
+                Debug.Log($"{_instance}");
             }
-
-            return instance;
+            return _instance;
         }
     }
 
-    private void Awake()
-    {
-        if(instance != null && instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-
-    public void triggerEvent_MissClicked()
+    public void TriggerEvent_MissClicked()
     {
         if (isAngry == true)
         {
@@ -63,7 +50,7 @@ public class BossAngerManager : MonoBehaviour
         checkAnger();
     }
 
-    public void triggerEvent_CorrectlyClicked()
+    public void TriggerEvent_CorrectlyClicked()
     {
         if (isAngry && gameOverCounter > 0)
         {

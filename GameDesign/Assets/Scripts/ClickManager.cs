@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour
 {
-    private BossAngerManager bossAngerManager;
+    public delegate void ClickAction();
+    public static event ClickAction OnCorrectlyClicked;
+    public static event ClickAction OnMissClicked;
+
     // Start is called before the first frame update
     void Start()
     {
-        bossAngerManager = BossAngerManager.Instance;
+        
     }
 
     // Update is called once per frame
@@ -19,13 +22,23 @@ public class ClickManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject)
+            if (Physics.Raycast(ray, out hit))
             {
-                bossAngerManager.triggerEvent_CorrectlyClicked();
+                Clickable clickable = (Clickable)ObjectUtils.GetObjectWithInterface<Clickable>(hit.collider.gameObject);
+                if(clickable != null)
+                {
+                    clickable.Click(ClickType.LEFT_CLICK);
+                    OnCorrectlyClicked?.Invoke();
+                }
+                else
+                {
+                    Debug.Log("About to call OnMissClicked");
+                    OnMissClicked?.Invoke();
+                }
             }
             else
             {
-                bossAngerManager.triggerEvent_MissClicked();
+                OnMissClicked?.Invoke();
             }
         }
     }
