@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour
+public class Waypoint : MonoBehaviour, WaypointInterface
 {
 
     [SerializeField] Waypoint[] possibleNextPoint;
@@ -30,8 +30,7 @@ public class Waypoint : MonoBehaviour
     }
 
 
-
-    public Waypoint getNextWayPoint(Waypoint previousWP)
+    Waypoint getNextWayPoint(Waypoint previousWP)
     {
         int i = nextDefaultDestination;
         int counter = 0;
@@ -67,5 +66,19 @@ public class Waypoint : MonoBehaviour
             }
         }
         return possibleNextPoint[i];
+    }
+
+
+    /* Function on Each type of wayPoint that determines what to do when a waypoint is reached
+    by default it just gets next wayPoint and asks to go to it.
+    despawners can have different logic in here.
+    or certain ' event' ones as well. 
+    also if we want to change parameters like the distance the agent has to check to see if it reached the point can be set here.*/
+
+    public void waypointReached(NPCMovementManager npcMover)
+    {
+        npcMover.targetWayPoint = getNextWayPoint(npcMover.previousWayPoint);
+        npcMover.previousWayPoint = this;
+        npcMover.agent.SetDestination(npcMover.targetWayPoint.transform.position);
     }
 }
