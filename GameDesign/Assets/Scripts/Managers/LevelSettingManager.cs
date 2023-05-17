@@ -81,10 +81,10 @@ public class LevelSettingManager
         }
         CustomersWithOutMask = UnmaskedSpawns;
 
-        else
-        {
-            Debug.LogError("The amount of types of customers to spawn was higher than the maximum amount possible\n");
-        }
+        // else
+        // {
+        //     Debug.LogError("The amount of types of customers to spawn was higher than the maximum amount possible\n");
+        // }
 
     }
 

@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskedCustomers: 1
-  unmaskedCustomers: 00000000000000000000000000000000
+  unmaskedCustomers: 01000000020000000400000003000000
 --- !u!4 &944519415
 Transform:
   m_ObjectHideFlags: 0
