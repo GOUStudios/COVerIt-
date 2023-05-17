@@ -34,15 +34,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CellDensity: 0.74
+    - _CellDensity: 8.24
     - _Frecuency: 7.52
     - _LightSpeed: 1
-    - _Noise: 3.8
+    - _Noise: 1.43
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleStiffnes: 1.71
-    - _Smoothness: 1
-    - _Speed: 0.6
+    - _RippleStiffnes: 8.45
+    - _Smoothness: 0
+    - _Speed: 1.14
     m_Colors:
     - _Color: {r: 0, g: 1.6272962, b: 2.670157, a: 0}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 0}
