@@ -6,7 +6,7 @@ using UnityEngine;
 **/
 public enum CustomerTypes
 {
-    Normal,
+    Normal=0,
     AntiMasker,
     Runner,
     Dinosaur,//jock?

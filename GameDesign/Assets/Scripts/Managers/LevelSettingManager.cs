@@ -10,7 +10,7 @@ public class LevelSettingManager
 
 
     public int CustomersToBeSpawnedWM { get; private set; }
-    public int[] CustomersWithOutMask { get; private set; }
+    public Dictionary<CustomerTypes, int> CustomersWithOutMask;
 
     /*
     *public variable that tells if pulling of costumers is being done
@@ -36,7 +36,7 @@ public class LevelSettingManager
 
     #region Events
 
-    public delegate void OnSpawn(int spawnerID, int masked, int[] unmasked);
+    public delegate void OnSpawn(int spawnerID, int masked, Dictionary<CustomerTypes, int> unmasked);
 
     /*
     * DO NOT Directly invoke spawn, it should do a pull request of the level manager
@@ -51,11 +51,11 @@ public class LevelSettingManager
         //TODO Define where we want to decide the amount of people to be spawned, in the spawner or the level manager
         //if we want it to be in the spawners, we should add the amount to be requested.
         isSpawning = true;
-        int[] temp = { 0, 0 };
-        pull(0, temp);
+        // Dictionary<CustomerTypes, int> temp = { 0, 0 };
+        // pull(0, temp);
         isSpawning = false;
-        Spawn?.Invoke(SpawnerID, 0, temp);
-        
+        // Spawn?.Invoke(SpawnerID, 0, temp);
+
     }
 
 
@@ -63,7 +63,7 @@ public class LevelSettingManager
 
     public LevelSettingManager()
     {
-        CustomersWithOutMask = new int[Enum.GetValues(typeof(CustomerTypes)).Length];
+        CustomersWithOutMask = new Dictionary<CustomerTypes, int>();
         CustomersToBeSpawnedWM = 0;
         isSpawning = false;
 
@@ -73,26 +73,18 @@ public class LevelSettingManager
     * To be called by the Level monobehaviour to set the level spawns
     *  !! Try not to call it outside of it !!
     */
-    public void setTotalSpawns(int spawns, int[] UnmaskedSpawns)
+    public void setTotalSpawns(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {
         if (spawns > 0)
         {
             CustomersToBeSpawnedWM = spawns;
         }
-        if (UnmaskedSpawns.Length <= CustomersWithOutMask.Length)
+        CustomersWithOutMask = UnmaskedSpawns;
+
+        else
         {
-            int i;
-            for (i = 0; i < UnmaskedSpawns.Length; i++)
-            {
-                if (UnmaskedSpawns[i] > 0) CustomersWithOutMask[i] = UnmaskedSpawns[i];
-                else CustomersWithOutMask[i] = 0;
-            }
-            for (; i < CustomersWithOutMask.Length; i++)
-            {
-                CustomersWithOutMask[i] = 0;
-            }
+            Debug.LogError("The amount of types of customers to spawn was higher than the maximum amount possible\n");
         }
-        else { Debug.LogError("The amount of types of customers to spawn was higher than the maximum amount possible\n"); }
 
     }
 
@@ -100,7 +92,7 @@ public class LevelSettingManager
     *This function should be called before spawning to tell the service that it is possible to spawn.
     *if its not possible for now it gives an error
     */
-    public void pull(int spawns, int[] UnmaskedSpawns)
+    public void pull(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {
         #region errorChecking
         /*
@@ -116,20 +108,7 @@ public class LevelSettingManager
             + "\n Max: " + CustomersToBeSpawnedWM);
             return;
         }
-        if (UnmaskedSpawns.Length > CustomersWithOutMask.Length)
-        {
-            Debug.LogError("The amount of types of customers to spawn was higher than the maximum amount possible\n");
-            return;
-        }
-        for (int i = 0; i < UnmaskedSpawns.Length; i++)
-        {
-
-            if (UnmaskedSpawns[i] < 0 || UnmaskedSpawns[i] > CustomersWithOutMask[i])
-            {
-                Debug.LogError("Error trying to spawn costumers:" + Enum.GetNames(typeof(CustomerTypes))[i] + ":\n Tried: " + UnmaskedSpawns[i] + "\n Max: " + CustomersToBeSpawnedWM);
-                return;
-            }
-        }
+        //Checks to be done depending on spawning logic.
         #endregion
 
 
