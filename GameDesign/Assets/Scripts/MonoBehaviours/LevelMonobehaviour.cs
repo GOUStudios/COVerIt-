@@ -8,7 +8,9 @@ public class LevelMonobehaviour : MonoBehaviour
 {
     #region Attributes
     private LevelSettingManager manager = LevelSettingManager.Instance;
+    [SerializeField] private TimerManagerMonoBehaviour timerManager;
     [SerializeField] int maskedCustomers = 0;
+    [SerializeField] int levelTime;
 
     [Header("DO NOT CHANGE THE ORDER OF THE LIST")]
     [EnumNamedArray(typeof(CustomerTypes))]
@@ -20,12 +22,23 @@ public class LevelMonobehaviour : MonoBehaviour
 
     void Start()
     {
+        if(timerManager == null)
+        {
+            timerManager = GetComponent<TimerManagerMonoBehaviour>();
+            if(timerManager == null)
+            {
+                timerManager = gameObject.AddComponent<TimerManagerMonoBehaviour>();
+            }
+        }
+        timerManager.SetTime(levelTime);
+        TimerManagerMonoBehaviour.OnTimeFinished += OnTimeFinished;
 
         foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes)))
         {
             unmaskedDictionary.Add(t, unmaskedCustomers[(int)t]);
         }
         manager.setTotalSpawns(maskedCustomers, unmaskedDictionary);
+        timerManager.StartTimer();
     }
 
     void Update()
@@ -38,6 +51,10 @@ public class LevelMonobehaviour : MonoBehaviour
         {
             unmaskedCustomers[(int)(pair.Key)] = pair.Value;
         }
+    }
 
+    void OnTimeFinished()
+    {
+        Debug.Log("Time's over! Level finished");
     }
 }
