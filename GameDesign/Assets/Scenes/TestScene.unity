@@ -653,7 +653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerManager: {fileID: 944519416}
   maskedCustomers: 1
-  levelTime: 0
+  levelTime: 10
   unmaskedCustomers: 01000000020000000400000003000000
 --- !u!4 &944519415
 Transform:
