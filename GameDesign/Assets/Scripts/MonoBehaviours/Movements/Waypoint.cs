@@ -15,16 +15,21 @@ public class Waypoint : MonoBehaviour, WaypointInterface
     [SerializeField] bool setAmount = false;
     [SerializeField] int defaultIndexChanger = 1;
 
+    [Header("Gizmos parameters:")]
+    [SerializeField] Color connectigColor = Color.red;
+    [SerializeField] float sphereRadius = 1f;
+    [SerializeField] Color sphereColor = Color.blue;
+
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(this.transform.position, 1f);
-        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, sphereRadius);
+        Gizmos.color = connectigColor;
 
         foreach (Waypoint wp in possibleNextPoint)
         {
-            Gizmos.DrawLine(this.transform.position, wp.transform.position);
+            if (wp != null) Gizmos.DrawLine(this.transform.position, wp.transform.position);
         }
 
     }
