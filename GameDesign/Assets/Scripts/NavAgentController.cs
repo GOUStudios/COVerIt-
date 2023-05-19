@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavAgentController : MonoBehaviour
+// TODO REMOVE CLICKABLE FROM HERE AND ADD IT TO THE CHARACTER SCRIPT
+public class NavAgentController : MonoBehaviour, Clickable
 {
     [SerializeField] private Vector3[] waypoints;
 
@@ -34,5 +35,11 @@ public class NavAgentController : MonoBehaviour
                 if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude <= 0f)
                     return true;
         return false;
+    }
+
+    // TODO REMOVE CLICKABLE FROM HERE AND ADD IT TO THE CHARACTER SCRIPT
+    public void Click(ClickType clickType)
+    {
+        PointsManager.Instance.TriggerEvent_IncrementPoints(10);
     }
 }
