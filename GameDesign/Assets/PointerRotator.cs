@@ -6,13 +6,11 @@ using UnityEngine.UI;
 public class PointerRotator : MonoBehaviour
 {
     private Slider slider;
-    private Transform targetObject;
+
     private Quaternion initialRotation;
 
     private void Start()
     {
-       
-
         slider = GetComponentInParent<Slider>();
         if (slider == null) return;
         
@@ -26,7 +24,7 @@ public class PointerRotator : MonoBehaviour
     {
         if (slider == null) return;
 
-            float rotationAmount = Mathf.Lerp(0f, 92f, slider.value); // Calcola l'angolo di rotazione in base al valore dello slider
+            float rotationAmount = Mathf.Lerp(0f, 92f, slider.value); // Calculate rotation angle in function of slider value
             transform.rotation = initialRotation * Quaternion.Euler(0f, 0f, rotationAmount);
 
     }
