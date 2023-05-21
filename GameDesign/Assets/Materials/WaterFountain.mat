@@ -34,19 +34,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CellDensity: 5.13
-    - _Frecuency: 6.91
+    - _CellDensity: 8.24
+    - _Frecuency: 7.52
     - _LightSpeed: 1
-    - _Noise: 2.63
+    - _Noise: 1.43
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleStiffnes: 2.57
+    - _RippleStiffnes: 8.45
     - _Smoothness: 0
-    - _Speed: 5
+    - _Speed: 1.14
     m_Colors:
-    - _Color: {r: 0.052519128, g: 0.5515199, b: 0.8564654, a: 0}
+    - _Color: {r: 0, g: 1.6272962, b: 2.670157, a: 0}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 0}
-    - _midlleSection: {r: 0.84, g: 1.24, b: 0, a: 0}
+    - _Scale: {r: 1, g: 1, b: 1, a: 0}
+    - _midlleSection: {r: -0.74, g: -0.38, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4609114629814688996
 MonoBehaviour:
