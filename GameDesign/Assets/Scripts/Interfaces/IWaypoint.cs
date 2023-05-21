@@ -5,7 +5,7 @@ using UnityEngine;
 /*
 Public interface to tell waypoints how to act when reached.
 */
-public interface WaypointInterface
+public interface IWaypoint
 {
     void waypointReached(NPCMovementManager npcMover);
 }
