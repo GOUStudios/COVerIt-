@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaserController : MonoBehaviour{
+public class TaserManager : MonoBehaviour{
 
     //Taser variables
     [SerializeField] private int taserBattery;
