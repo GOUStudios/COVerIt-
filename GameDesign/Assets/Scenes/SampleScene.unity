@@ -1006,6 +1006,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06fabeb523ce454d91489a679ff5d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taserBattery: 100
+  taserCost: 20
+  taserMaxBattery: 100
+  trigerIsFree: 1
+  chargePerSecond: 2
 --- !u!1 &2096849382
 GameObject:
   m_ObjectHideFlags: 0
