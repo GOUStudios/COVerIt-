@@ -16,7 +16,18 @@ public class LevelMonobehaviour : MonoBehaviour
     [EnumNamedArray(typeof(CustomerTypes))]
     public int[] unmaskedCustomers = new int[System.Enum.GetValues(typeof(CustomerTypes)).Length];
 
+    [EnumNamedArray(typeof(CustomerTypes))]
+    public GameObject[] unmaskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
+    [EnumNamedArray(typeof(CustomerTypes))]
+    public GameObject[] maskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
+    
+    [EnumNamedArray(typeof(CustomerTypes))]
+    public float[] maskedPercentages = new float[System.Enum.GetValues(typeof(CustomerTypes)).Length];
+
     Dictionary<CustomerTypes, int> unmaskedDictionary = new Dictionary<CustomerTypes, int>();
+    Dictionary<CustomerTypes, GameObject> unmaskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
+    Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
+    Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
 
     #endregion
 
@@ -36,8 +47,13 @@ public class LevelMonobehaviour : MonoBehaviour
         foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes)))
         {
             unmaskedDictionary.Add(t, unmaskedCustomers[(int)t]);
+            unmaskedPrefabsDictionary.Add(t, unmaskedPrefabs[(int)t]);
+            maskedPrefabsDictionary.Add(t, maskedPrefabs[(int)t]);
+            maskedWeightsDictionary.Add(t, maskedPercentages[(int)t]);
+
         }
-        manager.setTotalSpawns(maskedCustomers, unmaskedDictionary);
+        manager.SetTotalSpawns(maskedCustomers, maskedWeightsDictionary, unmaskedDictionary);
+        manager.SetPrefabs(unmaskedPrefabsDictionary, maskedPrefabsDictionary);
         timerManager.StartTimer();
     }
 
@@ -56,5 +72,6 @@ public class LevelMonobehaviour : MonoBehaviour
     void OnTimeFinished()
     {
         Debug.Log("Time's over! Level finished");
+        Time.timeScale = 0;
     }
 }

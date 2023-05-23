@@ -11,14 +11,18 @@ public class LevelSettingManager
 
     public int CustomersToBeSpawnedWM { get; private set; }
     public Dictionary<CustomerTypes, int> CustomersWithOutMask;
+    public Dictionary<CustomerTypes, GameObject> CustomerMaskedPrefabs;
+    public Dictionary<CustomerTypes, GameObject> CustomerUnmaskedPrefabs;
 
     /*
     *public variable that tells if pulling of costumers is being done
     */
     public static bool isSpawning { get; private set; }
+    public static bool isReadyToSpawn { get; private set; }
 
-
-
+    private int leftSpawnedWM;
+    public Dictionary<CustomerTypes, int> leftCustomersWithOutMask;
+    public Dictionary<CustomerTypes, float> MaskedWeights { get; private set; }
 
     public static LevelSettingManager Instance
     {
@@ -46,15 +50,16 @@ public class LevelSettingManager
 
 
 
-    public void requestSpawn(int SpawnerID)
+    public (int, Dictionary<CustomerTypes, int>) RequestSpawn(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {
         //TODO Define where we want to decide the amount of people to be spawned, in the spawner or the level manager
         //if we want it to be in the spawners, we should add the amount to be requested.
         isSpawning = true;
         // Dictionary<CustomerTypes, int> temp = { 0, 0 };
-        // pull(0, temp);
+        var pullResponse = Pull(spawns, UnmaskedSpawns);
         isSpawning = false;
         // Spawn?.Invoke(SpawnerID, 0, temp);
+        return pullResponse;
 
     }
 
@@ -66,21 +71,34 @@ public class LevelSettingManager
         CustomersWithOutMask = new Dictionary<CustomerTypes, int>();
         CustomersToBeSpawnedWM = 0;
         isSpawning = false;
+        isReadyToSpawn = false;
 
+    }
+
+    internal void SetPrefabs(Dictionary<CustomerTypes, GameObject> unmaskedPrefabsDictionary, Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary)
+    {
+        isReadyToSpawn = false;
+        CustomerMaskedPrefabs = maskedPrefabsDictionary;
+        CustomerUnmaskedPrefabs = unmaskedPrefabsDictionary;
+        if (CustomersWithOutMask != null && leftCustomersWithOutMask != null) isReadyToSpawn = true;
     }
 
     /*
     * To be called by the Level monobehaviour to set the level spawns
     *  !! Try not to call it outside of it !!
     */
-    public void setTotalSpawns(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
+    public void SetTotalSpawns(int spawns, Dictionary<CustomerTypes, float> maskedWeights, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {
+        isReadyToSpawn = false;
         if (spawns > 0)
         {
-            CustomersToBeSpawnedWM = spawns;
+            CustomersToBeSpawnedWM = leftSpawnedWM = spawns;
         }
-        CustomersWithOutMask = UnmaskedSpawns;
 
+        MaskedWeights = maskedWeights;
+        CustomersWithOutMask = UnmaskedSpawns;
+        leftCustomersWithOutMask = new Dictionary<CustomerTypes, int>(CustomersWithOutMask);
+        if(CustomerMaskedPrefabs != null && CustomerUnmaskedPrefabs != null) isReadyToSpawn = true;
         // else
         // {
         //     Debug.LogError("The amount of types of customers to spawn was higher than the maximum amount possible\n");
@@ -92,26 +110,32 @@ public class LevelSettingManager
     *This function should be called before spawning to tell the service that it is possible to spawn.
     *if its not possible for now it gives an error
     */
-    public void pull(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
+    private (int, Dictionary<CustomerTypes, int>) Pull(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {
-        #region errorChecking
-        /*
-        * It is asked that the customers be >=0, && <remaining customers of that type
-        * the <0 could be change to spawn 0 customers if need be. and the over amount could be made to spawn the max amount
-        * to be decided how to implement
-        */
-        isSpawning = true;
-        if (spawns > CustomersToBeSpawnedWM)
+        if (isReadyToSpawn)
         {
-            //FOR now it just gives error
-            Debug.LogError("Trying to spawn too many costumers with out mask:\n Tried: " + spawns
-            + "\n Max: " + CustomersToBeSpawnedWM);
-            return;
+            Debug.Log($"Received request to spawn {spawns}, {UnmaskedSpawns}");
+            int actualSpawns = leftSpawnedWM > 0 ? Math.Min(leftSpawnedWM, spawns) : 0;
+            if (leftSpawnedWM > 0) leftSpawnedWM = Math.Max(0, leftSpawnedWM - spawns);
+
+            Dictionary<CustomerTypes, int> actualSpawnsUnmasked = new Dictionary<CustomerTypes, int>();
+            foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes)))
+            {
+                if(UnmaskedSpawns.ContainsKey(t))
+                {
+                    int leftForCustomerType = leftCustomersWithOutMask[t];
+                    int actualSpawn = leftCustomersWithOutMask[t] > 0 ? Math.Min(leftForCustomerType, UnmaskedSpawns[t]) : 0;
+                    actualSpawnsUnmasked.Add(t, actualSpawn);
+                    if (leftSpawnedWM > 0) leftCustomersWithOutMask[t] = Math.Max(0, leftForCustomerType - UnmaskedSpawns[t]);
+                }
+            }
+            return (actualSpawns, actualSpawnsUnmasked);
         }
-        //Checks to be done depending on spawning logic.
-        #endregion
-
-
+        else {
+            var dict = new Dictionary<CustomerTypes, int>();
+            foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes))) { dict.Add(t, 0); }
+            return (0, dict);
+        }
     }
 
 }
