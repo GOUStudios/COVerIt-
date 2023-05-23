@@ -2,53 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaserManager : MonoBehaviour{
+public class TaserManager
+{
+    private static TaserManager instance;
 
-    //Taser variables
-    [SerializeField] private int taserBattery;
-    [SerializeField] private int taserCost = 20;
-    [SerializeField] private int taserMaxBattery = 100;
-    [SerializeField] private bool trigerIsFree = true;
-    [SerializeField] private int chargePerSecond = 2;
-
-    private MeshRenderer _rendered;
-    private Color originalColor;
-    
-
-    // Start is called before the first frame update
-    private void Start(){
-        _rendered = GetComponent<MeshRenderer>();
-        originalColor = Color.blue;
-        _rendered.material.color = originalColor;
-        InvokeRepeating("ChargeBattery", 1.0f, 1.0f);
-    }
-    
-    private void OnMouseOver(){
-        if (Input.GetMouseButton(1) && trigerIsFree)
+    public static TaserManager Instance
+    {
+        get
         {
-            trigerIsFree = false;
-            if (taserBattery>=taserCost )
+            if (instance == null)
             {
-                taserBattery = taserBattery - taserCost;
-                _rendered.material.color = Color.yellow;
+                instance = new TaserManager();
             }
-            Debug.Log($"Decreased battery to: {taserBattery}");
-        }else
-        {
-            _rendered.material.color = originalColor;
+            return instance;
         }
     }
 
-    private void OnMouseExit(){
-        trigerIsFree = true;
-        _rendered.material.color = originalColor;
+    //Taser variables
+    public int taserBattery;
+    public int taserCost = 20;
+    public int taserMaxBattery = 100;
+    public bool triggerIsFree = true;
+    public int chargePerSecond = 2;
+
+    private TaserManager()
+    {
+        taserBattery = taserMaxBattery;
     }
 
-    private void ChargeBattery(){
+    public void taserTrigger(){
+        if(taserCanTrigger()){
+            taserBattery -= taserCost;
+        }
+    }
+
+    public bool taserCanTrigger(){
+        if (taserBattery >= taserMaxBattery && triggerIsFree)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void chargeBattery()
+    {
         if (taserBattery < taserMaxBattery)
         {
             taserBattery += chargePerSecond;
             Debug.Log($"Taser Battery = {taserBattery}");
         }
     }
+
+    private float timer;
+    private float interval = 1.0f; // Intervalo de tiempo en segundos
+
+    public void Start()
+    {
+        // Iniciar el temporizador
+        timer = interval;
+        Debug.Log($"START TASER SINGLETON");
+    }
+
+    public void Update()
+    {
+        // Actualizar el temporizador
+        timer -= Time.deltaTime;
+
+        // Verificar si ha pasado el intervalo de tiempo
+        if (timer <= 0)
+        {
+            // Ejecutar la función deseada
+            chargeBattery();
+
+            // Reiniciar el temporizador
+            timer = interval;
+        }
+    }
+
 }
