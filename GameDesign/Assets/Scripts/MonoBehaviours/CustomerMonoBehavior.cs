@@ -7,7 +7,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] public int id;
     [SerializeField] public float baseSpeed;
     [SerializeField] public float currentSpeed;
-    [SerializeField] public int clickAmount = 0;
+    [SerializeField] public int clickCunt = 0;
+    [SerializeField] public int requiredClicks = 1;
     [SerializeField] public int clickTime;
     [SerializeField] public bool wearsMask;
     [SerializeField] public NPCMovementManager moveManager;
@@ -27,8 +28,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         if(clickType == ClickType.LEFT_CLICK)
         {
-            clickAmount++;
-            if (!wearsMask)
+            clickCunt++;
+            if (!wearsMask  && clickCunt >= requiredClicks)
             {
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
@@ -47,7 +48,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
                 {
                     isFrozen = true;
                     currentSpeed = 0;
-                    frozenTimeCount = 0; // Restart counter
+                    frozenTimeCount = 0;
                 }
             }
         }
