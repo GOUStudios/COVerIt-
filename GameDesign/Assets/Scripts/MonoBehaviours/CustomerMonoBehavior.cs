@@ -19,7 +19,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     void Start()
     {
-        // Llamo acá UnFreeze, para que el invocador no se detenga por el fin de otra fn
         InvokeRepeating("UnFreeze", 1.0f, 1.0f);
         currentSpeed = baseSpeed;
     }
@@ -39,8 +38,19 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
         }
-        // EL CLICK NO ME ESTABA FUNCIONANDO, LO IMPLEMENTÉ A MI MANERA
-        // SEBASTIAN COME VERGAS
+        if(clickType == ClickType.RIGHT_CLICK)
+        {
+            if (taserManager.taserBattery >= taserManager.taserCost)
+            {
+                taserManager.taserBattery = taserManager.taserBattery - taserManager.taserCost;
+                if(!isFrozen)
+                {
+                    isFrozen = true;
+                    currentSpeed = 0;
+                    frozenTimeCount = 0; // Restart counter
+                }
+            }
+        }
     }
 
     private void UnFreeze()
@@ -51,7 +61,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
                 isFrozen = false;
                 currentSpeed = baseSpeed;
                 frozenTimeCount = 0;
-                Debug.Log("Object is no longer stuned!");
             }else
             {
                 frozenTimeCount++;
@@ -63,28 +72,4 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         return true;
     }
-
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButton(1) && taserManager.triggerIsFree)
-        {
-            taserManager.triggerIsFree = false;
-            if (taserManager.taserBattery >= taserManager.taserCost)
-            {
-                taserManager.taserBattery = taserManager.taserBattery - taserManager.taserCost;
-                if(!isFrozen)
-                {
-                    isFrozen = true;
-                    currentSpeed = 0;
-                    frozenTimeCount = 0; // Restart counter
-                }
-            }
-            Debug.Log($"Decreased battery to: {taserManager.taserBattery}");
-        }
-    }
-
-    private void OnMouseExit(){
-        taserManager.triggerIsFree = true;
-    }
-
 }
