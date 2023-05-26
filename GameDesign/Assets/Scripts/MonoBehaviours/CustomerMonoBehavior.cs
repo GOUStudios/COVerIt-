@@ -41,9 +41,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
         if(clickType == ClickType.RIGHT_CLICK)
         {
-            if (taserManager.taserBattery >= taserManager.taserCost)
-            {
-                taserManager.taserBattery = taserManager.taserBattery - taserManager.taserCost;
+            if(taserManager.useTaser()){
                 if(!isFrozen)
                 {
                     isFrozen = true;

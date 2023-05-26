@@ -29,6 +29,15 @@ public class TaserManager
         taserBattery = taserMaxBattery;
     }
 
+    public bool useTaser(){
+        if (taserBattery >= taserCost){
+            taserBattery = taserBattery - taserCost;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private void chargeBattery()
     {
         if (taserBattery < taserMaxBattery)
