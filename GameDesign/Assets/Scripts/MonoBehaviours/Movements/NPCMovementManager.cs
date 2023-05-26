@@ -17,7 +17,7 @@ public class NPCMovementManager : MonoBehaviour
     {
         if (agent == null)
         {
-            agent = (UnityEngine.AI.NavMeshAgent)GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             if (agent == null) Debug.LogError("Could not find NavMeshAgent");
         }
         if (targetWayPoint == null)

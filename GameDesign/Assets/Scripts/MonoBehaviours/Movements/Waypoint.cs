@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour, WaypointInterface
+public class Waypoint : MonoBehaviour, IWaypoint
 {
     [Header("Same floor destinations:")]
-    [SerializeField] Waypoint[] possibleNextPoint;
+    [SerializeField] protected Waypoint[] possibleNextPoint;
 
     [Header("Picker settings:")]
     [SerializeField] int maxTriesForRandomPick = 40;
@@ -18,20 +18,20 @@ public class Waypoint : MonoBehaviour, WaypointInterface
     [SerializeField] int defaultIndexChanger = 1;
 
     [Header("Gizmos parameters:")]
-    [SerializeField] Color connectigColor = Color.red;
-    [SerializeField] float sphereRadius = 1f;
-    [SerializeField] Color sphereColor = Color.blue;
+    [SerializeField] protected Color connectingColor = Color.red;
+    [SerializeField] protected float sphereRadius = 1f;
+    [SerializeField] protected Color sphereColor = Color.blue;
 
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(this.transform.position, sphereRadius);
-        Gizmos.color = connectigColor;
+        Gizmos.color = sphereColor;
+        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+        Gizmos.color = connectingColor;
 
         foreach (Waypoint wp in possibleNextPoint)
         {
-            if (wp != null) Gizmos.DrawLine(this.transform.position, wp.transform.position);
+            if (wp != null) Gizmos.DrawLine(transform.position, wp.transform.position);
         }
 
     }
@@ -65,7 +65,7 @@ public class Waypoint : MonoBehaviour, WaypointInterface
                 int j = i;
                 if (possibleNextPoint[j] == null)
                 {
-                    Debug.LogError($"The waypoint(#{j}) in {this.name} was null");
+                    Debug.LogError($"The waypoint(#{j}) in {name} was null");
 
                     j = 0;
                 }
