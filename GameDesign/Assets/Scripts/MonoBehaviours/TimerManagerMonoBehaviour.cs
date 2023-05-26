@@ -47,6 +47,11 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         maximumTime = seconds;
     }
 
+    public int GetTime()
+    {
+        return maximumTime;
+    }
+
     public void StartTimer()
     {
         Debug.Log("Timer started in Timer");
