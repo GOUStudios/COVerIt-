@@ -7,8 +7,8 @@ public class BossUI : MonoBehaviour
 {
     //Level between 0 and 1 to show the anger boss
     public float angerLevel;
-    
-    [SerializeField] private Image boss; 
+
+    [SerializeField] private Image boss;
     [SerializeField] private Image bossAnger;
 
     private Slider slider;
@@ -23,21 +23,21 @@ public class BossUI : MonoBehaviour
 
     public void OnSliderValueChanged()
     {
-        if(slider.value >= angerLevel)
+        if (slider.value >= angerLevel)
         {
-            boss.enabled= false;
-            bossAnger.enabled= true;
+            boss.enabled = false;
+            bossAnger.enabled = true;
         }
         else
         {
             boss.enabled = true;
-            bossAnger.enabled= false;
+            bossAnger.enabled = false;
         }
     }
 
     private void Update()
     {
-        slider.value = slider.value + 0.0001f;
+        slider.value = slider.value + 0.0001f;//TODO Change for boss anger value
     }
 
 }
