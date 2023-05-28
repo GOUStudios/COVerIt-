@@ -7,12 +7,21 @@ public class PointsManager : MonoBehaviour
     private static PointsManager instance;
 
     private int currentPoints;
-    public bool IsNegative { get
+    [SerializeField] private int _CurrentPoints;//No operations are to be done with this element is just to expose the value
+
+
+
+    public bool IsNegative
+    {
+        get
         {
             return instance.currentPoints < 0;
         }
     }
-
+    void Update()
+    {
+        _CurrentPoints = currentPoints;//just to show the current score//TODO take out before delivery
+    }
     public static PointsManager Instance
     {
         get
@@ -31,6 +40,7 @@ public class PointsManager : MonoBehaviour
             return instance;
         }
     }
+
 
     private void Awake()
     {
