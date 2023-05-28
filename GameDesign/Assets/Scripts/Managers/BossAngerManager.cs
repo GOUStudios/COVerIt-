@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class BossAngerManager
 {
-    
+
     private static BossAngerManager _instance;
-    
+
     public int _maxNumAngry = 10; //To be defined on each level
     public int _maxNumGameOver = 6; //To be defined on each level
 
-    public int angryCounter;
-    public int gameOverCounter;
+    public int angryCounter = 0;
+    public int gameOverCounter = 0;
     public bool isAngry;
+
+    public float angerPercent
+    {
+        get
+        {
+            return (float)(angryCounter + gameOverCounter) / (float)(_maxNumAngry + _maxNumGameOver);
+        }
+    }
+    public float angerThreshhold
+    {
+        get
+        {
+            return (float)(_maxNumAngry) / (float)(_maxNumAngry + _maxNumGameOver);
+        }
+    }
 
     public BossAngerManager()
     {
@@ -80,9 +95,10 @@ public class BossAngerManager
         if (gameOverCounter >= _maxNumGameOver)
         {
             Debug.Log("GAME OVER");
-            angryCounter = 0;
+            //Dont think this reset is necessary
+            /*angryCounter = 0;
             gameOverCounter = 0;
-            isAngry = false;
+            isAngry = false;*/
         }
 
         //Use to pass from angry to normal state

@@ -10,9 +10,9 @@ public class StarLauncherUI : MonoBehaviour
     public Slider slider;
     public event Action<float> starEvent;
 
-    private bool event1Triggered = false;
-    private bool event2Triggered = false;
-    private bool event3Triggered = false;
+    [ReadOnly][SerializeField] private bool event1Triggered = false;
+    [ReadOnly][SerializeField] private bool event2Triggered = false;
+    [ReadOnly][SerializeField] private bool event3Triggered = false;
 
     private void Start()
     {
@@ -29,8 +29,6 @@ public class StarLauncherUI : MonoBehaviour
     }
     public void OnSliderValueChanged(float value)
     {
-        Debug.Log("value changed");
-
 
         if (value >= 0.32f && !event1Triggered)
         {

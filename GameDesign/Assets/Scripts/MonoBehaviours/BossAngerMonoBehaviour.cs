@@ -10,6 +10,8 @@ public class BossAngerMonoBehaviour : MonoBehaviour
     [SerializeField]
     private int _maxNumGameOver = 6; //To be defined on each level
 
+    [SerializeField] bool correctlyClicked;
+
     private BossAngerManager _instance;
     // Start is called before the first frame update
     void Awake()

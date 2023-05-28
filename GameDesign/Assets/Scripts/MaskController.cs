@@ -5,7 +5,7 @@ using UnityEngine;
 public class MaskController : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
-    private GameObject _target;
+    [ReadOnly][SerializeField]private GameObject _target;
 
     // Start is called before the first frame update
     void Start()

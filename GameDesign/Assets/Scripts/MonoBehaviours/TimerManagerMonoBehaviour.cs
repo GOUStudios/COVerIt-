@@ -7,7 +7,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
 
     // In seconds
     private int maximumTime;
-    private float timeRemaining;
+    [SerializeField]private float timeRemaining;
     private bool isRunning;
 
     public bool IsRunning { get { return isRunning; } }

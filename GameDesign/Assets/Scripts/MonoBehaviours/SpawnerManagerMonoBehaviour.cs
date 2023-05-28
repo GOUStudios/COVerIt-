@@ -19,7 +19,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     [Range(0.0f, 1.0f)]
     [SerializeField] float pullRate;
 
-    private float currentTime = 0f;
+    [ReadOnly][SerializeField] private float currentTime = 0f;
     private float currentPullRate = 0f;
 
     private Dictionary<CustomerTypes, AnimationCurve> spawnRates = new Dictionary<CustomerTypes, AnimationCurve>();
@@ -27,10 +27,10 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     void Start()
     {
         leverManagerSingleton = LevelSettingManager.Instance;
-        if(timerManager == null)
+        if (timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
-            if(timerManager == null)
+            if (timerManager == null)
             {
                 Debug.LogError("Couldn't find timer manager");
             }
@@ -56,22 +56,22 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
             {
                 if (spawnRates[t].Evaluate(timePercentage) >= p)
                 {
-                    toSpawnUnmasked[(int)UnityEngine.Random.Range(0f, levelSpawners.Length)].Add(t, 1);
+                    toSpawnUnmasked[(int)UnityEngine.Random.Range(0f, levelSpawners.Length)].Add(t, 1);//TODO Fix out of bounds error
                 }
             }
             for (int i = 0; i < toSpawnUnmasked.Length; i++)
             {
                 Dictionary<CustomerTypes, int> toSpawn = toSpawnUnmasked[i];
-                
+
                 p = UnityEngine.Random.Range(0f, 1.01f);
                 int spawnMasked = maskedSpawnRate.Evaluate(timePercentage) >= p ? 1 : 0;
-                
+
                 var (spawnRequestWM, spawnRequestUnmasked) = leverManagerSingleton.RequestSpawn(spawnMasked, toSpawn);
                 levelSpawners[i].Spawn(spawnRequestWM, spawnRequestUnmasked);
             }
             currentPullRate = currentTime + pullRate;
         }
-        
+
 
     }
 }

@@ -43,6 +43,7 @@ public class BatteryUI : MonoBehaviour
     void Update()
     {
         slider.value = taserManager.taserBatteryPercent;
+        
 
         if (battery1 == null || battery2 == null || battery3 == null) return;
 

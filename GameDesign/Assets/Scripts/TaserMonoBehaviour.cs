@@ -13,18 +13,31 @@ public class TaserMonoBehaviour : MonoBehaviour
     [Range(-100, 100)]
     [SerializeField] int chargePerSecond;
 
+    [ReadOnly][SerializeField] float charge;
+
     void Start()
     {
         taserManager.taserCost = taserCostPerShot;
         taserManager.chargePerSecond = chargePerSecond;
         InvokeRepeating("chargeBattery", 1.0f, 1.0f);
     }
+    void Update()
+    {
+        charge = taserManager.taserBatteryPercent;
+    }
 
     private void chargeBattery()
     {
-        if (taserManager.taserBattery < taserManager.taserMaxBattery)
+
+        if (taserManager.taserBattery <= taserManager.taserMaxBattery)
         {
             taserManager.taserBattery += taserManager.chargePerSecond;
+            if (taserManager.taserBattery > taserManager.taserMaxBattery)
+            {
+                taserManager.taserBattery = taserManager.taserMaxBattery;
+            }else if (taserManager.taserBattery < 0) {
+                taserManager.taserBattery = 0;
+            }
             Debug.Log($"Taser Battery = {taserManager.taserBattery}");
         }
     }

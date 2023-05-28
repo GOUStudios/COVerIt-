@@ -30,7 +30,7 @@ public class TaserManager
     {
         get
         {
-            return (float)taserBattery / (float)taserMaxBattery;
+            return ((float)taserBattery / (float)taserMaxBattery);
         }
     }
 

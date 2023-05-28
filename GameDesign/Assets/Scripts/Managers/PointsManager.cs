@@ -6,8 +6,7 @@ public class PointsManager : MonoBehaviour
 {
     private static PointsManager instance;
 
-    private int currentPoints;
-    [SerializeField] private int _CurrentPoints;//No operations are to be done with this element is just to expose the value
+    [ReadOnly][SerializeField] private int currentPoints;
 
 
 
@@ -17,10 +16,6 @@ public class PointsManager : MonoBehaviour
         {
             return instance.currentPoints < 0;
         }
-    }
-    void Update()
-    {
-        _CurrentPoints = currentPoints;//just to show the current score//TODO take out before delivery
     }
     public static PointsManager Instance
     {
