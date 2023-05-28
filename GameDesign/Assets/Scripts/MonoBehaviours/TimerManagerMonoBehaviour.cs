@@ -7,11 +7,12 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
 
     // In seconds
     private int maximumTime;
-    [SerializeField]private float timeRemaining;
+    [SerializeField] private float timeRemaining;
     private bool isRunning;
 
     public bool IsRunning { get { return isRunning; } }
-    public int TimeRemainingSeconds { get { return (int)(timeRemaining+1);  } }
+    public int TimeRemainingSeconds { get { return (int)(timeRemaining + 1); } }
+    public float TimeRemaining { get { return timeRemaining; } }
 
     public delegate void TimeFinish();
     public static TimeFinish OnTimeFinished;
@@ -19,19 +20,19 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isRunning)
+        if (isRunning)
         {
-            if (timeRemaining > 0) 
+            if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
             }
-            if(timeRemaining <= 0)
+            if (timeRemaining <= 0)
             {
                 timeRemaining = 0;
                 Debug.Log("Timer finished in Timer");

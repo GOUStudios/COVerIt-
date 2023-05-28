@@ -6,7 +6,7 @@ using UnityEngine;
 public class NPCMovementManager : MonoBehaviour
 {
     [SerializeField] public UnityEngine.AI.NavMeshAgent agent;
-    [SerializeField] public Waypoint previousWayPoint;
+    [ReadOnly][SerializeField] public Waypoint previousWayPoint;
     [SerializeField] public Waypoint targetWayPoint;
     [SerializeField] public float distanceThreshHoldToReachWP = 1.5f;
     [SerializeField] public float MaxTimeToReachWaypoint = 15f;

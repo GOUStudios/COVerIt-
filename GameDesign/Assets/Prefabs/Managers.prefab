@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &782839535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 782839536}
+  - component: {fileID: 782839537}
+  m_Layer: 0
+  m_Name: Taser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &782839536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782839535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1272719694548582121}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782839537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782839535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d721771fb5d4bf94980bccf08b638c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taserCostPerShot: 0
+  chargePerSecond: -4
+  charge: 0
 --- !u!1 &775877370642205860
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +81,7 @@ Transform:
   - {fileID: 1402880310365572306}
   - {fileID: 6772363760437310811}
   - {fileID: 1943702092730625760}
+  - {fileID: 782839536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerManager: {fileID: 6544498483485782700}
   maskedCustomers: 52
-  levelTime: 0
+  levelTime: 149
   unmaskedCustomers: 4100000023000000390000002a000000
   unmaskedPrefabs:
   - {fileID: 3919460525492696156, guid: 8251e2f7e2eb275498c064342d95c560, type: 3}
@@ -64,10 +112,10 @@ MonoBehaviour:
   - {fileID: 3919460525492696156, guid: 622ca7fa931072f44ac7393238b77d81, type: 3}
   - {fileID: 3919460525492696156, guid: f2e006fa6c03c3047a8ff5e054926ce5, type: 3}
   maskedPercentages:
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.5
+  - 0.14
+  - 0.2
+  - 0.16
 --- !u!114 &7353344143689578711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,15 +129,126 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerManager: {fileID: 6544498483485782700}
-  spawnRatesArray: []
+  spawnRatesArray:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   maskedSpawnRate:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.025001526
+      value: 0.49526978
+      inSlope: -0.0022612123
+      outSlope: -0.0022612123
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0125122
+      value: 0.49292374
+      inSlope: -0.0022612123
+      outSlope: -0.0022612123
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   levelSpawners: []
-  pullRate: 0
+  pullRate: 0.32
+  currentTime: 0
 --- !u!114 &3669377154623292990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1143e9fb03dd7d439b0ac5dbb596ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CurrentPoints: 0
+  currentPoints: 0
 --- !u!1 &6673223381534869074
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032a04b93b422674e8d14847e3005f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaining: 120
 --- !u!1 &8224852877104991727
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,3 +397,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxNumAngry: 10
   _maxNumGameOver: 6
+  correctlyClicked: 0

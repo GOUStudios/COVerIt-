@@ -38,7 +38,6 @@ public class TaserMonoBehaviour : MonoBehaviour
             }else if (taserManager.taserBattery < 0) {
                 taserManager.taserBattery = 0;
             }
-            Debug.Log($"Taser Battery = {taserManager.taserBattery}");
         }
     }
 }

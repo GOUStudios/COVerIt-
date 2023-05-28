@@ -43,7 +43,6 @@ public class BossAngerManager
             if (_instance == null)
             {
                 _instance = new BossAngerManager();
-                Debug.Log($"{_instance}");
             }
             return _instance;
         }

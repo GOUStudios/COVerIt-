@@ -9,10 +9,11 @@ public class LevelMonobehaviour : MonoBehaviour
     #region Attributes
     private LevelSettingManager manager = LevelSettingManager.Instance;
     [SerializeField] private TimerManagerMonoBehaviour timerManager;
-    [SerializeField] int maskedCustomers = 0;
+    
     [SerializeField] int levelTime;
 
     [Header("DO NOT CHANGE THE ORDER OF THE LIST")]
+    [SerializeField] int maskedCustomers = 0;
     [EnumNamedArray(typeof(CustomerTypes))]
     public int[] unmaskedCustomers = new int[System.Enum.GetValues(typeof(CustomerTypes)).Length];
 

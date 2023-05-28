@@ -14,7 +14,8 @@ public class TimerUi : MonoBehaviour
 
     private void Start()
     {
-        if (timeManager != null) {
+        if (timeManager != null)
+        {
             timeRemaining = timeManager.GetTime();
         }
         timerText = GetComponentInChildren<TMP_Text>();
@@ -23,16 +24,8 @@ public class TimerUi : MonoBehaviour
     //Not necessary with the timer manager
     void Update()
     {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime; // Decrease timer
+            timeRemaining = timeManager.TimeRemaining; // Decrease timer done in the manager
             DisplayTime(timeRemaining);
-        }
-        else
-        {
-            //Time is over
-            Debug.Log("Tempo scaduto!");
-        }
     }
 
     //Call from time manager update function with the current time
