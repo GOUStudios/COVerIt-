@@ -21,19 +21,34 @@ public class TaserManager
     //Taser variables
     public int taserBattery;
     public int taserCost = 20;
-    public int taserMaxBattery = 100;
+    public int taserMaxBattery { get; private set; }
     public int chargePerSecond = 2;
+
+
+
+    public float taserBatteryPercent
+    {
+        get
+        {
+            return (float)taserBattery / (float)taserMaxBattery;
+        }
+    }
 
     private TaserManager()
     {
+        taserMaxBattery = 100;
         taserBattery = taserMaxBattery;
     }
 
-    public bool useTaser(){
-        if (taserBattery >= taserCost){
+    public bool useTaser()
+    {
+        if (taserBattery >= taserCost)
+        {
             taserBattery = taserBattery - taserCost;
             return true;
-        }else{
+        }
+        else
+        {
             return false;
         }
     }

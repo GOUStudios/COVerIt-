@@ -119,7 +119,7 @@ MonoBehaviour:
   battery1: {fileID: 180730455374577648}
   taserOn: {fileID: 180730455749813482}
   taserOff: {fileID: 180730455438117853}
-  slider: {fileID: 0}
+  slider: {fileID: 180730454332928573}
 --- !u!1 &180730454376959244
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b027032fdd49374ebe807545cbbf21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeManager: {fileID: 0}
   timeRemaining: 120
 --- !u!1 &180730454886172940
 GameObject:
@@ -1655,7 +1656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85781c4b5d7101f4da32e6f758b5ddc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  slider: {fileID: 180730455133400419}
 --- !u!1 &180730455218389735
 GameObject:
   m_ObjectHideFlags: 0
