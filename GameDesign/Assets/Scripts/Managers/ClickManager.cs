@@ -35,10 +35,26 @@ public class ClickManager : MonoBehaviour
                     Debug.Log("About to call OnMissClicked");
                     OnMissClicked?.Invoke();
                 }
+                
             }
             else
             {
                 OnMissClicked?.Invoke();
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Clickable clickable = (Clickable)ObjectUtils.GetObjectWithInterface<Clickable>(hit.collider.gameObject);
+                if(clickable != null)
+                {
+                    clickable.Click(ClickType.RIGHT_CLICK);
+                }
             }
         }
     }
