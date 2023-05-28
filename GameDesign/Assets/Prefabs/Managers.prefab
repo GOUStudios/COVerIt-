@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taserCostPerShot: 0
-  chargePerSecond: -4
+  chargePerSecond: -6
   charge: 0
 --- !u!1 &775877370642205860
 GameObject:
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerManager: {fileID: 6544498483485782700}
-  maskedCustomers: 52
   levelTime: 149
+  maskedCustomers: 52
   unmaskedCustomers: 4100000023000000390000002a000000
   unmaskedPrefabs:
   - {fileID: 3919460525492696156, guid: 8251e2f7e2eb275498c064342d95c560, type: 3}
@@ -226,28 +226,29 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.025001526
-      value: 0.49526978
-      inSlope: -0.0022612123
-      outSlope: -0.0022612123
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 1.0125122
-      value: 0.49292374
-      inSlope: -0.0022612123
-      outSlope: -0.0022612123
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  levelSpawners: []
-  pullRate: 0.32
+  levelSpawners:
+  - {fileID: 0}
+  pullRate: 0.27
   currentTime: 0
 --- !u!114 &3669377154623292990
 MonoBehaviour:
@@ -397,4 +398,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxNumAngry: 10
   _maxNumGameOver: 6
-  correctlyClicked: 0
