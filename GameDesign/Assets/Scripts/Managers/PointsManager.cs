@@ -61,9 +61,12 @@ public class PointsManager : MonoBehaviour
         instance.currentPoints = 0;
     }
 
-    public int GetCurrentPoints()
+    public int GetCurrentPoints
     {
-        return instance.currentPoints;
+        get
+        {
+            return instance.currentPoints;
+        }
     }
 
 }

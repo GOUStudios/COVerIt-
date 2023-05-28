@@ -14,10 +14,13 @@ public class StarLauncherUI : MonoBehaviour
     [ReadOnly][SerializeField] private bool event2Triggered = false;
     [ReadOnly][SerializeField] private bool event3Triggered = false;
 
+    private PointsManager pointsManager;//has to be initialized in awake because is a monobehaviour.
+
     private void Start()
     {
-        
-        slider= GetComponent<Slider>();
+        pointsManager = PointsManager.Instance;
+
+        slider = GetComponent<Slider>();
         slider.value = 0;
 
         slider.onValueChanged.AddListener(delegate { OnSliderValueChanged(slider.value); });
@@ -25,7 +28,7 @@ public class StarLauncherUI : MonoBehaviour
 
     private void Update()
     {
-        slider.value = slider.value + 0.0001f;
+        slider.value = pointsManager.GetCurrentPoints;
     }
     public void OnSliderValueChanged(float value)
     {
