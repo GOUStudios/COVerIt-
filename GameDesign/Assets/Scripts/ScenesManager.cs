@@ -101,5 +101,11 @@ public class ScenesManager : MonoBehaviour
     }
 
 
+    //Function to quit 
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
+
 
 }
