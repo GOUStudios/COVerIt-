@@ -25,7 +25,7 @@ public class StarLauncherUI : MonoBehaviour
 
     private void Update()
     {
-        slider.value = slider.value + 0.0001f;
+        slider.value = PointsManager.Instance.pointsPercentage;
     }
     public void OnSliderValueChanged(float value)
     {
