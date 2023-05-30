@@ -24,6 +24,9 @@ public class LevelSettingManager
     public Dictionary<CustomerTypes, int> leftCustomersWithOutMask;
     public Dictionary<CustomerTypes, float> MaskedWeights { get; private set; }
 
+    [Range(0,1)]
+    public float[] waveMomentPercentages;
+
     public static LevelSettingManager Instance
     {
         get
@@ -54,13 +57,14 @@ public class LevelSettingManager
     {
         //TODO Define where we want to decide the amount of people to be spawned, in the spawner or the level manager
         //if we want it to be in the spawners, we should add the amount to be requested.
-        isSpawning = true;
-        // Dictionary<CustomerTypes, int> temp = { 0, 0 };
-        var pullResponse = Pull(spawns, UnmaskedSpawns);
-        isSpawning = false;
-        // Spawn?.Invoke(SpawnerID, 0, temp);
+        (int, Dictionary<CustomerTypes, int>) pullResponse = (0, new Dictionary<CustomerTypes,int>());
+        if (!isSpawning)
+        {
+            isSpawning = true;
+            pullResponse = Pull(spawns, UnmaskedSpawns);
+            isSpawning = false;
+        }
         return pullResponse;
-
     }
 
 
@@ -72,7 +76,16 @@ public class LevelSettingManager
         CustomersToBeSpawnedWM = 0;
         isSpawning = false;
         isReadyToSpawn = false;
+    }
 
+    public bool SanityCheck()
+    {
+        isReadyToSpawn = CustomerMaskedPrefabs != null &&
+                         CustomerUnmaskedPrefabs != null &&
+                         waveMomentPercentages != null &&
+                         CustomersWithOutMask != null &&
+                         leftCustomersWithOutMask != null;
+        return isReadyToSpawn;
     }
 
     internal void SetPrefabs(Dictionary<CustomerTypes, GameObject> unmaskedPrefabsDictionary, Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary)
@@ -80,7 +93,7 @@ public class LevelSettingManager
         isReadyToSpawn = false;
         CustomerMaskedPrefabs = maskedPrefabsDictionary;
         CustomerUnmaskedPrefabs = unmaskedPrefabsDictionary;
-        if (CustomersWithOutMask != null && leftCustomersWithOutMask != null) isReadyToSpawn = true;
+        SanityCheck();
     }
 
     /*
@@ -98,12 +111,19 @@ public class LevelSettingManager
         MaskedWeights = maskedWeights;
         CustomersWithOutMask = UnmaskedSpawns;
         leftCustomersWithOutMask = new Dictionary<CustomerTypes, int>(CustomersWithOutMask);
-        if(CustomerMaskedPrefabs != null && CustomerUnmaskedPrefabs != null) isReadyToSpawn = true;
+        SanityCheck();
         // else
         // {
         //     Debug.LogError("The amount of types of customers to spawn was higher than the maximum amount possible\n");
         // }
 
+    }
+
+    public void SetWaves(float[] wavePercentages)
+    {
+        Array.Sort(wavePercentages);
+        waveMomentPercentages = wavePercentages;
+        SanityCheck();
     }
 
     /*
@@ -114,28 +134,23 @@ public class LevelSettingManager
     {
         if (isReadyToSpawn)
         {
-            Debug.Log($"Received request to spawn {spawns}, {UnmaskedSpawns}");
+            Debug.Log($"Received request to spawn {spawns}, {ObjectUtils.DictionaryToString(UnmaskedSpawns)}");
             int actualSpawns = leftSpawnedWM > 0 ? Math.Min(leftSpawnedWM, spawns) : 0;
             if (leftSpawnedWM > 0) leftSpawnedWM = Math.Max(0, leftSpawnedWM - spawns);
 
             Dictionary<CustomerTypes, int> actualSpawnsUnmasked = new Dictionary<CustomerTypes, int>();
-            foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes)))
+            foreach (var (t, toSpawn) in UnmaskedSpawns )
             {
-                if(UnmaskedSpawns.ContainsKey(t))
-                {
-                    int leftForCustomerType = leftCustomersWithOutMask[t];
-                    int actualSpawn = leftCustomersWithOutMask[t] > 0 ? Math.Min(leftForCustomerType, UnmaskedSpawns[t]) : 0;
-                    actualSpawnsUnmasked.Add(t, actualSpawn);
-                    if (leftSpawnedWM > 0) leftCustomersWithOutMask[t] = Math.Max(0, leftForCustomerType - UnmaskedSpawns[t]);
-                }
+                int leftForCustomerType = leftCustomersWithOutMask[t];
+                int actualSpawn = leftCustomersWithOutMask[t] > 0 ? Math.Min(leftForCustomerType, toSpawn) : 0;
+                actualSpawnsUnmasked.Add(t, actualSpawn);
+                if (leftSpawnedWM > 0) leftCustomersWithOutMask[t] = Math.Max(0, leftForCustomerType - toSpawn);
             }
             return (actualSpawns, actualSpawnsUnmasked);
         }
         else {
             var dict = new Dictionary<CustomerTypes, int>();
-            foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes))) { dict.Add(t, 0); }
             return (0, dict);
         }
     }
-
 }

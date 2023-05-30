@@ -31,4 +31,18 @@ public class RandomUtils
         // No other item was selected, so return very last index.
         return index;
     }
+
+    public static int[] GetRandomPartitions(int numPartitions, int amountToDivide)
+    {
+        int[] percentageToSpawn = new int[numPartitions];
+        float percentageAccumulated = 0.0f;
+        for (int i = 0; i < numPartitions - 1; i++)
+        {
+            float rand = Random.Range(0f, 1f - percentageAccumulated);
+            percentageToSpawn[i] = (int)(rand*amountToDivide);
+            percentageAccumulated += rand;
+        }
+        percentageToSpawn[numPartitions - 1] = amountToDivide - (int)(amountToDivide*percentageAccumulated);
+        return percentageToSpawn;
+    }
 }
