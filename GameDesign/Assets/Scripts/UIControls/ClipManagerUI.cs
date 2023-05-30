@@ -28,8 +28,10 @@ public class ClipManagerUI : MonoBehaviour
             new Vector2(00.33f, 00.66f),
             new Vector2(01.53f, 02.59f),
             new Vector2(03.86f, 05.92f),
+            new Vector2(08.26f, 09.40f),
             new Vector2(10.69f, 13.86f),
             new Vector2(14.53f, 26.59f),
+            new Vector2(29.69f, 30.72f),
             new Vector2(32.23f, 33.23f)
         };
 
@@ -42,7 +44,7 @@ public class ClipManagerUI : MonoBehaviour
 
         if (!isCheckingTime)
         {
-            // Avvia la coroutine per controllare l'intervallo di tempo
+            // Starts coroutine to check interval
             StartCoroutine(CheckTimeInterval());
         }
     }
