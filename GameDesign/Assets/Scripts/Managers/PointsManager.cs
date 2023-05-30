@@ -49,7 +49,7 @@ public class PointsManager : MonoBehaviour
         {
             instance = this;
 
-            StartCoroutine(getMaxPointsWithDelay());
+            calculateMaxPoints();
         }
     }
     public void TriggerEvent_IncrementPoints(int points)
@@ -60,7 +60,7 @@ public class PointsManager : MonoBehaviour
 
     public void TriggerEvent_ResetPoints()
     {
-        StartCoroutine(getMaxPointsWithDelay());
+        calculateMaxPoints();
         instance.currentPoints = 0;
     }
 
@@ -69,11 +69,6 @@ public class PointsManager : MonoBehaviour
         return instance.currentPoints;
     }
 
-    IEnumerator getMaxPointsWithDelay(){
-        //adding some delay to allow for initialization. should be less than a frame.
-        yield return new WaitForEndOfFrame();
-        calculateMaxPoints();
-    }
     private void calculateMaxPoints() {
 
         maxPoints = LevelSettingManager.Instance.getInitialMaxPoints();
