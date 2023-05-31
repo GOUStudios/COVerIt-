@@ -27,7 +27,7 @@ public class BossUI : MonoBehaviour
 
     public void OnSliderValueChanged()
     {
-        if (slider.value >= angerLevel)
+        if (!BossAngerManager.Instance.isAngry)
         {
             boss.enabled = true;
             bossAnger.enabled = false;
@@ -42,7 +42,7 @@ public class BossUI : MonoBehaviour
 
     private void Update()
     {
-        slider.value = 1 - bossAngerManager.angerPercent;
+        slider.value = bossAngerManager.angerPercent;
         angerValue = bossAngerManager.angerPercent;
     }
 

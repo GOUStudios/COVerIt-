@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &592295085 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6320698152811169062, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+  m_PrefabInstance: {fileID: 180730454993122099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &655940511
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +410,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 180730454822033299, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 180730454886172940, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -500,6 +509,38 @@ PrefabInstance:
     - target: {fileID: 180730455091552348, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 592295085}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Update
+      objectReference: {fileID: 0}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 180730455133400419, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 180730455925556880, guid: f55dd845bdb0be74a8737a5b91798763, type: 3}
       propertyPath: m_AnchorMax.x
