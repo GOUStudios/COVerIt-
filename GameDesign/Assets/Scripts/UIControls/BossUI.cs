@@ -42,7 +42,7 @@ public class BossUI : MonoBehaviour
 
     private void Update()
     {
-        slider.value = bossAngerManager.angerPercent;
+        slider.value = 1-bossAngerManager.angerPercent;
         angerValue = bossAngerManager.angerPercent;
     }
 

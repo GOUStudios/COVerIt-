@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class PointerRotatorUI : MonoBehaviour
 {
-    private Slider slider;
+    [SerializeField]private Slider slider;
 
     private Quaternion initialRotation;
 
     private void Start()
     {
-        slider = GetComponentInParent<Slider>();
-        if (slider == null) return;
         
-        // Check if slider is on 0, TBD on Angry manager
-        slider.value = 0f;
+        if (slider == null) {
+            slider = GetComponentInParent<Slider>();
+            if (slider == null)return;
+        }
 
         initialRotation = transform.rotation;
     }

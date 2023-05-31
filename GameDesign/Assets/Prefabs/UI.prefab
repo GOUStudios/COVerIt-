@@ -1439,6 +1439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3c723367af0314e9c4a63ad4a42e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 180730455691736139}
 --- !u!222 &180730455107565984
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1583,9 +1584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 180730455133400419}
-  event1Triggered: 0
-  event2Triggered: 0
-  event3Triggered: 0
 --- !u!1 &180730455218389735
 GameObject:
   m_ObjectHideFlags: 0
