@@ -41,10 +41,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         fsm.AddTransition(masked, walking, () => currentSpeed > 0);
         fsm.AddTransition(frozen, walking, () => currentSpeed > 0);
 
-        fsm.AddTransition(walking, unmasked, () => currentSpeed < 0 && !wearsMask);
-        fsm.AddTransition(walking, masked, () => currentSpeed < 0 && wearsMask);
-        fsm.AddTransition(walking, frozen, () => currentSpeed < 0 && isFrozen);
-
         if(wearsMask){
             fsm.SetState(masked);
         }else{
@@ -119,7 +115,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         public override void Tik(){}
 
         public override void Exit(){
-            _cmb.currentSpeed = _cmb.baseSpeed;
+            currentSpeed = baseSpeed;
         }
 
     }
@@ -137,7 +133,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         public override void Tik(){}
 
         public override void Exit(){
-            _cmb.currentSpeed = _cmb.baseSpeed;
+            currentSpeed = baseSpeed;
         }
     }
 
@@ -154,7 +150,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         public override void Tik(){}
 
         public override void Exit(){
-            _cmb.currentSpeed = _cmb.baseSpeed;
+            currentSpeed = baseSpeed;
         }
     }
 
