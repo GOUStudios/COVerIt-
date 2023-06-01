@@ -135,6 +135,7 @@ public class LevelSettingManager
         if (isReadyToSpawn)
         {
             Debug.Log($"Received request to spawn {spawns}, {ObjectUtils.DictionaryToString(UnmaskedSpawns)}");
+            Debug.Log($"Current pool: {leftSpawnedWM}, {ObjectUtils.DictionaryToString(leftCustomersWithOutMask)}");
             int actualSpawns = leftSpawnedWM > 0 ? Math.Min(leftSpawnedWM, spawns) : 0;
             if (leftSpawnedWM > 0) leftSpawnedWM = Math.Max(0, leftSpawnedWM - spawns);
 
@@ -142,9 +143,9 @@ public class LevelSettingManager
             foreach (var (t, toSpawn) in UnmaskedSpawns )
             {
                 int leftForCustomerType = leftCustomersWithOutMask[t];
-                int actualSpawn = leftCustomersWithOutMask[t] > 0 ? Math.Min(leftForCustomerType, toSpawn) : 0;
+                int actualSpawn = leftForCustomerType > 0 ? Math.Min(leftForCustomerType, toSpawn) : 0;
                 actualSpawnsUnmasked.Add(t, actualSpawn);
-                if (leftSpawnedWM > 0) leftCustomersWithOutMask[t] = Math.Max(0, leftForCustomerType - toSpawn);
+                if (leftForCustomerType > 0) leftCustomersWithOutMask[t] = Math.Max(0, leftForCustomerType - toSpawn);
             }
             return (actualSpawns, actualSpawnsUnmasked);
         }

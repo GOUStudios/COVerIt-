@@ -64,10 +64,10 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
         }
     }
 
-    private void determineSpawn(int baseCount = 1, bool overrideProbability = false)
+    private void determineSpawn(int baseCount = 1, bool overrideProbability = false, float overridenProbability = 0.0f)
     {
         float timePercentage = currentTime / timerManager.GetTime();
-        float p = overrideProbability ? 0.0f : UnityEngine.Random.Range(0f, 1.01f);
+        float p = overrideProbability ? overridenProbability : UnityEngine.Random.Range(0f, 1.01f);
 
         Dictionary<CustomerTypes, int> toSpawnUnmasked = new Dictionary<CustomerTypes, int>();
         foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes)))
@@ -78,7 +78,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
             }
         }
 
-        p = overrideProbability ? 0.0f : UnityEngine.Random.Range(0f, 1.01f);
+        p = overrideProbability ? overridenProbability : UnityEngine.Random.Range(0f, 1.01f);
         int spawnMasked = maskedSpawnRate.Evaluate(timePercentage) >= p ? baseCount : 0;
         var (spawnRequestWM, spawnRequestUnmasked) = leverManagerSingleton.RequestSpawn(spawnMasked, toSpawnUnmasked);
         Debug.Log($"Received request answer with {spawnRequestWM} and {ObjectUtils.DictionaryToString(spawnRequestUnmasked)}");
@@ -88,7 +88,6 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
             Dictionary<CustomerTypes, int> toSpawn = new Dictionary<CustomerTypes, int>();
             foreach (var t in spawnRequestUnmasked.Keys) {
                 var randomPartitions = RandomUtils.GetRandomPartitions(levelSpawners.Length, spawnRequestUnmasked[t]);
-                Debug.Log($"{ObjectUtils.ArrayToString(randomPartitions)}");
                 toSpawn.Add(t, (int)randomPartitions[i]);
             }
             var randomWMPartitions = RandomUtils.GetRandomPartitions(levelSpawners.Length, spawnRequestWM);
@@ -98,6 +97,6 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
 
     void OnWaveStart(int wavesRemaining)
     {
-        determineSpawn(wavesRemaining>0 ? WaveMultiplier : 999, wavesRemaining==0);
+        determineSpawn(wavesRemaining>0 ? WaveMultiplier : 999, wavesRemaining<2);
     }
 }
