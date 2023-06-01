@@ -6,6 +6,13 @@ public class PointsManager : MonoBehaviour
 {
     private static PointsManager instance;
 
+    private float maxPoints = 0;
+    public float pointsPercentage{ get {
+        if(maxPoints>0)
+            return currentPoints / maxPoints; 
+        else return 0;
+        }
+    }
     private int currentPoints;
     public bool IsNegative { get
         {
@@ -34,17 +41,17 @@ public class PointsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (PointsManager.Instance != null && PointsManager.Instance != this)
         {
             Destroy(this);
         }
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+
+            calculateMaxPoints();
         }
     }
-
     public void TriggerEvent_IncrementPoints(int points)
     {
         instance.currentPoints += points;
@@ -53,12 +60,18 @@ public class PointsManager : MonoBehaviour
 
     public void TriggerEvent_ResetPoints()
     {
+        calculateMaxPoints();
         instance.currentPoints = 0;
     }
 
     public int GetCurrentPoints()
     {
         return instance.currentPoints;
+    }
+
+    private void calculateMaxPoints() {
+
+        maxPoints = LevelSettingManager.Instance.getInitialMaxPoints();
     }
 
 }
