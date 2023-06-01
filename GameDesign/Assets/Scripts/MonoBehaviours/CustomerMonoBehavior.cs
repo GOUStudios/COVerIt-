@@ -21,7 +21,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     void Start()
     {
-        InvokeRepeating("UnFreeze", 1.0f, 1.0f);
         currentSpeed = baseSpeed;
 
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
@@ -49,7 +48,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     public void Click(ClickType clickType)
     {
-        
+        Debug.Log("RIGHT CLICK");
         if(clickType == ClickType.LEFT_CLICK)
         {
             clickCunt++;
@@ -65,30 +64,21 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
         if(clickType == ClickType.RIGHT_CLICK)
         {
+            Debug.Log("LEFT CLICK");
             if(taserManager.useTaser()){
-                if(!isFrozen)
-                {
-                    isFrozen = true;
-                    currentSpeed = 0;
-                    frozenTimeCount = 0;
-                }
+                StartCoroutine(StartFreeze(3f)); 
             }
         }
         
     }
 
-    private void UnFreeze()
+        private IEnumerator StartFreeze(float duration)
     {
-        if (isFrozen){
-            if(frozenTimeCount == 3)
-            {
-                isFrozen = false;
-                currentSpeed = baseSpeed;
-                frozenTimeCount = 0;
-            }else
-            {
-                frozenTimeCount++;
-            }
+        if (!isFrozen){
+            yield return new WaitForSeconds(duration);
+            isFrozen = false;
+            currentSpeed = baseSpeed;
+            Debug.Log("Unfreezed");
         }
     }
 
