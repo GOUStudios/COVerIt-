@@ -154,4 +154,22 @@ public class LevelSettingManager
             return (0, dict);
         }
     }
+
+    #region LVLManagerExportUtils
+
+    public float getInitialMaxPoints(){
+        float maxPoints = 0f;
+        CustomerMonoBehavior temp = null;
+        foreach (CustomerTypes type in CustomersWithOutMask.Keys) {
+            temp= CustomerUnmaskedPrefabs[type].GetComponent<CustomerMonoBehavior>();
+            if (temp == null) { 
+                Debug.LogError($"Could not find \"CustomerMonoBehaviour\" in {type} prefab");
+            }else {
+                maxPoints += (CustomersWithOutMask[type] * temp.pointValue);
+            }
+        }
+        return maxPoints;
+    }
+
+    #endregion
 }
