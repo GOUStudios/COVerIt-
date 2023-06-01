@@ -29,17 +29,12 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         State unmasked = new Unmasked("Unmasked", this);
         State masked = new Masked("Masked", this);
         State frozen = new Frozen("Frozen", this);
-        State walking = new Walking("Walking", this);
 
         fsm.AddTransition(unmasked, masked, () => wearsMask);
         fsm.AddTransition(unmasked, frozen, () => isFrozen);
         fsm.AddTransition(masked, frozen, () => isFrozen);
         fsm.AddTransition(frozen, unmasked, () => !isFrozen && !wearsMask);
         fsm.AddTransition(frozen, masked, () => !isFrozen && wearsMask);
-
-        fsm.AddTransition(unmasked, walking, () => currentSpeed > 0);
-        fsm.AddTransition(masked, walking, () => currentSpeed > 0);
-        fsm.AddTransition(frozen, walking, () => currentSpeed > 0);
 
         if(wearsMask){
             fsm.SetState(masked);
@@ -60,7 +55,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             clickCunt++;
             if (!wearsMask  && clickCunt >= requiredClicks)
             {
-                currentSpeed = 0;
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
             }
@@ -89,6 +83,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             if(frozenTimeCount == 3)
             {
                 isFrozen = false;
+                currentSpeed = baseSpeed;
                 frozenTimeCount = 0;
             }else
             {
@@ -114,9 +109,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         public override void Tik(){}
 
-        public override void Exit(){
-            currentSpeed = baseSpeed;
-        }
+        public override void Exit(){}
 
     }
 
@@ -132,9 +125,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         public override void Tik(){}
 
-        public override void Exit(){
-            currentSpeed = baseSpeed;
-        }
+        public override void Exit(){}
+
     }
 
     private class Frozen: State{
@@ -145,23 +137,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         public override void Enter(){
             Debug.Log("Enter frozen");
-        }
-
-        public override void Tik(){}
-
-        public override void Exit(){
-            currentSpeed = baseSpeed;
-        }
-    }
-
-    private class Walking: State{
-        private CustomerMonoBehavior _cmb;
-        public Walking(string name,CustomerMonoBehavior cmb) : base(name){
-            _cmb = cmb;
-        }
-
-        public override void Enter(){
-            Debug.Log("Enter walking");
         }
 
         public override void Tik(){}
