@@ -88,10 +88,10 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
             Dictionary<CustomerTypes, int> toSpawn = new Dictionary<CustomerTypes, int>();
             foreach (var t in spawnRequestUnmasked.Keys) {
                 var randomPartitions = RandomUtils.GetRandomPartitions(levelSpawners.Length, spawnRequestUnmasked[t]);
-                toSpawn.Add(t, (int)randomPartitions[i]);
+                toSpawn.Add(t, randomPartitions[i]);
             }
             var randomWMPartitions = RandomUtils.GetRandomPartitions(levelSpawners.Length, spawnRequestWM);
-            levelSpawners[i].Spawn((int)randomWMPartitions[i], toSpawn);
+            levelSpawners[i].Spawn(randomWMPartitions[i], toSpawn);
         }
     }
 
