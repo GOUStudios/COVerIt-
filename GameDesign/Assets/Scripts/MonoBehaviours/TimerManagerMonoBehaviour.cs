@@ -16,10 +16,21 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     public delegate void TimeFinish();
     public static TimeFinish OnTimeFinished;
 
+    private LevelSettingManager levelManager;
+
+    public delegate void Wave(int wavesRemaining);
+    public static Wave OnWaveStart;
+    public static Wave OnWaveApproaching;
+    private int currentWave;
+    private bool isWaveAnnounced;
+    public int waveAnticipationTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelManager = LevelSettingManager.Instance;
+        currentWave = 0;
+        isWaveAnnounced = false;
     }
 
     // Update is called once per frame
@@ -30,6 +41,8 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
             if (timeRemaining > 0) 
             {
                 timeRemaining -= Time.deltaTime;
+                checkWaves();
+
             }
             if(timeRemaining <= 0)
             {
@@ -42,6 +55,28 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         }
     }
 
+    private void checkWaves()
+    {
+        float[] wavePercentages = levelManager.waveMomentPercentages;
+        if(wavePercentages != null && currentWave < wavePercentages.Length)
+        {
+            float nextWaveTime = wavePercentages[currentWave] * maximumTime;
+            float timePassed = maximumTime - timeRemaining;
+            if (!isWaveAnnounced && (timePassed > (nextWaveTime - waveAnticipationTime)))
+            {
+                isWaveAnnounced = true;
+                Debug.Log("Wave approaching!");
+                OnWaveApproaching?.Invoke(wavePercentages.Length - currentWave - 1);
+            }
+            if (timePassed > nextWaveTime)
+            {
+                currentWave++;
+                Debug.Log("Wave started!");
+                OnWaveStart?.Invoke(wavePercentages.Length - currentWave);
+            }
+        }
+    }
+ 
     public void SetTime(int seconds)
     {
         maximumTime = seconds;
