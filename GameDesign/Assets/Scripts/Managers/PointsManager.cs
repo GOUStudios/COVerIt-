@@ -79,6 +79,11 @@ public class PointsManager : MonoBehaviour
         maxPoints = LevelSettingManager.Instance.getInitialMaxPoints();
     }
 
+    public float GetMaxPoints()
+    {
+        return instance.maxPoints;
+    }
+
     public int GetLostPoints()
     {
         return instance.lostPoints;
