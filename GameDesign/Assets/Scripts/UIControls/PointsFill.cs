@@ -58,7 +58,10 @@ public class PointsFill : MonoBehaviour
         Points = pointsManager.pointsPercentage;
         Lost = pointsManager.GetLostPoints()/pointsManager.GetMaxPoints();
 
-        
+        //Trial values
+        //Points = 0.7f;
+        //Lost = 0.3f;
+
         LostPoints.value = 1;
 
         InvokeRepeating("InterpolatePoints", 0f, Time.deltaTime);
