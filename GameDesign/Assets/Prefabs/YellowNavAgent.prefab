@@ -116,7 +116,7 @@ MonoBehaviour:
   agent: {fileID: 3919460525492696131}
   previousWayPoint: {fileID: 0}
   targetWayPoint: {fileID: 0}
-  distanceThreshHoldToReachWP: 1.4
+  distanceThreshHoldToReachWP: 1.5
   MaxTimeToReachWaypoint: 15
 --- !u!195 &3919460525492696131
 NavMeshAgent:
