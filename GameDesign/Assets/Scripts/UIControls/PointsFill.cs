@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class PointsFill : MonoBehaviour
 {
     [SerializeField] private Slider earnedPoints;
+    [SerializeField] private TMP_Text textPoints;
     private float Points;
 
     [SerializeField] private Slider LostPoints;
+    [SerializeField] private TMP_Text textLosts;
     private float Lost;
 
     private float currentPoints;
     private float currentLost;
 
-    private float lerpSpeed = 0.5f;
+    private float lerpSpeed = 1.5f;
 
     private PointsManager pointsManager;
 
@@ -30,7 +33,11 @@ public class PointsFill : MonoBehaviour
     {       
         earnedPoints.value = currentPoints;
         currentPoints = Mathf.Lerp(currentPoints, Points, lerpSpeed * Time.deltaTime);
-        
+
+        //textPoints.text = ((int)currentPoints * pointsManager.GetMaxPoints()).ToString("000");
+        textPoints.text = (currentPoints * 100).ToString("000");
+        Debug.Log(textPoints.text);
+
         if (Mathf.Approximately(currentPoints, Points))
         {
             currentPoints = Points;
@@ -42,6 +49,9 @@ public class PointsFill : MonoBehaviour
         
         currentLost = Mathf.Lerp(currentLost, Lost, lerpSpeed * Time.deltaTime);
         LostPoints.value = currentLost;
+
+        //textLosts.text = ((int) currentLost * pointsManager.GetMaxPoints()).ToString("000");
+        textLosts.text = ( currentLost * 100).ToString("000");
       
         if (Mathf.Approximately(currentLost, Lost))
         {
@@ -55,12 +65,12 @@ public class PointsFill : MonoBehaviour
         currentLost = 0f;
 
         //Gets Point percentage from points manager
-        Points = pointsManager.pointsPercentage;
-        Lost = pointsManager.GetLostPoints()/pointsManager.GetMaxPoints();
+        //Points = pointsManager.pointsPercentage;
+        //Lost = pointsManager.GetLostPoints()/pointsManager.GetMaxPoints();
 
         //Trial values
-        //Points = 0.7f;
-        //Lost = 0.3f;
+        Points = 0.7f;
+        Lost = 0.3f;
 
         LostPoints.value = 1;
 
