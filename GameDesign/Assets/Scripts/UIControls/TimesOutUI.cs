@@ -49,22 +49,23 @@ public class TimesOutUI : MonoBehaviour
         else if(pointsManager.pointsPercentage >= star2Threshold && pointsManager.pointsPercentage <= star3Threshold)
         {
             //2 stars earned
+            star1.enabled = true;
             star2.enabled = true;
 
         }
         else if(pointsManager.pointsPercentage >= star3Threshold)
         {
             //3 stars earned
-            star3.enabled = false;
+            star1.enabled = true;
+            star2.enabled = true;
+            star3.enabled = true;
         }
         else
         {
-            //no stars earned, level failed
-            levelCompleted.enabled = false;
-            levelFailed.enabled = true;
+            
         }
 
-        //m
+        //
 
                
     }

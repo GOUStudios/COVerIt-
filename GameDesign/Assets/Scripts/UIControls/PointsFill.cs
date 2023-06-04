@@ -13,7 +13,7 @@ public class PointsFill : MonoBehaviour
     private float currentPoints;
     private float currentLost;
 
-    private float lerpSpeed;
+    private float lerpSpeed = 0.5f;
 
     private PointsManager pointsManager;
 
@@ -48,12 +48,12 @@ public class PointsFill : MonoBehaviour
     private void InterpolateLost()
     {
         // Incrementa gradualmente il valore corrente verso il valore target
-        LostPoints.value = currentLost;
+        
         currentLost = Mathf.Lerp(currentLost, Lost, lerpSpeed * Time.deltaTime);
+        LostPoints.value = currentLost;
 
-
-        Debug.Log("Curretn points: " + currentLost);
-        Debug.Log(" points: " + Points);
+        Debug.Log("Curretn Lost: " + currentLost);
+        Debug.Log(" Lost: " + Lost);
         // Controlla se si è raggiunto il valore target
         if (Mathf.Approximately(currentLost, Lost))
         {
@@ -75,6 +75,8 @@ public class PointsFill : MonoBehaviour
         Points = 0.7f;
         
         Lost = 0.3f;
+
+        LostPoints.value = 1;
 
         // Chiama InterpolateValue ogni frame finché il valore target non viene raggiunto
         InvokeRepeating("InterpolatePoints", 0f, Time.deltaTime);
