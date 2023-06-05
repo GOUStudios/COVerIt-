@@ -75,6 +75,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         private IEnumerator StartFreeze(float duration)
     {
         if (!isFrozen){
+			isFrozen = true;
             yield return new WaitForSeconds(duration);
             isFrozen = false;
             currentSpeed = baseSpeed;
