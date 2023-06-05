@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1136264475711175697}
   - component: {fileID: 7133095632985658541}
   - component: {fileID: 5834890448040859528}
+  - component: {fileID: 9008694577967997593}
   m_Layer: 0
   m_Name: FoodCourtPlate
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MonoBehaviour:
   levelsPlateTag: LevelsPlate
   rotationSpeed: 5
   specifiedRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &9008694577967997593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573931682285783162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14204c292b36bc488c69974658a7fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 0.6
+  heightTarget: 1.23
 --- !u!1 &2529885996806521909
 GameObject:
   m_ObjectHideFlags: 0
