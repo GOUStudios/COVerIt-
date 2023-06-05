@@ -13,8 +13,12 @@ public class PointsFill : MonoBehaviour
     [SerializeField] private TMP_Text textLosts;
     private float Lost;
 
+    [SerializeField] private TMP_Text textTotal;
+    private float Total;
+
     private float currentPoints;
     private float currentLost;
+    private float currentTotal;
 
     private float lerpSpeed = 1.5f;
 
@@ -34,9 +38,8 @@ public class PointsFill : MonoBehaviour
         earnedPoints.value = currentPoints;
         currentPoints = Mathf.Lerp(currentPoints, Points, lerpSpeed * Time.deltaTime);
 
-        //textPoints.text = ((int)currentPoints * pointsManager.GetMaxPoints()).ToString("000");
+        //textPoints.text = (currentPoints * pointsManager.GetMaxPoints()).ToString("000");
         textPoints.text = (currentPoints * 100).ToString("000");
-        Debug.Log(textPoints.text);
 
         if (Mathf.Approximately(currentPoints, Points))
         {
@@ -50,7 +53,7 @@ public class PointsFill : MonoBehaviour
         currentLost = Mathf.Lerp(currentLost, Lost, lerpSpeed * Time.deltaTime);
         LostPoints.value = currentLost;
 
-        //textLosts.text = ((int) currentLost * pointsManager.GetMaxPoints()).ToString("000");
+        //textLosts.text = (currentLost ).ToString("000");
         textLosts.text = ( currentLost * 100).ToString("000");
       
         if (Mathf.Approximately(currentLost, Lost))
@@ -59,23 +62,40 @@ public class PointsFill : MonoBehaviour
         }
     }
 
+    private void InterpolateTotal()
+    {
+        currentTotal = Mathf.Lerp(currentTotal, Total, lerpSpeed * Time.deltaTime);
+       
+        //textLosts.text = (currentLost * pointsManager.GetMaxPoints()).ToString("000");
+        textTotal.text = (currentTotal ).ToString("000");
+
+        if (Mathf.Approximately(currentTotal, Total))
+        {
+            currentTotal = Total;
+        }
+    }
+
     public void StartPoints()
     {
         currentPoints = 0f;
         currentLost = 0f;
+        currentTotal = 0f;
 
         //Gets Point percentage from points manager
-        //Points = pointsManager.pointsPercentage;
-        //Lost = pointsManager.GetLostPoints()/pointsManager.GetMaxPoints();
+        //Points = pointsManager.GetEarnedPoints();
+        //Lost = pointsManager.GetLostPoints();
+        //Total = pointsManager.GetCurrentPoints();
 
         //Trial values
         Points = 0.7f;
         Lost = 0.3f;
+        Total = 70f;
 
         LostPoints.value = 1;
 
         InvokeRepeating("InterpolatePoints", 0f, Time.deltaTime);
         InvokeRepeating("InterpolateLost", 0f, Time.deltaTime);
+        InvokeRepeating("InterpolateTotal", 0f, Time.deltaTime);
     }
 
 }

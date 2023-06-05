@@ -195,7 +195,7 @@ AnimatorStateMachine:
     m_Position: {x: 330, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4010854519352103603}
-    m_Position: {x: 330, y: 350, z: 0}
+    m_Position: {x: 330, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2295219110358406720}
     m_Position: {x: 4357.5156, y: 5118.0903, z: 0}
@@ -204,19 +204,19 @@ AnimatorStateMachine:
     m_Position: {x: 331.7638, y: 148.56812, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8939555824937612057}
-    m_Position: {x: 90, y: 610, z: 0}
+    m_Position: {x: 100, y: 610, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3158568107319009533}
-    m_Position: {x: 770, y: 360, z: 0}
+    m_Position: {x: 930, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8836677451969422950}
-    m_Position: {x: 90, y: 430, z: 0}
+    m_Position: {x: 100, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3659845845169341165}
-    m_Position: {x: 320, y: 440, z: 0}
+    m_Position: {x: 330, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3627188415099836871}
-    m_Position: {x: 580, y: 430, z: 0}
+    m_Position: {x: 590, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1104773534892729327}
     m_Position: {x: 330, y: 610, z: 0}
@@ -243,7 +243,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LevelCompleted 0
+  m_Name: LevelCompleted2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -334,19 +334,19 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Stars2
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Stars3
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
@@ -417,7 +417,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LevelCompleted 0 0
+  m_Name: LevelCompleted3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -663,7 +663,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LevelCompleted
+  m_Name: LevelCompleted1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

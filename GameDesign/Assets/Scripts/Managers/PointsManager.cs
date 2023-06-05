@@ -15,6 +15,7 @@ public class PointsManager : MonoBehaviour
     }
     private int currentPoints;
     private int lostPoints;
+    private int earnedPoints;
     public bool IsNegative { get
         {
             return instance.currentPoints < 0;
@@ -34,6 +35,7 @@ public class PointsManager : MonoBehaviour
                     instance = pointsObject.AddComponent<PointsManager>();
                     instance.currentPoints = 0;
                     instance.lostPoints = 0;
+                    instance.earnedPoints = 0;
                 }
             }
 
@@ -60,6 +62,7 @@ public class PointsManager : MonoBehaviour
         Debug.Log($"Increasing points {points}, now is {instance.currentPoints}");
 
         if (points < 0) instance.lostPoints += points;
+        if (points > 0) instance.earnedPoints += points;
     }
 
     public void TriggerEvent_ResetPoints()
@@ -67,6 +70,7 @@ public class PointsManager : MonoBehaviour
         calculateMaxPoints();
         instance.currentPoints = 0;
         instance.lostPoints = 0;
+        instance.earnedPoints = 0;
     }
 
     public int GetCurrentPoints()
@@ -82,6 +86,11 @@ public class PointsManager : MonoBehaviour
     public float GetMaxPoints()
     {
         return instance.maxPoints;
+    }
+
+    public int GetEarnedPoints()
+    {
+        return instance.earnedPoints;
     }
 
     public int GetLostPoints()
