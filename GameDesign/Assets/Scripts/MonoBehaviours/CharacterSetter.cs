@@ -17,7 +17,7 @@ public class CharacterSetter : MonoBehaviour
     {
         float scale = Random.Range(0.85f, 1.15f);
 
-        this.transform.localScale = new Vector3(scale, scale, scale);
+        this.transform.localScale = new Vector3(transform.localScale.x * scale, transform.localScale.y * scale, transform.localScale.z * scale);
 
         //decide if its man or woman
         bool isMan = (Random.value > 0.5f);
