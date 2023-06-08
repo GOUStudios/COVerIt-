@@ -19,6 +19,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] private FiniteStateMachine<CustomerMonoBehavior> fsm;
     [SerializeField] private NPCMovementManager movementManager;
     [SerializeField] private Animator animator;
+    private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
 
     void Start()
@@ -34,6 +35,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             movementManager = GetComponent<NPCMovementManager>();
             if (movementManager == null) Debug.LogError($"Missing MovementManager component: {name}");
         }
+        _mask = transform.Find("Mask").gameObject;
+        if (_mask == null) { Debug.LogError($"Error finding Mask of: {name}"); }
 
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
 
@@ -73,9 +76,14 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
             }
-            else if(wearsMask)
+            else if (wearsMask)
             {
+
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
+            }
+            else
+            {
+                //Do here whatever feed back for click that are not the masking ones
             }
         }
         if (clickType == ClickType.RIGHT_CLICK)
@@ -123,11 +131,18 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
 
     }
+    public void maskNPC()
+    {
+        _mask.SetActive(true);
+    }
 
-    
-    
-    
-    
+    public void unmaskNPC()
+    {
+
+        _mask.SetActive(true);
+    }
+
+
     private class Unmasked : State
     {
         private CustomerMonoBehavior _cmb;
@@ -138,7 +153,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         public override void Enter()
         {
-
+            _cmb.unmaskNPC();
         }
 
         public override void Tik() { }
@@ -160,7 +175,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         public override void Enter()
         {
-            Debug.Log("Enter masked");
+            _cmb.maskNPC();
         }
 
         public override void Tik() { }
