@@ -14,7 +14,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] public bool wearsMask;
     [SerializeField] public int pointValue;
     [SerializeField] public bool isFrozen = false;
-    [SerializeField] public int frozenTimeCount = 0;
+    [SerializeField] public int frozenTime = 0;
     [SerializeField] public TaserManager taserManager = TaserManager.Instance;
     [SerializeField] private FiniteStateMachine<CustomerMonoBehavior> fsm;
     [SerializeField] private NPCMovementManager movementManager;
@@ -73,7 +73,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
             }
-            else
+            else if(wearsMask)
             {
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
@@ -83,7 +83,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             Debug.Log("LEFT CLICK");
             if (taserManager.useTaser())
             {
-                StartCoroutine(StartFreeze(3f));
+                StartCoroutine(StartFreeze(frozenTime));
             }
         }
 
@@ -124,11 +124,10 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     }
 
-    bool hasMask()
-    {
-        return true;
-    }
-
+    
+    
+    
+    
     private class Unmasked : State
     {
         private CustomerMonoBehavior _cmb;
