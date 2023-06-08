@@ -115,6 +115,14 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     public void changeSpeed(float newSpeed)
     {
         currentSpeed = newSpeed;
+        animator.SetFloat("Speed", newSpeed);
+        if (newSpeed == 0) {
+            movementManager.agent.isStopped = true;
+        }else {
+            movementManager.agent.isStopped = false;
+            movementManager.agent.speed = newSpeed;
+        }
+    
     }
 
     public void changeLayer(string LayerName)

@@ -2599,10 +2599,11 @@ MonoBehaviour:
   requiredClicks: 1
   clickTime: 0
   wearsMask: 0
-  moveManager: {fileID: 5146937234786379669}
   pointValue: 0
   isFrozen: 0
-  frozenTimeCount: 0
+  frozenTime: 0
+  movementManager: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &5146937234786379669
 MonoBehaviour:
   m_ObjectHideFlags: 0

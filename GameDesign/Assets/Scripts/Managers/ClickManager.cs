@@ -24,6 +24,8 @@ public class ClickManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
+
+                
                 Clickable clickable = (Clickable)ObjectUtils.GetObjectWithInterface<Clickable>(hit.collider.gameObject);
                 if (clickable != null)
                 {
