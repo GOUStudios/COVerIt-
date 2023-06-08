@@ -811,9 +811,9 @@ MonoBehaviour:
   - {fileID: 3919460525492696156, guid: 7efeba37db1d492439fe8b8945c448c5, type: 3}
   maskedPrefabs:
   - {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
-  - {fileID: 3079419891072529929, guid: bd623d87b53290c42a8fb4b694d6fef0, type: 3}
-  - {fileID: 3079419891072529929, guid: be5721f5bab2e6a438a76b2975ecc2b6, type: 3}
-  - {fileID: 3079419891072529929, guid: d7973ac50abac344aba63856eb1a0f72, type: 3}
+  - {fileID: 68471940300211544, guid: bbf2bc5d2ad262b43b35f0827ca631b8, type: 3}
+  - {fileID: 68471940300211544, guid: ea15591096b2819419ceb19e8a591e42, type: 3}
+  - {fileID: 68471940300211544, guid: e91347b2075b8be4b86f43e8e3c62d05, type: 3}
   maskedPercentages:
   - 0.75
   - 0

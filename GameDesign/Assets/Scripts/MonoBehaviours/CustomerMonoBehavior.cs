@@ -24,7 +24,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     void Start()
     {
-        currentSpeed = baseSpeed;
+
         if (animator == null)
         {
             animator = GetComponent<Animator>();
@@ -58,6 +58,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         {
             fsm.SetState(unmasked);
         }
+
+        changeSpeed();
     }
 
     void Update()
@@ -116,13 +118,16 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         currentSpeed = newSpeed;
         animator.SetFloat("Speed", newSpeed);
-        if (newSpeed == 0) {
+        if (newSpeed == 0)
+        {
             movementManager.agent.isStopped = true;
-        }else {
+        }
+        else
+        {
             movementManager.agent.isStopped = false;
             movementManager.agent.speed = newSpeed;
         }
-    
+
     }
 
     public void changeLayer(string LayerName)
@@ -132,10 +137,14 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         if (Layer < 0)
         {
             Debug.LogWarning($"Could not find the expected layer {LayerName}");
-            Layer = 0;
+            Layer = LayerMask.NameToLayer(defaultLayer);
         }
 
         gameObject.layer = Layer;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = Layer;
+        }
 
 
     }

@@ -2609,17 +2609,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  baseSpeed: 0
-  currentSpeed: 0
+  baseSpeed: 3
+  currentSpeed: 3
   clickCunt: 0
   requiredClicks: 1
   clickTime: 0
   wearsMask: 0
-  pointValue: 0
+  pointValue: 10
   isFrozen: 0
-  frozenTime: 0
-  movementManager: {fileID: 0}
-  animator: {fileID: 0}
+  frozenTime: 3
+  movementManager: {fileID: 5146937234786379669}
+  animator: {fileID: 8581521589901457097}
 --- !u!114 &5146937234786379669
 MonoBehaviour:
   m_ObjectHideFlags: 0

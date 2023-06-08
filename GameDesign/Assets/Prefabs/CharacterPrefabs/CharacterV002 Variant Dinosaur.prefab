@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_Name
-      value: CharacterV002 Variant
+      value: CharacterV002 Variant Dinosaur
       objectReference: {fileID: 0}
     - target: {fileID: 3520859027583899146, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -63,5 +63,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5d666980f56ec68428de9ddb4914a251, type: 2}
+    - target: {fileID: 5846908172797615232, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: baseSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846908172797615232, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: frozenTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846908172797615232, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: pointValue
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846908172797615232, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: requiredClicks
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
