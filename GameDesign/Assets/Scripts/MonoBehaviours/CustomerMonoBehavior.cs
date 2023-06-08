@@ -19,6 +19,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] private FiniteStateMachine<CustomerMonoBehavior> fsm;
     [SerializeField] private NPCMovementManager movementManager;
     [SerializeField] private Animator animator;
+    private bool onGoingAnimation = false;
     private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
 
@@ -80,7 +81,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             }
             else if (wearsMask)
             {
-
+                StartCoroutine(DoTriggerAnimation("SmallHit"));
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
             else
@@ -151,12 +152,29 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     public void maskNPC()
     {
         _mask.SetActive(true);
+
+
+        //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
+        StartCoroutine(DoTriggerAnimation("GotHit"));
+    }
+    private IEnumerator DoTriggerAnimation(string name)
+    {
+        onGoingAnimation = true;
+        changeSpeed(0);
+        animator.SetTrigger(name);
+        yield return new WaitWhile(() => onGoingAnimation);
+        changeSpeed();
+    }
+
+    public void animationFinished()
+    {
+        onGoingAnimation = false;
     }
 
     public void unmaskNPC()
     {
 
-        _mask.SetActive(true);
+        _mask.SetActive(false);
     }
 
 
