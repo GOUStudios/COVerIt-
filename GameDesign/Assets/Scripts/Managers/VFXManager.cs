@@ -54,11 +54,10 @@ public class VFXManager : MonoBehaviour
     }
     private IEnumerator playVFXCoroutine(Transform transform, Vector3 hitPoint, Quaternion direction)
     {
-
+        ;
         Transform selectedChild = smokePullingPool.transform.GetChild(0);
 
-        selectedChild.transform.localPosition = hitPoint;
-        selectedChild.transform.localRotation = direction;
+        selectedChild.transform.SetLocalPositionAndRotation(hitPoint, direction);
         selectedChild.SetParent(transform);
 
         VisualEffect effect = selectedChild.gameObject.GetComponent<VisualEffect>();
@@ -67,7 +66,7 @@ public class VFXManager : MonoBehaviour
         {
 
             effect.Play();
-
+            yield return new WaitForSecondsRealtime(0.3f);
             yield return new WaitWhile(() => effect.aliveParticleCount > 0);
 
         }
@@ -76,8 +75,9 @@ public class VFXManager : MonoBehaviour
             Debug.LogWarning($"Could not find VFX componenet in child {selectedChild.name}");
         }
 
-        selectedChild.transform.localPosition = Vector3.zero;
         selectedChild.SetParent(smokePullingPool.transform);
+        selectedChild.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
+
 
 
     }

@@ -55,7 +55,7 @@ Material:
     - _QueueOffset: 1
     - _SizeOfMask: 0.95
     m_Colors:
-    - _Color: {r: 1024, g: 147.4071, b: 0, a: 1}
+    - _Color: {r: 2252.8926, g: 2098.7473, b: 0, a: 1}
     - _ElectricitySpeed: {r: 0.2, g: 2.08, b: 0, a: 0}
     - _NoiseSpeed2: {r: -0.23, g: -0.23, b: 0, a: 0}
   m_BuildTextureStacks: []
