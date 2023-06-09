@@ -676,6 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angerLevel: 0.5
+  angerValue: 0
   boss: {fileID: 1527159066617529187}
   bossAnger: {fileID: 1527159066556918347}
 --- !u!1 &1527159065116150853
@@ -1264,8 +1265,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 567.81
-  m_fontSizeBase: 567.81
+  m_fontSize: 567
+  m_fontSizeBase: 567
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3010,6 +3011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b027032fdd49374ebe807545cbbf21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeManager: {fileID: 0}
   timeRemaining: 120
 --- !u!1 &1527159066237273253
 GameObject:
@@ -4330,6 +4332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3c723367af0314e9c4a63ad4a42e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
 --- !u!222 &1527159066712193062
 CanvasRenderer:
   m_ObjectHideFlags: 0
