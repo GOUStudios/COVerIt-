@@ -7,16 +7,16 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 {
     [SerializeField] public int id;
     [SerializeField] public float baseSpeed;
-    [SerializeField] public float currentSpeed;
-    [SerializeField] public int clickCunt = 0;
+    [ReadOnly][SerializeField] public float currentSpeed;
+    [ReadOnly][SerializeField] public int clickCunt = 0;
     [SerializeField] public int requiredClicks = 1;
     [SerializeField] public int clickTime;
     [SerializeField] public bool wearsMask;
     [SerializeField] public int pointValue;
-    [SerializeField] public bool isFrozen = false;
+    [ReadOnly][SerializeField] public bool isFrozen = false;
     [SerializeField] public int frozenTime = 0;
-    [SerializeField] public TaserManager taserManager = TaserManager.Instance;
-    [SerializeField] private FiniteStateMachine<CustomerMonoBehavior> fsm;
+    private TaserManager taserManager = TaserManager.Instance;
+    private FiniteStateMachine<CustomerMonoBehavior> fsm;
     [SerializeField] private NPCMovementManager movementManager;
     [SerializeField] private Animator animator;
     private bool onGoingAnimation = false;
@@ -41,24 +41,17 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
 
-        State unmasked = new Unmasked("Unmasked", this);
-        State masked = new Masked("Masked", this);
         State frozen = new Frozen("Frozen", this, animator);
+        State moving = new MovingState("Moving", this);
+        //TODO if a new behaviour is to be implemented do it here
+        //(example, wait in queue. )
 
-        fsm.AddTransition(unmasked, masked, () => wearsMask);
-        fsm.AddTransition(unmasked, frozen, () => isFrozen);
-        fsm.AddTransition(masked, frozen, () => isFrozen);
-        fsm.AddTransition(frozen, unmasked, () => !isFrozen && !wearsMask);
-        fsm.AddTransition(frozen, masked, () => !isFrozen && wearsMask);
+        fsm.AddTransition(frozen, moving, () => !isFrozen);
+        fsm.AddTransition(moving, frozen, () => isFrozen);
+        
+        fsm.SetState(moving);
 
-        if (wearsMask)
-        {
-            fsm.SetState(masked);
-        }
-        else
-        {
-            fsm.SetState(unmasked);
-        }
+        maskNPC(wearsMask);
 
         changeSpeed();
     }
@@ -70,7 +63,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     public void Click(ClickType clickType)
     {
-        Debug.Log("RIGHT CLICK");
+        onGoingAnimation = false;
         if (clickType == ClickType.LEFT_CLICK)
         {
             clickCunt++;
@@ -78,6 +71,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             {
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
+                maskNPC();
             }
             else if (wearsMask)
             {
@@ -86,14 +80,15 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             }
             else
             {
-                //Do here whatever feed back for click that are not the masking ones
+                //TODO Do here whatever feed back for click that are not the masking ones (like dinosaurs)
+                //maybe play a sound
             }
         }
         if (clickType == ClickType.RIGHT_CLICK)
         {
-            Debug.Log("LEFT CLICK");
             if (taserManager.useTaser())
             {
+                Debug.Log("freezing");
                 StartCoroutine(StartFreeze(frozenTime));
             }
         }
@@ -107,7 +102,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             isFrozen = true;
             yield return new WaitForSeconds(duration);
             isFrozen = false;
-            Debug.Log("Unfreezed");
         }
     }
 
@@ -119,7 +113,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         currentSpeed = newSpeed;
         animator.SetFloat("Speed", newSpeed);
-        if (newSpeed == 0)
+        if (newSpeed <= 0.01)
         {
             movementManager.agent.isStopped = true;
         }
@@ -130,7 +124,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
 
     }
-
     public void changeLayer(string LayerName)
     {
 
@@ -149,11 +142,13 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
 
     }
+    public void maskNPC(bool value)
+    {
+        if (value) maskNPC(); else unmaskNPC();
+    }
     public void maskNPC()
     {
         _mask.SetActive(true);
-
-
         //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
         StartCoroutine(DoTriggerAnimation("GotHit"));
     }
@@ -165,87 +160,13 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         yield return new WaitWhile(() => onGoingAnimation);
         changeSpeed();
     }
-
     public void animationFinished()
     {
         onGoingAnimation = false;
     }
-
-    public void unmaskNPC()
+    private void unmaskNPC()
     {
-
         _mask.SetActive(false);
     }
 
-
-    private class Unmasked : State
-    {
-        private CustomerMonoBehavior _cmb;
-        public Unmasked(string name, CustomerMonoBehavior cmb) : base(name)
-        {
-            _cmb = cmb;
-        }
-
-        public override void Enter()
-        {
-            _cmb.unmaskNPC();
-        }
-
-        public override void Tik() { }
-
-        public override void Exit()
-        {
-
-        }
-
-    }
-
-    private class Masked : State
-    {
-        private CustomerMonoBehavior _cmb;
-        public Masked(string name, CustomerMonoBehavior cmb) : base(name)
-        {
-            _cmb = cmb;
-        }
-
-        public override void Enter()
-        {
-            _cmb.maskNPC();
-        }
-
-        public override void Tik() { }
-
-        public override void Exit() { }
-
-    }
-
-    private class Frozen : State
-    {
-        private CustomerMonoBehavior _cmb;
-        private Animator _animator;
-        public Frozen(string name, CustomerMonoBehavior cmb, Animator animator) : base(name)
-        {
-            _cmb = cmb;
-            _animator = animator;
-        }
-
-        public override void Enter()
-        {
-            _cmb.changeLayer("ElectricityLayer");
-            _cmb.changeSpeed(0f);
-            _animator.SetBool("Tazered", true);
-            Debug.Log("Enter frozen");
-        }
-
-        public override void Tik() { }
-
-        public override void Exit()
-        {
-
-            _cmb.changeLayer(_cmb.defaultLayer);
-            _cmb.changeSpeed();
-            _animator.SetBool("Tazered", false);
-        }
-
-    }
 }

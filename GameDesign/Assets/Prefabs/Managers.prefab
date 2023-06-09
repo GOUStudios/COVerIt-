@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d721771fb5d4bf94980bccf08b638c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taserCostPerShot: 0
-  chargePerSecond: -6
+  taserCostPerShot: 10
+  chargePerSecond: 5
   charge: 0
 --- !u!1 &775877370642205860
 GameObject:
@@ -99,13 +99,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerManager: {fileID: 6544498483485782700}
   levelTime: 149
+  wavePercentages: []
   maskedCustomers: 52
   unmaskedCustomers: 4100000023000000390000002a000000
   unmaskedPrefabs:
-  - {fileID: 3919460525492696156, guid: 8251e2f7e2eb275498c064342d95c560, type: 3}
-  - {fileID: 3919460525492696156, guid: 76622ef42db9cb9468ac8587bbf17674, type: 3}
-  - {fileID: 3919460525492696156, guid: c0f74396913e04a418007482722cfebf, type: 3}
-  - {fileID: 3919460525492696156, guid: 7efeba37db1d492439fe8b8945c448c5, type: 3}
+  - {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+  - {fileID: 68471940300211544, guid: bbf2bc5d2ad262b43b35f0827ca631b8, type: 3}
+  - {fileID: 68471940300211544, guid: ea15591096b2819419ceb19e8a591e42, type: 3}
+  - {fileID: 68471940300211544, guid: e91347b2075b8be4b86f43e8e3c62d05, type: 3}
   maskedPrefabs:
   - {fileID: 3919460525492696156, guid: bb8136be157dd4948a9abe5b8b75ad68, type: 3}
   - {fileID: 3919460525492696156, guid: 4104fa3160616ff439648f26b62d883f, type: 3}
@@ -222,6 +223,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  WaveMultiplier: 0
   maskedSpawnRate:
     serializedVersion: 2
     m_Curve:
@@ -246,10 +248,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  PullRate: 0
   levelSpawners:
   - {fileID: 0}
-  pullRate: 0.27
-  currentTime: 0
 --- !u!114 &3669377154623292990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 120
+  waveAnticipationTime: 0
 --- !u!1 &8224852877104991727
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,5 +398,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68675a4d8c8487c49acfe536091b5e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxNumAngry: 10
+  _maxNumAngry: 7
   _maxNumGameOver: 6

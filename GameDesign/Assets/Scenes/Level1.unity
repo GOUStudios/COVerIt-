@@ -1554,10 +1554,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 357548903584219025, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: _maxNumAngry
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 775877370642205860, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: m_Name
       value: Managers
