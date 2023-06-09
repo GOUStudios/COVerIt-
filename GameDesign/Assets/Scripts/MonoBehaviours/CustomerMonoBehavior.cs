@@ -168,6 +168,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     }
     public void maskNPC()
     {
+        wearsMask = true;
         _mask.SetActive(true);
         tag = "Masked";
 
@@ -196,6 +197,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     public void unmaskNPC()
     {
         tag = "Untagged";
+        wearsMask = false;
         _mask.SetActive(false);
     }
 
