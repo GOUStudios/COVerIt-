@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class Antimasker : CustomerMonoBehavior
 {
-    CustomerMonoBehavior targetToUnmask;
     bool hasBeenCaught = false;
+    [SerializeField]public float timeToCatchTarget = 0.75f;
     protected override void setFSM()
     {
         State frozen = new Frozen("Frozen", this, animator);
-        State unmasking = new Unmasking("Unmasking");
-        State moving = new MovingState("Moving", this);
+        State unmasking = new Unmasking("Unmasking", this, movementManager, animator);
+        State moving = new MovingState("Moving", this, movementManager);
 
         fsm.AddTransition(frozen, moving, () => !isFrozen && hasBeenCaught);
         fsm.AddTransition(moving, frozen, () => isFrozen);
         fsm.AddTransition(unmasking, frozen, () => isFrozen);
         fsm.AddTransition(frozen, unmasking, () => !isFrozen && !hasBeenCaught);
         fsm.AddTransition(unmasking, moving, () => hasBeenCaught);
+        fsm.AddTransition(moving, unmasking, () => !hasBeenCaught);
 
         fsm.SetState(unmasking);
     }
@@ -38,6 +39,5 @@ public class Antimasker : CustomerMonoBehavior
     {
         hasBeenCaught = true;
         base.onFreezeBehaviour();
-
     }
 }

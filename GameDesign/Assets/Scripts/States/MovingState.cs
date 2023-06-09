@@ -5,8 +5,11 @@ using UnityEngine;
 public class MovingState : State
 {
     private CustomerMonoBehavior _cmb;
-    public MovingState(string name, CustomerMonoBehavior cmb) : base(name) {
+    private NPCMovementManager _moveManager;
+    public MovingState(string name, CustomerMonoBehavior cmb, NPCMovementManager movementManager) : base(name)
+    {
         _cmb = cmb;
+        _moveManager = movementManager;
     }
     public override void Enter()
     {
@@ -18,5 +21,6 @@ public class MovingState : State
 
     public override void Tik()
     {
+        _moveManager.goingToWaypointTik();
     }
 }

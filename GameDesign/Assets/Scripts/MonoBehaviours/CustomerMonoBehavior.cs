@@ -8,6 +8,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] public int id;
     [SerializeField] public float baseSpeed;
     [ReadOnly][SerializeField] public float currentSpeed;
+    [SerializeField] public float maxTimeToReachWaypoint = 15f;
     [ReadOnly][SerializeField] public int clickCunt = 0;
     [SerializeField] public int requiredClicks = 1;
     [SerializeField] public int clickTime;
@@ -38,13 +39,16 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
         _mask = transform.Find("Mask").gameObject;
         if (_mask == null) { Debug.LogError($"Error finding Mask of: {name}"); }
-
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
+        movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
+        maskNPC(wearsMask);
+        changeSpeed();
+
+
+        //ideal if setting the FSM is the last function. just to make sure the other parameters are set if they are to be changed by the states.
+
         setFSM();
 
-        maskNPC(wearsMask);
-
-        changeSpeed();
     }
 
     void Update()
@@ -57,22 +61,25 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
 
         State frozen = new Frozen("Frozen", this, animator);
-        State moving = new MovingState("Moving", this);
+        State moving = new MovingState("Moving", this, movementManager);
 
         fsm.AddTransition(frozen, moving, () => !isFrozen);
         fsm.AddTransition(moving, frozen, () => isFrozen);
 
         fsm.SetState(moving);
     }
-    protected virtual void onHitBehaviour() {
+    protected virtual void onHitBehaviour()
+    {
         wearsMask = true;
         PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
         maskNPC();
     }
-    protected virtual void onFreezeBehaviour() {
+    protected virtual void onFreezeBehaviour()
+    {
         StartCoroutine(StartFreeze(frozenTime));
     }
-    protected virtual void DodgeHitBehaviour() {
+    protected virtual void DodgeHitBehaviour()
+    {
         StartCoroutine(DoTriggerAnimation("SmallHit"));
     }
 
@@ -162,8 +169,17 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     public void maskNPC()
     {
         _mask.SetActive(true);
+        tag = "Masked";
+
+
         //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
+
         StartCoroutine(DoTriggerAnimation("GotHit"));
+    }
+
+    public void doTriggerAnimation(string name)
+    {
+        StartCoroutine(DoTriggerAnimation(name));
     }
     protected IEnumerator DoTriggerAnimation(string name)
     {
@@ -177,8 +193,9 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         onGoingAnimation = false;
     }
-    protected void unmaskNPC()
+    public void unmaskNPC()
     {
+        tag = "Untagged";
         _mask.SetActive(false);
     }
 
