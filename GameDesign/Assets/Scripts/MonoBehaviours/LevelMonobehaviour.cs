@@ -11,6 +11,8 @@ public class LevelMonobehaviour : MonoBehaviour
     [SerializeField] private TimerManagerMonoBehaviour timerManager;
     
     [SerializeField] int levelTime;
+    [Range(0,1)]
+    [SerializeField] float[] wavePercentages;
 
     [Header("DO NOT CHANGE THE ORDER OF THE LIST")]
     [SerializeField] int maskedCustomers = 0;
@@ -55,12 +57,20 @@ public class LevelMonobehaviour : MonoBehaviour
         }
         manager.SetTotalSpawns(maskedCustomers, maskedWeightsDictionary, unmaskedDictionary);
         manager.SetPrefabs(unmaskedPrefabsDictionary, maskedPrefabsDictionary);
-        timerManager.StartTimer();
+        manager.SetWaves(wavePercentages);
+
+        if (manager.SanityCheck())
+        {
+            timerManager.StartTimer();
+        }
+        else
+        {
+            Debug.LogError("Something went wrong will creating level instance, sanity check failed");
+        }
     }
 
     void Update()
     {
-
         //Just update to be seen in the editor.
         //so whenever there are changes we see them
         maskedCustomers = manager.CustomersToBeSpawnedWM;

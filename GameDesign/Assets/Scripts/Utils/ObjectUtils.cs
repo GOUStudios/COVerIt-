@@ -16,4 +16,26 @@ public class ObjectUtils
         }
         return null;
     }
+
+    public static string DictionaryToString<T,K>(Dictionary<T,K> dict)
+    {
+        string s = "{";
+        foreach(var (k, v) in dict)
+        {
+            s += $"{k} -> {v}, ";
+        }
+        s += "}";
+        return s;
+    }
+
+    public static string ArrayToString<T>(T[] values)
+    {
+        string s = "[";
+        foreach(var v in values)
+        {
+            s += $"{v}, ";
+        }
+        s += "]";
+        return s;
+    }
 }
