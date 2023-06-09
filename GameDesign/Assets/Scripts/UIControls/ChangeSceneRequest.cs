@@ -6,6 +6,8 @@ public class ChangeSceneRequest : MonoBehaviour
 {
     private ScenesManager manager;
 
+    public string nameScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,7 @@ public class ChangeSceneRequest : MonoBehaviour
             Debug.LogWarning("No Scenes Manager found");
         }    
     }
+
 
     public void Request(string nameScene)
     {

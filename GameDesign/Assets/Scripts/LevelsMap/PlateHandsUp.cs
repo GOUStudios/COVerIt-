@@ -13,9 +13,15 @@ public class PlateHandsUp : MonoBehaviour
 
     private Quaternion initialRotation;
 
+    private ChangeSceneRequest requestManager;
+    //Name of the Scene to load
+    public string sceneName;
+
     private void Start()
     {
         initialRotation = transform.rotation;
+
+        requestManager = GetComponent<ChangeSceneRequest>();
     }
 
     private void Update()
@@ -30,6 +36,8 @@ public class PlateHandsUp : MonoBehaviour
             {
                 Debug.Log("hitted" + hit.collider.name);
                 RotateObjectTowardsCamera();
+
+                if (Input.GetMouseButtonDown(0)) requestManager.Request(sceneName);
             }
             else
             {
