@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class ChangeSceneRequest : MonoBehaviour
 {
     private ScenesManager manager;
 
-    public string nameScene;
-
     // Start is called before the first frame update
     void Start()
     {
         manager = FindObjectOfType<ScenesManager>();
+
         if(manager == null) {
             Debug.LogWarning("No Scenes Manager found");
         }    
@@ -25,6 +25,14 @@ public class ChangeSceneRequest : MonoBehaviour
             Debug.LogWarning("No Scenes Manager found");
             return;
         }
+        
+        if(nameScene == null)
+        {
+            Debug.LogWarning("No NameScene Specified" + nameScene);
+            return;
+        }
+
+        Debug.Log("NameScene: " + nameScene);
         manager.SceneChangerWFade(nameScene);
     }
 

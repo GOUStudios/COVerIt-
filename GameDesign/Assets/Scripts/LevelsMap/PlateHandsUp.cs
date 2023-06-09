@@ -37,7 +37,13 @@ public class PlateHandsUp : MonoBehaviour
                 Debug.Log("hitted" + hit.collider.name);
                 RotateObjectTowardsCamera();
 
-                if (Input.GetMouseButtonDown(0)) requestManager.Request(sceneName);
+                if (Input.GetMouseButtonDown(0) &&
+                    hit.collider.gameObject.CompareTag("LevelsPlate"))
+                {
+                    requestManager.Request(sceneName);
+                    Debug.Log("Plates Clicked " + hit.collider.name);
+                }
+                    
             }
             else
             {
