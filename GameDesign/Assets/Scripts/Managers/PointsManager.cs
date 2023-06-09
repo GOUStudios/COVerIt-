@@ -13,7 +13,7 @@ public class PointsManager : MonoBehaviour
         else return 0;
         }
     }
-    private int currentPoints;
+    [ReadOnly][SerializeField] private int currentPoints;
     private int lostPoints;
     private int earnedPoints;
     public bool IsNegative { get
@@ -21,7 +21,6 @@ public class PointsManager : MonoBehaviour
             return instance.currentPoints < 0;
         }
     }
-
     public static PointsManager Instance
     {
         get
@@ -42,6 +41,7 @@ public class PointsManager : MonoBehaviour
             return instance;
         }
     }
+
 
     private void Awake()
     {
@@ -73,9 +73,12 @@ public class PointsManager : MonoBehaviour
         instance.earnedPoints = 0;
     }
 
-    public int GetCurrentPoints()
+    public int GetCurrentPoints
     {
-        return instance.currentPoints;
+        get
+        {
+            return instance.currentPoints;
+        }
     }
 
     private void calculateMaxPoints() {

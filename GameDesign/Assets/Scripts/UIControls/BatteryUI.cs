@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class BatteryUI : MonoBehaviour
 {
+    [Header("UI elements")]
     //Controls the battery levels
     [SerializeField] private Image battery3;
     [SerializeField] private Image battery2;
@@ -14,6 +15,8 @@ public class BatteryUI : MonoBehaviour
     //Control the taser avalaible image
     [SerializeField] private Image taserOn;
     [SerializeField] private Image taserOff;
+
+    TaserManager taserManager = TaserManager.Instance;
 
     private float Threshold1 = 0.66f;
     private float Threshold2 = 0.33f;
@@ -24,23 +27,25 @@ public class BatteryUI : MonoBehaviour
     void Start()
     {
         slider = GetComponentInChildren<Slider>();
-        slider.value= 1f;
+        slider.value = taserManager.taserBatteryPercent;
 
         //Set on all battery charges 
-        battery3.enabled= true;
-        battery2.enabled= true;
-        battery1.enabled= true;
+        battery3.enabled = true;
+        battery2.enabled = true;
+        battery1.enabled = true;
 
         //Set the initial taser PNG image
-        taserOn.enabled= true;
-        taserOff.enabled= false;
+        taserOn.enabled = true;
+        taserOff.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (battery1 == null || battery2 == null || battery3 == null) return;
+        slider.value = taserManager.taserBatteryPercent;
+        
 
+        if (battery1 == null || battery2 == null || battery3 == null) return;
 
         switch (slider.value)
         {
@@ -83,10 +88,8 @@ public class BatteryUI : MonoBehaviour
                 taserOn.enabled = true;
                 taserOff.enabled = false;
                 break;
-               
-
         }
-        
+
     }
 }
 

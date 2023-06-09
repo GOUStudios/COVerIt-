@@ -9,12 +9,13 @@ public class LevelMonobehaviour : MonoBehaviour
     #region Attributes
     private LevelSettingManager manager = LevelSettingManager.Instance;
     [SerializeField] private TimerManagerMonoBehaviour timerManager;
-    [SerializeField] int maskedCustomers = 0;
+    
     [SerializeField] int levelTime;
     [Range(0,1)]
     [SerializeField] float[] wavePercentages;
 
     [Header("DO NOT CHANGE THE ORDER OF THE LIST")]
+    [SerializeField] int maskedCustomers = 0;
     [EnumNamedArray(typeof(CustomerTypes))]
     public int[] unmaskedCustomers = new int[System.Enum.GetValues(typeof(CustomerTypes)).Length];
 
@@ -30,7 +31,6 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> unmaskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
-
 
     #endregion
 

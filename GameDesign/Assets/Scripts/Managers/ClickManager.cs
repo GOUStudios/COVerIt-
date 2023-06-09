@@ -32,7 +32,6 @@ public class ClickManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("About to call OnMissClicked");
                     OnMissClicked?.Invoke();
                 }
                 
