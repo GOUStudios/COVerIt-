@@ -17,6 +17,11 @@ public class ChangeSceneRequest : MonoBehaviour
 
     public void Request(string nameScene)
     {
+        if(manager == null)
+        {
+            Debug.LogWarning("No Scenes Manager found");
+            return;
+        }
         manager.SceneChangerWFade(nameScene);
     }
 
