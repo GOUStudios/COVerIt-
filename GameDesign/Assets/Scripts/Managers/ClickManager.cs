@@ -25,9 +25,13 @@ public class ClickManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
 
+                VFXManager.Instance.spawnSmokeAt(hit.transform, hit.point, Quaternion.LookRotation(hit.normal));
+
+
                 Clickable clickable = (Clickable)ObjectUtils.GetObjectWithInterface<Clickable>(hit.collider.gameObject);
                 if (clickable != null)
                 {
+
                     clickable.Click(ClickType.LEFT_CLICK);
                     OnCorrectlyClicked?.Invoke();
                 }
