@@ -19,7 +19,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     private FiniteStateMachine<CustomerMonoBehavior> fsm;
     [SerializeField] private NPCMovementManager movementManager;
     [SerializeField] private Animator animator;
-    private bool onGoingAnimation = false;
+    protected bool onGoingAnimation = false;
     private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
 
@@ -48,7 +48,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         fsm.AddTransition(frozen, moving, () => !isFrozen);
         fsm.AddTransition(moving, frozen, () => isFrozen);
-        
+
         fsm.SetState(moving);
 
         maskNPC(wearsMask);
@@ -152,7 +152,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
         StartCoroutine(DoTriggerAnimation("GotHit"));
     }
-    private IEnumerator DoTriggerAnimation(string name)
+    protected IEnumerator DoTriggerAnimation(string name)
     {
         onGoingAnimation = true;
         changeSpeed(0);
