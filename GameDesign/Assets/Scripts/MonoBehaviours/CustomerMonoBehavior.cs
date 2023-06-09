@@ -16,9 +16,9 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [ReadOnly][SerializeField] public bool isFrozen = false;
     [SerializeField] public int frozenTime = 0;
     private TaserManager taserManager = TaserManager.Instance;
-    private FiniteStateMachine<CustomerMonoBehavior> fsm;
-    [SerializeField] private NPCMovementManager movementManager;
-    [SerializeField] private Animator animator;
+    protected FiniteStateMachine<CustomerMonoBehavior> fsm;
+    [SerializeField] protected NPCMovementManager movementManager;
+    [SerializeField] protected Animator animator;
     protected bool onGoingAnimation = false;
     private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
@@ -40,16 +40,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         if (_mask == null) { Debug.LogError($"Error finding Mask of: {name}"); }
 
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
-
-        State frozen = new Frozen("Frozen", this, animator);
-        State moving = new MovingState("Moving", this);
-        //TODO if a new behaviour is to be implemented do it here
-        //(example, wait in queue. )
-
-        fsm.AddTransition(frozen, moving, () => !isFrozen);
-        fsm.AddTransition(moving, frozen, () => isFrozen);
-
-        fsm.SetState(moving);
+        setFSM();
 
         maskNPC(wearsMask);
 
@@ -61,6 +52,32 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         fsm.Tik();
     }
 
+    #region Changing Methods
+    protected virtual void setFSM()
+    {
+
+        State frozen = new Frozen("Frozen", this, animator);
+        State moving = new MovingState("Moving", this);
+
+        fsm.AddTransition(frozen, moving, () => !isFrozen);
+        fsm.AddTransition(moving, frozen, () => isFrozen);
+
+        fsm.SetState(moving);
+    }
+    protected virtual void onHitBehaviour() {
+        wearsMask = true;
+        PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
+        maskNPC();
+    }
+    protected virtual void onFreezeBehaviour() {
+        StartCoroutine(StartFreeze(frozenTime));
+    }
+    protected virtual void DodgeHitBehaviour() {
+        StartCoroutine(DoTriggerAnimation("SmallHit"));
+    }
+
+    #endregion
+
     public void Click(ClickType clickType)
     {
         onGoingAnimation = false;
@@ -69,27 +86,24 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             clickCunt++;
             if (!wearsMask && clickCunt >= requiredClicks)
             {
-                wearsMask = true;
-                PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
-                maskNPC();
+                onHitBehaviour();
             }
             else if (wearsMask)
             {
-                StartCoroutine(DoTriggerAnimation("SmallHit"));
+                DodgeHitBehaviour();
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
             else
             {
                 //TODO Do here whatever feed back for click that are not the masking ones (like dinosaurs)
-                //maybe play a sound
+                //maybe play a sound or maybe add another effect to signal you hit him.
             }
         }
         if (clickType == ClickType.RIGHT_CLICK)
         {
             if (taserManager.useTaser())
             {
-                Debug.Log("freezing");
-                StartCoroutine(StartFreeze(frozenTime));
+                onFreezeBehaviour();
             }
         }
 
@@ -104,7 +118,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             isFrozen = false;
         }
     }
-
     public void changeSpeed()
     {
         changeSpeed(baseSpeed);
@@ -164,7 +177,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         onGoingAnimation = false;
     }
-    private void unmaskNPC()
+    protected void unmaskNPC()
     {
         _mask.SetActive(false);
     }

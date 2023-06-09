@@ -63,5 +63,51 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 326306dc720296c448df79c53007efc0, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5846908172797615232, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+--- !u!1 &68471940300211544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+  m_PrefabInstance: {fileID: 3048671753884365649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4636564951687211612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68471940300211544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444bcd4dcf6375c46a5690f6cd346311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  baseSpeed: 3
+  currentSpeed: 0
+  clickCunt: 0
+  requiredClicks: 1
+  clickTime: 0
+  wearsMask: 0
+  pointValue: 10
+  isFrozen: 0
+  frozenTime: 3
+  movementManager: {fileID: 7864013837679662276}
+  animator: {fileID: 6726335663406351768}
+--- !u!95 &6726335663406351768 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8581521589901457097, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+  m_PrefabInstance: {fileID: 3048671753884365649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7864013837679662276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5146937234786379669, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+  m_PrefabInstance: {fileID: 3048671753884365649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68471940300211544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fbd069d4de8c8e42a101f30783d09de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
