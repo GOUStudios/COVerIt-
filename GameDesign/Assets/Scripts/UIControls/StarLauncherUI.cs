@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class StarLauncherUI : MonoBehaviour
 {
     public Slider slider;
-    public event Action<float> starEvent;
-
 
     private Animator starsAnimator;
     private PointsManager pointsManager;//has to be initialized in awake because is a monobehaviour.

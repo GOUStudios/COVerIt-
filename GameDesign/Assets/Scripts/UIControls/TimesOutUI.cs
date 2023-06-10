@@ -22,9 +22,10 @@ public class TimesOutUI : MonoBehaviour
 
     }
 
-
     private void TimesOverBehavior()
     {
+        if (endLevelAnimator == null) return;
+        
 
         pointsManager.GetEarnedPoints();
         //Set the right flag for the correct animation

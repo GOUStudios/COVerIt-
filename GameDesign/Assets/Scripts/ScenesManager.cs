@@ -59,7 +59,7 @@ public class ScenesManager : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
         while (fadeCanvasGroup.alpha > 0f)
         {
