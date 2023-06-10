@@ -2302,7 +2302,7 @@ MonoBehaviour:
   battery1: {fileID: 1527159064827559542}
   taserOn: {fileID: 1527159065005630828}
   taserOff: {fileID: 1527159064756849243}
-  slider: {fileID: 0}
+  slider: {fileID: 1527159065870447547}
 --- !u!1 &1527159065979059355
 GameObject:
   m_ObjectHideFlags: 0
