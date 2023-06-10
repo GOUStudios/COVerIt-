@@ -52,16 +52,20 @@ public class NPCMovementManager : MonoBehaviour
                 StartCoroutine(findATarget());
                 return false;
             }
-            else if (TTL > MaxTimeToReachTarget && targetCustomer != null && Vector3.Distance(transform.position, targetCustomer.transform.position) > distanceThreshHoldToReachTarget)
+            else if (TTL > MaxTimeToReachTarget && targetCustomer != null && Vector3.Distance(transform.position, targetCustomer.transform.position) > distanceThreshHoldToReachTarget && targetCustomer.wearsMask)
             {
                 TTL = 0;
                 agent.SetDestination(targetCustomer.transform.position);
             }
-            else if (targetCustomer != null && Vector3.Distance(transform.position, targetCustomer.transform.position) <= distanceThreshHoldToReachTarget)
+            else if (targetCustomer != null && Vector3.Distance(transform.position, targetCustomer.transform.position) <= distanceThreshHoldToReachTarget && targetCustomer.wearsMask)
             {
                 targetCustomer.unmaskNPC();
                 targetCustomer = null;
                 return true;
+            }
+            else if (targetCustomer != null && !targetCustomer.wearsMask)
+            {
+                targetCustomer = null;
             }
 
         }
