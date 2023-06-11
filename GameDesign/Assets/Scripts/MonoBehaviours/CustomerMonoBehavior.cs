@@ -19,6 +19,13 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     [SerializeField] private FiniteStateMachine<CustomerMonoBehavior> fsm;
 
+    public AudioSource audioSource;
+
+    public AudioClip shot;
+    public AudioClip taser;
+    public AudioClip missHit;
+    public AudioClip cough;
+
     void Start()
     {
         currentSpeed = baseSpeed;
@@ -40,6 +47,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }else{
             fsm.SetState(unmasked);
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -56,9 +65,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             {
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
+                audioSource.PlayOneShot(shot, 0.7f);
             }
             else
             {
+                audioSource.PlayOneShot(missHit, 0.7f);
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
         }
@@ -72,9 +83,10 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         
     }
 
-        private IEnumerator StartFreeze(float duration)
+    private IEnumerator StartFreeze(float duration)
     {
         if (!isFrozen){
+            audioSource.PlayOneShot(taser, 0.7f);
 			isFrozen = true;
             yield return new WaitForSeconds(duration);
             isFrozen = false;
