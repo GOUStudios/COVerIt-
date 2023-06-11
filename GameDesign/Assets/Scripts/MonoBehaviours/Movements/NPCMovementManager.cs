@@ -9,6 +9,7 @@ public class NPCMovementManager : MonoBehaviour
     //**
     [SerializeField] public UnityEngine.AI.NavMeshAgent agent;
     [SerializeField] public float distanceThreshHoldToReachTarget = 1.5f;
+    private float initialRadius;
     [SerializeField] public float MaxTimeToReachTarget = 15f;
 
     [Header("Targets")]
@@ -20,6 +21,7 @@ public class NPCMovementManager : MonoBehaviour
 
     void Start()
     {
+        initialRadius = distanceThreshHoldToReachTarget;
         if (agent == null)
         {
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -49,16 +51,19 @@ public class NPCMovementManager : MonoBehaviour
             TTL += Time.deltaTime;
             if (targetCustomer == null)
             {
+                goingToWaypointTik();
+
                 StartCoroutine(findATarget());
+
                 return false;
             }
             else if (TTL > MaxTimeToReachTarget && targetCustomer != null && Vector3.Distance(transform.position, targetCustomer.transform.position) > distanceThreshHoldToReachTarget && targetCustomer.wearsMask)
             {
-                TTL = 0;
                 agent.SetDestination(targetCustomer.transform.position);
             }
             else if (targetCustomer != null && Vector3.Distance(transform.position, targetCustomer.transform.position) <= distanceThreshHoldToReachTarget && targetCustomer.wearsMask)
             {
+                gotToTargetInTime();
                 targetCustomer.unmaskNPC();
                 targetCustomer = null;
                 return true;
@@ -68,10 +73,24 @@ public class NPCMovementManager : MonoBehaviour
                 targetCustomer = null;
             }
 
+            if (TTL > MaxTimeToReachTarget) TTL = 0;
         }
 
         return false;
     }
+
+    private void gotToTargetInTime()
+    {
+        TTL = 0;
+        distanceThreshHoldToReachTarget = initialRadius;
+    }
+    private void TTLExpired()
+    {
+        TTL = 0;
+
+        distanceThreshHoldToReachTarget *= 2;
+    }
+
     private IEnumerator findATarget()
     {
         Debug.Log("Finding a target");
@@ -110,10 +129,12 @@ public class NPCMovementManager : MonoBehaviour
 
     public void goingToWaypointTik()
     {
-        if (TTL > MaxTimeToReachTarget || Vector3.Distance(transform.position, targetWayPoint.transform.position) < distanceThreshHoldToReachTarget)
+        if (TTL > MaxTimeToReachTarget || (targetWayPoint != null && Vector3.Distance(transform.position, targetWayPoint.transform.position) < distanceThreshHoldToReachTarget))
         {
-            // Debug.Log("Reachedway point");
-            TTL = 0;
+
+            if (TTL > MaxTimeToReachTarget) TTLExpired();
+            else gotToTargetInTime();
+
             targetWayPoint.waypointReached(this);
         }
         else TTL += Time.deltaTime;

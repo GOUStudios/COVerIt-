@@ -8,7 +8,7 @@ public class Unmasking : State
     NPCMovementManager movementManager;
     CustomerMonoBehavior target;
     Animator _animator;
-    public Unmasking(string name, Antimasker cmb , NPCMovementManager nPCMovementManager, Animator animator) : base(name)
+    public Unmasking(string name, Antimasker cmb, NPCMovementManager nPCMovementManager, Animator animator) : base(name)
     {
         _cmb = cmb;
         movementManager = nPCMovementManager;
@@ -34,6 +34,7 @@ public class Unmasking : State
             //play animation to unmask.
             _cmb.doTriggerAnimation("Unmask");
         }
+
     }
 
 }

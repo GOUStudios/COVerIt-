@@ -6,6 +6,7 @@ using UnityEngine;
 public class CustomerMonoBehavior : MonoBehaviour, Clickable
 {
     [SerializeField] public int id;
+    [ReadOnly][SerializeField] private string currentState;
     [SerializeField] public float baseSpeed;
     [ReadOnly][SerializeField] public float currentSpeed;
     [SerializeField] public float maxTimeToReachWaypoint = 15f;
@@ -20,12 +21,13 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     protected FiniteStateMachine<CustomerMonoBehavior> fsm;
     [SerializeField] protected NPCMovementManager movementManager;
     [SerializeField] protected Animator animator;
-    protected bool onGoingAnimation = false;
+    public bool onGoingAnimation { get; private set; }
     private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
 
     void Start()
     {
+        onGoingAnimation = false;
 
         if (animator == null)
         {
@@ -53,6 +55,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     void Update()
     {
+        currentState = fsm._currentState.Name;
         fsm.Tik();
     }
 

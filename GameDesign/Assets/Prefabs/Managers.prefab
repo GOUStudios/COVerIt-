@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d721771fb5d4bf94980bccf08b638c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taserCostPerShot: 10
+  taserCostPerShot: 20
   chargePerSecond: 5
   charge: 0
 --- !u!1 &775877370642205860
@@ -108,13 +108,13 @@ MonoBehaviour:
   - {fileID: 68471940300211544, guid: ea15591096b2819419ceb19e8a591e42, type: 3}
   - {fileID: 68471940300211544, guid: e91347b2075b8be4b86f43e8e3c62d05, type: 3}
   maskedPrefabs:
-  - {fileID: 3919460525492696156, guid: bb8136be157dd4948a9abe5b8b75ad68, type: 3}
-  - {fileID: 3919460525492696156, guid: 4104fa3160616ff439648f26b62d883f, type: 3}
-  - {fileID: 3919460525492696156, guid: 622ca7fa931072f44ac7393238b77d81, type: 3}
-  - {fileID: 3919460525492696156, guid: f2e006fa6c03c3047a8ff5e054926ce5, type: 3}
+  - {fileID: 2018981391816702879, guid: 96a8710465debc249bb5132a0a754faf, type: 3}
+  - {fileID: 2778192567318708283, guid: 6a4d77ebed7fd1d4488969486ce6e98b, type: 3}
+  - {fileID: 7158564961611754381, guid: d29570133b5b22e45898a3c90170ea2f, type: 3}
+  - {fileID: 3815835655034595904, guid: 6bfd44cc989b1154fbee0e2d99589705, type: 3}
   maskedPercentages:
   - 0.5
-  - 0.14
+  - 0.01
   - 0.2
   - 0.16
 --- !u!114 &7353344143689578711

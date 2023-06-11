@@ -843,6 +843,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 12.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6955204261933733786, guid: 13350b18eadb5224f9a2e974ea147d54, type: 3}
+      propertyPath: m_AutoUpdatePositions
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6955204262445947618, guid: 13350b18eadb5224f9a2e974ea147d54, type: 3}
       propertyPath: m_Name
       value: WaypointsLVL1
@@ -1554,6 +1558,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: maskedCustomers
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: maskedPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2018981391816702879, guid: 96a8710465debc249bb5132a0a754faf, type: 3}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: maskedPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2778192567318708283, guid: 6a4d77ebed7fd1d4488969486ce6e98b, type: 3}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: maskedPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7158564961611754381, guid: d29570133b5b22e45898a3c90170ea2f, type: 3}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: maskedPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3815835655034595904, guid: 6bfd44cc989b1154fbee0e2d99589705, type: 3}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: unmaskedCustomers.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: unmaskedCustomers.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: unmaskedCustomers.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: unmaskedCustomers.Array.data[3]
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 775877370642205860, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: m_Name
       value: Managers
