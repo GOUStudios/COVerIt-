@@ -23,7 +23,6 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
-    
     public void SceneChanger(string sceneName)
     {
 
@@ -50,7 +49,6 @@ public class ScenesManager : MonoBehaviour
     IEnumerator FadeOutAndLoadScene(string sceneName)
     {
         CanvasGroup fadeCanvasGroup = GetComponentInChildren<CanvasGroup>();
-
         float fadeSpeed = 2f;
 
         while (fadeCanvasGroup.alpha < 1f)
@@ -59,7 +57,21 @@ public class ScenesManager : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        asyncLoad.allowSceneActivation = false;
+
+        while (!asyncLoad.isDone)
+        {
+            //Wait for the 90% progress of the scene loading 
+            if (asyncLoad.progress >= 0.9f)
+            {
+                
+
+                asyncLoad.allowSceneActivation = true; 
+            }
+
+            yield return null;
+        }
 
         while (fadeCanvasGroup.alpha > 0f)
         {
