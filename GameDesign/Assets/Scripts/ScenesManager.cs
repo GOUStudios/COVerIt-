@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class ScenesManager : MonoBehaviour
 {
     private static ScenesManager instance;
+
+    //levelIsReady is a flag to control the loading progress of the level scene
+    public static bool levelIsReady = false;
     
     private void Awake()
     {
@@ -23,6 +26,7 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
+    
     public void SceneChanger(string sceneName)
     {
 
@@ -39,16 +43,28 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
-
     //Scene changer that use a fade black to change
     public void SceneChangerWFade(string sceneName)
     {
+        if (levelIsReady) levelIsReady = false;
+
         StartCoroutine(FadeOutAndLoadScene(sceneName));
     }
 
-    IEnumerator FadeOutAndLoadScene(string sceneName)
+
+
+    //Scene changer that use a fade black to change
+    public void SceneChangerLevel(string sceneName)
+    {
+        if (levelIsReady) levelIsReady = false;
+        
+        StartCoroutine(LoadSceneWaiting(sceneName));
+    }
+
+    IEnumerator LoadSceneWaiting(string sceneName)
     {
         CanvasGroup fadeCanvasGroup = GetComponentInChildren<CanvasGroup>();
+
         float fadeSpeed = 2f;
 
         while (fadeCanvasGroup.alpha < 1f)
@@ -57,21 +73,35 @@ public class ScenesManager : MonoBehaviour
             yield return null;
         }
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-        asyncLoad.allowSceneActivation = false;
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
-        while (!asyncLoad.isDone)
+       
+        yield return new WaitWhile(() => levelIsReady == false);
+
+        while (fadeCanvasGroup.alpha > 0f)
         {
-            //Wait for the 90% progress of the scene loading 
-            if (asyncLoad.progress >= 0.9f)
-            {
-                
-
-                asyncLoad.allowSceneActivation = true; 
-            }
-
+            FadeToTransparent(fadeCanvasGroup, fadeSpeed);
             yield return null;
         }
+    }
+    
+    
+    IEnumerator FadeOutAndLoadScene(string sceneName)
+    {
+        CanvasGroup fadeCanvasGroup = GetComponentInChildren<CanvasGroup>();
+
+        float fadeSpeed = 2f;
+
+        while (fadeCanvasGroup.alpha < 1f)
+        {
+            FadeToBlack(fadeCanvasGroup, fadeSpeed);
+            yield return null;
+        }
+
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+       
+        yield return new WaitUntil(() => levelIsReady == true);
 
         while (fadeCanvasGroup.alpha > 0f)
         {

@@ -18,6 +18,25 @@ public class ChangeSceneRequest : MonoBehaviour
     }
 
 
+    public void RequestLevel(string nameScene)
+    {
+        if(manager == null)
+        {
+            Debug.LogWarning("No Scenes Manager found");
+            return;
+        }
+        
+        if(nameScene == null)
+        {
+            Debug.LogWarning("No NameScene Specified" + nameScene);
+            return;
+        }
+
+        Debug.Log("NameScene: " + nameScene);
+        manager.SceneChangerLevel(nameScene);
+    }
+    
+    
     public void Request(string nameScene)
     {
         if(manager == null)
@@ -33,7 +52,7 @@ public class ChangeSceneRequest : MonoBehaviour
         }
 
         Debug.Log("NameScene: " + nameScene);
-        manager.SceneChangerWFade(nameScene);
+        manager.SceneChanger(nameScene);
     }
 
     

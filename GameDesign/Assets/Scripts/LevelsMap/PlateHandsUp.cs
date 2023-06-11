@@ -56,7 +56,7 @@ public class PlateHandsUp : MonoBehaviour
         if (Input.GetMouseButtonDown(0) &&
                     hit.collider.gameObject.CompareTag("LevelsPlate"))
         {
-            requestManager.Request(sceneName);
+            requestManager.RequestLevel(sceneName);
             Debug.Log("Plates Clicked " + hit.collider.name);
         }
     }
