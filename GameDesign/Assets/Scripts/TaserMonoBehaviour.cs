@@ -20,6 +20,7 @@ public class TaserMonoBehaviour : MonoBehaviour
         taserManager.taserCost = taserCostPerShot;
         taserManager.chargePerSecond = chargePerSecond;
         InvokeRepeating("chargeBattery", 1.0f, 1.0f);
+        taserManager.isReady = true;
     }
     void Update()
     {

@@ -8,6 +8,7 @@ public class LevelMonobehaviour : MonoBehaviour
 {
     #region Attributes
     private LevelSettingManager manager = LevelSettingManager.Instance;
+    private BossAngerManager bossAnger = BossAngerManager.Instance;
     [SerializeField] private TimerManagerMonoBehaviour timerManager;
     
     [SerializeField] int levelTime;
@@ -31,6 +32,8 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> unmaskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
+
+    bool pointsManagerReady = false;
 
     #endregion
 
@@ -59,18 +62,24 @@ public class LevelMonobehaviour : MonoBehaviour
         manager.SetPrefabs(unmaskedPrefabsDictionary, maskedPrefabsDictionary);
         manager.SetWaves(wavePercentages);
 
-        if (manager.SanityCheck())
+        bossAnger._maxNumAngry = 10;
+        bossAnger._maxNumGameOver = 6;
+
+        if (manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady())
         {
+            Debug.LogError("All managers are ready");
             timerManager.StartTimer();
         }
         else
         {
             Debug.LogError("Something went wrong will creating level instance, sanity check failed");
         }
+
     }
 
     void Update()
     {
+
         //Just update to be seen in the editor.
         //so whenever there are changes we see them
         maskedCustomers = manager.CustomersToBeSpawnedWM;
@@ -78,6 +87,16 @@ public class LevelMonobehaviour : MonoBehaviour
         {
             unmaskedCustomers[(int)(pair.Key)] = pair.Value;
         }
+    }
+
+    bool isPointManagerReady()
+    {
+        return PointsManager.Instance.isReady;
+    }
+
+    bool isTaserManagerReady()
+    {
+        return TaserManager.Instance.isReady;
     }
 
     void OnTimeFinished()

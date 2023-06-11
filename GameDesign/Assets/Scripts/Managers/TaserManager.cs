@@ -23,6 +23,7 @@ public class TaserManager
     public int taserCost = 20;
     public int taserMaxBattery { get; private set; }
     public int chargePerSecond = 2;
+    public bool isReady = false;
 
 
 
