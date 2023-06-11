@@ -84,9 +84,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  baseSpeed: 3
+  currentState: 
+  baseSpeed: 3.53
   currentSpeed: 0
-  maxTimeToReachWaypoint: 5
+  maxTimeToReachWaypoint: 10
   clickCunt: 0
   requiredClicks: 1
   clickTime: 0

@@ -12,11 +12,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] public float maxTimeToReachWaypoint = 15f;
     [ReadOnly][SerializeField] public int clickCunt = 0;
     [SerializeField] public int requiredClicks = 1;
-    [SerializeField] public int clickTime;
+    [SerializeField] public float clickTime;
     [SerializeField] public bool wearsMask;
     [SerializeField] public int pointValue;
     [ReadOnly][SerializeField] public bool isFrozen = false;
-    [SerializeField] public int frozenTime = 0;
+    [SerializeField] public float frozenTime = 0f;
     private TaserManager taserManager = TaserManager.Instance;
     protected FiniteStateMachine<CustomerMonoBehavior> fsm;
     [SerializeField] protected NPCMovementManager movementManager;
