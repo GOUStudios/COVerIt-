@@ -97,15 +97,21 @@ MonoBehaviour:
   frozenTime: 3
   movementManager: {fileID: 7864013837679662276}
   animator: {fileID: 6726335663406351768}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 7779052578560729399}
   shot: {fileID: 8300000, guid: 37d0243ceb9c848479780b55d7e224a4, type: 3}
   taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
   missHit: {fileID: 8300000, guid: efeb9f1b299ba854996befe0fd71a864, type: 3}
   cough: {fileID: 8300000, guid: e1d09bd0b109e2844ba051b5f611b8dc, type: 3}
+  HitButNotMasked: {fileID: 8300000, guid: 2f37fd46cb6f7af479e23ccc062f0f93, type: 3}
   timeToCatchTarget: 0.75
 --- !u!95 &6726335663406351768 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8581521589901457097, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+  m_PrefabInstance: {fileID: 3048671753884365649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7779052578560729399 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4736574958765445734, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
   m_PrefabInstance: {fileID: 3048671753884365649}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7864013837679662276 stripped

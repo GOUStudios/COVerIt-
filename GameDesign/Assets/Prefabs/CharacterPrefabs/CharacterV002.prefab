@@ -2637,12 +2637,12 @@ MonoBehaviour:
   frozenTime: 3
   movementManager: {fileID: 5146937234786379669}
   animator: {fileID: 8581521589901457097}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 4736574958765445734}
   shot: {fileID: 8300000, guid: 37d0243ceb9c848479780b55d7e224a4, type: 3}
   taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
   missHit: {fileID: 8300000, guid: efeb9f1b299ba854996befe0fd71a864, type: 3}
   cough: {fileID: 8300000, guid: e1d09bd0b109e2844ba051b5f611b8dc, type: 3}
-  HitButNotMasked: {fileID: 0}
+  HitButNotMasked: {fileID: 8300000, guid: 2f37fd46cb6f7af479e23ccc062f0f93, type: 3}
 --- !u!114 &5146937234786379669
 MonoBehaviour:
   m_ObjectHideFlags: 0
