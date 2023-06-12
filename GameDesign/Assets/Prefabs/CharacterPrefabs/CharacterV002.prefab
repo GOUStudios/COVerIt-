@@ -590,6 +590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 232107892292566804}
+  - component: {fileID: 4715891443867946105}
   m_Layer: 0
   m_Name: upper_arm.R
   m_TagString: Untagged
@@ -613,6 +614,20 @@ Transform:
   m_Father: {fileID: 1812965852797133241}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4715891443867946105
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925291108576592336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0012
+  m_Height: 0.0075
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.0025, z: 0}
 --- !u!1 &974234538842151789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2545,6 +2560,7 @@ GameObject:
   - component: {fileID: 8581521589901457097}
   - component: {fileID: 4168166242295382192}
   - component: {fileID: 1287149614357467120}
+  - component: {fileID: 2483311256690201213}
   m_Layer: 0
   m_Name: CharacterV002
   m_TagString: Untagged
@@ -2593,16 +2609,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  baseSpeed: 0
-  currentSpeed: 0
+  baseSpeed: 3
+  currentSpeed: 3
   clickCunt: 0
   requiredClicks: 1
   clickTime: 0
   wearsMask: 0
-  moveManager: {fileID: 5146937234786379669}
-  pointValue: 0
+  pointValue: 10
   isFrozen: 0
-  frozenTimeCount: 0
+  frozenTime: 3
+  movementManager: {fileID: 5146937234786379669}
+  animator: {fileID: 8581521589901457097}
 --- !u!114 &5146937234786379669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,6 +2715,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc493f0db5978b41b9813df38def551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2483311256690201213
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079419891072529929}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.7843798
+  m_Height: 3.36
+  m_Direction: 1
+  m_Center: {x: -0.015620286, y: 1.6699998, z: 0}
 --- !u!1 &3119978268294768723
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,6 +4641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3413408604611419260}
+  - component: {fileID: 3539742669941563822}
   m_Layer: 0
   m_Name: forearm.L
   m_TagString: Untagged
@@ -4633,6 +4665,20 @@ Transform:
   m_Father: {fileID: 7213921018537923874}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3539742669941563822
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519641313536544030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0012
+  m_Height: 0.006
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.0025, z: 0}
 --- !u!1 &7538418023397860094
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,6 +5263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7213921018537923874}
+  - component: {fileID: 6909707847905262615}
   m_Layer: 0
   m_Name: upper_arm.L
   m_TagString: Untagged
@@ -5240,6 +5287,20 @@ Transform:
   m_Father: {fileID: 403708453082013882}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6909707847905262615
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447465812990161612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0012
+  m_Height: 0.0075
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.0025, z: 0}
 --- !u!1 &8487657092836664567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5378,6 +5439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7377539085032460769}
+  - component: {fileID: 3283140654087572040}
   m_Layer: 0
   m_Name: forearm.R
   m_TagString: Untagged
@@ -5401,6 +5463,20 @@ Transform:
   m_Father: {fileID: 232107892292566804}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3283140654087572040
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519361705531659075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0012
+  m_Height: 0.006
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.0025, z: 0}
 --- !u!1 &8525144978790059350
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,14 +69,12 @@ public class BossAngerManager
         if (isAngry && gameOverCounter > 0)
         {
             gameOverCounter -= 1;
-            Debug.Log("Good shot game over number " + gameOverCounter);
         }
         else
         {
             if (angryCounter > 0)
             {
                 angryCounter -= 1;
-                Debug.Log("Good shot to be angry number " + angryCounter);
             }
         }
         checkAnger();
@@ -88,7 +86,6 @@ public class BossAngerManager
         {
             isAngry = true;
             gameOverCounter = 1;
-            Debug.Log("Boss is angry >:(");
         }
 
         if (gameOverCounter >= _maxNumGameOver)

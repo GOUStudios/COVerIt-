@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(NPCMovementManager))]
 public class CustomerMonoBehavior : MonoBehaviour, Clickable
 {
     [SerializeField] public int id;
     [SerializeField] public float baseSpeed;
-    [SerializeField] public float currentSpeed;
-    [SerializeField] public int clickCunt = 0;
+    [ReadOnly][SerializeField] public float currentSpeed;
+    [ReadOnly][SerializeField] public int clickCunt = 0;
     [SerializeField] public int requiredClicks = 1;
     [SerializeField] public int clickTime;
     [SerializeField] public bool wearsMask;
     [SerializeField] public int pointValue;
-    [SerializeField] public bool isFrozen = false;
-    [SerializeField] public int frozenTimeCount = 0;
-
-    [SerializeField] public TaserManager taserManager = TaserManager.Instance;
-
-    [SerializeField] private FiniteStateMachine<CustomerMonoBehavior> fsm;
+    [ReadOnly][SerializeField] public bool isFrozen = false;
+    [SerializeField] public int frozenTime = 0;
+    private TaserManager taserManager = TaserManager.Instance;
+    private FiniteStateMachine<CustomerMonoBehavior> fsm;
+    [SerializeField] private NPCMovementManager movementManager;
+    [SerializeField] private Animator animator;
+    protected bool onGoingAnimation = false;
+    private GameObject _mask;
+    public string defaultLayer { get { return "Default"; } }
 
     public AudioSource audioSource;
 
@@ -28,123 +32,156 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     void Start()
     {
-        currentSpeed = baseSpeed;
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+            if (animator == null) Debug.LogError($"Missing Animator component: {name}");
+        }
+        if (movementManager == null)
+        {
+            movementManager = GetComponent<NPCMovementManager>();
+            if (movementManager == null) Debug.LogError($"Missing MovementManager component: {name}");
+        }
+        _mask = transform.Find("Mask").gameObject;
+        if (_mask == null) { Debug.LogError($"Error finding Mask of: {name}"); }
 
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
 
-        State unmasked = new Unmasked("Unmasked", this);
-        State masked = new Masked("Masked", this);
-        State frozen = new Frozen("Frozen", this);
+        State frozen = new Frozen("Frozen", this, animator);
+        State moving = new MovingState("Moving", this);
+        //TODO if a new behaviour is to be implemented do it here
+        //(example, wait in queue. )
 
-        fsm.AddTransition(unmasked, masked, () => wearsMask);
-        fsm.AddTransition(unmasked, frozen, () => isFrozen);
-        fsm.AddTransition(masked, frozen, () => isFrozen);
-        fsm.AddTransition(frozen, unmasked, () => !isFrozen && !wearsMask);
-        fsm.AddTransition(frozen, masked, () => !isFrozen && wearsMask);
+        fsm.AddTransition(frozen, moving, () => !isFrozen);
+        fsm.AddTransition(moving, frozen, () => isFrozen);
 
-        if(wearsMask){
-            fsm.SetState(masked);
-        }else{
-            fsm.SetState(unmasked);
-        }
+
+        fsm.SetState(moving);
+
+        maskNPC(wearsMask);
+
+        changeSpeed();
+
 
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Update() {
-        fsm.Tik();    
+    void Update()
+    {
+        fsm.Tik();
     }
 
     public void Click(ClickType clickType)
     {
-        Debug.Log("RIGHT CLICK");
-        if(clickType == ClickType.LEFT_CLICK)
+        onGoingAnimation = false;
+        if (clickType == ClickType.LEFT_CLICK)
         {
             clickCunt++;
-            if (!wearsMask  && clickCunt >= requiredClicks)
+            if (!wearsMask && clickCunt >= requiredClicks)
             {
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
+                maskNPC();
                 audioSource.PlayOneShot(shot, 0.7f);
             }
-            else
+            else if (wearsMask)
             {
+                StartCoroutine(DoTriggerAnimation("SmallHit"));
                 audioSource.PlayOneShot(missHit, 0.7f);
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
-        }
-        if(clickType == ClickType.RIGHT_CLICK)
-        {
-            Debug.Log("LEFT CLICK");
-            if(taserManager.useTaser()){
-                StartCoroutine(StartFreeze(3f)); 
+            else
+            {
+                //TODO Do here whatever feed back for click that are not the masking ones (like dinosaurs)
+                //maybe play a sound
             }
         }
-        
+        if (clickType == ClickType.RIGHT_CLICK)
+        {
+            if (taserManager.useTaser())
+            {
+                Debug.Log("freezing");
+                StartCoroutine(StartFreeze(frozenTime));
+            }
+        }
+
     }
 
     private IEnumerator StartFreeze(float duration)
     {
+
         if (!isFrozen){
-            audioSource.PlayOneShot(taser, 0.7f);
-			isFrozen = true;
+        
+            isFrozen = true;
+            audioSource.PlayOneShot(taser, 0.7f);   
             yield return new WaitForSeconds(duration);
             isFrozen = false;
-            currentSpeed = baseSpeed;
-            Debug.Log("Unfreezed");
         }
     }
 
-    bool hasMask()
+    public void changeSpeed()
     {
-        return true;
+        changeSpeed(baseSpeed);
     }
-
-    private class Unmasked: State{
-        private CustomerMonoBehavior _cmb;
-        public Unmasked(string name, CustomerMonoBehavior cmb) : base(name){
-            _cmb = cmb;
+    public void changeSpeed(float newSpeed)
+    {
+        currentSpeed = newSpeed;
+        animator.SetFloat("Speed", newSpeed);
+        if (newSpeed <= 0.01)
+        {
+            movementManager.agent.isStopped = true;
         }
-
-        public override void Enter(){
-            Debug.Log("Enter unmasked");
+        else
+        {
+            movementManager.agent.isStopped = false;
+            movementManager.agent.speed = newSpeed;
         }
-
-        public override void Tik(){}
-
-        public override void Exit(){}
-
-    }
-
-    private class Masked: State{
-        private CustomerMonoBehavior _cmb;
-        public Masked(string name, CustomerMonoBehavior cmb) : base(name){
-            _cmb = cmb;
-        }
-
-        public override void Enter(){
-            Debug.Log("Enter masked");
-        }
-
-        public override void Tik(){}
-
-        public override void Exit(){}
 
     }
+    public void changeLayer(string LayerName)
+    {
 
-    private class Frozen: State{
-        private CustomerMonoBehavior _cmb;
-        public Frozen(string name,CustomerMonoBehavior cmb) : base(name){
-            _cmb = cmb;
+        int Layer = LayerMask.NameToLayer(LayerName);
+        if (Layer < 0)
+        {
+            Debug.LogWarning($"Could not find the expected layer {LayerName}");
+            Layer = LayerMask.NameToLayer(defaultLayer);
         }
 
-        public override void Enter(){
-            Debug.Log("Enter frozen");
+        gameObject.layer = Layer;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = Layer;
         }
 
-        public override void Tik(){}
-
-        public override void Exit(){}
 
     }
+    public void maskNPC(bool value)
+    {
+        if (value) maskNPC(); else unmaskNPC();
+    }
+    public void maskNPC()
+    {
+        _mask.SetActive(true);
+        //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
+        StartCoroutine(DoTriggerAnimation("GotHit"));
+    }
+    protected IEnumerator DoTriggerAnimation(string name)
+    {
+        onGoingAnimation = true;
+        changeSpeed(0);
+        animator.SetTrigger(name);
+        yield return new WaitWhile(() => onGoingAnimation);
+        changeSpeed();
+    }
+    public void animationFinished()
+    {
+        onGoingAnimation = false;
+    }
+    private void unmaskNPC()
+    {
+        _mask.SetActive(false);
+    }
+
 }

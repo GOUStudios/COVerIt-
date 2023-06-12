@@ -24,7 +24,7 @@ public class LevelSettingManager
     public Dictionary<CustomerTypes, int> leftCustomersWithOutMask;
     public Dictionary<CustomerTypes, float> MaskedWeights { get; private set; }
 
-    [Range(0,1)]
+    [Range(0, 1)]
     public float[] waveMomentPercentages;
 
     public static LevelSettingManager Instance
@@ -57,7 +57,7 @@ public class LevelSettingManager
     {
         //TODO Define where we want to decide the amount of people to be spawned, in the spawner or the level manager
         //if we want it to be in the spawners, we should add the amount to be requested.
-        (int, Dictionary<CustomerTypes, int>) pullResponse = (0, new Dictionary<CustomerTypes,int>());
+        (int, Dictionary<CustomerTypes, int>) pullResponse = (0, new Dictionary<CustomerTypes, int>());
         if (!isSpawning)
         {
             isSpawning = true;
@@ -81,10 +81,10 @@ public class LevelSettingManager
     public bool SanityCheck()
     {
         isReadyToSpawn = CustomerMaskedPrefabs != null &&
-                         CustomerUnmaskedPrefabs != null &&
-                         waveMomentPercentages != null &&
-                         CustomersWithOutMask != null &&
-                         leftCustomersWithOutMask != null;
+                        CustomerUnmaskedPrefabs != null &&
+                        waveMomentPercentages != null &&
+                        CustomersWithOutMask != null &&
+                        leftCustomersWithOutMask != null;
         return isReadyToSpawn;
     }
 
@@ -134,13 +134,13 @@ public class LevelSettingManager
     {
         if (isReadyToSpawn)
         {
-            Debug.Log($"Received request to spawn {spawns}, {ObjectUtils.DictionaryToString(UnmaskedSpawns)}");
-            Debug.Log($"Current pool: {leftSpawnedWM}, {ObjectUtils.DictionaryToString(leftCustomersWithOutMask)}");
+            // Debug.Log($"Received request to spawn {spawns}, {ObjectUtils.DictionaryToString(UnmaskedSpawns)}");
+            // Debug.Log($"Current pool: {leftSpawnedWM}, {ObjectUtils.DictionaryToString(leftCustomersWithOutMask)}");
             int actualSpawns = leftSpawnedWM > 0 ? Math.Min(leftSpawnedWM, spawns) : 0;
             if (leftSpawnedWM > 0) leftSpawnedWM = Math.Max(0, leftSpawnedWM - spawns);
 
             Dictionary<CustomerTypes, int> actualSpawnsUnmasked = new Dictionary<CustomerTypes, int>();
-            foreach (var (t, toSpawn) in UnmaskedSpawns )
+            foreach (var (t, toSpawn) in UnmaskedSpawns)
             {
                 int leftForCustomerType = leftCustomersWithOutMask[t];
                 int actualSpawn = leftForCustomerType > 0 ? Math.Min(leftForCustomerType, toSpawn) : 0;
@@ -149,7 +149,8 @@ public class LevelSettingManager
             }
             return (actualSpawns, actualSpawnsUnmasked);
         }
-        else {
+        else
+        {
             var dict = new Dictionary<CustomerTypes, int>();
             return (0, dict);
         }
@@ -157,14 +158,19 @@ public class LevelSettingManager
 
     #region LVLManagerExportUtils
 
-    public float getInitialMaxPoints(){
+    public float getInitialMaxPoints()
+    {
         float maxPoints = 0f;
         CustomerMonoBehavior temp = null;
-        foreach (CustomerTypes type in CustomersWithOutMask.Keys) {
-            temp= CustomerUnmaskedPrefabs[type].GetComponent<CustomerMonoBehavior>();
-            if (temp == null) { 
-                Debug.LogError($"Could not find \"CustomerMonoBehaviour\" in {type} prefab");
-            }else {
+        foreach (CustomerTypes type in CustomersWithOutMask.Keys)
+        {
+            temp = CustomerUnmaskedPrefabs[type].GetComponent<CustomerMonoBehavior>();
+            if (temp == null)
+            {
+                Debug.LogWarning($"Could not find \"CustomerMonoBehaviour\" in {type} prefab");
+            }
+            else
+            {
                 maxPoints += (CustomersWithOutMask[type] * temp.pointValue);
             }
         }

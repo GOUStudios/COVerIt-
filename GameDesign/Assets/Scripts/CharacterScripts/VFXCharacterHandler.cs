@@ -7,16 +7,14 @@ public class VFXCharacterHandler : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log($"This is the moment {name} got hit");
     }
 
     public void SpawnSmoke()
     {
-        Debug.Log($"This is the moment {name} Spwaned smoke");
+            VFXManager.Instance.spawnSmokeAt(transform, transform.position, transform.rotation);
     }
     public void StartShocking()
     {
-        Debug.Log($"This is the moment {name} Started being shocked");
     }
 
 }
