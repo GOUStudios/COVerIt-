@@ -12,6 +12,10 @@ public class DespawnerWaypoint : Waypoint
         Gizmos.color = sphereColor;
         Gizmos.DrawWireSphere(transform.position, distanceToDespawn);
         Gizmos.color = connectingColor;
+        foreach (Waypoint wp in possibleNextPoint)
+        {
+            if (wp != null) Gizmos.DrawLine(transform.position, wp.transform.position);
+        }
     }
 
     // Start is called before the first frame update
@@ -28,9 +32,14 @@ public class DespawnerWaypoint : Waypoint
 
     public override void waypointReached(NPCMovementManager npcMover)
     {
-        if(Vector3.Distance(transform.position, npcMover.transform.position) < distanceToDespawn)
+        Debug.Log($"Customer wants to leave with {npcMover.visibleWaypointsReached} WPs reached");
+        if(npcMover.visibleWaypointsReached >= 1 && Vector3.Distance(transform.position, npcMover.transform.position) < distanceToDespawn)
         {
             Destroy(npcMover.gameObject);
+        }
+        else
+        {
+            base.waypointReached(npcMover);
         }
     }
 }
