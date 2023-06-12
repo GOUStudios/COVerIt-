@@ -591,6 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 232107892292566804}
   - component: {fileID: 4715891443867946105}
+  - component: {fileID: 3301595447441842277}
   m_Layer: 0
   m_Name: upper_arm.R
   m_TagString: Untagged
@@ -628,6 +629,19 @@ CapsuleCollider:
   m_Height: 0.0075
   m_Direction: 1
   m_Center: {x: 0, y: 0.0025, z: 0}
+--- !u!114 &3301595447441842277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925291108576592336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5135782ff92a1064485a43b0d9dacb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 5846908172797615232}
 --- !u!1 &974234538842151789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,6 +2642,7 @@ MonoBehaviour:
   taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
   missHit: {fileID: 8300000, guid: efeb9f1b299ba854996befe0fd71a864, type: 3}
   cough: {fileID: 8300000, guid: e1d09bd0b109e2844ba051b5f611b8dc, type: 3}
+  HitButNotMasked: {fileID: 0}
 --- !u!114 &5146937234786379669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4748,6 +4763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3413408604611419260}
   - component: {fileID: 3539742669941563822}
+  - component: {fileID: 3369192625253405282}
   m_Layer: 0
   m_Name: forearm.L
   m_TagString: Untagged
@@ -4785,6 +4801,19 @@ CapsuleCollider:
   m_Height: 0.006
   m_Direction: 1
   m_Center: {x: 0, y: 0.0025, z: 0}
+--- !u!114 &3369192625253405282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519641313536544030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5135782ff92a1064485a43b0d9dacb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 5846908172797615232}
 --- !u!1 &7538418023397860094
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,6 +5399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7213921018537923874}
   - component: {fileID: 6909707847905262615}
+  - component: {fileID: 2790900241370393585}
   m_Layer: 0
   m_Name: upper_arm.L
   m_TagString: Untagged
@@ -5407,6 +5437,19 @@ CapsuleCollider:
   m_Height: 0.0075
   m_Direction: 1
   m_Center: {x: 0, y: 0.0025, z: 0}
+--- !u!114 &2790900241370393585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447465812990161612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5135782ff92a1064485a43b0d9dacb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 5846908172797615232}
 --- !u!1 &8487657092836664567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5546,6 +5589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7377539085032460769}
   - component: {fileID: 3283140654087572040}
+  - component: {fileID: 8583690218352300465}
   m_Layer: 0
   m_Name: forearm.R
   m_TagString: Untagged
@@ -5583,6 +5627,19 @@ CapsuleCollider:
   m_Height: 0.006
   m_Direction: 1
   m_Center: {x: 0, y: 0.0025, z: 0}
+--- !u!114 &8583690218352300465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519361705531659075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5135782ff92a1064485a43b0d9dacb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 5846908172797615232}
 --- !u!1 &8525144978790059350
 GameObject:
   m_ObjectHideFlags: 0

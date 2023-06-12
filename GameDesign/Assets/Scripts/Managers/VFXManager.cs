@@ -55,7 +55,7 @@ public class VFXManager : MonoBehaviour
     }
     private IEnumerator playVFXCoroutine(Transform transform, Vector3 hitPoint, Quaternion direction)
     {
-        ;
+
         Transform selectedChild = smokePullingPool.transform.GetChild(0);
 
         selectedChild.transform.SetLocalPositionAndRotation(hitPoint, direction);
@@ -67,9 +67,9 @@ public class VFXManager : MonoBehaviour
         {
 
             effect.Play();
-            yield return new WaitForSecondsRealtime(0.3f);
+            yield return new WaitForSeconds(0.3f);
             yield return new WaitWhile(() => effect.aliveParticleCount > 0);
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSeconds(0.5f);
 
         }
         else
@@ -90,7 +90,7 @@ public class VFXManager : MonoBehaviour
 
         if (GO.GetComponent<VisualEffect>() != null) { return; }
 
-        
+
         int Layer = LayerMask.NameToLayer(LayerName);
         if (Layer < 0)
         {
