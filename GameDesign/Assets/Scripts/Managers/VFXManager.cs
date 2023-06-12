@@ -68,6 +68,7 @@ public class VFXManager : MonoBehaviour
             effect.Play();
             yield return new WaitForSecondsRealtime(0.3f);
             yield return new WaitWhile(() => effect.aliveParticleCount > 0);
+            yield return new WaitForSecondsRealtime(0.5f);
 
         }
         else
