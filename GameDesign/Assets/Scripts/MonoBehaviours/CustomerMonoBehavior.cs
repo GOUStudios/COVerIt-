@@ -52,7 +52,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
 
         State frozen = new Frozen("Frozen", this, animator);
-        State moving = new MovingState("Moving", this);
+        State moving = new MovingState("Moving", this, movementManager);
         //TODO if a new behaviour is to be implemented do it here
         //(example, wait in queue. )
 
@@ -68,7 +68,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         setFSM();
 
 
-        
+
     }
 
     void Update()
@@ -116,12 +116,12 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             clickCunt++;
             if (!wearsMask && clickCunt >= requiredClicks)
             {
-                
+
                 onHitBehaviour();
             }
             else if (wearsMask)
             {
-                
+
                 DodgeHitBehaviour();
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
@@ -145,10 +145,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     private IEnumerator StartFreeze(float duration)
     {
 
-        if (!isFrozen){
-        
+        if (!isFrozen)
+        {
+
             isFrozen = true;
-            audioSource.PlayOneShot(taser, 0.7f);   
+            audioSource.PlayOneShot(taser, 0.7f);
             yield return new WaitForSeconds(duration);
             isFrozen = false;
         }

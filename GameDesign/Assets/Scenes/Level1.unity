@@ -1045,6 +1045,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 924330373}
     m_Modifications:
+    - target: {fileID: 1107824526834080064, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1417884941100563867, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1092,6 +1096,14 @@ PrefabInstance:
     - target: {fileID: 1794269368354137889, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
       propertyPath: m_Name
       value: FrontOfCoffeeShop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205549409315660199, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805058482763397064, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
