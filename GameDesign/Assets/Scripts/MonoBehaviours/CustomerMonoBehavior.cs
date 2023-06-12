@@ -25,6 +25,13 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
 
+    public AudioSource audioSource;
+
+    public AudioClip shot;
+    public AudioClip taser;
+    public AudioClip missHit;
+    public AudioClip cough;
+
     void Start()
     {
         onGoingAnimation = false;
@@ -45,12 +52,14 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
         maskNPC(wearsMask);
         changeSpeed();
-
+        audioSource = GetComponent<AudioSource>();
 
         //ideal if setting the FSM is the last function. just to make sure the other parameters are set if they are to be changed by the states.
 
         setFSM();
 
+
+        
     }
 
     void Update()
@@ -74,6 +83,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     protected virtual void onHitBehaviour()
     {
         wearsMask = true;
+        audioSource.PlayOneShot(shot, 0.7f);
         PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
         maskNPC();
     }
@@ -83,6 +93,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     }
     protected virtual void DodgeHitBehaviour()
     {
+        audioSource.PlayOneShot(missHit, 0.7f);
         StartCoroutine(DoTriggerAnimation("SmallHit"));
     }
 
@@ -96,10 +107,12 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             clickCunt++;
             if (!wearsMask && clickCunt >= requiredClicks)
             {
+                
                 onHitBehaviour();
             }
             else if (wearsMask)
             {
+                
                 DodgeHitBehaviour();
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
@@ -107,6 +120,10 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             {
                 //TODO Do here whatever feed back for click that are not the masking ones (like dinosaurs)
                 //maybe play a sound or maybe add another effect to signal you hit him.
+
+
+
+
             }
         }
         if (clickType == ClickType.RIGHT_CLICK)
@@ -121,9 +138,9 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     private IEnumerator StartFreeze(float duration)
     {
-        if (!isFrozen)
-        {
-            isFrozen = true;
+        if (!isFrozen){
+            audioSource.PlayOneShot(taser, 0.7f);
+			isFrozen = true;
             yield return new WaitForSeconds(duration);
             isFrozen = false;
         }

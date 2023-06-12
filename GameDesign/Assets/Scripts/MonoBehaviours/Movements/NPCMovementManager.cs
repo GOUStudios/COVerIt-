@@ -18,6 +18,7 @@ public class NPCMovementManager : MonoBehaviour
     [ReadOnly][SerializeField] public CustomerMonoBehavior targetCustomer;
     bool findingTarget = false;
     private float TTL = 0f;
+    public int visibleWaypointsReached;
 
     void Start()
     {
@@ -31,7 +32,6 @@ public class NPCMovementManager : MonoBehaviour
         {
             Debug.LogError($"{this.name}: Missing initial variable targetWaypoint.");
         }
-
         agent.SetDestination(targetWayPoint.transform.position);
 
     }
@@ -138,8 +138,13 @@ public class NPCMovementManager : MonoBehaviour
             targetWayPoint.waypointReached(this);
         }
         else TTL += Time.deltaTime;
-
     }
+
+    public void IncreaseVisibleWaypointsReached(int amount)
+    {
+        visibleWaypointsReached += amount;
+    }
+
 
 
 }
