@@ -73,8 +73,7 @@ public class PointsManager : MonoBehaviour
         instance.earnedPoints = 0;
     }
 
-    public int GetCurrentPoints
-    {
+    public int GetCurrentPoints{
         get
         {
             return instance.currentPoints;

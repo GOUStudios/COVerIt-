@@ -8,8 +8,8 @@ public class TimerUi : MonoBehaviour
     private TMP_Text timerText;
     [SerializeField] private TimerManagerMonoBehaviour timeManager;
 
-    //Not necessary with timer manager 
-    public float timeRemaining = 120f; // Starting timer, TBD: control it with timer manager
+     
+    private float timeRemaining; // Starting timer
 
 
     private void Start()

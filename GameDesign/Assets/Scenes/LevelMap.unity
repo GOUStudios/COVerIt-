@@ -1077,6 +1077,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5834890448040859528, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: sceneName
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834890448040859528, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: specifiedRotation.x
       value: -59
       objectReference: {fileID: 0}
