@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class ScenesManager : MonoBehaviour
 {
     private static ScenesManager instance;
+
+    //levelIsReady is a flag to control the loading progress of the level scene
+    public static bool levelIsReady = false;
     
     private void Awake()
     {
@@ -40,13 +43,49 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
-
     //Scene changer that use a fade black to change
     public void SceneChangerWFade(string sceneName)
     {
+        if (levelIsReady) levelIsReady = false;
+
         StartCoroutine(FadeOutAndLoadScene(sceneName));
     }
 
+
+
+    //Scene changer that use a fade black to change
+    public void SceneChangerLevel(string sceneName)
+    {
+        if (levelIsReady) levelIsReady = false;
+        
+        StartCoroutine(LoadSceneWaiting(sceneName));
+    }
+
+    IEnumerator LoadSceneWaiting(string sceneName)
+    {
+        CanvasGroup fadeCanvasGroup = GetComponentInChildren<CanvasGroup>();
+
+        float fadeSpeed = 2f;
+
+        while (fadeCanvasGroup.alpha < 1f)
+        {
+            FadeToBlack(fadeCanvasGroup, fadeSpeed);
+            yield return null;
+        }
+
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+       
+        yield return new WaitWhile(() => levelIsReady == false);
+
+        while (fadeCanvasGroup.alpha > 0f)
+        {
+            FadeToTransparent(fadeCanvasGroup, fadeSpeed);
+            yield return null;
+        }
+    }
+    
+    
     IEnumerator FadeOutAndLoadScene(string sceneName)
     {
         CanvasGroup fadeCanvasGroup = GetComponentInChildren<CanvasGroup>();
@@ -59,7 +98,10 @@ public class ScenesManager : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+       
+        yield return new WaitUntil(() => levelIsReady == true);
 
         while (fadeCanvasGroup.alpha > 0f)
         {

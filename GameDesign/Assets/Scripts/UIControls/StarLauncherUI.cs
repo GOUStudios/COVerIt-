@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class StarLauncherUI : MonoBehaviour
 {
     public Slider slider;
-    public event Action<float> starEvent;
-
 
     private Animator starsAnimator;
     private PointsManager pointsManager;//has to be initialized in awake because is a monobehaviour.
@@ -28,7 +26,8 @@ public class StarLauncherUI : MonoBehaviour
 
     private void Update()
     {
-        slider.value = pointsManager.GetCurrentPoints /100;
+        slider.value = pointsManager.pointsPercentage;
+        Debug.Log("points perc" + pointsManager.pointsPercentage);
     }
     public void OnSliderValueChanged(float value)
     {
