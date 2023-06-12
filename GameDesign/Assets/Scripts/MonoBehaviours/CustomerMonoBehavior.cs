@@ -23,6 +23,13 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
 
+    public AudioSource audioSource;
+
+    public AudioClip shot;
+    public AudioClip taser;
+    public AudioClip missHit;
+    public AudioClip cough;
+
     void Start()
     {
 
@@ -49,11 +56,15 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         fsm.AddTransition(frozen, moving, () => !isFrozen);
         fsm.AddTransition(moving, frozen, () => isFrozen);
 
+
         fsm.SetState(moving);
 
         maskNPC(wearsMask);
 
         changeSpeed();
+
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -72,10 +83,12 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
                 wearsMask = true;
                 PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
                 maskNPC();
+                audioSource.PlayOneShot(shot, 0.7f);
             }
             else if (wearsMask)
             {
                 StartCoroutine(DoTriggerAnimation("SmallHit"));
+                audioSource.PlayOneShot(missHit, 0.7f);
                 PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
             }
             else
@@ -97,9 +110,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     private IEnumerator StartFreeze(float duration)
     {
-        if (!isFrozen)
-        {
+
+        if (!isFrozen){
+        
             isFrozen = true;
+            audioSource.PlayOneShot(taser, 0.7f);   
             yield return new WaitForSeconds(duration);
             isFrozen = false;
         }
