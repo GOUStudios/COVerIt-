@@ -57,6 +57,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -273,6 +277,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -365,6 +373,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 5
@@ -466,6 +478,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 3
@@ -885,6 +901,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 4
@@ -1324,6 +1344,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1532,6 +1556,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1629,6 +1657,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1721,6 +1753,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 4
@@ -1818,6 +1854,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6955204262445947629}
     m_Modifications:
+    - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
+      propertyPath: IsVisibleOnScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
       value: 3
