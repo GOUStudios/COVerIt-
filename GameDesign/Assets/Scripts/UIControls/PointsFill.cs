@@ -29,7 +29,7 @@ public class PointsFill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointsManager = GetComponent<PointsManager>();
+        pointsManager = FindObjectOfType<PointsManager>();
  
     }
 
@@ -82,14 +82,14 @@ public class PointsFill : MonoBehaviour
         currentTotal = 0f;
 
         //Gets Point percentage from points manager
-        //Points = pointsManager.GetEarnedPoints();
-        //Lost = pointsManager.GetLostPoints();
-        //Total = pointsManager.GetCurrentPoints();
+        Points = pointsManager.GetEarnedPoints();
+        Lost = pointsManager.GetLostPoints();
+        Total = pointsManager.GetCurrentPoints;
 
         //Trial values
-        Points = 0.7f;
-        Lost = 0.3f;
-        Total = 70f;
+        //Points = 0.7f;
+        //Lost = 0.3f;
+        //Total = 70f;
 
         LostPoints.value = 1;
 

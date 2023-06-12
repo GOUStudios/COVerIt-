@@ -50,6 +50,15 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         if (_mask == null) { Debug.LogError($"Error finding Mask of: {name}"); }
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
         movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
+
+        State frozen = new Frozen("Frozen", this, animator);
+        State moving = new MovingState("Moving", this);
+        //TODO if a new behaviour is to be implemented do it here
+        //(example, wait in queue. )
+
+        fsm.AddTransition(frozen, moving, () => !isFrozen);
+        fsm.AddTransition(moving, frozen, () => isFrozen);
+
         maskNPC(wearsMask);
         changeSpeed();
         audioSource = GetComponent<AudioSource>();
@@ -121,9 +130,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
                 //TODO Do here whatever feed back for click that are not the masking ones (like dinosaurs)
                 //maybe play a sound or maybe add another effect to signal you hit him.
 
-
-
-
             }
         }
         if (clickType == ClickType.RIGHT_CLICK)
@@ -138,9 +144,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
     private IEnumerator StartFreeze(float duration)
     {
+
         if (!isFrozen){
-            audioSource.PlayOneShot(taser, 0.7f);
-			isFrozen = true;
+        
+            isFrozen = true;
+            audioSource.PlayOneShot(taser, 0.7f);   
             yield return new WaitForSeconds(duration);
             isFrozen = false;
         }

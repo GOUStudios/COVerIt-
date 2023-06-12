@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ClickManager : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class ClickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        //The second condition checks if the pointer is clicking on an UI element
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -25,9 +27,13 @@ public class ClickManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
 
+                VFXManager.Instance.spawnSmokeAt(hit.transform, hit.point, Quaternion.LookRotation(hit.normal));
+
+
                 Clickable clickable = (Clickable)ObjectUtils.GetObjectWithInterface<Clickable>(hit.collider.gameObject);
                 if (clickable != null)
                 {
+
                     clickable.Click(ClickType.LEFT_CLICK);
                     OnCorrectlyClicked?.Invoke();
                 }
