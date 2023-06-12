@@ -97,6 +97,11 @@ MonoBehaviour:
   frozenTime: 3
   movementManager: {fileID: 7864013837679662276}
   animator: {fileID: 6726335663406351768}
+  audioSource: {fileID: 0}
+  shot: {fileID: 8300000, guid: 37d0243ceb9c848479780b55d7e224a4, type: 3}
+  taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
+  missHit: {fileID: 8300000, guid: efeb9f1b299ba854996befe0fd71a864, type: 3}
+  cough: {fileID: 8300000, guid: e1d09bd0b109e2844ba051b5f611b8dc, type: 3}
   timeToCatchTarget: 0.75
 --- !u!95 &6726335663406351768 stripped
 Animator:

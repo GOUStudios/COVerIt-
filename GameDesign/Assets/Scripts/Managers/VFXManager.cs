@@ -10,6 +10,7 @@ public class VFXManager : MonoBehaviour
 
     private static VFXManager _instance;
 
+
     public static VFXManager Instance
     {
         get
@@ -84,5 +85,26 @@ public class VFXManager : MonoBehaviour
     }
 
 
+    public void changeLayer(GameObject GO, string LayerName)
+    {
+
+        if (GO.GetComponent<VisualEffect>() != null) { return; }
+
+        
+        int Layer = LayerMask.NameToLayer(LayerName);
+        if (Layer < 0)
+        {
+            Debug.LogWarning($"Could not find the expected layer {LayerName}");
+            Layer = LayerMask.NameToLayer("Default");
+        }
+
+        GO.layer = Layer;
+        foreach (Transform child in GO.transform)
+        {
+            changeLayer(child.gameObject, LayerName);
+        }
+
+
+    }
 
 }

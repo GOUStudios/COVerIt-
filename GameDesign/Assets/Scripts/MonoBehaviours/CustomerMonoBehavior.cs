@@ -31,6 +31,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     public AudioClip taser;
     public AudioClip missHit;
     public AudioClip cough;
+    public AudioClip HitButNotMasked;
 
     void Start()
     {
@@ -94,6 +95,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         wearsMask = true;
         audioSource.PlayOneShot(shot, 0.7f);
         PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
+        StartCoroutine(HitCoroutine());
         maskNPC();
     }
     protected virtual void onFreezeBehaviour()
@@ -103,7 +105,10 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     protected virtual void DodgeHitBehaviour()
     {
         audioSource.PlayOneShot(missHit, 0.7f);
+        PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
+        StartCoroutine(wrongHitCoroutine());
         StartCoroutine(DoTriggerAnimation("SmallHit"));
+
     }
 
     #endregion
@@ -116,20 +121,18 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             clickCunt++;
             if (!wearsMask && clickCunt >= requiredClicks)
             {
-
                 onHitBehaviour();
             }
             else if (wearsMask)
             {
 
                 DodgeHitBehaviour();
-                PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
+
             }
             else
             {
-                //TODO Do here whatever feed back for click that are not the masking ones (like dinosaurs)
-                //maybe play a sound or maybe add another effect to signal you hit him.
-
+                audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+                StartCoroutine(HitCoroutine());
             }
         }
         if (clickType == ClickType.RIGHT_CLICK)
@@ -141,7 +144,20 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
 
     }
-
+    private IEnumerator wrongHitCoroutine()
+    {
+        VFXManager.Instance.changeLayer(gameObject, "WrongHitLayer");
+        audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+        yield return new WaitForSeconds(0.3f);
+        VFXManager.Instance.changeLayer(gameObject, defaultLayer);
+    }
+    private IEnumerator HitCoroutine()
+    {
+        VFXManager.Instance.changeLayer(gameObject, "HitLayer");
+        audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+        yield return new WaitForSeconds(0.3f);
+        VFXManager.Instance.changeLayer(gameObject, defaultLayer);
+    }
     private IEnumerator StartFreeze(float duration)
     {
 
@@ -149,8 +165,14 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         {
 
             isFrozen = true;
-            audioSource.PlayOneShot(taser, 0.7f);
+            audioSource.loop = true;
+            audioSource.clip = taser;
+            audioSource.volume = 0.7f;
+            audioSource.Play();
             yield return new WaitForSeconds(duration);
+            audioSource.Stop();
+            audioSource.volume = 1f;
+            audioSource.loop = false;
             isFrozen = false;
         }
     }
@@ -173,24 +195,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
 
     }
-    public void changeLayer(string LayerName)
-    {
 
-        int Layer = LayerMask.NameToLayer(LayerName);
-        if (Layer < 0)
-        {
-            Debug.LogWarning($"Could not find the expected layer {LayerName}");
-            Layer = LayerMask.NameToLayer(defaultLayer);
-        }
-
-        gameObject.layer = Layer;
-        foreach (Transform child in transform)
-        {
-            child.gameObject.layer = Layer;
-        }
-
-
-    }
     public void maskNPC(bool value)
     {
         if (value) maskNPC(); else unmaskNPC();
@@ -200,8 +205,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         wearsMask = true;
         _mask.SetActive(true);
         tag = "Masked";
-
-
         //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
 
         StartCoroutine(DoTriggerAnimation("GotHit"));
