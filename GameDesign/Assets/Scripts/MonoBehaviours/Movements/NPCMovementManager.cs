@@ -6,12 +6,13 @@ using UnityEngine;
 public class NPCMovementManager : MonoBehaviour
 {
     [SerializeField] public UnityEngine.AI.NavMeshAgent agent;
-    [SerializeField] public Waypoint previousWayPoint;
+    [ReadOnly] [SerializeField] public Waypoint previousWayPoint;
     [SerializeField] public Waypoint targetWayPoint;
     [SerializeField] public float distanceThreshHoldToReachWP = 1.5f;
     [SerializeField] public float MaxTimeToReachWaypoint = 15f;
 
     private float TTL = 0f;
+    public int visibleWaypointsReached;
 
     void Start()
     {
@@ -24,7 +25,6 @@ public class NPCMovementManager : MonoBehaviour
         {
             Debug.LogError($"{this.name}: Missing initial variable targetWaypoint.");
         }
-
         agent.SetDestination(targetWayPoint.transform.position);
 
     }
@@ -39,9 +39,13 @@ public class NPCMovementManager : MonoBehaviour
             targetWayPoint.waypointReached(this);
         }
         else TTL += Time.deltaTime;
-
-
     }
+
+    public void IncreaseVisibleWaypointsReached(int amount)
+    {
+        visibleWaypointsReached += amount;
+    }
+
 
 
 }

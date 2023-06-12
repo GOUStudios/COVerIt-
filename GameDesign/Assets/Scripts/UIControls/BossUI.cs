@@ -6,16 +6,20 @@ using UnityEngine.UI;
 public class BossUI : MonoBehaviour
 {
     //Level between 0 and 1 to show the anger boss
-    public float angerLevel;
-    
-    [SerializeField] private Image boss; 
+    [ReadOnly][SerializeField] public float angerLevel;//Calculated by the boss manager
+    [ReadOnly][SerializeField] private float angerValue;
+
+    [SerializeField] private Image boss;
     [SerializeField] private Image bossAnger;
 
     private Slider slider;
 
+    private BossAngerManager bossAngerManager = BossAngerManager.Instance;
     // Start is called before the first frame update
     void Start()
     {
+        angerLevel = BossAngerManager.Instance.angerThreshhold;
+
         slider = GetComponent<Slider>();
 
         slider.onValueChanged.AddListener(delegate { OnSliderValueChanged(); });
@@ -23,21 +27,23 @@ public class BossUI : MonoBehaviour
 
     public void OnSliderValueChanged()
     {
-        if(slider.value >= angerLevel)
+        if (!BossAngerManager.Instance.isAngry)
         {
-            boss.enabled= false;
-            bossAnger.enabled= true;
+            boss.enabled = true;
+            bossAnger.enabled = false;
         }
         else
         {
-            boss.enabled = true;
-            bossAnger.enabled= false;
+            boss.enabled = false;
+            bossAnger.enabled = true;
         }
+
     }
 
     private void Update()
     {
-        slider.value = slider.value + 0.0001f;
+        slider.value = 1-bossAngerManager.angerPercent;
+        angerValue = bossAngerManager.angerPercent;
     }
 
 }

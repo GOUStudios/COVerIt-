@@ -13,13 +13,14 @@ public class PointsManager : MonoBehaviour
         else return 0;
         }
     }
-    private int currentPoints;
+    [ReadOnly][SerializeField] private int currentPoints;
+    private int lostPoints;
+    private int earnedPoints;
     public bool IsNegative { get
         {
             return instance.currentPoints < 0;
         }
     }
-
     public static PointsManager Instance
     {
         get
@@ -32,12 +33,15 @@ public class PointsManager : MonoBehaviour
                     GameObject pointsObject = new GameObject(typeof(PointsManager).Name);
                     instance = pointsObject.AddComponent<PointsManager>();
                     instance.currentPoints = 0;
+                    instance.lostPoints = 0;
+                    instance.earnedPoints = 0;
                 }
             }
 
             return instance;
         }
     }
+
 
     private void Awake()
     {
@@ -56,22 +60,45 @@ public class PointsManager : MonoBehaviour
     {
         instance.currentPoints += points;
         Debug.Log($"Increasing points {points}, now is {instance.currentPoints}");
+
+        if (points < 0) instance.lostPoints += points;
+        if (points > 0) instance.earnedPoints += points;
     }
 
     public void TriggerEvent_ResetPoints()
     {
         calculateMaxPoints();
         instance.currentPoints = 0;
+        instance.lostPoints = 0;
+        instance.earnedPoints = 0;
     }
 
-    public int GetCurrentPoints()
+    public int GetCurrentPoints
     {
-        return instance.currentPoints;
+        get
+        {
+            return instance.currentPoints;
+        }
     }
 
     private void calculateMaxPoints() {
 
         maxPoints = LevelSettingManager.Instance.getInitialMaxPoints();
+    }
+
+    public float GetMaxPoints()
+    {
+        return instance.maxPoints;
+    }
+
+    public int GetEarnedPoints()
+    {
+        return instance.earnedPoints;
+    }
+
+    public int GetLostPoints()
+    {
+        return instance.lostPoints;
     }
 
 }

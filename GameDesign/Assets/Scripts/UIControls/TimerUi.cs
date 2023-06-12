@@ -6,28 +6,26 @@ using UnityEngine;
 public class TimerUi : MonoBehaviour
 {
     private TMP_Text timerText;
+    [SerializeField] private TimerManagerMonoBehaviour timeManager;
 
     //Not necessary with timer manager 
     public float timeRemaining = 120f; // Starting timer, TBD: control it with timer manager
 
+
     private void Start()
     {
+        if (timeManager != null)
+        {
+            timeRemaining = timeManager.GetTime();
+        }
         timerText = GetComponentInChildren<TMP_Text>();
     }
 
     //Not necessary with the timer manager
     void Update()
     {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime; // Decrease timer
+            timeRemaining = timeManager.TimeRemaining; // Decrease timer done in the manager
             DisplayTime(timeRemaining);
-        }
-        else
-        {
-            //Time is over
-            Debug.Log("Tempo scaduto!");
-        }
     }
 
     //Call from time manager update function with the current time

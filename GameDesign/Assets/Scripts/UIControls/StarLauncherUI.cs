@@ -10,14 +10,17 @@ public class StarLauncherUI : MonoBehaviour
     public Slider slider;
     public event Action<float> starEvent;
 
-    private bool event1Triggered = false;
-    private bool event2Triggered = false;
-    private bool event3Triggered = false;
+
+    private Animator starsAnimator;
+    private PointsManager pointsManager;//has to be initialized in awake because is a monobehaviour.
 
     private void Start()
     {
-        
-        slider= GetComponent<Slider>();
+        pointsManager = PointsManager.Instance;
+
+        starsAnimator = GetComponentInChildren<Animator>();
+
+        slider = GetComponent<Slider>();
         slider.value = 0;
 
         slider.onValueChanged.AddListener(delegate { OnSliderValueChanged(slider.value); });
@@ -25,37 +28,15 @@ public class StarLauncherUI : MonoBehaviour
 
     private void Update()
     {
-        slider.value = PointsManager.Instance.pointsPercentage;
+        slider.value = pointsManager.GetCurrentPoints /100;
     }
     public void OnSliderValueChanged(float value)
     {
-        Debug.Log("value changed");
+        if (starsAnimator == null) return;
 
+        Debug.Log("value : " + value);
+        starsAnimator.SetFloat("sliderValue", value);
 
-        if (value >= 0.32f && !event1Triggered)
-        {
-            event1Triggered = true;
-            Debug.Log("Event triggered for value 0.32!");
-
-            // Esegui le azioni desiderate per l'evento 0.32 qui
-            starEvent.Invoke(Mathf.Round(value * 100f) / 100f);
-        }
-        else if (value >= 0.66f && !event2Triggered)
-        {
-            event2Triggered = true;
-            Debug.Log("Event triggered for value 0.66!");
-
-            // Esegui le azioni desiderate per l'evento 0.66 qui
-            starEvent.Invoke(Mathf.Round(value * 100f) / 100f);
-        }
-        else if (value == 1f && !event3Triggered)
-        {
-            event3Triggered = true;
-            Debug.Log("Event triggered for value 1!");
-
-            // Esegui le azioni desiderate per l'evento 1 qui
-            starEvent.Invoke(Mathf.Round(value * 100f) / 100f);
-        }
     }
 }
 
