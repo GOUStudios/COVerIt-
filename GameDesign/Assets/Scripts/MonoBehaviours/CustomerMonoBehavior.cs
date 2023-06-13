@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NPCMovementManager))]
+[RequireComponent(typeof(AudioSource))]
 public class CustomerMonoBehavior : MonoBehaviour, Clickable
 {
     [SerializeField] public int id;
@@ -10,7 +11,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] public float baseSpeed;
     [ReadOnly][SerializeField] public float currentSpeed;
     [SerializeField] public float maxTimeToReachWaypoint = 15f;
-    [ReadOnly][SerializeField] public int clickCunt = 0;
+    [ReadOnly][SerializeField] private int clickCunt = 0;
     [SerializeField] public int requiredClicks = 1;
     [SerializeField] public float clickTime;
     [SerializeField] public bool wearsMask;
@@ -33,8 +34,9 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     public AudioClip cough;
     public AudioClip HitButNotMasked;
 
-    void Start()
+    void Awake()
     {
+        clickCunt = 0;
         onGoingAnimation = false;
 
         if (animator == null)
@@ -180,6 +182,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         changeSpeed(baseSpeed);
     }
+
     public void changeSpeed(float newSpeed)
     {
         currentSpeed = newSpeed;
@@ -195,7 +198,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
 
     }
-
     public void maskNPC(bool value)
     {
         if (value) maskNPC(); else unmaskNPC();
