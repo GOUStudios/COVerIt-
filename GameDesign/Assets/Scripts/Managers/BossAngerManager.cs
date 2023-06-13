@@ -13,7 +13,7 @@ public class BossAngerManager
     public int angryCounter = 0;
     public int gameOverCounter = 0;
     public bool isAngry;
-
+    public bool isReady = false;
     public float angerPercent
     {
         get

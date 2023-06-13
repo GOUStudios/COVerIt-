@@ -8,12 +8,12 @@ public class LevelMonobehaviour : MonoBehaviour
 {
     #region Attributes
     private LevelSettingManager manager = LevelSettingManager.Instance;
-    private BossAngerManager bossAnger = BossAngerManager.Instance;
     [SerializeField] private TimerManagerMonoBehaviour timerManager;
     
     [SerializeField] int levelTime;
     [Range(0,1)]
     [SerializeField] float[] wavePercentages;
+    [SerializeField] float waitTime;
 
     [Header("DO NOT CHANGE THE ORDER OF THE LIST")]
     [SerializeField] int maskedCustomers = 0;
@@ -62,13 +62,11 @@ public class LevelMonobehaviour : MonoBehaviour
         manager.SetPrefabs(unmaskedPrefabsDictionary, maskedPrefabsDictionary);
         manager.SetWaves(wavePercentages);
 
-        bossAnger._maxNumAngry = 10;
-        bossAnger._maxNumGameOver = 6;
 
-        if (manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady())
+        if (manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady())
         {
-            Debug.LogError("All managers are ready");
-            timerManager.StartTimer();
+            Debug.Log("All managers are ready");
+            StartCoroutine(waitLevel(waitTime));
         }
         else
         {
@@ -97,6 +95,19 @@ public class LevelMonobehaviour : MonoBehaviour
     bool isTaserManagerReady()
     {
         return TaserManager.Instance.isReady;
+    }
+
+    bool isBossManagerReady()
+    {
+        return BossAngerManager.Instance.isReady;
+    }
+
+    private IEnumerator waitLevel(float duration)
+    {
+        Debug.LogError("Start waiting for characters...");
+        yield return new WaitForSeconds(duration);
+        timerManager.StartTimer();
+        Debug.LogError("Ready to play");
     }
 
     void OnTimeFinished()

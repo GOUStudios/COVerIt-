@@ -5,10 +5,10 @@ using UnityEngine;
 public class BossAngerMonoBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private int _maxNumAngry; //To be defined on each level
+    private int _maxNumAngry = 10; //To be defined on each level
 
     [SerializeField]
-    private int _maxNumGameOver; //To be defined on each level
+    private int _maxNumGameOver = 6; //To be defined on each level
 
 
     private BossAngerManager _instance;
@@ -16,6 +16,9 @@ public class BossAngerMonoBehaviour : MonoBehaviour
     void Awake()
     {
         _instance = BossAngerManager.Instance;
+        _instance._maxNumAngry = _maxNumAngry;
+        _instance._maxNumGameOver = _maxNumGameOver;
+        _instance.isReady = true;
         ClickManager.OnCorrectlyClicked += TriggerEvent_CorrectlyClicked;
         ClickManager.OnMissClicked += TriggerEvent_MissClicked;
     }
