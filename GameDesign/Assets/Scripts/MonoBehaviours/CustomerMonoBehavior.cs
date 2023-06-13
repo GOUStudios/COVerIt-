@@ -22,7 +22,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] protected NPCMovementManager movementManager;
     [SerializeField] protected Animator animator;
     public bool onGoingAnimation { get; private set; }
-    private GameObject _mask;
+    [SerializeField] private GameObject _mask;
     public string defaultLayer { get { return "Default"; } }
 
     public AudioSource audioSource;
@@ -47,7 +47,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             movementManager = GetComponent<NPCMovementManager>();
             if (movementManager == null) Debug.LogError($"Missing MovementManager component: {name}");
         }
-        _mask = transform.Find("Mask").gameObject;
+        if (_mask == null) _mask = transform.Find("Mask").gameObject;
         if (_mask == null) { Debug.LogError($"Error finding Mask of: {name}"); }
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
         movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
@@ -230,6 +230,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     {
         tag = "Untagged";
         wearsMask = false;
+        clickCunt = 0;
         _mask.SetActive(false);
     }
 

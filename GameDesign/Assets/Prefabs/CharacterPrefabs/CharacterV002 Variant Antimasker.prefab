@@ -51,10 +51,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2790900241370393585, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 4636564951687211612}
     - target: {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_Name
       value: CharacterV002 Variant Antimasker
       objectReference: {fileID: 0}
+    - target: {fileID: 3301595447441842277, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 4636564951687211612}
+    - target: {fileID: 3369192625253405282, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 4636564951687211612}
     - target: {fileID: 3520859027583899146, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -63,6 +75,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 326306dc720296c448df79c53007efc0, type: 2}
+    - target: {fileID: 8583690218352300465, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 4636564951687211612}
     m_RemovedComponents:
     - {fileID: 5846908172797615232, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
@@ -97,6 +113,7 @@ MonoBehaviour:
   frozenTime: 3
   movementManager: {fileID: 7864013837679662276}
   animator: {fileID: 6726335663406351768}
+  _mask: {fileID: 425934075669869910}
   audioSource: {fileID: 7779052578560729399}
   shot: {fileID: 8300000, guid: 37d0243ceb9c848479780b55d7e224a4, type: 3}
   taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
@@ -104,6 +121,11 @@ MonoBehaviour:
   cough: {fileID: 8300000, guid: e1d09bd0b109e2844ba051b5f611b8dc, type: 3}
   HitButNotMasked: {fileID: 8300000, guid: 2f37fd46cb6f7af479e23ccc062f0f93, type: 3}
   timeToCatchTarget: 0.75
+--- !u!1 &425934075669869910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3433491166404937223, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+  m_PrefabInstance: {fileID: 3048671753884365649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &6726335663406351768 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8581521589901457097, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}

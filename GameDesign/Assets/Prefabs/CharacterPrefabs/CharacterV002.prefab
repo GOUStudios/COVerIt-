@@ -2637,6 +2637,7 @@ MonoBehaviour:
   frozenTime: 3
   movementManager: {fileID: 5146937234786379669}
   animator: {fileID: 8581521589901457097}
+  _mask: {fileID: 3433491166404937223}
   audioSource: {fileID: 4736574958765445734}
   shot: {fileID: 8300000, guid: 37d0243ceb9c848479780b55d7e224a4, type: 3}
   taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
