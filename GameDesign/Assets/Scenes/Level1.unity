@@ -1016,6 +1016,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 924330373}
     m_Modifications:
+    - target: {fileID: 609089742365452988, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 912420016029086827, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
@@ -1071,6 +1075,10 @@ PrefabInstance:
     - target: {fileID: 1417884941100563867, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614347100084632818, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1794269368354137889, guid: 29070fffb70f4954e886c165f1c76bbd, type: 3}
       propertyPath: m_Name
