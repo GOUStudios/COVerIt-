@@ -93,6 +93,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     protected virtual void onHitBehaviour()
     {
         wearsMask = true;
+
+        ClickManager.Instance.onCorrectlyClickInvoke();
         audioSource.PlayOneShot(shot, 0.7f);
         PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
         StartCoroutine(HitCoroutine());
@@ -121,11 +123,12 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             clickCunt++;
             if (!wearsMask && clickCunt >= requiredClicks)
             {
+
                 onHitBehaviour();
             }
             else if (wearsMask)
             {
-
+                ClickManager.Instance.onMissClickInvoke();
                 DodgeHitBehaviour();
 
             }

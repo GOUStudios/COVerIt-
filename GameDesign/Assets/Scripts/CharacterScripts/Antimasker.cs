@@ -30,6 +30,7 @@ public class Antimasker : CustomerMonoBehavior
         }
         else
         {
+            ClickManager.Instance.onMissClickInvoke();
             DodgeHitBehaviour();
         }
 
