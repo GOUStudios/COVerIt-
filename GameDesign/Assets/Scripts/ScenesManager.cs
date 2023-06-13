@@ -46,7 +46,6 @@ public class ScenesManager : MonoBehaviour
     //Scene changer that use a fade black to change
     public void SceneChangerWFade(string sceneName)
     {
-        if (levelIsReady) levelIsReady = false;
 
         StartCoroutine(FadeOutAndLoadScene(sceneName));
     }
@@ -99,9 +98,6 @@ public class ScenesManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-
-       
-        yield return new WaitUntil(() => levelIsReady == true);
 
         while (fadeCanvasGroup.alpha > 0f)
         {
