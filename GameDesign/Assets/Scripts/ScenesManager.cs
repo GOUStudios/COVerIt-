@@ -74,7 +74,7 @@ public class ScenesManager : MonoBehaviour
 
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
-       
+       //Someone has to change this flag when the level loading is completed
         yield return new WaitWhile(() => levelIsReady == false);
 
         while (fadeCanvasGroup.alpha > 0f)
@@ -82,6 +82,13 @@ public class ScenesManager : MonoBehaviour
             FadeToTransparent(fadeCanvasGroup, fadeSpeed);
             yield return null;
         }
+        //At this point of the flow someone has to trigger the "TriggerPlay" in the canvas animation
+        //to start the countdown level, and at his end the timer must start
+
+
+        //Reset level is ready for the next level loading
+
+        levelIsReady = false;
     }
     
     
