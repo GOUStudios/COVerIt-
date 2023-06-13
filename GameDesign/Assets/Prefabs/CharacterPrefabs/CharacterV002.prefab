@@ -2628,7 +2628,7 @@ MonoBehaviour:
   baseSpeed: 3
   currentSpeed: 3
   maxTimeToReachWaypoint: 15
-  clickCunt: 0
+  clickCunt: 1
   requiredClicks: 1
   clickTime: 0
   wearsMask: 0

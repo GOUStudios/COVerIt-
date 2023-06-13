@@ -57,9 +57,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         //TODO if a new behaviour is to be implemented do it here
         //(example, wait in queue. )
 
-        fsm.AddTransition(frozen, moving, () => !isFrozen);
-        fsm.AddTransition(moving, frozen, () => isFrozen);
-
         maskNPC(wearsMask);
         changeSpeed();
         audioSource = GetComponent<AudioSource>();

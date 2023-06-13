@@ -16,7 +16,7 @@ public class ExtraCharacterHitBoxScript : MonoBehaviour, Clickable
             _collider = GetComponent<Collider>();
             if (_collider != null)
             {
-                _collider.enabled = false;
+                Debug.LogWarning("");
             }
             else return;
         }
