@@ -7,7 +7,7 @@ using UnityEngine;
 public class FiniteStateMachine<T>
 {
     private T _owner;
-    private State _currentState;
+    public State _currentState { get; private set; }
     private Dictionary<string, List<Transition>> _transitions = new Dictionary<string, List<Transition>>();
     private List<Transition> _currentTransitions = new List<Transition>();
     public FiniteStateMachine(T owner)

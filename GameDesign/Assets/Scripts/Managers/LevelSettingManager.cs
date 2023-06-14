@@ -134,8 +134,8 @@ public class LevelSettingManager
     {
         if (isReadyToSpawn)
         {
-            // Debug.Log($"Received request to spawn {spawns}, {ObjectUtils.DictionaryToString(UnmaskedSpawns)}");
-            // Debug.Log($"Current pool: {leftSpawnedWM}, {ObjectUtils.DictionaryToString(leftCustomersWithOutMask)}");
+            Debug.Log($"Received request to spawn {spawns}, {ObjectUtils.DictionaryToString(UnmaskedSpawns)}");
+            Debug.Log($"Current pool: {leftSpawnedWM}, {ObjectUtils.DictionaryToString(leftCustomersWithOutMask)}");
             int actualSpawns = leftSpawnedWM > 0 ? Math.Min(leftSpawnedWM, spawns) : 0;
             if (leftSpawnedWM > 0) leftSpawnedWM = Math.Max(0, leftSpawnedWM - spawns);
 

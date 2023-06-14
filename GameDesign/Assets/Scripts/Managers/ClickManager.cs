@@ -9,10 +9,20 @@ public class ClickManager : MonoBehaviour
     public static event ClickAction OnCorrectlyClicked;
     public static event ClickAction OnMissClicked;
 
-    // Start is called before the first frame update
-    void Start()
+    private static ClickManager _instance;
+    public static ClickManager Instance
     {
-
+        get
+        {
+            return _instance;
+        }
+    }
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if (_instance != null && _instance != this) Destroy(this);
+        else if (_instance == null) _instance = this;
+        else { Debug.LogWarning("Could not create instance of ClickManager"); }
     }
 
     // Update is called once per frame
@@ -35,7 +45,7 @@ public class ClickManager : MonoBehaviour
                 {
 
                     clickable.Click(ClickType.LEFT_CLICK);
-                    OnCorrectlyClicked?.Invoke();
+                    //OnCorrectlyClicked?.Invoke(); now invoked from the character
                 }
                 else
                 {
@@ -66,5 +76,14 @@ public class ClickManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void onCorrectlyClickInvoke()
+    {
+        OnCorrectlyClicked?.Invoke();
+    }
+    public void onMissClickInvoke()
+    {
+        OnMissClicked?.Invoke();
     }
 }

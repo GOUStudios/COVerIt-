@@ -24,7 +24,7 @@ public class Waypoint : MonoBehaviour, IWaypoint
     [SerializeField] protected Color connectingColor = Color.red;
     [SerializeField] protected float sphereRadius = 1f;
     [SerializeField] protected Color sphereColor = Color.blue;
-    
+
 
 
 
@@ -50,8 +50,8 @@ public class Waypoint : MonoBehaviour, IWaypoint
         if (possibleNextPoint.Length < 1)
         {
 
-            Debug.LogError("There are no possible destinations");
-            return null;
+            Debug.LogError($"{name} There are no possible destinations");
+            return this;
         }
         else
         {
@@ -114,6 +114,8 @@ public class Waypoint : MonoBehaviour, IWaypoint
         if (IsVisibleOnScreen) npcMover.IncreaseVisibleWaypointsReached(1);
         npcMover.targetWayPoint = getNextWayPoint(npcMover.previousWayPoint);
         npcMover.previousWayPoint = this;
-        npcMover.agent.SetDestination(npcMover.targetWayPoint.transform.position);
+        if (npcMover.targetWayPoint != null)
+            npcMover.agent.SetDestination(npcMover.targetWayPoint.transform.position);
+
     }
 }
