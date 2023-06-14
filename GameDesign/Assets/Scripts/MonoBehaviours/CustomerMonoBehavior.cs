@@ -24,7 +24,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     [SerializeField] protected Animator animator;
     public bool onGoingAnimation { get; private set; }
     [SerializeField] private GameObject _mask;
-    public string defaultLayer { get { return "Default"; } }
+    public string defaultLayer = "Default";
 
     public AudioSource audioSource;
 
@@ -54,11 +54,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
         movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
 
-        State frozen = new Frozen("Frozen", this, animator);
-        State moving = new MovingState("Moving", this, movementManager);
-        //TODO if a new behaviour is to be implemented do it here
-        //(example, wait in queue. )
-
         maskNPC(wearsMask);
         changeSpeed();
         audioSource = GetComponent<AudioSource>();
@@ -66,8 +61,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         //ideal if setting the FSM is the last function. just to make sure the other parameters are set if they are to be changed by the states.
 
         setFSM();
-
-
 
     }
 

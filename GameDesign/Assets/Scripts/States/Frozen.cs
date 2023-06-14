@@ -16,6 +16,7 @@ public class Frozen : State
     {
         VFXManager.Instance.changeLayer(_cmb.gameObject, "ElectricityLayer");
         _cmb.changeSpeed(0f);
+        _cmb.defaultLayer = "ElectricityLayer";
         _animator.SetBool("Tazered", true);
         Debug.Log("Enter frozen");
     }
@@ -24,10 +25,11 @@ public class Frozen : State
 
     public override void Exit()
     {
-
+        _cmb.defaultLayer = "Default";
         VFXManager.Instance.changeLayer(_cmb.gameObject, _cmb.defaultLayer);
         _cmb.changeSpeed();
         _animator.SetBool("Tazered", false);
+        
     }
 
 }
