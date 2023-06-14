@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorMaterialTop 1
+  m_Name: FloorMaterial
   m_Shader: {fileID: -6465566751694194690, guid: af77bbf0c4d2b4049a6605caf71432b3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: d4da4cf07a724f040a2433d7bf00df2e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 82d7e64d0625bdf439ae6d3ff66fb685, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 21386abc37cb3de4ca593a6be40ea2b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,7 +65,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 9858a37bde74301498e66ecd3e7b213f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 038dae50a776c234883f3b8193bc5aab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -77,7 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smoothness:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c5ca91508b7394b4da4f4816ada6f204, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -130,7 +130,7 @@ Material:
     - _Color: {r: 0.745283, g: 0.42176825, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _UV_scale: {r: 0.54, g: 0.29, b: 0, a: 0}
+    - _UV_scale: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6894559784861491196
 MonoBehaviour:
