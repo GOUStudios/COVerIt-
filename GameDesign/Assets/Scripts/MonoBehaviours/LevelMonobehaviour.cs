@@ -9,9 +9,9 @@ public class LevelMonobehaviour : MonoBehaviour
     #region Attributes
     private LevelSettingManager manager = LevelSettingManager.Instance;
     [SerializeField] private TimerManagerMonoBehaviour timerManager;
-    
+
     [SerializeField] int levelTime;
-    [Range(0,1)]
+    [Range(0, 1)]
     [SerializeField] float[] wavePercentages;
     [SerializeField] float waitTime;
 
@@ -24,7 +24,7 @@ public class LevelMonobehaviour : MonoBehaviour
     public GameObject[] unmaskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
     [EnumNamedArray(typeof(CustomerTypes))]
     public GameObject[] maskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
-    
+
     [EnumNamedArray(typeof(CustomerTypes))]
     public float[] maskedPercentages = new float[System.Enum.GetValues(typeof(CustomerTypes)).Length];
 
@@ -39,10 +39,10 @@ public class LevelMonobehaviour : MonoBehaviour
 
     void Start()
     {
-        if(timerManager == null)
+        if (timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
-            if(timerManager == null)
+            if (timerManager == null)
             {
                 timerManager = gameObject.AddComponent<TimerManagerMonoBehaviour>();
             }
@@ -106,6 +106,7 @@ public class LevelMonobehaviour : MonoBehaviour
     {
         Debug.LogError("Start waiting for characters...");
         yield return new WaitForSeconds(duration);
+        PointsManager.Instance.TriggerEvent_ResetPoints();
         timerManager.StartTimer();
         Debug.LogError("Ready to play");
     }
