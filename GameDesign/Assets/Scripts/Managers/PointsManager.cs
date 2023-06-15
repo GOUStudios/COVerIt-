@@ -21,6 +21,7 @@ public class PointsManager : MonoBehaviour
             return instance.currentPoints < 0;
         }
     }
+    public bool isReady;
     public static PointsManager Instance
     {
         get
@@ -35,6 +36,7 @@ public class PointsManager : MonoBehaviour
                     instance.currentPoints = 0;
                     instance.lostPoints = 0;
                     instance.earnedPoints = 0;
+                    instance.isReady = false;
                 }
             }
 
@@ -54,7 +56,9 @@ public class PointsManager : MonoBehaviour
             instance = this;
 
             calculateMaxPoints();
+
         }
+        instance.isReady = true;
     }
     public void TriggerEvent_IncrementPoints(int points)
     {
