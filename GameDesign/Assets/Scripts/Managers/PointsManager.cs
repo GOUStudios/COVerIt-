@@ -6,22 +6,27 @@ public class PointsManager : MonoBehaviour
 {
     private static PointsManager instance;
 
-    private float maxPoints = 0;
-    public float pointsPercentage{ get {
-        if(maxPoints>0)
-            return currentPoints / maxPoints; 
-        else return 0;
+    [ReadOnly][SerializeField] private float maxPoints = 0;
+    public float pointsPercentage
+    {
+        get
+        {
+            if (maxPoints > 0)
+                return currentPoints / maxPoints;
+            else return 0;
         }
     }
     [ReadOnly][SerializeField] private int currentPoints;
     private int lostPoints;
     private int earnedPoints;
-    public bool IsNegative { get
+    public bool IsNegative
+    {
+        get
         {
             return instance.currentPoints < 0;
         }
     }
-    public bool isReady;
+    [ReadOnly] public bool isReady;
     public static PointsManager Instance
     {
         get
@@ -76,16 +81,17 @@ public class PointsManager : MonoBehaviour
         instance.earnedPoints = 0;
     }
 
-    public int GetCurrentPoints{
+    public int GetCurrentPoints
+    {
         get
         {
             return instance.currentPoints;
         }
     }
 
-    private void calculateMaxPoints() {
-
-        maxPoints = LevelSettingManager.Instance.getInitialMaxPoints();
+    private void calculateMaxPoints()
+    {
+        StartCoroutine(gettingMaxPoints());
     }
 
     public float GetMaxPoints()
@@ -102,5 +108,16 @@ public class PointsManager : MonoBehaviour
     {
         return instance.lostPoints;
     }
+
+
+    IEnumerator gettingMaxPoints()
+    {
+        Debug.Log("Waiting for LevelSetting to be ready");
+        yield return new WaitWhile(() => !LevelSettingManager.Instance.instancesAreSet);
+        Debug.Log("getting max points");
+        maxPoints = LevelSettingManager.Instance.getInitialMaxPoints();
+
+    }
+
 
 }

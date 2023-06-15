@@ -39,6 +39,7 @@ public class LevelMonobehaviour : MonoBehaviour
 
     void Start()
     {
+        
         if(timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
@@ -115,4 +116,8 @@ public class LevelMonobehaviour : MonoBehaviour
         Debug.Log("Time's over! Level finished");
         Time.timeScale = 1;
     }
+
+
+    
+
 }

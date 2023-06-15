@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ public class LevelSettingManager
 
     [Range(0, 1)]
     public float[] waveMomentPercentages;
+
+    public bool instancesAreSet { get; private set; }
 
     public static LevelSettingManager Instance
     {
@@ -76,6 +79,7 @@ public class LevelSettingManager
         CustomersToBeSpawnedWM = 0;
         isSpawning = false;
         isReadyToSpawn = false;
+        instancesAreSet = false;
     }
 
     public bool SanityCheck()
@@ -85,6 +89,8 @@ public class LevelSettingManager
                         waveMomentPercentages != null &&
                         CustomersWithOutMask != null &&
                         leftCustomersWithOutMask != null;
+
+        instancesAreSet = isReadyToSpawn;
         return isReadyToSpawn;
     }
 
@@ -160,9 +166,12 @@ public class LevelSettingManager
 
     public float getInitialMaxPoints()
     {
+
+        Debug.Log($"Getting max points: {CustomerUnmaskedPrefabs.Keys.Count} ");
         float maxPoints = 0f;
         CustomerMonoBehavior temp = null;
-        foreach (CustomerTypes type in CustomersWithOutMask.Keys)
+
+        foreach (CustomerTypes type in CustomerUnmaskedPrefabs.Keys)
         {
             temp = CustomerUnmaskedPrefabs[type].GetComponent<CustomerMonoBehavior>();
             if (temp == null)
@@ -171,6 +180,7 @@ public class LevelSettingManager
             }
             else
             {
+                Debug.Log($"Customers {type}: {CustomersWithOutMask[type]} * {temp.pointValue}");
                 maxPoints += (CustomersWithOutMask[type] * temp.pointValue);
             }
         }
