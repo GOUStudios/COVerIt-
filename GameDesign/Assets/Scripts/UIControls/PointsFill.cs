@@ -39,7 +39,7 @@ public class PointsFill : MonoBehaviour
         currentPoints = Mathf.Lerp(currentPoints, Points, lerpSpeed * Time.deltaTime);
 
         //textPoints.text = (currentPoints * pointsManager.GetMaxPoints()).ToString("000");
-        textPoints.text = (currentPoints * 100).ToString("000");
+        textPoints.text = (currentPoints).ToString("F0");
 
         if (Mathf.Approximately(currentPoints, Points))
         {
@@ -54,7 +54,7 @@ public class PointsFill : MonoBehaviour
         LostPoints.value = currentLost;
 
         //textLosts.text = (currentLost ).ToString("000");
-        textLosts.text = ( currentLost * 100).ToString("000");
+        textLosts.text = (currentLost ).ToString("F0");
       
         if (Mathf.Approximately(currentLost, Lost))
         {
@@ -67,7 +67,7 @@ public class PointsFill : MonoBehaviour
         currentTotal = Mathf.Lerp(currentTotal, Total, lerpSpeed * Time.deltaTime);
        
         //textLosts.text = (currentLost * pointsManager.GetMaxPoints()).ToString("000");
-        textTotal.text = (currentTotal ).ToString("000");
+        textTotal.text = (currentTotal ).ToString("F0");
 
         if (Mathf.Approximately(currentTotal, Total))
         {
