@@ -46,7 +46,6 @@ public class ScenesManager : MonoBehaviour
     //Scene changer that use a fade black to change
     public void SceneChangerWFade(string sceneName)
     {
-        if (levelIsReady) levelIsReady = false;
 
         StartCoroutine(FadeOutAndLoadScene(sceneName));
     }
@@ -77,12 +76,20 @@ public class ScenesManager : MonoBehaviour
 
        
         yield return new WaitWhile(() => levelIsReady == false);
+        
 
         while (fadeCanvasGroup.alpha > 0f)
         {
             FadeToTransparent(fadeCanvasGroup, fadeSpeed);
             yield return null;
         }
+        //At this point of the flow someone has to trigger the "TriggerPlay" in the canvas animation
+        //to start the countdown level, and at his end the timer must start
+
+
+        //Reset level is ready for the next level loading
+
+        levelIsReady = false;
     }
     
     
@@ -99,9 +106,6 @@ public class ScenesManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-
-       
-        yield return new WaitUntil(() => levelIsReady == true);
 
         while (fadeCanvasGroup.alpha > 0f)
         {
