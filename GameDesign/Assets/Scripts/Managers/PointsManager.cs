@@ -6,7 +6,7 @@ public class PointsManager : MonoBehaviour
 {
     private static PointsManager instance;
 
-    [ReadOnly][SerializeField] private float maxPoints = 0;
+    [ReadOnly][SerializeField] private float maxPoints = -1;
     public float pointsPercentage
     {
         get
@@ -63,7 +63,7 @@ public class PointsManager : MonoBehaviour
             calculateMaxPoints();
 
         }
-        instance.isReady = true;
+        StartCoroutine(IsReadyChecker());
     }
     public void TriggerEvent_IncrementPoints(int points)
     {
@@ -109,7 +109,12 @@ public class PointsManager : MonoBehaviour
         return instance.lostPoints;
     }
 
-
+    IEnumerator IsReadyChecker()
+    {
+        
+        yield return new WaitWhile(()=> maxPoints<0);
+        isReady = true;
+    }
     IEnumerator gettingMaxPoints()
     {
         Debug.Log("Waiting for LevelSetting to be ready");
