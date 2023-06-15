@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour, IWaypoint
 {
+
+    [SerializeField] bool IsVisibleOnScreen = false;
+
     [Header("Same floor destinations:")]
     [SerializeField] protected Waypoint[] possibleNextPoint;
 
@@ -23,9 +26,11 @@ public class Waypoint : MonoBehaviour, IWaypoint
     [SerializeField] protected Color sphereColor = Color.blue;
 
 
+
+
     void OnDrawGizmos()
     {
-        Gizmos.color = sphereColor;
+        Gizmos.color = IsVisibleOnScreen ? sphereColor : Color.gray;
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
         Gizmos.color = connectingColor;
 
@@ -45,8 +50,8 @@ public class Waypoint : MonoBehaviour, IWaypoint
         if (possibleNextPoint.Length < 1)
         {
 
-            Debug.LogError("There are no possible destinations");
-            return null;
+            Debug.LogError($"{name} There are no possible destinations");
+            return this;
         }
         else
         {
@@ -106,8 +111,11 @@ public class Waypoint : MonoBehaviour, IWaypoint
 
     public virtual void waypointReached(NPCMovementManager npcMover)
     {
+        if (IsVisibleOnScreen) npcMover.IncreaseVisibleWaypointsReached(1);
         npcMover.targetWayPoint = getNextWayPoint(npcMover.previousWayPoint);
         npcMover.previousWayPoint = this;
-        npcMover.agent.SetDestination(npcMover.targetWayPoint.transform.position);
+        if (npcMover.targetWayPoint != null)
+            npcMover.agent.SetDestination(npcMover.targetWayPoint.transform.position);
+
     }
 }

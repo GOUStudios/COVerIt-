@@ -1,138 +1,232 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(NPCMovementManager))]
+[RequireComponent(typeof(AudioSource))]
 public class CustomerMonoBehavior : MonoBehaviour, Clickable
 {
     [SerializeField] public int id;
+    [ReadOnly][SerializeField] private string currentState;
     [SerializeField] public float baseSpeed;
-    [SerializeField] public float currentSpeed;
-    [SerializeField] public int clickCunt = 0;
+    [ReadOnly][SerializeField] public float currentSpeed;
+    [SerializeField] public float maxTimeToReachWaypoint = 15f;
+    [ReadOnly][SerializeField] private int clickCunt = 0;
     [SerializeField] public int requiredClicks = 1;
-    [SerializeField] public int clickTime;
+    [SerializeField] public float clickTime;
     [SerializeField] public bool wearsMask;
     [SerializeField] public int pointValue;
-    [SerializeField] public bool isFrozen = false;
-    [SerializeField] public int frozenTimeCount = 0;
+    [ReadOnly][SerializeField] public bool isFrozen = false;
+    [SerializeField] public float frozenTime = 0f;
+    private TaserManager taserManager = TaserManager.Instance;
+    protected FiniteStateMachine<CustomerMonoBehavior> fsm;
+    [SerializeField] protected NPCMovementManager movementManager;
+    [SerializeField] protected Animator animator;
+    public bool onGoingAnimation { get; private set; }
+    [SerializeField] private GameObject _mask;
+    public string defaultLayer = "Default";
 
-    [SerializeField] public TaserManager taserManager = TaserManager.Instance;
+    public AudioSource audioSource;
 
-    [SerializeField] private FiniteStateMachine<CustomerMonoBehavior> fsm;
+    public AudioClip shot;
+    public AudioClip taser;
+    public AudioClip missHit;
+    public AudioClip cough;
+    public AudioClip HitButNotMasked;
 
-    void Start()
+    void Awake()
     {
-        currentSpeed = baseSpeed;
+        clickCunt = 0;
+        onGoingAnimation = false;
 
-        fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
-
-        State unmasked = new Unmasked("Unmasked", this);
-        State masked = new Masked("Masked", this);
-        State frozen = new Frozen("Frozen", this);
-
-        fsm.AddTransition(unmasked, masked, () => wearsMask);
-        fsm.AddTransition(unmasked, frozen, () => isFrozen);
-        fsm.AddTransition(masked, frozen, () => isFrozen);
-        fsm.AddTransition(frozen, unmasked, () => !isFrozen && !wearsMask);
-        fsm.AddTransition(frozen, masked, () => !isFrozen && wearsMask);
-
-        if(wearsMask){
-            fsm.SetState(masked);
-        }else{
-            fsm.SetState(unmasked);
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+            if (animator == null) Debug.LogError($"Missing Animator component: {name}");
         }
+        if (movementManager == null)
+        {
+            movementManager = GetComponent<NPCMovementManager>();
+            if (movementManager == null) Debug.LogError($"Missing MovementManager component: {name}");
+        }
+        if (_mask == null) _mask = transform.Find("Mask").gameObject;
+        if (_mask == null) { Debug.LogError($"Error finding Mask of: {name}"); }
+        fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
+        movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
+
+        maskNPC(wearsMask);
+        changeSpeed();
+        audioSource = GetComponent<AudioSource>();
+
+        //ideal if setting the FSM is the last function. just to make sure the other parameters are set if they are to be changed by the states.
+
+        setFSM();
+
     }
 
-    void Update() {
-        fsm.Tik();    
+    void Update()
+    {
+        currentState = fsm._currentState.Name;
+        fsm.Tik();
     }
+
+    #region Changing Methods
+    protected virtual void setFSM()
+    {
+
+        State frozen = new Frozen("Frozen", this, animator);
+        State moving = new MovingState("Moving", this, movementManager);
+
+        fsm.AddTransition(frozen, moving, () => !isFrozen);
+        fsm.AddTransition(moving, frozen, () => isFrozen);
+
+        fsm.SetState(moving);
+    }
+    protected virtual void onHitBehaviour()
+    {
+        wearsMask = true;
+
+        ClickManager.Instance.onCorrectlyClickInvoke();
+        audioSource.PlayOneShot(shot, 0.7f);
+        PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
+        StartCoroutine(HitCoroutine());
+        maskNPC();
+    }
+    protected virtual void onFreezeBehaviour()
+    {
+        StartCoroutine(StartFreeze(frozenTime));
+    }
+    protected virtual void DodgeHitBehaviour()
+    {
+        audioSource.PlayOneShot(missHit, 0.7f);
+        PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
+        StartCoroutine(wrongHitCoroutine());
+        StartCoroutine(DoTriggerAnimation("SmallHit"));
+
+    }
+
+    #endregion
 
     public void Click(ClickType clickType)
     {
-        Debug.Log("RIGHT CLICK");
-        if(clickType == ClickType.LEFT_CLICK)
+        onGoingAnimation = false;
+        if (clickType == ClickType.LEFT_CLICK)
         {
             clickCunt++;
-            if (!wearsMask  && clickCunt >= requiredClicks)
+            if (!wearsMask && clickCunt >= requiredClicks)
             {
-                wearsMask = true;
-                PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
+
+                onHitBehaviour();
+            }
+            else if (wearsMask)
+            {
+                ClickManager.Instance.onMissClickInvoke();
+                DodgeHitBehaviour();
+
             }
             else
             {
-                PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
+                audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+                StartCoroutine(HitCoroutine());
             }
         }
-        if(clickType == ClickType.RIGHT_CLICK)
+        if (clickType == ClickType.RIGHT_CLICK)
         {
-            Debug.Log("LEFT CLICK");
-            if(taserManager.useTaser()){
-                StartCoroutine(StartFreeze(3f)); 
+            if (taserManager.useTaser())
+            {
+                onFreezeBehaviour();
             }
         }
-        
-    }
 
-        private IEnumerator StartFreeze(float duration)
+    }
+    private IEnumerator wrongHitCoroutine()
     {
-        if (!isFrozen){
-			isFrozen = true;
+        VFXManager.Instance.changeLayer(gameObject, "WrongHitLayer");
+        audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+        yield return new WaitForSeconds(0.3f);
+        VFXManager.Instance.changeLayer(gameObject, defaultLayer);
+    }
+    private IEnumerator HitCoroutine()
+    {
+        VFXManager.Instance.changeLayer(gameObject, "HitLayer");
+        audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+        yield return new WaitForSeconds(0.3f);
+        VFXManager.Instance.changeLayer(gameObject, defaultLayer);
+    }
+    private IEnumerator StartFreeze(float duration)
+    {
+
+        if (!isFrozen)
+        {
+
+            isFrozen = true;
+            audioSource.loop = true;
+            audioSource.clip = taser;
+            audioSource.volume = 0.7f;
+            audioSource.Play();
             yield return new WaitForSeconds(duration);
+            audioSource.Stop();
+            audioSource.volume = 1f;
+            audioSource.loop = false;
             isFrozen = false;
-            currentSpeed = baseSpeed;
-            Debug.Log("Unfreezed");
         }
     }
-
-    bool hasMask()
+    public void changeSpeed()
     {
-        return true;
+        changeSpeed(baseSpeed);
     }
 
-    private class Unmasked: State{
-        private CustomerMonoBehavior _cmb;
-        public Unmasked(string name, CustomerMonoBehavior cmb) : base(name){
-            _cmb = cmb;
+    public void changeSpeed(float newSpeed)
+    {
+        currentSpeed = newSpeed;
+        animator.SetFloat("Speed", newSpeed);
+        if (newSpeed <= 0.01)
+        {
+            movementManager.agent.isStopped = true;
         }
-
-        public override void Enter(){
-            Debug.Log("Enter unmasked");
+        else
+        {
+            movementManager.agent.isStopped = false;
+            movementManager.agent.speed = newSpeed;
         }
-
-        public override void Tik(){}
-
-        public override void Exit(){}
 
     }
+    public void maskNPC(bool value)
+    {
+        if (value) maskNPC(); else unmaskNPC();
+    }
+    public void maskNPC()
+    {
+        wearsMask = true;
+        _mask.SetActive(true);
+        tag = "Masked";
+        //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
 
-    private class Masked: State{
-        private CustomerMonoBehavior _cmb;
-        public Masked(string name, CustomerMonoBehavior cmb) : base(name){
-            _cmb = cmb;
-        }
-
-        public override void Enter(){
-            Debug.Log("Enter masked");
-        }
-
-        public override void Tik(){}
-
-        public override void Exit(){}
-
+        StartCoroutine(DoTriggerAnimation("GotHit"));
     }
 
-    private class Frozen: State{
-        private CustomerMonoBehavior _cmb;
-        public Frozen(string name,CustomerMonoBehavior cmb) : base(name){
-            _cmb = cmb;
-        }
-
-        public override void Enter(){
-            Debug.Log("Enter frozen");
-        }
-
-        public override void Tik(){}
-
-        public override void Exit(){}
-
+    public void doTriggerAnimation(string name)
+    {
+        StartCoroutine(DoTriggerAnimation(name));
     }
+    protected IEnumerator DoTriggerAnimation(string name)
+    {
+        onGoingAnimation = true;
+        changeSpeed(0);
+        animator.SetTrigger(name);
+        yield return new WaitWhile(() => onGoingAnimation);
+        changeSpeed();
+    }
+    public void animationFinished()
+    {
+        onGoingAnimation = false;
+    }
+    public void unmaskNPC()
+    {
+        tag = "Untagged";
+        wearsMask = false;
+        clickCunt = 0;
+        _mask.SetActive(false);
+    }
+
 }

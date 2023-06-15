@@ -13,9 +13,15 @@ public class PlateHandsUp : MonoBehaviour
 
     private Quaternion initialRotation;
 
+    private ChangeSceneRequest requestManager;
+    //Name of the Scene to load
+    public string sceneName;
+
     private void Start()
     {
         initialRotation = transform.rotation;
+
+        requestManager = GetComponent<ChangeSceneRequest>();
     }
 
     private void Update()
@@ -30,6 +36,9 @@ public class PlateHandsUp : MonoBehaviour
             {
                 Debug.Log("hitted" + hit.collider.name);
                 RotateObjectTowardsCamera();
+
+                CheckClick(hit);
+                    
             }
             else
             {
@@ -39,6 +48,16 @@ public class PlateHandsUp : MonoBehaviour
         else
         {
             ResetObjectRotation();
+        }
+    }
+
+    private void CheckClick(RaycastHit hit)
+    {
+        if (Input.GetMouseButtonDown(0) &&
+                    hit.collider.gameObject.CompareTag("LevelsPlate"))
+        {
+            requestManager.RequestLevel(sceneName);
+            Debug.Log("Plates Clicked " + hit.collider.name);
         }
     }
 

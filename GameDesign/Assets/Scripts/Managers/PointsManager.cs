@@ -63,7 +63,6 @@ public class PointsManager : MonoBehaviour
     public void TriggerEvent_IncrementPoints(int points)
     {
         instance.currentPoints += points;
-        Debug.Log($"Increasing points {points}, now is {instance.currentPoints}");
 
         if (points < 0) instance.lostPoints += points;
         if (points > 0) instance.earnedPoints += points;
@@ -77,8 +76,7 @@ public class PointsManager : MonoBehaviour
         instance.earnedPoints = 0;
     }
 
-    public int GetCurrentPoints
-    {
+    public int GetCurrentPoints{
         get
         {
             return instance.currentPoints;

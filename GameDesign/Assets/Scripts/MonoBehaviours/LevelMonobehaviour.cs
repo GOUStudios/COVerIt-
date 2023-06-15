@@ -113,6 +113,6 @@ public class LevelMonobehaviour : MonoBehaviour
     void OnTimeFinished()
     {
         Debug.Log("Time's over! Level finished");
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 }

@@ -29,7 +29,6 @@ public class TaserMonoBehaviour : MonoBehaviour
 
     private void chargeBattery()
     {
-
         if (taserManager.taserBattery <= taserManager.taserMaxBattery)
         {
             taserManager.taserBattery += taserManager.chargePerSecond;

@@ -27,7 +27,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -47,15 +47,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ElectricityAmount: -5.9
-    - _ElectricityThickness: 0.268
-    - _NoiseScale: 145.8
-    - _PowerMask: 4.73
+    - _ElectricityAmount: 2.8
+    - _ElectricityThickness: 0.417
+    - _NoiseScale: 19.9
+    - _PowerMask: 2.82
     - _QueueControl: 0
-    - _QueueOffset: 0
-    - _SizeOfMask: 2
+    - _QueueOffset: 1
+    - _SizeOfMask: 0.95
     m_Colors:
-    - _Color: {r: 1.5058824, g: 0, b: 128, a: 1}
-    - _ElectricitySpeed: {r: 0.2, g: 0.5, b: 0, a: 0}
-    - _NoiseSpeed2: {r: -0.13, g: -0.23, b: 0, a: 0}
+    - _Color: {r: 2252.8926, g: 2098.7473, b: 0, a: 1}
+    - _ElectricitySpeed: {r: 0.2, g: 2.08, b: 0, a: 0}
+    - _NoiseSpeed2: {r: -0.23, g: -0.23, b: 0, a: 0}
   m_BuildTextureStacks: []
