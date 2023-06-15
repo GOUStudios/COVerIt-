@@ -10,6 +10,7 @@ public class ScenesManager : MonoBehaviour
 
     //levelIsReady is a flag to control the loading progress of the level scene
     public static bool levelIsReady = false;
+    public static bool waitingForLevelReady = true;
     
     private void Awake()
     {
@@ -75,7 +76,9 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
        //Someone has to change this flag when the level loading is completed
+        waitingForLevelReady= true;
         yield return new WaitWhile(() => levelIsReady == false);
+        waitingForLevelReady = false;
 
         while (fadeCanvasGroup.alpha > 0f)
         {

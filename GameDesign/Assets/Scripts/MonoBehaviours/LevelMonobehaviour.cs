@@ -35,10 +35,14 @@ public class LevelMonobehaviour : MonoBehaviour
 
     bool pointsManagerReady = false;
 
+    [SerializeField] private Animator UIanimator;
+
     #endregion
 
     void Start()
     {
+        if (UIanimator == null) Debug.LogWarning("No UI animator Found");
+
         if(timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
@@ -66,6 +70,7 @@ public class LevelMonobehaviour : MonoBehaviour
         if (manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady())
         {
             Debug.Log("All managers are ready");
+            
             StartCoroutine(waitLevel(waitTime));
         }
         else
@@ -105,9 +110,14 @@ public class LevelMonobehaviour : MonoBehaviour
     private IEnumerator waitLevel(float duration)
     {
         Debug.Log("Start waiting for characters...");
-        yield return new WaitForSeconds(duration);
+        ScenesManager.levelIsReady = true;
+        yield return new WaitUntil(() => ScenesManager.waitingForLevelReady);
+        Debug.Log("Ready to do the Countdown");
+        UIanimator.SetTrigger("TriggerPlay");
+        yield return new WaitForSecondsRealtime(5.30f); // Wait for the CountDown animation finish
         timerManager.StartTimer();
         Debug.Log("Ready to play");
+
     }
 
     void OnTimeFinished()
