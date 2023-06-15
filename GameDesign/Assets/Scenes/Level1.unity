@@ -1573,6 +1573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+--- !u!95 &1572403444 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1527159066423953649, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+  m_PrefabInstance: {fileID: 1572403443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1586219278 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4822816787825680126, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
@@ -1836,6 +1841,10 @@ PrefabInstance:
       propertyPath: levelTime
       value: 159
       objectReference: {fileID: 0}
+    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: UIanimator
+      value: 
+      objectReference: {fileID: 1572403444}
     - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: maskedCustomers
       value: 40
