@@ -54,7 +54,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         fsm = new FiniteStateMachine<CustomerMonoBehavior>(this);
         movementManager.MaxTimeToReachTarget = maxTimeToReachWaypoint;
 
-        maskNPC(wearsMask);
+        if (wearsMask) maskNPC(false); else unmaskNPC();
+
         changeSpeed();
         audioSource = GetComponent<AudioSource>();
 
@@ -191,19 +192,22 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         }
 
     }
-    public void maskNPC(bool value)
-    {
-        if (value) maskNPC(); else unmaskNPC();
-    }
-    public void maskNPC()
+
+    public void maskNPC(bool playAnimation)
     {
         wearsMask = true;
         _mask.SetActive(true);
         tag = "Masked";
         //TODO determine from which side. -> probably has to be done by the clicking , manager. -> for now default hit is set
-
-        StartCoroutine(DoTriggerAnimation("GotHit"));
+        if (playAnimation)
+            StartCoroutine(DoTriggerAnimation("GotHit"));
     }
+    public void maskNPC()
+    {
+        maskNPC(true);
+    }
+
+
 
     public void doTriggerAnimation(string name)
     {
