@@ -642,6 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 5846908172797615232}
+  hitSide: 2
 --- !u!1 &974234538842151789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,6 +2639,7 @@ MonoBehaviour:
   movementManager: {fileID: 5146937234786379669}
   animator: {fileID: 8581521589901457097}
   _mask: {fileID: 3433491166404937223}
+  defaultLayer: Default
   audioSource: {fileID: 4736574958765445734}
   shot: {fileID: 8300000, guid: 37d0243ceb9c848479780b55d7e224a4, type: 3}
   taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
@@ -4815,6 +4817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 5846908172797615232}
+  hitSide: 1
 --- !u!1 &7538418023397860094
 GameObject:
   m_ObjectHideFlags: 0
@@ -5451,6 +5454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 5846908172797615232}
+  hitSide: 1
 --- !u!1 &8487657092836664567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5641,6 +5645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 5846908172797615232}
+  hitSide: 2
 --- !u!1 &8525144978790059350
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class ExtraCharacterHitBoxScript : MonoBehaviour, Clickable
 {
 
     [SerializeField] CustomerMonoBehavior parent;
+    [SerializeField] HitSide hitSide;
     private Collider _collider;
     void Awake()
     {
@@ -24,7 +25,9 @@ public class ExtraCharacterHitBoxScript : MonoBehaviour, Clickable
 
     public void Click(ClickType clickType)
     {
-        
+        if (parent == null) return;
+
+        parent.setHitSide(hitSide);
         parent.Click(clickType);
     }
 }

@@ -205,6 +205,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         StartCoroutine(DoTriggerAnimation("GotHit"));
     }
 
+    public void setHitSide(HitSide side)
+    {
+        animator.SetFloat("HitSide", ((float)side));
+    }
+
     public void doTriggerAnimation(string name)
     {
         StartCoroutine(DoTriggerAnimation(name));
