@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class CustomerMonoBehavior : MonoBehaviour, Clickable
 {
-    [SerializeField] public int id;
+    [SerializeField] public CustomerTypes type;
     [ReadOnly][SerializeField] private string currentState;
     [SerializeField] public float baseSpeed;
     [ReadOnly][SerializeField] public float currentSpeed;

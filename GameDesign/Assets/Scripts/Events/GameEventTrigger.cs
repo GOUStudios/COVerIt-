@@ -10,14 +10,14 @@ public abstract class GameEventTrigger : MonoBehaviour
     [SerializeField] private GameEvent m_event;
     private bool m_hasGameEvent = true;
 
-    protected abstract bool EventTriggerCondition();
+    protected abstract bool EventTriggerCondition(Collider other);
 
     public void OnTriggerEnter(Collider other)
     {
         if (!m_hasGameEvent) return;
         if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
 
-        if(EventTriggerCondition())
+        if(EventTriggerCondition(other))
             m_event.Raise();
 
     }

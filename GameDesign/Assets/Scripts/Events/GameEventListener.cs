@@ -12,6 +12,7 @@ public class GameEventListener : MonoBehaviour, IEventListener
     [Tooltip("Response to invoke when Event is raised.")]
     [SerializeField] private UnityEvent response;
 
+
     void OnEnable()
     {
         if (@event != null) @event.RegisterListener(this);
@@ -22,8 +23,9 @@ public class GameEventListener : MonoBehaviour, IEventListener
         if (@event != null) @event.UnregisterListener(this);
     }
 
-    public void OnEventRaised()
+    public virtual void OnEventRaised()
     {
         response?.Invoke();
     }
+
 }

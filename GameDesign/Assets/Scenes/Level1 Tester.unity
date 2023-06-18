@@ -657,10 +657,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2110498344}
-        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: popUp
-        m_Mode: 6
+      - m_Target: {fileID: 1381576889}
+        m_TargetAssemblyTypeName: TutorialCanvasHandler, Assembly-CSharp
+        m_MethodName: HideCanvas
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1539,6 +1539,8 @@ GameObject:
   - component: {fileID: 1381576886}
   - component: {fileID: 1381576885}
   - component: {fileID: 1381576888}
+  - component: {fileID: 1381576890}
+  - component: {fileID: 1381576889}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1649,6 +1651,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1381576889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381576883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cba65b832e3ca4383b7f61f8a1ffc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1381576888}
+--- !u!114 &1381576890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381576883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9502f3bad5756f642bbdaf0f400c46c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: 148d1f729db3d524b9619ec4a31fb3f5, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1381576889}
+        m_TargetAssemblyTypeName: TutorialCanvasHandler, Assembly-CSharp
+        m_MethodName: PopUpCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DescriptionToSet: 'Here we set the first description of how a tutorial should look
+    like
+
+    we are going to see if this manages to showcase what we want form a
+    tutorial description'
+  TextMeshProUGUI: {fileID: 1049725775}
 --- !u!1 &1387740153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1527159066670951675, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
@@ -2304,11 +2353,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2110498343}
-  - component: {fileID: 2110498344}
   - component: {fileID: 2110498346}
   - component: {fileID: 2110498345}
   m_Layer: 0
-  m_Name: TutorialEvent
+  m_Name: EventManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2330,22 +2378,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2110498344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110498342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27f93a07327ee96498cd0b1d963a9b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextMeshProUGUI: {fileID: 1049725775}
-  text: Default text.
-  UIIsShown: 0
-  animator: {fileID: 1381576888}
 --- !u!65 &2110498345
 BoxCollider:
   m_ObjectHideFlags: 0

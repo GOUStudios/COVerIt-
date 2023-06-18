@@ -14,14 +14,14 @@ public class CodedGameEventListener : IEventListener
         m_onResponse?.Invoke();
     }
 
-    void OnEnable(Action response)
+    public void OnEnable(Action response)
     {
-        if(@event!= null)@event.RegisterListener(this);
+        if (@event != null) @event.RegisterListener(this);
         m_onResponse = response;
     }
     void OnDisable()
     {
-        if(@event!=null)@event.UnregisterListener(this);
+        if (@event != null) @event.UnregisterListener(this);
         m_onResponse = null;
     }
 }
