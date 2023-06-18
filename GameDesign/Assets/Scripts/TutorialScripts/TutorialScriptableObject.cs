@@ -5,13 +5,15 @@ using UnityEngine;
 
 
 
-public abstract class TutorialScriptableObject : ScriptableObject
+public class TutorialScriptableObject : ScriptableObject
 {
     [TextAreaAttribute] public string ExplanationText = "DefaultTrialText";
 
-    
+    public TimedEvent[] tutorialEventList;
     public Func<bool> tutorialActivationCondition;
 
-    public abstract void tutorialProcedure();
+    public virtual void tutorialProcedure() { 
+        
+    }
 
 }
