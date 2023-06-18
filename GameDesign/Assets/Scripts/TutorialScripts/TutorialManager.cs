@@ -29,17 +29,22 @@ public class TutorialManager : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log($"Character {other.name} entered the scene");
+        StartCoroutine(CheckTutorials());
+    }
+
+
+    private IEnumerator CheckTutorials()
+    {
+
         foreach (TutorialScriptableObject tutorial in levelTutorials)
         {
             if (tutorial.tutorialActivationCondition())
             {
-                tutorial.tutorialProcedure();
+                StartCoroutine(tutorial.tutorialProcedure());
+                yield return new WaitUntil(() => !tutorial.isOnGoing);
             }
         }
     }
-
-
-
     public void doTutorial()
     {
 
