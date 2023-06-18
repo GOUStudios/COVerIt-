@@ -17,8 +17,11 @@ public abstract class GameEventTrigger : MonoBehaviour
         if (!m_hasGameEvent) return;
         if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
 
-        if(EventTriggerCondition(other))
+        if (EventTriggerCondition(other)) { 
             m_event.Raise();
+            m_hasGameEventBeenTriggered = true;
+        }
+        
 
     }
 }

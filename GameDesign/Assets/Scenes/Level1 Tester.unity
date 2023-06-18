@@ -1541,6 +1541,7 @@ GameObject:
   - component: {fileID: 1381576888}
   - component: {fileID: 1381576890}
   - component: {fileID: 1381576889}
+  - component: {fileID: 1381576891}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1676,7 +1677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9502f3bad5756f642bbdaf0f400c46c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 148d1f729db3d524b9619ec4a31fb3f5, type: 2}
+  event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -1697,6 +1698,37 @@ MonoBehaviour:
 
     we are going to see if this manages to showcase what we want form a
     tutorial description'
+  TextMeshProUGUI: {fileID: 1049725775}
+--- !u!114 &1381576891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381576883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9502f3bad5756f642bbdaf0f400c46c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: a6a55e20035209344a85dcb45bba5cac, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1381576889}
+        m_TargetAssemblyTypeName: TutorialCanvasHandler, Assembly-CSharp
+        m_MethodName: PopUpCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DescriptionToSet: "This is a second \nGameEvent listener \nAction to do the pop
+    up we want to do"
   TextMeshProUGUI: {fileID: 1049725775}
 --- !u!1 &1387740153 stripped
 GameObject:
@@ -2355,6 +2387,8 @@ GameObject:
   - component: {fileID: 2110498343}
   - component: {fileID: 2110498346}
   - component: {fileID: 2110498345}
+  - component: {fileID: 2110498348}
+  - component: {fileID: 2110498347}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -2404,6 +2438,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 19.936863, y: 4.210427, z: 20.48272}
   m_Center: {x: -0.54981613, y: 1.6052136, z: -0.6292877}
+--- !u!114 &2110498347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110498342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d04dcdd9602c5b4eb07a5ec755440ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerOnce: 1
+  m_event: {fileID: 11400000, guid: a6a55e20035209344a85dcb45bba5cac, type: 2}
+  CustomerTypeToCheck: 1
+--- !u!114 &2110498348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110498342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d04dcdd9602c5b4eb07a5ec755440ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerOnce: 1
+  m_event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
+  CustomerTypeToCheck: 3
 --- !u!1001 &8433276083259680677
 PrefabInstance:
   m_ObjectHideFlags: 0
