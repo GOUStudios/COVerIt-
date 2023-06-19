@@ -11,7 +11,7 @@ public abstract class GameEventTrigger : MonoBehaviour
     private bool m_hasGameEvent = true;
 
     protected abstract bool EventTriggerCondition(Collider other);
-
+    protected abstract bool EventTriggerCondition();
 
     public void OnTriggerEnter(Collider other)
     {
@@ -25,8 +25,23 @@ public abstract class GameEventTrigger : MonoBehaviour
             m_hasGameEventBeenTriggered = true;
         }
 
+    }
+
+    public void TriggerEventViaCode()
+    {
+
+        if (!m_hasGameEvent) return;
+        if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
+
+        if (EventTriggerCondition())
+        {
+            m_event.Raise();
+            m_hasGameEventBeenTriggered = true;
+        }
 
     }
+
+
     public void OnTriggerExit(Collider other)
     {
         if (m_useEnterinOrExiting) return;

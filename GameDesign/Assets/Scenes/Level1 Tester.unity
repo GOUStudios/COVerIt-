@@ -1614,9 +1614,10 @@ GameObject:
   - component: {fileID: 1381576886}
   - component: {fileID: 1381576885}
   - component: {fileID: 1381576888}
-  - component: {fileID: 1381576890}
   - component: {fileID: 1381576889}
+  - component: {fileID: 1381576890}
   - component: {fileID: 1381576891}
+  - component: {fileID: 1381576892}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1792,9 +1793,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  DescriptionToSet: " <indent=30%> Some customers are less attentive to our requests,\n
-    they may \n<indent=25%>require you  to \n<indent=0%>\"Ask\" them multiple times
-    to put on a mask."
+  DescriptionToSet: " <indent=30%> Some customers are less attentive to our requests,\nthey
+    may \n<indent=25%>require you  to \n<indent=0%>\"Ask\" them multiple times to
+    put on a mask."
   TextMeshProUGUI: {fileID: 1049725775}
 --- !u!114 &1381576891
 MonoBehaviour:
@@ -1852,6 +1853,25 @@ MonoBehaviour:
     are trick, whenever we try to put a mask on them they somehow manage to dodge
     us. \nWe have noticed that its easier to deal with them after a little \n\"Electro\"
     therapy"
+  TextMeshProUGUI: {fileID: 1049725775}
+--- !u!114 &1381576892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381576883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9502f3bad5756f642bbdaf0f400c46c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: 5ad328ae15f5fcf41b3c2944ac22f56e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+  DescriptionToSet: "Your boss is angry! \nTry to mask people to make him happy.\nif
+    you miss too much he may decide to fire you."
   TextMeshProUGUI: {fileID: 1049725775}
 --- !u!1 &1387740153 stripped
 GameObject:
@@ -2649,6 +2669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
+  m_useEnterinOrExiting: 0
   m_event: {fileID: 11400000, guid: a6a55e20035209344a85dcb45bba5cac, type: 2}
   CustomerTypeToCheck: 1
 --- !u!114 &2110498348
@@ -2664,6 +2685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
+  m_useEnterinOrExiting: 0
   m_event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
   CustomerTypeToCheck: 3
 --- !u!65 &2110498349
@@ -3117,3 +3139,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+--- !u!1 &8433276083259680678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8224852877104991727, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+  m_PrefabInstance: {fileID: 8433276083259680677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8433276083259680679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433276083259680678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3032d91aa95e94499a46a314915541b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerOnce: 1
+  m_useEnterinOrExiting: 0
+  m_event: {fileID: 11400000, guid: 5ad328ae15f5fcf41b3c2944ac22f56e, type: 2}

@@ -10,9 +10,14 @@ public class GameEventTriggerOnCustomerFirstTime : GameEventTrigger
 
     protected override bool EventTriggerCondition(Collider other)
     {
-        CustomerMonoBehavior C= other.GetComponent<CustomerMonoBehavior>();
-        if(C!=null && C.type== CustomerTypeToCheck)return true;
+        if (other == null) return false;
+        CustomerMonoBehavior C = other.GetComponent<CustomerMonoBehavior>();
+        if (C != null && C.type == CustomerTypeToCheck) return true;
         return false;
     }
 
+    protected override bool EventTriggerCondition()
+    {
+        return EventTriggerCondition(null);
+    }
 }
