@@ -1973,6 +1973,9 @@ MonoBehaviour:
     others. They may require you to \n<indent=5%>\"ask\" them multiple times to put
     on a mask."
   TextMeshProUGUI: {fileID: 1049725775}
+  isUsingTutorialCanvas: 1
+  canvasHandler: {fileID: 1381576889}
+  hasBeenCalled: 0
 --- !u!114 &1381576891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,6 +2057,9 @@ MonoBehaviour:
     dodge us. \nWe have noticed that it's easier to deal with them after a little
     \"Electro\" therapy."
   TextMeshProUGUI: {fileID: 1049725775}
+  isUsingTutorialCanvas: 1
+  canvasHandler: {fileID: 1381576889}
+  hasBeenCalled: 0
 --- !u!114 &1381576892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2133,6 +2139,9 @@ MonoBehaviour:
   DescriptionToSet: "Your boss is angry! \nTry to mask people to make him happy.\nif
     you miss too much he may decide to fire you."
   TextMeshProUGUI: {fileID: 1049725775}
+  isUsingTutorialCanvas: 1
+  canvasHandler: {fileID: 1381576889}
+  hasBeenCalled: 0
 --- !u!114 &1381576893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,6 +2225,9 @@ MonoBehaviour:
 
 '
   TextMeshProUGUI: {fileID: 1049725775}
+  isUsingTutorialCanvas: 1
+  canvasHandler: {fileID: 1381576889}
+  hasBeenCalled: 0
 --- !u!1 &1387740153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1527159066670951675, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
@@ -3091,7 +3103,7 @@ MonoBehaviour:
   m_TriggerOnce: 1
   m_useEnterinOrExiting: 1
   m_event: {fileID: 11400000, guid: b9b09543647d99e4e937466d36ff291c, type: 2}
-  CustomerTypeToCheck: 2
+  CustomerTypeToCheck: 0
   onlyForUnmakedCustomer: 1
 --- !u!1001 &8433276083259680677
 PrefabInstance:
