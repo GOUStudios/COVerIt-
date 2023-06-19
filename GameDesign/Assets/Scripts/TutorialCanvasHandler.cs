@@ -9,7 +9,9 @@ public class TutorialCanvasHandler : MonoBehaviour
 
     public void PopUpCanvas()
     {
+
         animator.SetBool("isShown", true);
+
     }
     public void HideCanvas()
     {
