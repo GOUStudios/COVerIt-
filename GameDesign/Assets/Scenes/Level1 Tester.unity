@@ -333,6 +333,152 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d534a1b9c758a42b4d906efccfe555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &348571681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 348571682}
+  - component: {fileID: 348571684}
+  - component: {fileID: 348571683}
+  m_Layer: 0
+  m_Name: Runner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &348571682
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348571681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.4938, y: 2.4938, z: 2.4938}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 558861761}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -48.1, y: 125.5}
+  m_SizeDelta: {x: 170.9216, y: 95.1754}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &348571683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348571681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 71.03, y: 0, z: 51.41, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 5b0203e42553ae84fbbbd81993acbdab, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &348571684
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348571681}
+  m_CullTransparentMesh: 1
+--- !u!1 &355351125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355351126}
+  - component: {fileID: 355351128}
+  - component: {fileID: 355351127}
+  m_Layer: 0
+  m_Name: RegularGuy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &355351126
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355351125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4136603, y: 1.4136603, z: 1.4136603}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 558861761}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -300.2, y: 60.2}
+  m_SizeDelta: {x: 170.9216, y: 95.1754}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &355351127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355351125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 49a7c3734f912a34191f4311911fa3ce, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &355351128
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355351125}
+  m_CullTransparentMesh: 1
 --- !u!1 &365606580
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,10 +553,12 @@ RectTransform:
   m_LocalScale: {x: 0.9797816, y: 0.9797816, z: 0.9797816}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1049725774}
-  - {fileID: 869619592}
   - {fileID: 1176928354}
   - {fileID: 1412619782}
+  - {fileID: 355351126}
+  - {fileID: 348571682}
+  - {fileID: 1049725774}
+  - {fileID: 869619592}
   m_Father: {fileID: 1381576884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -608,7 +756,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 558861761}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1253,11 +1401,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 558861761}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: 98}
+  m_AnchoredPosition: {x: -13.4, y: 98}
   m_SizeDelta: {x: -98, y: -214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049725775
@@ -1280,9 +1428,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Default trial textDefault trial textDefault trial textDefault trial textDefault
-    trial textDefault trial textDefault trial textDefault trial textDefault trial
-    tex tDefault trial text Default trial text Default trial text
+  m_text: 'Welcome to G.O.U Mall
+
+    We hired you to make sure all our customers
+    obey the regulations that have been set to combat the Cov-It  pandemic.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfa3dc311682cab43910b9bfa5cf582d, type: 2}
   m_sharedMaterial: {fileID: 885923831895967346, guid: cfa3dc311682cab43910b9bfa5cf582d, type: 2}
@@ -1309,17 +1458,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 328.9
+  m_fontSize: 400
   m_fontSizeBase: 490.47
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 200
   m_fontSizeMax: 400
-  m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 2.1
+  m_characterSpacing: 5.16
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1345,7 +1494,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2040.5486, y: -401.7952, z: -1997.282, w: -3157.2566}
+  m_margin: {x: -2040.5486, y: -217.15903, z: -1997.282, w: -3366.5103}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1528,11 +1677,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 558861761}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -51.899994, y: 19.1}
+  m_AnchoredPosition: {x: -49.1, y: 26.8}
   m_SizeDelta: {x: 170.9216, y: 95.1754}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1176928355
@@ -1549,8 +1698,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 63.54, y: 20.22, z: 58.15, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1620,6 +1769,7 @@ GameObject:
   - component: {fileID: 1381576890}
   - component: {fileID: 1381576891}
   - component: {fileID: 1381576892}
+  - component: {fileID: 1381576893}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1795,6 +1945,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 355351125}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 348571681}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   DescriptionToSet: " <indent=30%> Some customers are less attentive to our requests,\nthan
     others. They may require you to \n<indent=5%>\"ask\" them multiple times to put
     on a mask."
@@ -1840,6 +2014,30 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1412619781}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 348571681}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 355351125}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1908,8 +2106,115 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 348571681}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 355351125}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   DescriptionToSet: "Your boss is angry! \nTry to mask people to make him happy.\nif
     you miss too much he may decide to fire you."
+  TextMeshProUGUI: {fileID: 1049725775}
+--- !u!114 &1381576893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381576883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9502f3bad5756f642bbdaf0f400c46c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: b9b09543647d99e4e937466d36ff291c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1381576889}
+        m_TargetAssemblyTypeName: TutorialCanvasHandler, Assembly-CSharp
+        m_MethodName: PopUpCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1176928353}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1412619781}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 355351125}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 348571681}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  DescriptionToSet: 'Welcome to G.O.U Mall
+
+    We hired you to make sure all our
+    customers obey the regulations that have been set to combat the Cov-It  pandemic.
+
+'
   TextMeshProUGUI: {fileID: 1049725775}
 --- !u!1 &1387740153 stripped
 GameObject:
@@ -1968,11 +2273,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 558861761}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -286.6, y: 201.3}
+  m_AnchoredPosition: {x: -300.8, y: 194.2}
   m_SizeDelta: {x: 170.9216, y: 95.1754}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1412619783
@@ -1989,7 +2294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2646,6 +2951,7 @@ GameObject:
   - component: {fileID: 2110498348}
   - component: {fileID: 2110498347}
   - component: {fileID: 2110498351}
+  - component: {fileID: 2110498352}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -2711,6 +3017,7 @@ MonoBehaviour:
   m_useEnterinOrExiting: 0
   m_event: {fileID: 11400000, guid: a6a55e20035209344a85dcb45bba5cac, type: 2}
   CustomerTypeToCheck: 1
+  onlyForUnmakedCustomer: 1
 --- !u!114 &2110498348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2727,6 +3034,7 @@ MonoBehaviour:
   m_useEnterinOrExiting: 0
   m_event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
   CustomerTypeToCheck: 3
+  onlyForUnmakedCustomer: 1
 --- !u!65 &2110498349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2768,6 +3076,23 @@ MonoBehaviour:
   m_TriggerOnce: 1
   m_useEnterinOrExiting: 0
   m_event: {fileID: 11400000, guid: 5ad328ae15f5fcf41b3c2944ac22f56e, type: 2}
+--- !u!114 &2110498352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110498342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d04dcdd9602c5b4eb07a5ec755440ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerOnce: 1
+  m_useEnterinOrExiting: 1
+  m_event: {fileID: 11400000, guid: b9b09543647d99e4e937466d36ff291c, type: 2}
+  CustomerTypeToCheck: 2
+  onlyForUnmakedCustomer: 1
 --- !u!1001 &8433276083259680677
 PrefabInstance:
   m_ObjectHideFlags: 0

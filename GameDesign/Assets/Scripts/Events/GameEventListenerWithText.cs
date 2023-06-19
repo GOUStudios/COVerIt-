@@ -9,6 +9,10 @@ public class GameEventListenerWithText : GameEventListener
     [TextAreaAttribute]
     [SerializeField] string DescriptionToSet;
     [SerializeField] TextMeshProUGUI TextMeshProUGUI;
+    [SerializeField] bool isUsingTutorialCanvas = true;
+    [SerializeField] TutorialCanvasHandler canvasHandler;
+
+    [ReadOnly]public bool hasBeenCalled = false;
 
     void Awake()
     {
@@ -17,7 +21,20 @@ public class GameEventListenerWithText : GameEventListener
 
     public override void OnEventRaised()
     {
+        if (canvasHandler != null && isUsingTutorialCanvas)
+            StartCoroutine(WaitForTutorialCanvas());
+        else raiseEvent();
+    }
+    private void raiseEvent()
+    {
         TextMeshProUGUI.text = DescriptionToSet;
         base.OnEventRaised();
+    }
+    IEnumerator WaitForTutorialCanvas()
+    {
+        hasBeenCalled = false;
+        canvasHandler.addEventToQueue(this);
+        yield return new WaitUntil(() => hasBeenCalled);
+        raiseEvent();
     }
 }

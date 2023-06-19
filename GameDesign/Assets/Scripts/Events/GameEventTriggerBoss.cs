@@ -12,12 +12,10 @@ public class GameEventTriggerBoss : GameEventTrigger
         ClickManager.OnMissClicked += TriggerEventViaCode;
 
     }
-    
+
     void OnDestroy()
     {
         ClickManager.OnMissClicked -= TriggerEventViaCode;
     }
-    protected override bool EventTriggerCondition(Collider other) => EventTriggerCondition();
-
-    protected override bool EventTriggerCondition() => m_BA_instance.isAngry;
+    protected override bool EventTriggerCondition(Collider other) => m_BA_instance.isAngry;
 }

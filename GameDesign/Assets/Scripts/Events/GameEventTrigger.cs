@@ -11,7 +11,9 @@ public abstract class GameEventTrigger : MonoBehaviour
     private bool m_hasGameEvent = true;
 
     protected abstract bool EventTriggerCondition(Collider other);
-    protected abstract bool EventTriggerCondition();
+    protected virtual bool EventTriggerCondition() {
+        return EventTriggerCondition(null);
+    }
 
     public void OnTriggerEnter(Collider other)
     {
