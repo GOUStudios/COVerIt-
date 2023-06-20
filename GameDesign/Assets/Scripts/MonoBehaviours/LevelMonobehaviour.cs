@@ -33,8 +33,6 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
 
-    bool pointsManagerReady = false;
-
     [SerializeField] private Animator UIanimator;
 
     #endregion

@@ -46,16 +46,6 @@ public class LevelSettingManager
 
     #region Events
 
-    public delegate void OnSpawn(int spawnerID, int masked, Dictionary<CustomerTypes, int> unmasked);
-
-    /*
-    * DO NOT Directly invoke spawn, it should do a pull request of the level manager
-    * then the level manager will trigger the event and tell which spawner to spawn.
-    */
-    public event OnSpawn Spawn;
-
-
-
     public (int, Dictionary<CustomerTypes, int>) RequestSpawn(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {
         //TODO Define where we want to decide the amount of people to be spawned, in the spawner or the level manager
@@ -180,7 +170,6 @@ public class LevelSettingManager
             }
             else
             {
-                Debug.Log($"Customers {type}: {CustomersWithOutMask[type]} * {temp.pointValue}");
                 maxPoints += (CustomersWithOutMask[type] * temp.pointValue);
             }
         }
