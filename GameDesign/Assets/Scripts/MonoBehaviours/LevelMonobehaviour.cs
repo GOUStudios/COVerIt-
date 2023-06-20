@@ -44,7 +44,8 @@ public class LevelMonobehaviour : MonoBehaviour
         TimeHasStarted = false;
         if (UIanimator == null) Debug.LogWarning("No UI animator Found");
 
-        if (timerManager == null)
+
+        if(timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
             if (timerManager == null)
@@ -68,16 +69,8 @@ public class LevelMonobehaviour : MonoBehaviour
         manager.SetWaves(wavePercentages);
 
 
-        if (manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady())
-        {
-            Debug.Log("All managers are ready");
 
-            StartCoroutine(waitLevel(waitTime));
-        }
-        else
-        {
-            Debug.LogError("Something went wrong will creating level instance, sanity check failed");
-        }
+        StartCoroutine(StartLevel());
 
     }
 
@@ -128,6 +121,14 @@ public class LevelMonobehaviour : MonoBehaviour
 
     }
 
+    IEnumerator StartLevel()
+    {
+        Debug.Log("Waiting to start the level");
+        yield return new WaitUntil(() => manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady());
+        Debug.Log("All managers are ready");
+        StartCoroutine(waitLevel(waitTime));
+        
+    }
     void OnTimeFinished()
     {
         Debug.Log("Time's over! Level finished");
