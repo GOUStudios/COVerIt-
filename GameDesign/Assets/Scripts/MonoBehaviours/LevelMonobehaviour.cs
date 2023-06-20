@@ -9,9 +9,9 @@ public class LevelMonobehaviour : MonoBehaviour
     #region Attributes
     private LevelSettingManager manager = LevelSettingManager.Instance;
     [SerializeField] private TimerManagerMonoBehaviour timerManager;
-    
+
     [SerializeField] int levelTime;
-    [Range(0,1)]
+    [Range(0, 1)]
     [SerializeField] float[] wavePercentages;
     [SerializeField] float waitTime;
 
@@ -24,7 +24,7 @@ public class LevelMonobehaviour : MonoBehaviour
     public GameObject[] unmaskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
     [EnumNamedArray(typeof(CustomerTypes))]
     public GameObject[] maskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
-    
+
     [EnumNamedArray(typeof(CustomerTypes))]
     public float[] maskedPercentages = new float[System.Enum.GetValues(typeof(CustomerTypes)).Length];
 
@@ -35,15 +35,21 @@ public class LevelMonobehaviour : MonoBehaviour
 
     bool pointsManagerReady = false;
 
+    [SerializeField] private Animator UIanimator;
+
     #endregion
 
     void Start()
     {
-        
+
+        if (UIanimator == null) Debug.LogWarning("No UI animator Found");
+
+
         if(timerManager == null)
+
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
-            if(timerManager == null)
+            if (timerManager == null)
             {
                 timerManager = gameObject.AddComponent<TimerManagerMonoBehaviour>();
             }
@@ -64,15 +70,7 @@ public class LevelMonobehaviour : MonoBehaviour
         manager.SetWaves(wavePercentages);
 
 
-        if (manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady())
-        {
-            Debug.Log("All managers are ready");
-            StartCoroutine(waitLevel(waitTime));
-        }
-        else
-        {
-            Debug.LogError("Something went wrong will creating level instance, sanity check failed");
-        }
+        StartCoroutine(StartLevel());
 
     }
 
@@ -106,11 +104,31 @@ public class LevelMonobehaviour : MonoBehaviour
     private IEnumerator waitLevel(float duration)
     {
         Debug.Log("Start waiting for characters...");
+        
         yield return new WaitForSeconds(duration);
+
+        ScenesManager.levelIsReady = true;
+        
+        Debug.Log("Ready to do the Countdown");
+
+        UIanimator.SetTrigger("TriggerPlay");
+        
+        yield return new WaitForSecondsRealtime(5.30f); // Wait for the CountDown animation finish
+        
         timerManager.StartTimer();
+        
         Debug.Log("Ready to play");
+
     }
 
+    IEnumerator StartLevel()
+    {
+        Debug.Log("Waiting to start the level");
+        yield return new WaitUntil(() => manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady());
+        Debug.Log("All managers are ready");
+        StartCoroutine(waitLevel(waitTime));
+        
+    }
     void OnTimeFinished()
     {
         Debug.Log("Time's over! Level finished");

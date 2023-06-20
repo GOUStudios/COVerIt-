@@ -13,6 +13,8 @@ public class PlateHandsUp : MonoBehaviour
 
     private Quaternion initialRotation;
 
+    private AudioSource clickSound;
+
     private ChangeSceneRequest requestManager;
     //Name of the Scene to load
     public string sceneName;
@@ -22,6 +24,8 @@ public class PlateHandsUp : MonoBehaviour
         initialRotation = transform.rotation;
 
         requestManager = GetComponent<ChangeSceneRequest>();
+
+        clickSound= GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -56,6 +60,8 @@ public class PlateHandsUp : MonoBehaviour
         if (Input.GetMouseButtonDown(0) &&
                     hit.collider.gameObject.CompareTag("LevelsPlate"))
         {
+            if(clickSound!= null) clickSound.Play();
+
             requestManager.RequestLevel(sceneName);
             Debug.Log("Plates Clicked " + hit.collider.name);
         }
