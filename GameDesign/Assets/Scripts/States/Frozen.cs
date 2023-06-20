@@ -21,7 +21,11 @@ public class Frozen : State
         Debug.Log("Enter frozen");
     }
 
-    public override void Tik() { }
+    public override void Tik()
+    {
+        if(_cmb.currentSpeed!=0)
+            _cmb.changeSpeed(0f);
+    }
 
     public override void Exit()
     {
@@ -29,7 +33,7 @@ public class Frozen : State
         VFXManager.Instance.changeLayer(_cmb.gameObject, _cmb.defaultLayer);
         _cmb.changeSpeed();
         _animator.SetBool("Tazered", false);
-        
+
     }
 
 }

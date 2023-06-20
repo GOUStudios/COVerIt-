@@ -33,15 +33,15 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
 
-    bool pointsManagerReady = false;
-
     [SerializeField] private Animator UIanimator;
 
     #endregion
 
     void Start()
     {
+
         if (UIanimator == null) Debug.LogWarning("No UI animator Found");
+
 
         if(timerManager == null)
 
@@ -132,4 +132,8 @@ public class LevelMonobehaviour : MonoBehaviour
         Debug.Log("Time's over! Level finished");
         Time.timeScale = 1;
     }
+
+
+    
+
 }

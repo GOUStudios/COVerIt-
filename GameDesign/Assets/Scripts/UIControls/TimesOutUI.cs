@@ -9,8 +9,11 @@ public class TimesOutUI : MonoBehaviour
 
     [SerializeField] private Animator endLevelAnimator;
 
+    [Range(0f,1f)]
     public float star1Threshold;
+    [Range(0f, 1f)]
     public float star2Threshold;
+    [Range(0f, 1f)]
     public float star3Threshold;
 
     // Start is called before the first frame update
