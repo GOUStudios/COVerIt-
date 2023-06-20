@@ -1428,13 +1428,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to G.O.U Mall
+  m_text: '<margin-left=2.7em>Some customers are less attentive to our requests,
+    than others.</margin>
 
-    We hired you to make sure all our customers
-    obey the regulations that have been set to combat the Cov-It  pandemic.'
+
+    <margin-left=1em>They may require you to <i>ask</i>
+    them multiple times to put on a mask.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfa3dc311682cab43910b9bfa5cf582d, type: 2}
-  m_sharedMaterial: {fileID: 885923831895967346, guid: cfa3dc311682cab43910b9bfa5cf582d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5ea53d1940889f64daf5d7f934f8672f, type: 2}
+  m_sharedMaterial: {fileID: 6947276560356984019, guid: 5ea53d1940889f64daf5d7f934f8672f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1453,24 +1455,24 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 93368250
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 400
+  m_fontSize: 340
   m_fontSizeBase: 490.47
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 200
-  m_fontSizeMax: 400
+  m_fontSizeMax: 340
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 5.16
+  m_characterSpacing: 4
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -23.3
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1494,7 +1496,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2040.5486, y: -217.15903, z: -1997.282, w: -3366.5103}
+  m_margin: {x: -1758.1785, y: -217.15903, z: -2154.1543, w: -3199.1782}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1969,9 +1971,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  DescriptionToSet: " <indent=30%> Some customers are less attentive to our requests,\nthan
-    others. They may require you to \n<indent=5%>\"ask\" them multiple times to put
-    on a mask."
+  DescriptionToSet: '<margin-left=2.7em>Some customers are less attentive to our
+    requests, than others.</margin>
+
+
+    <margin-left=1em>They may require you to
+    <i>ask</i> them multiple times to put on a mask.'
   TextMeshProUGUI: {fileID: 1049725775}
   isUsingTutorialCanvas: 1
   canvasHandler: {fileID: 1381576889}
@@ -2054,8 +2059,8 @@ MonoBehaviour:
         m_CallState: 2
   DescriptionToSet: "Anti-maskers are determined to take other people masks away.
     They are tricky, whenever we try to put a mask on them they somehow manage to
-    dodge us. \nWe have noticed that it's easier to deal with them after a little
-    \"Electro\" therapy."
+    dodge us. \n\n<margin-right=3em>We have noticed that it's easier to deal with
+    them after a little \"Electro\" therapy."
   TextMeshProUGUI: {fileID: 1049725775}
   isUsingTutorialCanvas: 1
   canvasHandler: {fileID: 1381576889}
@@ -2136,8 +2141,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  DescriptionToSet: "Your boss is angry! \nTry to mask people to make him happy.\nif
-    you miss too much he may decide to fire you."
+  DescriptionToSet: "Your boss is angry! \nTry to correctly mask people to make him
+    happy.\n\nIf you miss too much he may decide to fire you."
   TextMeshProUGUI: {fileID: 1049725775}
   isUsingTutorialCanvas: 1
   canvasHandler: {fileID: 1381576889}
@@ -2220,10 +2225,15 @@ MonoBehaviour:
         m_CallState: 2
   DescriptionToSet: 'Welcome to G.O.U Mall
 
-    We hired you to make sure all our
-    customers obey the regulations that have been set to combat the Cov-It  pandemic.
 
-'
+    <margin-right=3em>We hired you to
+    make sure all our customers obey the regulations that have been set to combat
+    the Cov-It  pandemic.</margin>
+
+
+    <margin-left=2em><margin-right=3em>Click
+    on a customer to shoot a mask on them. Be aware, some of them really like to
+    run!'
   TextMeshProUGUI: {fileID: 1049725775}
   isUsingTutorialCanvas: 1
   canvasHandler: {fileID: 1381576889}
