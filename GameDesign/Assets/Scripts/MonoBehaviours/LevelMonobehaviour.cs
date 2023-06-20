@@ -33,18 +33,21 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
 
+
+    public static bool TimeHasStarted { get; private set; }
+
+
     [SerializeField] private Animator UIanimator;
 
     #endregion
 
     void Start()
     {
-
+        TimeHasStarted = false;
         if (UIanimator == null) Debug.LogWarning("No UI animator Found");
 
 
         if(timerManager == null)
-
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
             if (timerManager == null)
@@ -66,6 +69,7 @@ public class LevelMonobehaviour : MonoBehaviour
         manager.SetTotalSpawns(maskedCustomers, maskedWeightsDictionary, unmaskedDictionary);
         manager.SetPrefabs(unmaskedPrefabsDictionary, maskedPrefabsDictionary);
         manager.SetWaves(wavePercentages);
+
 
 
         StartCoroutine(StartLevel());
@@ -102,19 +106,19 @@ public class LevelMonobehaviour : MonoBehaviour
     private IEnumerator waitLevel(float duration)
     {
         Debug.Log("Start waiting for characters...");
-        
+
         yield return new WaitForSeconds(duration);
 
         ScenesManager.levelIsReady = true;
-        
+
         Debug.Log("Ready to do the Countdown");
 
         UIanimator.SetTrigger("TriggerPlay");
-        
+
         yield return new WaitForSecondsRealtime(5.30f); // Wait for the CountDown animation finish
-        
+
         timerManager.StartTimer();
-        
+        TimeHasStarted = true;
         Debug.Log("Ready to play");
 
     }
