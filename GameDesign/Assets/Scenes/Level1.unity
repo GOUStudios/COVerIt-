@@ -1491,6 +1491,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1527159066423953651, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: star1Threshold
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527159066423953651, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: star2Threshold
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527159066423953651, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: star3Threshold
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1527159066423953654, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_Pivot.x
       value: 0
