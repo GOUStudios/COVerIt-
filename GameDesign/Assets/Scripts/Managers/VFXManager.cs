@@ -68,7 +68,7 @@ public class VFXManager : MonoBehaviour
 
             effect.Play();
             yield return new WaitForSeconds(0.3f);
-            yield return new WaitWhile(() => effect.aliveParticleCount > 0);
+            yield return new WaitWhile(() => effect != null && effect.aliveParticleCount > 0);
             yield return new WaitForSeconds(0.5f);
 
         }
@@ -77,8 +77,11 @@ public class VFXManager : MonoBehaviour
             Debug.LogWarning($"Could not find VFX componenet in child {selectedChild.name}");
         }
 
-        selectedChild.SetParent(smokePullingPool.transform);
-        selectedChild.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
+        if(selectedChild)
+        {
+            selectedChild.SetParent(smokePullingPool.transform);
+            selectedChild.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
+        }
 
 
 

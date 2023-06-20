@@ -33,7 +33,9 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
 
+
     public static bool TimeHasStarted { get; private set; }
+
 
     [SerializeField] private Animator UIanimator;
 
@@ -134,4 +136,8 @@ public class LevelMonobehaviour : MonoBehaviour
         Debug.Log("Time's over! Level finished");
         Time.timeScale = 1;
     }
+
+
+    
+
 }

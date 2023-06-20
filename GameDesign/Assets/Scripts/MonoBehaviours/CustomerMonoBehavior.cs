@@ -209,6 +209,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
 
 
+    public void setHitSide(HitSide side)
+    {
+        animator.SetFloat("HitSide", ((float)side));
+    }
+
     public void doTriggerAnimation(string name)
     {
         StartCoroutine(DoTriggerAnimation(name));
