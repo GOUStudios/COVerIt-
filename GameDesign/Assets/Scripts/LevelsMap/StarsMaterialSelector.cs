@@ -22,9 +22,9 @@ public class StarsMaterialSelector : MonoBehaviour
     //this function should check how many stars the player has previously earned for the level
     private int CheckCondition()
     {
-       
 
-        return 1;
+        return PlayerPrefs.GetInt($"Stars{gameObject.name}");
+
     }
 
 

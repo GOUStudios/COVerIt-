@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PointsManager : MonoBehaviour
 {
@@ -59,12 +60,44 @@ public class PointsManager : MonoBehaviour
         else
         {
             instance = this;
-
+            TimerManagerMonoBehaviour.OnTimeFinished += TimesOverBehavior;
             calculateMaxPoints();
 
         }
         StartCoroutine(IsReadyChecker());
     }
+
+    private void TimesOverBehavior()
+    {
+        int numberStars = 0;
+ 
+        if (instance.pointsPercentage >= .25 &&
+            instance.pointsPercentage < .5)
+        {
+            //1 star earned
+            numberStars = 1;
+        }
+        else if (instance.pointsPercentage >= .5 && instance.pointsPercentage <= .75)
+        {
+            //2 stars earned
+            numberStars = 2;
+        }
+        else if (instance.pointsPercentage >= .75)
+        {
+            //3 stars earned
+            numberStars = 3;
+        }
+        SavePrefs(instance.GetEarnedPoints(), numberStars);
+        //Trigger animation
+    }
+
+    private void SavePrefs(int earnedPoints, int numberStars)
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        PlayerPrefs.SetInt($"Points{scene.name}", earnedPoints);
+        PlayerPrefs.SetInt($"Stars{scene.name}", numberStars);
+    }
+
     public void TriggerEvent_IncrementPoints(int points)
     {
         instance.currentPoints += points;

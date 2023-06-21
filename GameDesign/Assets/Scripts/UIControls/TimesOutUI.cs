@@ -31,13 +31,11 @@ public class TimesOutUI : MonoBehaviour
         
 
         pointsManager.GetEarnedPoints();
-        int numberStars = 0;
         //Set the right flag for the correct animation
         if (pointsManager.pointsPercentage >= star1Threshold && 
             pointsManager.pointsPercentage <= star2Threshold)
         {
             //1 star earned
-            numberStars = 1;
             endLevelAnimator.SetBool("Star1", true);
             endLevelAnimator.SetBool("Stars2", false);
             endLevelAnimator.SetBool("Stars3", false);
@@ -45,7 +43,6 @@ public class TimesOutUI : MonoBehaviour
         else if (pointsManager.pointsPercentage >= star2Threshold && pointsManager.pointsPercentage <= star3Threshold)
         {
             //2 stars earned
-            numberStars = 2;
             endLevelAnimator.SetBool("Star1", true);
             endLevelAnimator.SetBool("Stars2", true);
             endLevelAnimator.SetBool("Stars3", false);
@@ -53,7 +50,6 @@ public class TimesOutUI : MonoBehaviour
         else if (pointsManager.pointsPercentage >= star3Threshold)
         {
             //3 stars earned
-            numberStars = 3;
             endLevelAnimator.SetBool("Star1", true);
             endLevelAnimator.SetBool("Stars2", true);
             endLevelAnimator.SetBool("Stars3", true);
@@ -64,15 +60,7 @@ public class TimesOutUI : MonoBehaviour
             endLevelAnimator.SetBool("Stars2", false);
             endLevelAnimator.SetBool("Stars3", false);
         }
-
-        SavePrefs(pointsManager.GetEarnedPoints(), numberStars);
         //Trigger animation
         endLevelAnimator.SetTrigger("TriggerGameOver");
-    }
-
-    private void SavePrefs(int earnedPoints, int numberStars)
-    {
-        PlayerPrefs.SetInt("PointsLvl1", earnedPoints);
-        PlayerPrefs.SetInt("StarsLvl1", numberStars);
     }
 }
