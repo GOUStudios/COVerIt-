@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlateHandsUp : MonoBehaviour
 {
- 
+
     public string levelsPlateTag = "LevelsPlate";
     public float rotationSpeed = 5f;
 
@@ -33,7 +33,7 @@ public class PlateHandsUp : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-       
+
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.gameObject == transform.gameObject)
@@ -42,7 +42,7 @@ public class PlateHandsUp : MonoBehaviour
                 RotateObjectTowardsCamera();
 
                 CheckClick(hit);
-                    
+
             }
             else
             {

@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ public class LevelSettingManager
     [Range(0, 1)]
     public float[] waveMomentPercentages;
 
+    public bool instancesAreSet { get; private set; }
+
     public static LevelSettingManager Instance
     {
         get
@@ -42,16 +45,6 @@ public class LevelSettingManager
     #endregion
 
     #region Events
-
-    public delegate void OnSpawn(int spawnerID, int masked, Dictionary<CustomerTypes, int> unmasked);
-
-    /*
-    * DO NOT Directly invoke spawn, it should do a pull request of the level manager
-    * then the level manager will trigger the event and tell which spawner to spawn.
-    */
-    public event OnSpawn Spawn;
-
-
 
     public (int, Dictionary<CustomerTypes, int>) RequestSpawn(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {
@@ -76,6 +69,7 @@ public class LevelSettingManager
         CustomersToBeSpawnedWM = 0;
         isSpawning = false;
         isReadyToSpawn = false;
+        instancesAreSet = false;
     }
 
     public bool SanityCheck()
@@ -85,6 +79,8 @@ public class LevelSettingManager
                         waveMomentPercentages != null &&
                         CustomersWithOutMask != null &&
                         leftCustomersWithOutMask != null;
+
+        instancesAreSet = isReadyToSpawn;
         return isReadyToSpawn;
     }
 
@@ -160,9 +156,12 @@ public class LevelSettingManager
 
     public float getInitialMaxPoints()
     {
+
+        Debug.Log($"Getting max points: {CustomerUnmaskedPrefabs.Keys.Count} ");
         float maxPoints = 0f;
         CustomerMonoBehavior temp = null;
-        foreach (CustomerTypes type in CustomersWithOutMask.Keys)
+
+        foreach (CustomerTypes type in CustomerUnmaskedPrefabs.Keys)
         {
             temp = CustomerUnmaskedPrefabs[type].GetComponent<CustomerMonoBehavior>();
             if (temp == null)
