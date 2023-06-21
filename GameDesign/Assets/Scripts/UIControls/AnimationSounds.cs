@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class AnimationSounds : MonoBehaviour
 {
+
+    [Header("Countdown Sounds")]
     public AudioSource Beep1;
     public AudioSource Beep2;
     public AudioSource Beep3;
     public AudioSource BeepStart;
+
+    [Header("End Level Sounds")]
+    public AudioSource VictorySound;
+    public AudioSource FailureSound;
+
 
     public void Playbeep1()
     {
@@ -39,6 +46,22 @@ public class AnimationSounds : MonoBehaviour
         if (BeepStart == null) return;
 
         BeepStart.Play();
+
+    }
+
+    public void PlayVictorySound()
+    {
+        if (VictorySound == null) return;
+
+        VictorySound.Play();
+
+    }
+
+    public void PlayFailureSound()
+    {
+        if (FailureSound == null) return;
+
+        FailureSound.Play();
 
     }
 }
