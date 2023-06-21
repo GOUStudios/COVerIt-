@@ -14,19 +14,18 @@ public class LevelMonobehaviour : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] float[] wavePercentages;
     [SerializeField] float waitTime;
-
-    [Header("DO NOT CHANGE THE ORDER OF THE LIST")]
     [SerializeField] int maskedCustomers = 0;
-    [EnumNamedArray(typeof(CustomerTypes))]
-    public int[] unmaskedCustomers = new int[System.Enum.GetValues(typeof(CustomerTypes)).Length];
+    
+    [SerializeField]
+    public EnumDataContainer<int, CustomerTypes> unmaskedCustomers;
 
-    [EnumNamedArray(typeof(CustomerTypes))]
-    public GameObject[] unmaskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
-    [EnumNamedArray(typeof(CustomerTypes))]
-    public GameObject[] maskedPrefabs = new GameObject[System.Enum.GetValues(typeof(CustomerTypes)).Length];
+    [SerializeField]
+    public EnumDataContainer<GameObject,CustomerTypes> unmaskedPrefabs;
+    [SerializeField]
+    public EnumDataContainer<GameObject, CustomerTypes> maskedPrefabs;
 
-    [EnumNamedArray(typeof(CustomerTypes))]
-    public float[] maskedPercentages = new float[System.Enum.GetValues(typeof(CustomerTypes)).Length];
+    [SerializeField]
+    public EnumDataContainer<float, CustomerTypes> maskedPercentages;
 
     Dictionary<CustomerTypes, int> unmaskedDictionary = new Dictionary<CustomerTypes, int>();
     Dictionary<CustomerTypes, GameObject> unmaskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
@@ -82,9 +81,10 @@ public class LevelMonobehaviour : MonoBehaviour
         //Just update to be seen in the editor.
         //so whenever there are changes we see them
         maskedCustomers = manager.CustomersToBeSpawnedWM;
+        
         foreach (KeyValuePair<CustomerTypes, int> pair in manager.CustomersWithOutMask)
         {
-            unmaskedCustomers[(int)(pair.Key)] = pair.Value;
+            unmaskedCustomers[((int)pair.Key)] = pair.Value;
         }
     }
 
