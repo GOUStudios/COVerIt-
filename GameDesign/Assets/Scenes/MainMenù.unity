@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 172409389}
   - component: {fileID: 172409391}
   m_Layer: 0
-  m_Name: MusicObject
+  m_Name: Background Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,6 +618,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 10
+  audioSource: {fileID: 0}
+  originalVolume: 0
+  targetVolume: 0
+  currentVolume: 0
+  isFadingIn: 0
+  isFadingOut: 0
+  fadeTimer: 0
 --- !u!1 &426553247
 GameObject:
   m_ObjectHideFlags: 0

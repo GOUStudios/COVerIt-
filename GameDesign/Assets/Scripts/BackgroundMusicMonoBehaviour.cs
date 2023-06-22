@@ -24,7 +24,7 @@ public class BackgroundMusicMonoBehaviour : MonoBehaviour
 
         FadeIn();
 
-        Invoke("FadeOut", fadeDuration);
+        //Invoke("FadeOut", fadeDuration);
     }
 
     private void Update()
@@ -74,5 +74,13 @@ public class BackgroundMusicMonoBehaviour : MonoBehaviour
         targetVolume = originalVolume;
         fadeTimer = 0f;
         isFadingIn = true;
+    }
+
+    public void PlaySound(){
+        audioSource.Play();
+    }
+
+    public void StopSound(){
+        audioSource.Stop();
     }
 }
