@@ -87,4 +87,8 @@ public class BackgroundMusicMonoBehaviour : MonoBehaviour
     public void Mute(){
         audioSource.volume = 0f;
     }
+
+    public void SetVolume(float multiplier){
+        audioSource.volume = originalVolume*multiplier;
+    }
 }
