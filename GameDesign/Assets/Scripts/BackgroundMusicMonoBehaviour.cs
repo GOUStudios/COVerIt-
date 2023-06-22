@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class BackgroundMusicMonoBehaviour : MonoBehaviour
 {
-    public float fadeDuration = 2f;  // Duration of the fade-in and fade-out in seconds
+    [SerializeField] public float fadeDuration = 8f;  // Duration of the fade-in and fade-out in seconds
 
-    // Remember to add the audio source to the component
-    private AudioSource audioSource;
-    private float originalVolume;
-    private float targetVolume;
-    private float fadeTimer;
-    private bool isFading;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private float originalVolume;
+    [SerializeField] private float targetVolume;
+    [SerializeField] private float currentVolume;
+    [SerializeField] public bool isFadingIn;
+    [SerializeField] public bool isFadingOut;
+
+    [SerializeField] private float fadeTimer;
 
     private void Start()
     {
@@ -18,42 +20,59 @@ public class BackgroundMusicMonoBehaviour : MonoBehaviour
         targetVolume = originalVolume;
         audioSource.volume = 0f;  // Start with the volume set to 0
 
+        audioSource.Play();
+
         FadeIn();
+
+        Invoke("FadeOut", fadeDuration);
     }
 
     private void Update()
     {
         fadeTimer += Time.deltaTime;
 
-        if (fadeTimer <= fadeDuration && isFading)
+        if (isFadingIn)
         {
-            // Calculate the current volume based on the fade progress
-            float currentVolume = Mathf.Lerp(0f, targetVolume, fadeTimer / fadeDuration);
-            audioSource.volume = currentVolume;
+            if (fadeTimer <= fadeDuration)
+            {
+                // Calculate the current volume based on the fade progress
+                currentVolume = Mathf.Lerp(0f, targetVolume, fadeTimer / fadeDuration);
+                audioSource.volume = currentVolume;
+            }
+            else
+            {
+                audioSource.volume = targetVolume;
+                isFadingIn = false;
+            }
+        }
+
+        if (isFadingOut)
+        {
+            if (fadeTimer <= fadeDuration)
+            {
+                // Calculate the current volume based on the fade progress
+                currentVolume = Mathf.Lerp(originalVolume, targetVolume, fadeTimer / fadeDuration);
+                audioSource.volume = currentVolume;
+            }
+            else
+            {
+                audioSource.volume = 0f;
+                isFadingOut = false;
+            }
         }
     }
 
     public void FadeOut()
     {
-        if (!isFading)
-        {
-            targetVolume = 0f;
-            fadeTimer = 0f;
-            isFading = true;
-        }
+        targetVolume = 0f;
+        fadeTimer = 0f;
+        isFadingOut = true;
     }
 
     public void FadeIn()
     {
-        if (isFading)
-        {
-            return;
-        }
-
-        audioSource.volume = 0f;
-        audioSource.Play();
         targetVolume = originalVolume;
         fadeTimer = 0f;
-        isFading = true;
+        isFadingIn = true;
     }
 }
