@@ -83,4 +83,8 @@ public class BackgroundMusicMonoBehaviour : MonoBehaviour
     public void StopSound(){
         audioSource.Stop();
     }
+
+    public void Mute(){
+        audioSource.volume = 0f;
+    }
 }
