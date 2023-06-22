@@ -28,6 +28,14 @@ public class PointsManager : MonoBehaviour
         }
     }
     [ReadOnly] public bool isReady;
+
+    [Range(0f, 1f)]
+    public float star1Threshold;
+    [Range(0f, 1f)]
+    public float star2Threshold;
+    [Range(0f, 1f)]
+    public float star3Threshold;
+
     public static PointsManager Instance
     {
         get
@@ -71,24 +79,20 @@ public class PointsManager : MonoBehaviour
     {
         int numberStars = 0;
  
-        if (instance.pointsPercentage >= .25 &&
-            instance.pointsPercentage < .5)
+        if (instance.pointsPercentage >= star1Threshold &&
+            instance.pointsPercentage < star2Threshold)
         {
-            //1 star earned
             numberStars = 1;
         }
-        else if (instance.pointsPercentage >= .5 && instance.pointsPercentage <= .75)
+        else if (instance.pointsPercentage >= star2Threshold && instance.pointsPercentage < star3Threshold)
         {
-            //2 stars earned
             numberStars = 2;
         }
-        else if (instance.pointsPercentage >= .75)
+        else if (instance.pointsPercentage >= star3Threshold)
         {
-            //3 stars earned
             numberStars = 3;
         }
         SavePrefs(instance.GetEarnedPoints(), numberStars);
-        //Trigger animation
     }
 
     private void SavePrefs(int earnedPoints, int numberStars)
