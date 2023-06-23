@@ -1746,38 +1746,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 357548903584219025, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: _maxNumAngry
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: waitTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: levelTime
-      value: 159
-      objectReference: {fileID: 0}
     - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: UIanimator
       value: 
       objectReference: {fileID: 1572403444}
-    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedCustomers
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: wavePercentages.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: wavePercentages.Array.data[0]
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: wavePercentages.Array.data[1]
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: unmaskedCustomers.Array.data[0]
       value: 30
@@ -1842,22 +1814,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6544498483485782700, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: timeRemaining
-      value: 149
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: PullRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: WaveMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: levelSpawners.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: levelSpawners.Array.data[0]
       value: 
@@ -1867,48 +1823,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 348019060}
     - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[0].time
-      value: 0.00420138
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[1].time
-      value: 1.0083313
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[0].value
-      value: 0.500497
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[1].value
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: spawnRatesArray.Array.data[0].m_PostInfinity
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[0].inSlope
-      value: -0.74338037
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[1].inSlope
-      value: -0.4424746
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[0].outSlope
-      value: -0.74338037
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[1].inWeight
-      value: 0.058577437
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[1].outSlope
-      value: -0.4424746
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[0].outWeight
-      value: 0.033333335
       objectReference: {fileID: 0}
     - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: spawnRatesArray.Array.data[1].m_Curve.Array.size
@@ -1921,14 +1837,6 @@ PrefabInstance:
     - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: spawnRatesArray.Array.data[3].m_Curve.Array.size
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[0].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
-      propertyPath: maskedSpawnRate.m_Curve.Array.data[1].tangentMode
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: spawnRatesArray.Array.data[0].m_Curve.Array.data[0].time
