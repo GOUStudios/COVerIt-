@@ -8,9 +8,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: sliderValue
-    m_EventTreshold: 0.66
+  - m_ConditionMode: 6
+    m_ConditionEvent: stars
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2816775888741948246}
   m_Solo: 0
@@ -64,9 +64,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: sliderValue
-    m_EventTreshold: 0.99999
+  - m_ConditionMode: 6
+    m_ConditionEvent: stars
+    m_EventTreshold: 3
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4664222204061333528}
   m_Solo: 0
@@ -90,12 +90,12 @@ AnimatorController:
   m_Name: Stars
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: sliderValue
-    m_Type: 1
+  - m_Name: stars
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -171,9 +171,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: sliderValue
-    m_EventTreshold: 0.32
+  - m_ConditionMode: 6
+    m_ConditionEvent: stars
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5599045451787825224}
   m_Solo: 0

@@ -77,8 +77,14 @@ public class PointsManager : MonoBehaviour
 
     private void TimesOverBehavior()
     {
+        int numberStars = GetNumberStars();
+        SavePrefs(instance.GetEarnedPoints(), numberStars);
+    }
+
+    public int GetNumberStars()
+    {
         int numberStars = 0;
- 
+
         if (instance.pointsPercentage >= star1Threshold &&
             instance.pointsPercentage < star2Threshold)
         {
@@ -92,7 +98,8 @@ public class PointsManager : MonoBehaviour
         {
             numberStars = 3;
         }
-        SavePrefs(instance.GetEarnedPoints(), numberStars);
+
+        return numberStars;
     }
 
     private void SavePrefs(int earnedPoints, int numberStars)

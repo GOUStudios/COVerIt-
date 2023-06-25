@@ -10,8 +10,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     [SerializeField] TimerManagerMonoBehaviour timerManager;
 
     [Header("Wave properties")]
-    [EnumNamedArray(typeof(CustomerTypes))]
-    [SerializeField] AnimationCurve[] spawnRatesArray;
+    [SerializeField] EnumDataContainer<AnimationCurve,CustomerTypes> spawnRatesArray;
     [Range(0.0f, 10f)]
     [SerializeField] int WaveMultiplier;
 
