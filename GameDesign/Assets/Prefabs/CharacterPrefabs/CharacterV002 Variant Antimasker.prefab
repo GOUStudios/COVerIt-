@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444bcd4dcf6375c46a5690f6cd346311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  type: 1
   currentState: 
   baseSpeed: 3.53
   currentSpeed: 0
@@ -114,6 +114,7 @@ MonoBehaviour:
   movementManager: {fileID: 7864013837679662276}
   animator: {fileID: 6726335663406351768}
   _mask: {fileID: 425934075669869910}
+  defaultLayer: Default
   audioSource: {fileID: 7779052578560729399}
   shot: {fileID: 8300000, guid: 37d0243ceb9c848479780b55d7e224a4, type: 3}
   taser: {fileID: 8300000, guid: f6039a2f04fccd64eb852bb5a968621d, type: 3}
