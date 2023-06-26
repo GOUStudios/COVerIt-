@@ -24,6 +24,7 @@ public class StarLauncherUI : MonoBehaviour
         slider.onValueChanged.AddListener(delegate { OnSliderValueChanged(slider.value); });
     }
 
+
     private void Update()
     {
         slider.value = pointsManager.pointsPercentage;
@@ -32,7 +33,7 @@ public class StarLauncherUI : MonoBehaviour
     {
         if (starsAnimator == null) return;
 
-        starsAnimator.SetFloat("sliderValue", value);
+        starsAnimator.SetInteger("stars", pointsManager.GetNumberStars());
 
     }
 }

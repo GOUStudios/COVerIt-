@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PointsManager : MonoBehaviour
 {
@@ -27,6 +28,14 @@ public class PointsManager : MonoBehaviour
         }
     }
     [ReadOnly] public bool isReady;
+
+    [Range(0f, 1f)]
+    public float star1Threshold;
+    [Range(0f, 1f)]
+    public float star2Threshold;
+    [Range(0f, 1f)]
+    public float star3Threshold;
+
     public static PointsManager Instance
     {
         get
@@ -59,12 +68,51 @@ public class PointsManager : MonoBehaviour
         else
         {
             instance = this;
-
+            TimerManagerMonoBehaviour.OnTimeFinished += TimesOverBehavior;
             calculateMaxPoints();
 
         }
         StartCoroutine(IsReadyChecker());
     }
+
+    private void TimesOverBehavior()
+    {
+        int numberStars = GetNumberStars();
+        SavePrefs(instance.GetEarnedPoints(), numberStars);
+    }
+
+    public int GetNumberStars()
+    {
+        int numberStars = 0;
+
+        if (instance.pointsPercentage >= star1Threshold &&
+            instance.pointsPercentage < star2Threshold)
+        {
+            numberStars = 1;
+        }
+        else if (instance.pointsPercentage >= star2Threshold && instance.pointsPercentage < star3Threshold)
+        {
+            numberStars = 2;
+        }
+        else if (instance.pointsPercentage >= star3Threshold)
+        {
+            numberStars = 3;
+        }
+
+        return numberStars;
+    }
+
+    private void SavePrefs(int earnedPoints, int numberStars)
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        int currentPoints = PlayerPrefs.GetInt($"Points{scene.name}");
+        if(earnedPoints > currentPoints)
+        {
+            PlayerPrefs.SetInt($"Points{scene.name}", earnedPoints);
+            PlayerPrefs.SetInt($"Stars{scene.name}", numberStars);
+        }
+    }
+
     public void TriggerEvent_IncrementPoints(int points)
     {
         instance.currentPoints += points;

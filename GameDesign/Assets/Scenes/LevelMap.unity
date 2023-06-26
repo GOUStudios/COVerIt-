@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028471, g: 0.22571641, b: 0.30692425, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028419, g: 0.2257156, b: 0.30692282, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1114,7 +1114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8995208406052954815, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
       propertyPath: m_Name
-      value: CinemaPlate
+      value: Level2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
@@ -1127,7 +1127,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 573931682285783162, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_Name
-      value: FoodCourtPlate
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 573931682285783162, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_TagString
