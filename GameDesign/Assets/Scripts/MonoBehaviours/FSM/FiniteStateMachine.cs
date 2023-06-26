@@ -31,7 +31,6 @@ public class FiniteStateMachine<T>
             return;
 
         _currentState?.Exit();
-        Debug.Log($"Changing State FROM:{_currentState?.Name} --> TO:{state.Name}");
         _currentState = state;
 
         _transitions.TryGetValue(_currentState.Name, out _currentTransitions);
