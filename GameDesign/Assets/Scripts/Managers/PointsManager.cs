@@ -105,8 +105,12 @@ public class PointsManager : MonoBehaviour
     private void SavePrefs(int earnedPoints, int numberStars)
     {
         Scene scene = SceneManager.GetActiveScene();
-        PlayerPrefs.SetInt($"Points{scene.name}", earnedPoints);
-        PlayerPrefs.SetInt($"Stars{scene.name}", numberStars);
+        int currentPoints = PlayerPrefs.GetInt($"Points{scene.name}");
+        if(earnedPoints > currentPoints)
+        {
+            PlayerPrefs.SetInt($"Points{scene.name}", earnedPoints);
+            PlayerPrefs.SetInt($"Stars{scene.name}", numberStars);
+        }
     }
 
     public void TriggerEvent_IncrementPoints(int points)
