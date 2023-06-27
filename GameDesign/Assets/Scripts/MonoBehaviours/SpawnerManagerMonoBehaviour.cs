@@ -24,6 +24,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
 
     private float currentTime = 0f;
     private float currentPullRate = 0f;
+    private bool isPaused = false;
 
     private Dictionary<CustomerTypes, AnimationCurve> spawnRates = new Dictionary<CustomerTypes, AnimationCurve>();
     // Start is called before the first frame update
@@ -43,6 +44,8 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
             spawnRates.Add(t, spawnRatesArray[(int)t]);
         }
         TimerManagerMonoBehaviour.OnWaveStart += OnWaveStart;
+        TimerManagerMonoBehaviour.OnTimePause += TimePauseBehavior;
+        TimerManagerMonoBehaviour.OnTimeResume += TimeResumeBehavior;
         var existingSpawners = FindObjectsOfType<SpawnerWaypoint>();
         if(existingSpawners.Length > levelSpawners.Length)
         {
@@ -54,12 +57,15 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        float timePercentage = currentTime / timerManager.GetTime();
-        if (currentTime >= currentPullRate && timePercentage < 1f)
+        if (!isPaused)
         {
-            determineSpawn(levelSpawners.Length);
-            currentPullRate = currentTime + PullRate;
+            currentTime += Time.deltaTime;
+            float timePercentage = currentTime / timerManager.GetTime();
+            if (currentTime >= currentPullRate && timePercentage < 1f)
+            {
+                determineSpawn(levelSpawners.Length);
+                currentPullRate = currentTime + PullRate;
+            }
         }
     }
 
@@ -97,5 +103,15 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     void OnWaveStart(int wavesRemaining)
     {
         determineSpawn(wavesRemaining>0 ? WaveMultiplier : 999, wavesRemaining<2);
+    }
+
+    void TimePauseBehavior()
+    {
+        isPaused = true;
+    }
+
+    void TimeResumeBehavior()
+    {
+        isPaused = false;
     }
 }
