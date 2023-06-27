@@ -297,6 +297,7 @@ MonoBehaviour:
   levelSpawners:
   - {fileID: 0}
   - {fileID: 0}
+  DespawnAfterSeconds: 45
 --- !u!114 &3669377154623292990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,9 +410,9 @@ MonoBehaviour:
   maxPoints: -1
   currentPoints: 0
   isReady: 0
-  star1Threshold: 0
-  star2Threshold: 0
-  star3Threshold: 0
+  star1Threshold: 0.25
+  star2Threshold: 0.5
+  star3Threshold: 0.75
 --- !u!1 &6673223381534869074
 GameObject:
   m_ObjectHideFlags: 0

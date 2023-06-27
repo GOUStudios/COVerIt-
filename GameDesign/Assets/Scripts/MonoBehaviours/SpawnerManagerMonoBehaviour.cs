@@ -22,6 +22,9 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     [SerializeField] SpawnerWaypoint[] levelSpawners;
 
 
+    [Header("Despawner properties")]
+    [SerializeField] public float DespawnAfterSeconds;
+
     private float currentTime = 0f;
     private float currentPullRate = 0f;
     private bool isPaused = false;
