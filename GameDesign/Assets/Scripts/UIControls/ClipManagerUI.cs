@@ -17,6 +17,8 @@ public class ClipManagerUI : MonoBehaviour
 
     private bool isCheckingTime = false;
 
+    public BackgroundMusicMonoBehaviour backgroundMusic; 
+
     private void Start()
     {
         _player1 = VideoPlayer[0];
@@ -44,6 +46,8 @@ public class ClipManagerUI : MonoBehaviour
 
         if (!isCheckingTime)
         {
+            backgroundMusic.StopSound();
+
             // Starts coroutine to check interval
             StartCoroutine(CheckTimeInterval());
         }
