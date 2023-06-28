@@ -2475,7 +2475,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: LevelMap
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1527159065789532788
@@ -4041,7 +4041,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e042ae6bd37964241b640cf7b7059ac5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -4080,9 +4080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endLevelAnimator: {fileID: 1527159066423953649}
-  star1Threshold: 0.25
-  star2Threshold: 0.5
-  star3Threshold: 0.8
 --- !u!82 &1160183865082974820
 AudioSource:
   m_ObjectHideFlags: 0
