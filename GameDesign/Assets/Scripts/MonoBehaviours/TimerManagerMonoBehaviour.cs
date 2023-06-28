@@ -103,12 +103,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
 
     public void ResumeTimer()
     {
-        StartCoroutine(WaitForAnimation(7f));
-    }
-
-    public IEnumerator WaitForAnimation(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
+        Time.timeScale = 1;
         isRunning = true;
         OnTimeResume?.Invoke();
     }
@@ -117,5 +112,6 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     {
         isRunning = false;
         OnTimePause?.Invoke();
+        Time.timeScale = 0;
     }
 }

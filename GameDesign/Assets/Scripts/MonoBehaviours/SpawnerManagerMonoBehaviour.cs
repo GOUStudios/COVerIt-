@@ -44,8 +44,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
             spawnRates.Add(t, spawnRatesArray[(int)t]);
         }
         TimerManagerMonoBehaviour.OnWaveStart += OnWaveStart;
-        TimerManagerMonoBehaviour.OnTimePause += TimePauseBehavior;
-        TimerManagerMonoBehaviour.OnTimeResume += TimeResumeBehavior;
+
         var existingSpawners = FindObjectsOfType<SpawnerWaypoint>();
         if(existingSpawners.Length > levelSpawners.Length)
         {
@@ -57,15 +56,12 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isPaused)
+        currentTime += Time.deltaTime;
+        float timePercentage = currentTime / timerManager.GetTime();
+        if (currentTime >= currentPullRate && timePercentage < 1f)
         {
-            currentTime += Time.deltaTime;
-            float timePercentage = currentTime / timerManager.GetTime();
-            if (currentTime >= currentPullRate && timePercentage < 1f)
-            {
-                determineSpawn(levelSpawners.Length);
-                currentPullRate = currentTime + PullRate;
-            }
+            determineSpawn(levelSpawners.Length);
+            currentPullRate = currentTime + PullRate;
         }
     }
 
@@ -103,15 +99,5 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     void OnWaveStart(int wavesRemaining)
     {
         determineSpawn(wavesRemaining>0 ? WaveMultiplier : 999, wavesRemaining<2);
-    }
-
-    void TimePauseBehavior()
-    {
-        isPaused = true;
-    }
-
-    void TimeResumeBehavior()
-    {
-        isPaused = false;
     }
 }

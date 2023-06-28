@@ -58,8 +58,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         changeSpeed();
         audioSource = GetComponent<AudioSource>();
-        TimerManagerMonoBehaviour.OnTimePause += TimePauseBehavior;
-        TimerManagerMonoBehaviour.OnTimeResume += TimeResumeBehavior;
         //ideal if setting the FSM is the last function. just to make sure the other parameters are set if they are to be changed by the states.
 
         setFSM();
@@ -238,17 +236,4 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         clickCunt = 0;
         _mask.SetActive(false);
     }
-
-    private void TimePauseBehavior()
-    {
-        if (animator != null)
-            changeSpeed(0);
-    }
-
-    private void TimeResumeBehavior()
-    {
-        if (animator != null)
-            changeSpeed();
-    }
-
 }
