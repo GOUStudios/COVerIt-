@@ -17,6 +17,12 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     public delegate void TimeFinish();
     public static TimeFinish OnTimeFinished;
 
+    public delegate void TimePause();
+    public static TimePause OnTimePause;
+
+    public delegate void TimeResume();
+    public static TimeResume OnTimeResume;
+
     private LevelSettingManager levelManager;
 
     public delegate void Wave(int wavesRemaining);
@@ -95,8 +101,17 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         isRunning = true;
     }
 
+    public void ResumeTimer()
+    {
+        Time.timeScale = 1;
+        isRunning = true;
+        OnTimeResume?.Invoke();
+    }
+
     public void StopTimer()
     {
         isRunning = false;
+        OnTimePause?.Invoke();
+        Time.timeScale = 0;
     }
 }

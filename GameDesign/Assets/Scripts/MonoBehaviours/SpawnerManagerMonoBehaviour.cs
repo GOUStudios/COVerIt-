@@ -24,6 +24,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
 
     private float currentTime = 0f;
     private float currentPullRate = 0f;
+    private bool isPaused = false;
 
     private Dictionary<CustomerTypes, AnimationCurve> spawnRates = new Dictionary<CustomerTypes, AnimationCurve>();
     // Start is called before the first frame update
@@ -43,6 +44,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
             spawnRates.Add(t, spawnRatesArray[(int)t]);
         }
         TimerManagerMonoBehaviour.OnWaveStart += OnWaveStart;
+
         var existingSpawners = FindObjectsOfType<SpawnerWaypoint>();
         if(existingSpawners.Length > levelSpawners.Length)
         {
