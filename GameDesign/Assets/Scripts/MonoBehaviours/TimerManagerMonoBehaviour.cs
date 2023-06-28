@@ -56,7 +56,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
                 timeRemaining = 0;
                 Debug.Log("Timer finished in Timer");
                 OnTimeFinished?.Invoke();
-                StopTimer();
+                // StopTimer();
             }
 
         }
@@ -65,7 +65,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     private void checkWaves()
     {
         float[] wavePercentages = levelManager.waveMomentPercentages;
-        if(wavePercentages != null && currentWave < wavePercentages.Length)
+        if (wavePercentages != null && currentWave < wavePercentages.Length)
         {
             float nextWaveTime = wavePercentages[currentWave] * maximumTime;
             float timePassed = maximumTime - timeRemaining;
@@ -83,7 +83,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
             }
         }
     }
- 
+
     public void SetTime(int seconds)
     {
         maximumTime = seconds;

@@ -1307,8 +1307,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4822816787825680126}
         m_TargetAssemblyTypeName: ChangeSceneRequest, Assembly-CSharp
-        m_MethodName: Request
-        m_Mode: 5
+        m_MethodName: reloadLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
