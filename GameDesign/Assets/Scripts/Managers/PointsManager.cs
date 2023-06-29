@@ -120,10 +120,10 @@ public class PointsManager : MonoBehaviour
     {
         int currentHighestLevel = PlayerPrefs.GetInt("levelReached", 0);
         Scene scene = SceneManager.GetActiveScene();
-        if (currentHighestLevel < scene.buildIndex - 1)
+        if (currentHighestLevel <= scene.buildIndex - 1)
         {
             // our first 2 scenes are main menu and levelMap, the index starts at 0 from there we just need to keep the build index in order
-            PlayerPrefs.SetInt("levelReached", scene.buildIndex - 1);
+            PlayerPrefs.SetInt("levelReached", scene.buildIndex);//unlocked the next level.
         }
     }
 
