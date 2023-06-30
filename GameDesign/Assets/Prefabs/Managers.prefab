@@ -106,7 +106,7 @@ MonoBehaviour:
   waitTime: 5
   maskedCustomers: 40
   unmaskedCustomers:
-    content: 1400000005000000050000000f000000
+    content: 1400000005000000050000000f0000000f000000
     enumType: 0
   unmaskedPrefabs:
     content:
@@ -114,6 +114,7 @@ MonoBehaviour:
     - {fileID: 68471940300211544, guid: bbf2bc5d2ad262b43b35f0827ca631b8, type: 3}
     - {fileID: 68471940300211544, guid: ea15591096b2819419ceb19e8a591e42, type: 3}
     - {fileID: 68471940300211544, guid: e91347b2075b8be4b86f43e8e3c62d05, type: 3}
+    - {fileID: 2964144515393629588, guid: bd93a08f42331e248b044b714617b48f, type: 3}
     enumType: 0
   maskedPrefabs:
     content:
@@ -121,12 +122,14 @@ MonoBehaviour:
     - {fileID: 2778192567318708283, guid: 6a4d77ebed7fd1d4488969486ce6e98b, type: 3}
     - {fileID: 7158564961611754381, guid: d29570133b5b22e45898a3c90170ea2f, type: 3}
     - {fileID: 3815835655034595904, guid: 6bfd44cc989b1154fbee0e2d99589705, type: 3}
+    - {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
     enumType: 0
   maskedPercentages:
     content:
     - 0.5
     - 0.01
     - 0.2
+    - 0.16
     - 0.16
     enumType: 0
   UIanimator: {fileID: 0}
@@ -406,6 +409,9 @@ MonoBehaviour:
   maxPoints: -1
   currentPoints: 0
   isReady: 0
+  star1Threshold: 0
+  star2Threshold: 0
+  star3Threshold: 0
 --- !u!1 &6673223381534869074
 GameObject:
   m_ObjectHideFlags: 0
