@@ -39,6 +39,8 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         levelManager = LevelSettingManager.Instance;
         currentWave = 0;
         isWaveAnnounced = false;
+        BossAngerManager.OnAngryGameOver += StopTimer;
+
     }
 
     // Update is called once per frame
