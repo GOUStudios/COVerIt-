@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 1972978895936073574}
   - component: {fileID: 5342344782523879846}
   - component: {fileID: 568338053142701088}
+  - component: {fileID: 6007917579070347259}
   m_Layer: 0
   m_Name: CinemaPlate 1
   m_TagString: LevelsPlate
@@ -612,3 +613,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6007917579070347259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8995208406052954815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ce886854fa7f140b291a68ab935be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelNumber: 0
