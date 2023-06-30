@@ -8,7 +8,7 @@ public class ClickManager : MonoBehaviour
     public delegate void ClickAction();
     public static event ClickAction OnCorrectlyClicked;
     public static event ClickAction OnMissClicked;
-    private bool isPaused = false;
+    private bool isPaused = true;
 
     private static ClickManager _instance;
     public static ClickManager Instance
@@ -26,6 +26,7 @@ public class ClickManager : MonoBehaviour
         else { Debug.LogWarning("Could not create instance of ClickManager"); }
         TimerManagerMonoBehaviour.OnTimePause += TimePauseBehavior;
         TimerManagerMonoBehaviour.OnTimeResume += TimeResumeBehavior;
+        TimerManagerMonoBehaviour.OnTimeStart += TimeResumeBehavior;
     }
 
     // Update is called once per frame

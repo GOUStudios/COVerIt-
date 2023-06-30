@@ -22,6 +22,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
 
     public delegate void TimeResume();
     public static TimeResume OnTimeResume;
+    public static TimeResume OnTimeStart;
 
     private LevelSettingManager levelManager;
 
@@ -97,6 +98,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     public void StartTimer()
     {
         Debug.Log("Timer started in Timer");
+        OnTimeStart?.Invoke();
         timeRemaining = maximumTime;
         isRunning = true;
     }

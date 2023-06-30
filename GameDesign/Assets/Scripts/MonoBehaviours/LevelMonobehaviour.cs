@@ -56,6 +56,7 @@ public class LevelMonobehaviour : MonoBehaviour
         }
         timerManager.SetTime(levelTime);
         TimerManagerMonoBehaviour.OnTimeFinished += OnTimeFinished;
+        BossAngerManager.OnAngryGameOver += OnTimeFinished;
 
         foreach (CustomerTypes t in Enum.GetValues(typeof(CustomerTypes)))
         {

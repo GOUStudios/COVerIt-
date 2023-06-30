@@ -13,9 +13,20 @@ public class TimesOutUI : MonoBehaviour
     void Start()
     {
         TimerManagerMonoBehaviour.OnTimeFinished += TimesOverBehavior;
+        BossAngerManager.OnAngryGameOver += AngerGameOverBehavior;
 
         pointsManager = FindObjectOfType<PointsManager>();
 
+    }
+
+    private void AngerGameOverBehavior()
+    {
+        if (endLevelAnimator == null) return;
+
+        endLevelAnimator.SetBool("Star1", false);
+        endLevelAnimator.SetBool("Stars2", false);
+        endLevelAnimator.SetBool("Stars3", false);
+        endLevelAnimator.SetTrigger("TriggerGameOver");
     }
 
     private void TimesOverBehavior()
