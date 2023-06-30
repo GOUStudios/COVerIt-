@@ -22,6 +22,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
 
     public delegate void TimeResume();
     public static TimeResume OnTimeResume;
+    public static TimeResume OnTimeStart;
 
     private LevelSettingManager levelManager;
 
@@ -38,6 +39,8 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         levelManager = LevelSettingManager.Instance;
         currentWave = 0;
         isWaveAnnounced = false;
+        BossAngerManager.OnAngryGameOver += StopTimer;
+
     }
 
     // Update is called once per frame
@@ -97,6 +100,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     public void StartTimer()
     {
         Debug.Log("Timer started in Timer");
+        OnTimeStart?.Invoke();
         timeRemaining = maximumTime;
         isRunning = true;
     }
