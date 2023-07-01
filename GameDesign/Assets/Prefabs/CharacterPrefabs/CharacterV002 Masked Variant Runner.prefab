@@ -59,5 +59,9 @@ PrefabInstance:
       propertyPath: wearsMask
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8893319330740400081, guid: ea15591096b2819419ceb19e8a591e42, type: 3}
+      propertyPath: pointValue
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea15591096b2819419ceb19e8a591e42, type: 3}
