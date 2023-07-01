@@ -7,6 +7,7 @@ public enum CustomerTypes
     AntiMasker,
     Runner,
     Dinosaur,//jock?
+    Marco
 
 }
 
