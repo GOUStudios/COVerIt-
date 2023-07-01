@@ -10,19 +10,11 @@ public class GameEventTriggerTimed : GameEventTrigger
 
     void Update()
     {
-        if (!m_hasGameEvent) return;
-        if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
-
         if (TimerManagerMonoBehaviour.IsRunning)
         {
             passedTime += Time.deltaTime;
-            if (EventTriggerCondition())
-            {
-                m_event.Raise();
-                m_hasGameEventBeenTriggered = true;
-                if (m_TriggerOnce) enabled = false;
-            }
+            TriggerEventViaCode();
         }
     }
-    
+
 }

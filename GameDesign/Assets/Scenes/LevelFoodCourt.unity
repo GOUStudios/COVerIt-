@@ -123,6 +123,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &136986336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 136986337}
+  - component: {fileID: 136986339}
+  - component: {fileID: 136986338}
+  - component: {fileID: 136986340}
+  m_Layer: 0
+  m_Name: HitboxTriggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &136986337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136986336}
+  m_LocalRotation: {x: 0, y: 0.040480535, z: 0, w: 0.9991803}
+  m_LocalPosition: {x: -25.87, y: 0, z: 2.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1957322902}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 4.64, z: 0}
+--- !u!65 &136986338
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136986336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 3.7956965, z: 9.8979225}
+  m_Center: {x: 62.92, y: 1.37, z: 4.115497}
+--- !u!65 &136986339
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136986336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 3.7956965, z: 9.8979225}
+  m_Center: {x: -0.0000011687308, y: 1.3978482, z: 4.115497}
+--- !u!114 &136986340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136986336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d04dcdd9602c5b4eb07a5ec755440ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerOnce: 1
+  m_useEnterinOrExitingHitBox: 0
+  m_event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
+  CustomerTypeToCheck: 3
+  onlyForUnmakedCustomer: 1
 --- !u!95 &173884765 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1527159066423953649, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
@@ -585,6 +662,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5206637180839110294, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: DescriptionToSet
+      value: 'We have provided you with a taser to help you in your duties. Activate
+        it with right click.
+
+        But use it wisely, as with a great power comes
+        a great responsibility'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248149821537720207, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: m_text
+      value: 'We have provided you with a taser to help you in your duties. Activate
+        it with right click.
+
+        But use it wisely, as with a great power comes
+        a great responsibility'
+      objectReference: {fileID: 0}
     - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: levelSpawners.Array.size
       value: 0
@@ -594,6 +687,8 @@ PrefabInstance:
     - {fileID: 5248149820510780137, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
     - {fileID: 5248149820510780141, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
     - {fileID: 5248149820510780142, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+    - {fileID: 5248149820510780144, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+    - {fileID: 5248149820510780143, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
 --- !u!114 &1957322899 stripped
 MonoBehaviour:
@@ -606,6 +701,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032a04b93b422674e8d14847e3005f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1957322900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5248149820510780134, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+  m_PrefabInstance: {fileID: 1957322898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1957322901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957322900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd829e2229070e14880c3167d872f4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerOnce: 1
+  m_useEnterinOrExitingHitBox: 0
+  m_event: {fileID: 11400000, guid: 34a51fd2946b0fa44907e21015ceaadc, type: 2}
+  WaitTimeAfterLevelStarts: 5
+--- !u!4 &1957322902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5248149820510780135, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+  m_PrefabInstance: {fileID: 1957322898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &893384459885407351
 PrefabInstance:
   m_ObjectHideFlags: 0

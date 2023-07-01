@@ -19,15 +19,7 @@ public abstract class GameEventTrigger : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (!m_useEnterinOrExitingHitBox) return;
-        if (!m_hasGameEvent) return;
-        if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
-
-        if (EventTriggerCondition(other))
-        {
-            m_event.Raise();
-            m_hasGameEventBeenTriggered = true;
-            if (m_TriggerOnce) enabled = false;
-        }
+        TriggerEventViaCode();
 
     }
 
@@ -50,16 +42,6 @@ public abstract class GameEventTrigger : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         if (m_useEnterinOrExitingHitBox) return;
-        if (!m_hasGameEvent) return;
-        if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
-
-        if (EventTriggerCondition(other))
-        {
-            m_event.Raise();
-            m_hasGameEventBeenTriggered = true;
-            if (m_TriggerOnce) enabled = false;
-        }
-
-
+        TriggerEventViaCode();
     }
 }
