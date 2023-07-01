@@ -13,6 +13,7 @@ public class LevelMonobehaviour : MonoBehaviour
     [SerializeField] int levelTime;
     [Range(0,1)]
     [SerializeField] float[] wavePercentages;
+    [SerializeField] float waitTime;
 
     [Header("DO NOT CHANGE THE ORDER OF THE LIST")]
     [SerializeField] int maskedCustomers = 0;
@@ -32,10 +33,16 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
 
+    bool pointsManagerReady = false;
+
+    [SerializeField] private Animator UIanimator;
+
     #endregion
 
     void Start()
     {
+        if (UIanimator == null) Debug.LogWarning("No UI animator Found");
+
         if(timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
@@ -59,18 +66,23 @@ public class LevelMonobehaviour : MonoBehaviour
         manager.SetPrefabs(unmaskedPrefabsDictionary, maskedPrefabsDictionary);
         manager.SetWaves(wavePercentages);
 
-        if (manager.SanityCheck())
+
+        if (manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady())
         {
-            timerManager.StartTimer();
+            Debug.Log("All managers are ready");
+            
+            StartCoroutine(waitLevel(waitTime));
         }
         else
         {
             Debug.LogError("Something went wrong will creating level instance, sanity check failed");
         }
+
     }
 
     void Update()
     {
+
         //Just update to be seen in the editor.
         //so whenever there are changes we see them
         maskedCustomers = manager.CustomersToBeSpawnedWM;
@@ -78,6 +90,41 @@ public class LevelMonobehaviour : MonoBehaviour
         {
             unmaskedCustomers[(int)(pair.Key)] = pair.Value;
         }
+    }
+
+    bool isPointManagerReady()
+    {
+        return PointsManager.Instance.isReady;
+    }
+
+    bool isTaserManagerReady()
+    {
+        return TaserManager.Instance.isReady;
+    }
+
+    bool isBossManagerReady()
+    {
+        return BossAngerManager.Instance.isReady;
+    }
+
+    private IEnumerator waitLevel(float duration)
+    {
+        Debug.Log("Start waiting for characters...");
+        
+        yield return new WaitForSeconds(duration);
+
+        ScenesManager.levelIsReady = true;
+        
+        Debug.Log("Ready to do the Countdown");
+
+        UIanimator.SetTrigger("TriggerPlay");
+        
+        yield return new WaitForSecondsRealtime(5.30f); // Wait for the CountDown animation finish
+        
+        timerManager.StartTimer();
+        
+        Debug.Log("Ready to play");
+
     }
 
     void OnTimeFinished()

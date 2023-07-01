@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d721771fb5d4bf94980bccf08b638c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taserCostPerShot: 10
+  taserCostPerShot: 20
   chargePerSecond: 5
   charge: 0
 --- !u!1 &775877370642205860
@@ -83,6 +83,7 @@ Transform:
   - {fileID: 1943702092730625760}
   - {fileID: 782839536}
   - {fileID: 5382464703684328660}
+  - {fileID: 355985836031182678}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,6 +102,7 @@ MonoBehaviour:
   timerManager: {fileID: 6544498483485782700}
   levelTime: 149
   wavePercentages: []
+  waitTime: 0
   maskedCustomers: 52
   unmaskedCustomers: 4100000023000000390000002a000000
   unmaskedPrefabs:
@@ -109,15 +111,16 @@ MonoBehaviour:
   - {fileID: 68471940300211544, guid: ea15591096b2819419ceb19e8a591e42, type: 3}
   - {fileID: 68471940300211544, guid: e91347b2075b8be4b86f43e8e3c62d05, type: 3}
   maskedPrefabs:
-  - {fileID: 3919460525492696156, guid: bb8136be157dd4948a9abe5b8b75ad68, type: 3}
-  - {fileID: 3919460525492696156, guid: 4104fa3160616ff439648f26b62d883f, type: 3}
-  - {fileID: 3919460525492696156, guid: 622ca7fa931072f44ac7393238b77d81, type: 3}
-  - {fileID: 3919460525492696156, guid: f2e006fa6c03c3047a8ff5e054926ce5, type: 3}
+  - {fileID: 2018981391816702879, guid: 96a8710465debc249bb5132a0a754faf, type: 3}
+  - {fileID: 2778192567318708283, guid: 6a4d77ebed7fd1d4488969486ce6e98b, type: 3}
+  - {fileID: 7158564961611754381, guid: d29570133b5b22e45898a3c90170ea2f, type: 3}
+  - {fileID: 3815835655034595904, guid: 6bfd44cc989b1154fbee0e2d99589705, type: 3}
   maskedPercentages:
   - 0.5
-  - 0.14
+  - 0.01
   - 0.2
   - 0.16
+  UIanimator: {fileID: 0}
 --- !u!114 &7353344143689578711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +320,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smokePullingPool: {fileID: 4125613719305415315}
+--- !u!1 &4289367051674635382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355985836031182678}
+  - component: {fileID: 6456775690682909566}
+  - component: {fileID: 8989319662465899874}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355985836031182678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4289367051674635382}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1272719694548582121}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6456775690682909566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4289367051674635382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &8989319662465899874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4289367051674635382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &4347621414283479993
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPoints: 0
+  isReady: 0
 --- !u!1 &6673223381534869074
 GameObject:
   m_ObjectHideFlags: 0

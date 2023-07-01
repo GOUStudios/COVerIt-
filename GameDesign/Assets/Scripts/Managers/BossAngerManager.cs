@@ -7,13 +7,13 @@ public class BossAngerManager
 
     private static BossAngerManager _instance;
 
-    public int _maxNumAngry = 10; //To be defined on each level
-    public int _maxNumGameOver = 6; //To be defined on each level
+    public int _maxNumAngry; //To be defined on each level
+    public int _maxNumGameOver; //To be defined on each level
 
     public int angryCounter = 0;
     public int gameOverCounter = 0;
     public bool isAngry;
-
+    public bool isReady = false;
     public float angerPercent
     {
         get

@@ -18,6 +18,7 @@ public class BossAngerMonoBehaviour : MonoBehaviour
         _instance = BossAngerManager.Instance;
         _instance._maxNumAngry = _maxNumAngry;
         _instance._maxNumGameOver = _maxNumGameOver;
+        _instance.isReady = true;
         ClickManager.OnCorrectlyClicked += TriggerEvent_CorrectlyClicked;
         ClickManager.OnMissClicked += TriggerEvent_MissClicked;
     }
