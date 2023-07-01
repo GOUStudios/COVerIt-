@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LevelsPlate
   - Masked
+  - Sound
+  - Music
   layers:
   - Default
   - TransparentFX
