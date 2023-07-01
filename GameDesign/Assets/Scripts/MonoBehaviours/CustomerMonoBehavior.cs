@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class CustomerMonoBehavior : MonoBehaviour, Clickable
 {
-    [SerializeField] public int id;
+    [SerializeField] public CustomerTypes type;
     [ReadOnly][SerializeField] private string currentState;
     [SerializeField] public float baseSpeed;
     [ReadOnly][SerializeField] public float currentSpeed;
@@ -58,7 +58,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
         changeSpeed();
         audioSource = GetComponent<AudioSource>();
-
         //ideal if setting the FSM is the last function. just to make sure the other parameters are set if they are to be changed by the states.
 
         setFSM();
@@ -209,6 +208,11 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
 
 
 
+    public void setHitSide(HitSide side)
+    {
+        animator.SetFloat("HitSide", ((float)side));
+    }
+
     public void doTriggerAnimation(string name)
     {
         StartCoroutine(DoTriggerAnimation(name));
@@ -232,5 +236,4 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         clickCunt = 0;
         _mask.SetActive(false);
     }
-
 }

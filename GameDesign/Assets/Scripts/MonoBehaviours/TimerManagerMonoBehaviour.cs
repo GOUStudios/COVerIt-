@@ -17,6 +17,13 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     public delegate void TimeFinish();
     public static TimeFinish OnTimeFinished;
 
+    public delegate void TimePause();
+    public static TimePause OnTimePause;
+
+    public delegate void TimeResume();
+    public static TimeResume OnTimeResume;
+    public static TimeResume OnTimeStart;
+
     private LevelSettingManager levelManager;
 
     public delegate void Wave(int wavesRemaining);
@@ -32,6 +39,8 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         levelManager = LevelSettingManager.Instance;
         currentWave = 0;
         isWaveAnnounced = false;
+        BossAngerManager.OnAngryGameOver += StopTimer;
+
     }
 
     // Update is called once per frame
@@ -50,7 +59,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
                 timeRemaining = 0;
                 Debug.Log("Timer finished in Timer");
                 OnTimeFinished?.Invoke();
-                StopTimer();
+                // StopTimer();
             }
 
         }
@@ -59,7 +68,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     private void checkWaves()
     {
         float[] wavePercentages = levelManager.waveMomentPercentages;
-        if(wavePercentages != null && currentWave < wavePercentages.Length)
+        if (wavePercentages != null && currentWave < wavePercentages.Length)
         {
             float nextWaveTime = wavePercentages[currentWave] * maximumTime;
             float timePassed = maximumTime - timeRemaining;
@@ -77,7 +86,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
             }
         }
     }
- 
+
     public void SetTime(int seconds)
     {
         maximumTime = seconds;
@@ -91,12 +100,22 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     public void StartTimer()
     {
         Debug.Log("Timer started in Timer");
+        OnTimeStart?.Invoke();
         timeRemaining = maximumTime;
         isRunning = true;
+    }
+
+    public void ResumeTimer()
+    {
+        Time.timeScale = 1;
+        isRunning = true;
+        OnTimeResume?.Invoke();
     }
 
     public void StopTimer()
     {
         isRunning = false;
+        OnTimePause?.Invoke();
+        Time.timeScale = 0;
     }
 }

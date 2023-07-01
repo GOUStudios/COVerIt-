@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class PlateHandsUp : MonoBehaviour
 {
- 
+
     public string levelsPlateTag = "LevelsPlate";
     public float rotationSpeed = 5f;
 
     public Vector3 specifiedRotation;
 
     private Quaternion initialRotation;
+
+    private AudioSource clickSound;
 
     private ChangeSceneRequest requestManager;
     //Name of the Scene to load
@@ -22,6 +24,8 @@ public class PlateHandsUp : MonoBehaviour
         initialRotation = transform.rotation;
 
         requestManager = GetComponent<ChangeSceneRequest>();
+
+        clickSound= GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -29,7 +33,7 @@ public class PlateHandsUp : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-       
+
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.gameObject == transform.gameObject)
@@ -38,7 +42,7 @@ public class PlateHandsUp : MonoBehaviour
                 RotateObjectTowardsCamera();
 
                 CheckClick(hit);
-                    
+
             }
             else
             {
@@ -56,6 +60,8 @@ public class PlateHandsUp : MonoBehaviour
         if (Input.GetMouseButtonDown(0) &&
                     hit.collider.gameObject.CompareTag("LevelsPlate"))
         {
+            if(clickSound!= null) clickSound.Play();
+
             requestManager.RequestLevel(sceneName);
             Debug.Log("Plates Clicked " + hit.collider.name);
         }

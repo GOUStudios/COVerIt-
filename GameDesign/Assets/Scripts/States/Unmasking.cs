@@ -31,6 +31,7 @@ public class Unmasking : State
     {
         if (movementManager.goToTargetToUnmask())
         {
+            PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * _cmb.pointValue);
             //play animation to unmask.
             _cmb.doTriggerAnimation("Unmask");
         }

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 48d7edd34719fe94abecfcdb551e0fe6
+  - enabled: 1
+    path: Assets/Scenes/reloadingScene.unity
+    guid: 5831d422b692ff34e9aa76779215d1cb
   m_configObjects: {}
