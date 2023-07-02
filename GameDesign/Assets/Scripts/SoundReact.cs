@@ -5,25 +5,24 @@ using UnityEngine;
 public class SoundReact : MonoBehaviour
 {
     private AudioSource[] audioSources;
-    private SoundManager manager;
+    
 
     void Start()
     {
-        manager = FindObjectOfType<SoundManager>();
-
-        AudioSource[] audioSources = GetComponents<AudioSource>();
-
+       
+        audioSources = GetComponents<AudioSource>();
+        Debug.Log("Searching for Audio Sources");
         // Check if there are some audio source component attached to the game object
         if (audioSources.Length > 0)
         {
-            Debug.Log("AudioSource found:");
+            Debug.Log("AudioSource found:" + audioSources.Length);
 
-            if(!manager.musicStateRead() && gameObject.CompareTag("Sound"))
+            if(!SoundManager.Instance.musicStateRead() && gameObject.CompareTag("Sound"))
                 foreach (AudioSource audioSource in audioSources)
                 {
                     audioSource.mute = true;
                 }
-            else if(!manager.soundStateRead() && gameObject.CompareTag("Music"))
+             if(!SoundManager.Instance.soundStateRead() && gameObject.CompareTag("Music"))
                 foreach (AudioSource audioSource in audioSources)
                 {
                     audioSource.mute = true;
@@ -31,12 +30,12 @@ public class SoundReact : MonoBehaviour
 
             if (gameObject.CompareTag("Music"))
             {
-               // manager.MusicChangedEvent += ChangeState;
+                SoundManager.Instance.MusicChangedEvent += ChangeState;
             }
 
             if (gameObject.CompareTag("Sound"))
             {
-                //manager.SoundChangedEvent += ChangeState;
+                SoundManager.Instance.SoundChangedEvent += ChangeState;
             }
 
         }
@@ -46,12 +45,28 @@ public class SoundReact : MonoBehaviour
         }
     }
 
-    /*
-    public void ChangeState()
+    private void OnDestroy()
+    {
+        if (gameObject.CompareTag("Music"))
+        {
+            SoundManager.Instance.MusicChangedEvent -= ChangeState;
+        }
+
+        if (gameObject.CompareTag("Sound"))
+        {
+            SoundManager.Instance.SoundChangedEvent -= ChangeState;
+        }
+
+    }
+
+
+    private void ChangeState()
     {
         Debug.Log("Audio Reaction");
-        if (audioSources.Length > 0)
+
+        if (audioSources.Length > 0 && audioSources != null)
         {
+            Debug.Log("This component");
             Debug.Log("Changing State Audio");
             foreach (AudioSource audioSource in audioSources)
             {
@@ -59,6 +74,6 @@ public class SoundReact : MonoBehaviour
             }
 
         }
-    }*/
+    }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager instance;
+    public static SoundManager Instance { get; private set; }
 
     private bool musicState = true;
     private bool soundState = true;
@@ -17,11 +17,12 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        
+        if (Instance == null)
         {
             // Keep this object alive between all the scenes
             DontDestroyOnLoad(gameObject);
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -42,12 +43,14 @@ public class SoundManager : MonoBehaviour
 
     public void changeMusicState()
     {
+        Debug.Log("invoked music state change");
         musicState = !musicState;
         MusicChangedEvent?.Invoke();      
     }
 
     public void changeSoundState()
     {
+        Debug.Log("invoked sound state change");
         soundState = !soundState;
         SoundChangedEvent?.Invoke();
     }
