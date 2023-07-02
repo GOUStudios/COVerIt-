@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028408, g: 0.22571568, b: 0.3069229, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028471, g: 0.22571641, b: 0.30692425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -203,10 +203,11 @@ GameObject:
   - component: {fileID: 72033128}
   - component: {fileID: 72033127}
   - component: {fileID: 72033126}
+  - component: {fileID: 72033131}
   - component: {fileID: 72033130}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,6 +391,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &72033131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72033125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cec7e1b34e39b64cb534e6224a8cf9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &213767830
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,11 +719,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1913960098}
+  - component: {fileID: 1913960099}
   - component: {fileID: 1913960097}
   - component: {fileID: 1913960096}
   m_Layer: 0
   m_Name: BackgroundMusic
-  m_TagString: Untagged
+  m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -846,6 +860,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1913960099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913960095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cec7e1b34e39b64cb534e6224a8cf9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1927994007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1243,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 259298672262541696, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 704241518975733063, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399191168972688781, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153775003880576484, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594221237842545235, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8619527734354556933, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1265,6 +1311,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level2
       objectReference: {fileID: 0}
+    - target: {fileID: 8995208406052954815, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995208406052954815, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: m_TagString
+      value: Sound
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
 --- !u!1001 &6583959293962060125
@@ -1279,8 +1333,12 @@ PrefabInstance:
       value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 573931682285783162, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 573931682285783162, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_TagString
-      value: LevelsPlate
+      value: Sound
       objectReference: {fileID: 0}
     - target: {fileID: 917840963895612096, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_RootOrder
@@ -1327,8 +1385,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2529885996806521909, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529885996806521909, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144797184471208234, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3144797184471208234, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1347,6 +1413,10 @@ PrefabInstance:
       value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6160981847246448233, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160981847246448233, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
@@ -1355,8 +1425,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: afd5034b5cf74494b9ee642dba65f8ff, type: 2}
     - target: {fileID: 6510702724481641666, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510702724481641666, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363741432709732657, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8363741432709732657, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_StaticEditorFlags

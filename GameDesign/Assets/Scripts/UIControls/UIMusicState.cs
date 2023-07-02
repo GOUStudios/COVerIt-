@@ -19,7 +19,7 @@ public class UIMusicState : MonoBehaviour
 
         if(SoundManager.Instance != null )
         {
-            if (SoundManager.Instance.soundStateRead())
+            if (SoundManager.Instance.musicStateRead())
             {
                 bool newIsOnState = false;
                 toggle.SetIsOnWithoutNotify(newIsOnState);
@@ -31,6 +31,11 @@ public class UIMusicState : MonoBehaviour
             }
                 
         }
+    }
+
+    private void OnDisable()
+    {
+        toggle.onValueChanged.RemoveAllListeners();
     }
 
 

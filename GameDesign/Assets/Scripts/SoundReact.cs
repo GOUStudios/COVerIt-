@@ -17,12 +17,12 @@ public class SoundReact : MonoBehaviour
         {
             Debug.Log("AudioSource found:" + audioSources.Length);
 
-            if(!SoundManager.Instance.musicStateRead() && gameObject.CompareTag("Sound"))
+            if(!SoundManager.Instance.soundStateRead() && gameObject.CompareTag("Sound"))
                 foreach (AudioSource audioSource in audioSources)
                 {
                     audioSource.mute = true;
                 }
-             if(!SoundManager.Instance.soundStateRead() && gameObject.CompareTag("Music"))
+            else if(!SoundManager.Instance.musicStateRead() && gameObject.CompareTag("Music"))
                 foreach (AudioSource audioSource in audioSources)
                 {
                     audioSource.mute = true;
@@ -32,11 +32,12 @@ public class SoundReact : MonoBehaviour
             {
                 SoundManager.Instance.MusicChangedEvent += ChangeState;
             }
-
-            if (gameObject.CompareTag("Sound"))
+            else if (gameObject.CompareTag("Sound"))
             {
                 SoundManager.Instance.SoundChangedEvent += ChangeState;
             }
+
+
 
         }
         else
@@ -50,12 +51,12 @@ public class SoundReact : MonoBehaviour
         if (gameObject.CompareTag("Music"))
         {
             SoundManager.Instance.MusicChangedEvent -= ChangeState;
-        }
-
-        if (gameObject.CompareTag("Sound"))
+        }else if (gameObject.CompareTag("Sound"))
         {
             SoundManager.Instance.SoundChangedEvent -= ChangeState;
         }
+
+
 
     }
 
@@ -66,7 +67,6 @@ public class SoundReact : MonoBehaviour
 
         if (audioSources.Length > 0 && audioSources != null)
         {
-            Debug.Log("This component");
             Debug.Log("Changing State Audio");
             foreach (AudioSource audioSource in audioSources)
             {

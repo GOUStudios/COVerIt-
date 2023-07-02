@@ -31,6 +31,11 @@ public class UISoundState : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        toggle.onValueChanged.RemoveAllListeners();
+    }
+
 
     private void ChangeStateRequest(bool value)
     {
