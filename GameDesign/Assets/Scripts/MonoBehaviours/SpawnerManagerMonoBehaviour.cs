@@ -22,6 +22,9 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     [SerializeField] SpawnerWaypoint[] levelSpawners;
 
 
+    [Header("Despawner properties")]
+    [SerializeField] public float DespawnAfterSeconds;
+
     private float currentTime = 0f;
     private float currentPullRate = 0f;
     private bool isPaused = false;
@@ -98,6 +101,6 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
 
     void OnWaveStart(int wavesRemaining)
     {
-        determineSpawn(wavesRemaining>0 ? WaveMultiplier : 999, wavesRemaining<2);
+        determineSpawn(wavesRemaining>0 ? WaveMultiplier*levelSpawners.Length : 999, wavesRemaining<2);
     }
 }
