@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27977cc827cda8a4aa8c731f324e2b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfSpawnage: 0.2
+  chanceOfSpawnage: 20
 --- !u!1001 &2815351017562891767
 PrefabInstance:
   m_ObjectHideFlags: 0
