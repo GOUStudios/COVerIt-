@@ -1927,6 +1927,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5248149820510780143, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: m_TriggerOncePerGameFile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248149820510780144, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: m_TriggerOncePerGameFile
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7353344143689578711, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: levelSpawners.Array.data[0]
       value: 
@@ -1935,5 +1943,9 @@ PrefabInstance:
       propertyPath: levelSpawners.Array.data[1]
       value: 
       objectReference: {fileID: 348019060}
+    - target: {fileID: 8433276083259680679, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: m_TriggerOncePerGameFile
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
