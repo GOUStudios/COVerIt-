@@ -6,6 +6,8 @@ public class DespawnerWaypoint : Waypoint
 {
     [Header("Despawner properties")]
     [SerializeField] float distanceToDespawn;
+    [SerializeField] SpawnerManagerMonoBehaviour manager;
+    [SerializeField] TimerManagerMonoBehaviour timerManager;
 
     void OnDrawGizmos()
     {
@@ -18,28 +20,36 @@ public class DespawnerWaypoint : Waypoint
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        if(manager == null)
+        {
+            GameObject managers = GameObject.FindGameObjectWithTag("Manager");
+            manager = (SpawnerManagerMonoBehaviour) ObjectUtils.GetObjectWithInterface<SpawnerManagerMonoBehaviour>(managers);
+            if(manager == null)
+            {
+                Debug.LogError($"Couldn't set spawner manager in {gameObject.name}");
+            }
+            timerManager = managers.GetComponentInChildren<TimerManagerMonoBehaviour>(); 
+            if (timerManager == null)
+            {
+                Debug.LogError($"Couldn't set timer manager in {gameObject.name}");
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void waypointReached(NPCMovementManager npcMover)
     {
         Debug.Log($"Customer wants to leave with {npcMover.visibleWaypointsReached} WPs reached");
-        if(npcMover.visibleWaypointsReached >= 1 && Vector3.Distance(transform.position, npcMover.transform.position) < distanceToDespawn)
+        if(timerManager.GetTime() - timerManager.TimeRemainingSeconds >= manager.DespawnAfterSeconds)
         {
-            Destroy(npcMover.gameObject);
+            if (npcMover.visibleWaypointsReached > 1 && Vector3.Distance(transform.position, npcMover.transform.position) < distanceToDespawn)
+            {
+                Destroy(npcMover.gameObject);
+                return;
+            }
         }
-        else
-        {
-            base.waypointReached(npcMover);
-        }
+        base.waypointReached(npcMover);
     }
 }

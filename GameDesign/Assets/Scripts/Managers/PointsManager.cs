@@ -130,7 +130,7 @@ public class PointsManager : MonoBehaviour
 
     public void TriggerEvent_IncrementPoints(int points)
     {
-        instance.currentPoints += points;
+        instance.currentPoints = (instance.currentPoints+points >= 0) ? instance.currentPoints+points : 0;
 
         if (points < 0) instance.lostPoints += points;
         if (points > 0) instance.earnedPoints += points;
