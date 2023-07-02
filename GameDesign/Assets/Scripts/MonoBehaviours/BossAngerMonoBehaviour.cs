@@ -15,9 +15,11 @@ public class BossAngerMonoBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         _instance = BossAngerManager.Instance;
         _instance._maxNumAngry = _maxNumAngry;
         _instance._maxNumGameOver = _maxNumGameOver;
+        _instance.reset();
         _instance.isReady = true;
         ClickManager.OnCorrectlyClicked += TriggerEvent_CorrectlyClicked;
         ClickManager.OnMissClicked += TriggerEvent_MissClicked;
