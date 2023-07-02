@@ -1404,6 +1404,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -152
       objectReference: {fileID: 0}
+    - target: {fileID: 3610582502191106741, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Level1
     - target: {fileID: 2930894163467527788, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_Volume
       value: 0.5
@@ -1462,6 +1465,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095067513666430394, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095067513666430394, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095067513666430394, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 9e5ac36fdf00bed49a482a0663a503f7, type: 3}
+    - target: {fileID: 9095067513666430394, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095067513666430394, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095067513666430394, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095067513666430394, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1882683000}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_mute
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118177788635234, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1592,10 +1663,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1882683002}
   - component: {fileID: 1882683001}
+  - component: {fileID: 1882683003}
   - component: {fileID: 1882683000}
   m_Layer: 0
   m_Name: Background Music
-  m_TagString: Untagged
+  m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1731,6 +1803,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1882683003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882682999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cec7e1b34e39b64cb534e6224a8cf9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1901533316 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7398155491164954031, guid: 13350b18eadb5224f9a2e974ea147d54, type: 3}
