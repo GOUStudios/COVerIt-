@@ -1108,7 +1108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6405679049103696916, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7217696538500416721, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_Name
@@ -1559,7 +1559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5834890448040859528, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: sceneName
-      value: Level3
+      value: LevelFoodCourt
       objectReference: {fileID: 0}
     - target: {fileID: 5834890448040859528, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: specifiedRotation.x
