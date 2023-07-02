@@ -20,7 +20,7 @@ public class PointsFill : MonoBehaviour
     private float currentLost;
     private float currentTotal;
 
-    private float lerpSpeed = 1.5f;
+    private float lerpSpeed = 3f;
 
     private PointsManager pointsManager;
 
