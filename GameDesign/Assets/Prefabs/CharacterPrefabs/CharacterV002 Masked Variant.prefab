@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_TagString
-      value: Sound
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5846908172797615232, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: wearsMask
