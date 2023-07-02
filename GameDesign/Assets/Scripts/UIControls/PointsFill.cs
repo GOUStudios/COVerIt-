@@ -24,18 +24,16 @@ public class PointsFill : MonoBehaviour
 
     private PointsManager pointsManager;
 
-  
+
 
     // Start is called before the first frame update
     void Start()
     {
-        pointsManager = FindObjectOfType<PointsManager>();
- 
+        pointsManager = PointsManager.Instance;
     }
 
     private void InterpolatePoints()
-    {       
-        earnedPoints.value = currentPoints;
+    {
         currentPoints = Mathf.Lerp(currentPoints, Points, lerpSpeed * Time.deltaTime);
 
         //textPoints.text = (currentPoints * pointsManager.GetMaxPoints()).ToString("000");
@@ -45,29 +43,30 @@ public class PointsFill : MonoBehaviour
         {
             currentPoints = Points;
         }
+
+        earnedPoints.value = currentPoints / pointsManager.GetMaxPoints();
     }
 
     private void InterpolateLost()
     {
-        
         currentLost = Mathf.Lerp(currentLost, Lost, lerpSpeed * Time.deltaTime);
-        LostPoints.value = currentLost;
 
         //textLosts.text = (currentLost ).ToString("000");
-        textLosts.text = (currentLost ).ToString("F0");
-      
+        textLosts.text = (currentLost).ToString("F0");
+
         if (Mathf.Approximately(currentLost, Lost))
         {
             currentLost = Lost;
         }
+        LostPoints.value = currentLost * -1 / pointsManager.GetMaxPoints();
     }
 
     private void InterpolateTotal()
     {
         currentTotal = Mathf.Lerp(currentTotal, Total, lerpSpeed * Time.deltaTime);
-       
+
         //textLosts.text = (currentLost * pointsManager.GetMaxPoints()).ToString("000");
-        textTotal.text = (currentTotal ).ToString("F0");
+        textTotal.text = (currentTotal).ToString("F0");
 
         if (Mathf.Approximately(currentTotal, Total))
         {
