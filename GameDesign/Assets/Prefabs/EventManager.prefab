@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
   CustomerTypeToCheck: 3
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: a6a55e20035209344a85dcb45bba5cac, type: 2}
   CustomerTypeToCheck: 1
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: 5ad328ae15f5fcf41b3c2944ac22f56e, type: 2}
 --- !u!114 &4457490087243477268
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: b9b09543647d99e4e937466d36ff291c, type: 2}
   CustomerTypeToCheck: 0
@@ -1444,54 +1444,6 @@ MonoBehaviour:
           m_StringArgument: CreditsAnimation
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 4457490087580915525}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4457490087881574689}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4457490088973921649}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4457490088971312901}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &4457490088971312901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,8 +1635,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 3.7956965, z: 9.8979225}
-  m_Center: {x: -0.0000011687308, y: 1.3978482, z: 4.115497}
+  m_Size: {x: 1.8770719, y: 3.7956965, z: 9.897922}
+  m_Center: {x: 0.43852535, y: 1.3978482, z: 4.115492}
 --- !u!65 &4377117442424366824
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1696,8 +1648,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 3.7956965, z: 9.8979225}
-  m_Center: {x: 62.92, y: 1.37, z: 4.115497}
+  m_Size: {x: 2.017811, y: 3.7956965, z: 9.897923}
+  m_Center: {x: 62.41112, y: 1.37, z: 4.1154976}
 --- !u!114 &9219098819394831281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1711,7 +1663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
   CustomerTypeToCheck: 3
