@@ -18,8 +18,8 @@ public class EndCountDown : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameObject time = GameObject.Find("Time");
-        TimerManagerMonoBehaviour timer = time.GetComponent<TimerManagerMonoBehaviour>();
+        GameObject managers = GameObject.FindGameObjectWithTag("Manager");
+        TimerManagerMonoBehaviour timer = managers.GetComponentInChildren<TimerManagerMonoBehaviour>();
         timer.ResumeTimer();
     }
 
