@@ -10,7 +10,7 @@ public class ScenesManager : MonoBehaviour
 
     //levelIsReady is a flag to control the loading progress of the level scene
     public static bool levelIsReady = false;
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -26,7 +26,7 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
-    
+
     public void SceneChanger(string sceneName)
     {
 
@@ -39,6 +39,7 @@ public class ScenesManager : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(sceneName);
         }
     }
@@ -56,7 +57,7 @@ public class ScenesManager : MonoBehaviour
     public void SceneChangerLevel(string sceneName)
     {
         if (levelIsReady) levelIsReady = false;
-        
+
         StartCoroutine(LoadSceneWaiting(sceneName));
     }
 
@@ -71,12 +72,12 @@ public class ScenesManager : MonoBehaviour
             FadeToBlack(fadeCanvasGroup, fadeSpeed);
             yield return null;
         }
-
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
-       
+
         yield return new WaitWhile(() => levelIsReady == false);
-        
+
 
         while (fadeCanvasGroup.alpha > 0f)
         {
@@ -91,8 +92,8 @@ public class ScenesManager : MonoBehaviour
 
         levelIsReady = false;
     }
-    
-    
+
+
     IEnumerator FadeOutAndLoadScene(string sceneName)
     {
         CanvasGroup fadeCanvasGroup = GetComponentInChildren<CanvasGroup>();
@@ -104,7 +105,7 @@ public class ScenesManager : MonoBehaviour
             FadeToBlack(fadeCanvasGroup, fadeSpeed);
             yield return null;
         }
-
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
         while (fadeCanvasGroup.alpha > 0f)
@@ -121,11 +122,11 @@ public class ScenesManager : MonoBehaviour
     }
 
 
-    void FadeToBlack(CanvasGroup fadeCanvasGroup,float fadeSpeed)
+    void FadeToBlack(CanvasGroup fadeCanvasGroup, float fadeSpeed)
     {
-        
+
         fadeCanvasGroup.alpha = Mathf.Lerp(fadeCanvasGroup.alpha, 1f, fadeSpeed * Time.deltaTime);
-        if(fadeCanvasGroup.alpha >= 0.9f) fadeCanvasGroup.alpha = 1f;
+        if (fadeCanvasGroup.alpha >= 0.9f) fadeCanvasGroup.alpha = 1f;
     }
 
 
@@ -137,7 +138,7 @@ public class ScenesManager : MonoBehaviour
         {
             if (sceneName == SceneManager.GetSceneAt(i).name)
             {
-               
+
                 return true;
             }
         }
