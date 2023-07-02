@@ -45,6 +45,7 @@ public class SoundManager : MonoBehaviour
     {
         Debug.Log("invoked music state change");
         musicState = !musicState;
+        Debug.Log("music state: " + musicState);
         MusicChangedEvent?.Invoke();      
     }
 
@@ -52,6 +53,7 @@ public class SoundManager : MonoBehaviour
     {
         Debug.Log("invoked sound state change");
         soundState = !soundState;
+        Debug.Log("Sound state: " + soundState);
         SoundChangedEvent?.Invoke();
     }
 

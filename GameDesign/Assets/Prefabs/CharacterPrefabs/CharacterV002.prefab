@@ -2578,9 +2578,10 @@ GameObject:
   - component: {fileID: 2483311256690201213}
   - component: {fileID: 4736574958765445734}
   - component: {fileID: -2920873253710002508}
+  - component: {fileID: -8096398087054656180}
   m_Layer: 0
   m_Name: CharacterV002
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2625,7 +2626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4d0741a38a29a4385687828ba5f9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  type: 0
   currentState: 
   baseSpeed: 3
   currentSpeed: 3
@@ -2870,6 +2871,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8096398087054656180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079419891072529929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cec7e1b34e39b64cb534e6224a8cf9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3119978268294768723
 GameObject:
   m_ObjectHideFlags: 0

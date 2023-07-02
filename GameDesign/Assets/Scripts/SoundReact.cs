@@ -11,6 +11,7 @@ public class SoundReact : MonoBehaviour
     {
        
         audioSources = GetComponents<AudioSource>();
+        if (audioSources == null) return;
         Debug.Log("Searching for Audio Sources");
         // Check if there are some audio source component attached to the game object
         if (audioSources.Length > 0)
@@ -30,10 +31,12 @@ public class SoundReact : MonoBehaviour
 
             if (gameObject.CompareTag("Music"))
             {
+                Debug.Log("Event music subsribed by: " + gameObject.name);
                 SoundManager.Instance.MusicChangedEvent += ChangeState;
             }
             else if (gameObject.CompareTag("Sound"))
             {
+                Debug.Log("Event sound subsribed by: " + gameObject.name);
                 SoundManager.Instance.SoundChangedEvent += ChangeState;
             }
 

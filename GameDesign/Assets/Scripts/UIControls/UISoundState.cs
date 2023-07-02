@@ -31,7 +31,7 @@ public class UISoundState : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         toggle.onValueChanged.RemoveAllListeners();
     }

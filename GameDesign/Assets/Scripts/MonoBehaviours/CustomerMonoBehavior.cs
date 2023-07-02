@@ -87,7 +87,8 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         wearsMask = true;
 
         ClickManager.Instance.onCorrectlyClickInvoke();
-        audioSource.PlayOneShot(shot, 0.7f);
+
+        if(SoundManager.Instance.soundStateRead()) audioSource.PlayOneShot(shot, 0.7f);
         PointsManager.Instance.TriggerEvent_IncrementPoints(pointValue);
         StartCoroutine(HitCoroutine());
         maskNPC();
@@ -98,7 +99,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     }
     protected virtual void DodgeHitBehaviour()
     {
-        audioSource.PlayOneShot(missHit, 0.7f);
+        if (SoundManager.Instance.soundStateRead()) audioSource.PlayOneShot(missHit, 0.7f);
         PointsManager.Instance.TriggerEvent_IncrementPoints(-1 * pointValue);
         StartCoroutine(wrongHitCoroutine());
         StartCoroutine(DoTriggerAnimation("SmallHit"));
@@ -126,7 +127,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             }
             else
             {
-                audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+                if (SoundManager.Instance.soundStateRead()) audioSource.PlayOneShot(HitButNotMasked, 0.7f);
                 StartCoroutine(HitCoroutine());
             }
         }
@@ -142,14 +143,14 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     private IEnumerator wrongHitCoroutine()
     {
         VFXManager.Instance.changeLayer(gameObject, "WrongHitLayer");
-        audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+        if (SoundManager.Instance.soundStateRead()) audioSource.PlayOneShot(HitButNotMasked, 0.7f);
         yield return new WaitForSeconds(0.3f);
         VFXManager.Instance.changeLayer(gameObject, defaultLayer);
     }
     private IEnumerator HitCoroutine()
     {
         VFXManager.Instance.changeLayer(gameObject, "HitLayer");
-        audioSource.PlayOneShot(HitButNotMasked, 0.7f);
+        if (SoundManager.Instance.soundStateRead()) audioSource.PlayOneShot(HitButNotMasked, 0.7f);
         yield return new WaitForSeconds(0.3f);
         VFXManager.Instance.changeLayer(gameObject, defaultLayer);
     }
