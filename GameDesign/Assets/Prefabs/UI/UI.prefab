@@ -1320,8 +1320,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4822816787825680126}
         m_TargetAssemblyTypeName: ChangeSceneRequest, Assembly-CSharp
-        m_MethodName: Request
-        m_Mode: 5
+        m_MethodName: reloadLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2488,7 +2488,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: LevelMap
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1527159065789532788
@@ -3961,7 +3961,7 @@ GameObject:
   - component: {fileID: 1160183865082974820}
   - component: {fileID: 8739367369483261921}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4068,7 +4068,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e042ae6bd37964241b640cf7b7059ac5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

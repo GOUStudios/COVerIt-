@@ -8,9 +8,9 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     // In seconds
     private int maximumTime;
     [SerializeField] private float timeRemaining;
-    private bool isRunning;
+    private static bool isRunning;
 
-    public bool IsRunning { get { return isRunning; } }
+    public static bool IsRunning { get { return isRunning; } }
     public int TimeRemainingSeconds { get { return (int)(timeRemaining + 1); } }
     public float TimeRemaining { get { return timeRemaining; } }
 
@@ -22,6 +22,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
 
     public delegate void TimeResume();
     public static TimeResume OnTimeResume;
+    public static TimeResume OnTimeStart;
 
     private LevelSettingManager levelManager;
 
@@ -38,6 +39,8 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         levelManager = LevelSettingManager.Instance;
         currentWave = 0;
         isWaveAnnounced = false;
+        BossAngerManager.OnAngryGameOver += StopTimer;
+
     }
 
     // Update is called once per frame
@@ -56,7 +59,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
                 timeRemaining = 0;
                 Debug.Log("Timer finished in Timer");
                 OnTimeFinished?.Invoke();
-                StopTimer();
+                // StopTimer();
             }
 
         }
@@ -65,7 +68,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     private void checkWaves()
     {
         float[] wavePercentages = levelManager.waveMomentPercentages;
-        if(wavePercentages != null && currentWave < wavePercentages.Length)
+        if (wavePercentages != null && currentWave < wavePercentages.Length)
         {
             float nextWaveTime = wavePercentages[currentWave] * maximumTime;
             float timePassed = maximumTime - timeRemaining;
@@ -83,7 +86,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
             }
         }
     }
- 
+
     public void SetTime(int seconds)
     {
         maximumTime = seconds;
@@ -97,6 +100,7 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
     public void StartTimer()
     {
         Debug.Log("Timer started in Timer");
+        OnTimeStart?.Invoke();
         timeRemaining = maximumTime;
         isRunning = true;
     }

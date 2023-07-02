@@ -43,7 +43,7 @@ public class CharacterSetter : MonoBehaviour
         _hairbase[0].SetActive(false);
         bool hairBase = Random.value > 0.5f;
         _hairbase[1].SetActive(hairBase);
-        _hairbase[2].SetActive(hairBase);
+        _hairbase[2].SetActive(!hairBase);//fixed now uses both hair bases
 
         _hairDetails[0].SetActive(Random.value > 0.85f);
         _hairDetails[1].SetActive(Random.value > 0.5f);

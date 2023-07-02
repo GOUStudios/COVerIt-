@@ -105,17 +105,32 @@ public class PointsManager : MonoBehaviour
     private void SavePrefs(int earnedPoints, int numberStars)
     {
         Scene scene = SceneManager.GetActiveScene();
-        int currentPoints = PlayerPrefs.GetInt($"Points{scene.name}");
-        if(earnedPoints > currentPoints)
+        int currentPoints = PlayerPrefs.GetInt($"Points{scene.name}", 0);
+        if (earnedPoints > currentPoints)
         {
             PlayerPrefs.SetInt($"Points{scene.name}", earnedPoints);
             PlayerPrefs.SetInt($"Stars{scene.name}", numberStars);
         }
+
+        if (numberStars > 0) savePassedLevel();
     }
+
+
+    private void savePassedLevel()
+    {
+        int currentHighestLevel = PlayerPrefs.GetInt("levelReached", 0);
+        Scene scene = SceneManager.GetActiveScene();
+        if (currentHighestLevel <= scene.buildIndex - 1)
+        {
+            // our first 2 scenes are main menu and levelMap, the index starts at 0 from there we just need to keep the build index in order
+            PlayerPrefs.SetInt("levelReached", scene.buildIndex);//unlocked the next level.
+        }
+    }
+
 
     public void TriggerEvent_IncrementPoints(int points)
     {
-        instance.currentPoints += points;
+        instance.currentPoints = (instance.currentPoints+points >= 0) ? instance.currentPoints+points : 0;
 
         if (points < 0) instance.lostPoints += points;
         if (points > 0) instance.earnedPoints += points;
@@ -159,8 +174,8 @@ public class PointsManager : MonoBehaviour
 
     IEnumerator IsReadyChecker()
     {
-        
-        yield return new WaitWhile(()=> maxPoints<0);
+
+        yield return new WaitWhile(() => maxPoints < 0);
         isReady = true;
     }
     IEnumerator gettingMaxPoints()

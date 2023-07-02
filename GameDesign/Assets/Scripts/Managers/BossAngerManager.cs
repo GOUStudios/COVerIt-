@@ -14,6 +14,10 @@ public class BossAngerManager
     public int gameOverCounter = 0;
     public bool isAngry;
     public bool isReady = false;
+
+    public delegate void AngerGameOver();
+    public static AngerGameOver OnAngryGameOver;
+
     public float angerPercent
     {
         get
@@ -91,6 +95,7 @@ public class BossAngerManager
         if (gameOverCounter >= _maxNumGameOver)
         {
             Debug.Log("GAME OVER");
+            OnAngryGameOver?.Invoke();
             //Dont think this reset is necessary
             /*angryCounter = 0;
             gameOverCounter = 0;

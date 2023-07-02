@@ -7,6 +7,22 @@ using UnityEngine.UI;
 public class ScenesManager : MonoBehaviour
 {
     private static ScenesManager instance;
+    public static ScenesManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                GameObject G = new GameObject();
+                instance = G.AddComponent<ScenesManager>();
+            }
+            return instance;
+        }
+    }
+
+    //** only usable by reload level.
+    /*it saves the level to reload it loads a temp scene to empty all the managers. and reloads the scene */
+    public static string lastLoadedLevel { get; private set; }
 
     //levelIsReady is a flag to control the loading progress of the level scene
     public static bool levelIsReady = false;
@@ -155,4 +171,9 @@ public class ScenesManager : MonoBehaviour
     }
 
 
+    public void reloadLevel()
+    {
+        lastLoadedLevel = SceneManager.GetActiveScene().name;
+        SceneChanger("reloadingScene");
+    }
 }
