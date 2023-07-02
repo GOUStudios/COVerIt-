@@ -1154,11 +1154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1527159065382995734, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1527159065382995734, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1527159065448334897, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1224,6 +1224,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1527159065870447550, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1527159065979059355, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1250,7 +1254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1527159066423953546, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 1527159066423953546, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_IsActive
@@ -1404,9 +1408,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -152
       objectReference: {fileID: 0}
-    - target: {fileID: 3610582502191106741, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: Level1
     - target: {fileID: 2930894163467527788, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_Volume
       value: 0.5
@@ -1414,6 +1415,10 @@ PrefabInstance:
     - target: {fileID: 3305140906126462130, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_Volume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610582502191106741, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 4081837739242814365, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1959,6 +1964,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 782839537, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: chargePerSecond
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 782839537, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: taserCostPerShot
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: UIanimator
       value: 
