@@ -4,41 +4,39 @@ using UnityEngine;
 
 public abstract class GameEventTrigger : MonoBehaviour
 {
-    [SerializeField] private bool m_TriggerOnce;
-    private bool m_hasGameEventBeenTriggered;
-    [SerializeField] private bool m_useEnterinOrExiting = false;
-    [SerializeField] private GameEvent m_event;
-    private bool m_hasGameEvent = true;
+    [SerializeField] protected bool m_TriggerOnce;
+    [SerializeField] protected bool m_TriggerOncePerGameFile = false;
+    protected bool m_hasGameEventBeenTriggered;
+    [SerializeField] protected bool m_useEnterinOrExitingHitBox = false;
+    [SerializeField] protected GameEvent m_event;
+    protected bool m_hasGameEvent = true;
 
     protected abstract bool EventTriggerCondition(Collider other);
-    protected virtual bool EventTriggerCondition() {
+    protected virtual bool EventTriggerCondition()
+    {
         return EventTriggerCondition(null);
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!m_useEnterinOrExiting) return;
-        if (!m_hasGameEvent) return;
-        if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
-
-        if (EventTriggerCondition(other))
-        {
-            m_event.Raise();
-            m_hasGameEventBeenTriggered = true;
-        }
+        if (!m_useEnterinOrExitingHitBox) return;
+        TriggerEventViaCode();
 
     }
 
     public void TriggerEventViaCode()
     {
-
         if (!m_hasGameEvent) return;
+        if (m_TriggerOncePerGameFile && PlayerPrefs.GetInt(m_event.name, 0) != 0) return;
         if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
 
         if (EventTriggerCondition())
         {
             m_event.Raise();
             m_hasGameEventBeenTriggered = true;
+            if (m_TriggerOncePerGameFile) PlayerPrefs.SetInt(m_event.name, 1);
+            if (m_TriggerOnce) enabled = false;
+
         }
 
     }
@@ -46,16 +44,7 @@ public abstract class GameEventTrigger : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (m_useEnterinOrExiting) return;
-        if (!m_hasGameEvent) return;
-        if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
-
-        if (EventTriggerCondition(other))
-        {
-            m_event.Raise();
-            m_hasGameEventBeenTriggered = true;
-        }
-
-
+        if (m_useEnterinOrExitingHitBox) return;
+        TriggerEventViaCode();
     }
 }

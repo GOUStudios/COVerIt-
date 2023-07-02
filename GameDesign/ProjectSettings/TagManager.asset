@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LevelsPlate
   - Masked
+  - Manager
   layers:
   - Default
   - TransparentFX

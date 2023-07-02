@@ -6,6 +6,7 @@ public class ObjectUtils
 {
     public static MonoBehaviour GetObjectWithInterface<T>(GameObject gameObject)
     {
+        if (gameObject == null) return null;
         MonoBehaviour[] list = gameObject.GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour mb in list)
         {
