@@ -41,3 +41,5 @@ sysinfo.txt
 
 *.code-workspace
 .fake
+GameDesign/Assets/PlayerPrefsEditor.meta
+GameDesign/Assets/PlayerPrefsEditor/*
