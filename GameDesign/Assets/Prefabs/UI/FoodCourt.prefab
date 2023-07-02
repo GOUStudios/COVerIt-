@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6553496287196896486}
   - component: {fileID: 4432153664698356265}
   m_Layer: 0
-  m_Name: FoodCourtPlate
+  m_Name: FoodCourt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,8 +83,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsPlateTag: LevelsPlate
   rotationSpeed: 5
-  specifiedRotation: {x: -59, y: 128, z: 0}
-  sceneName: Level1
+  specifiedRotation: {x: 0, y: 0, z: 0}
+  sceneName: 
 --- !u!114 &9008694577967997593
 MonoBehaviour:
   m_ObjectHideFlags: 0
