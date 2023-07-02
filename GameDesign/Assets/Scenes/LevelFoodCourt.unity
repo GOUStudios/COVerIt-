@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -175,7 +175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -54.22
+      value: -32.46
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -183,7 +183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.17
+      value: 4.98
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -219,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200550578832598972, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: IsVisibleOnScreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7200550578832598972, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: possibleNextPoint.Array.size
@@ -820,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: IsVisibleOnScreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
@@ -950,7 +950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: IsVisibleOnScreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
@@ -1381,7 +1381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.2
+      value: -32.27
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1389,7 +1389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.3
+      value: 9.02
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1454,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: IsVisibleOnScreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
@@ -1974,7 +1974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.1
+      value: 41.48
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1982,7 +1982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.7
+      value: -0.39
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2018,7 +2018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200550578832598972, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: IsVisibleOnScreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7200550578832598972, guid: 6d6b058aa7bd6054dac5919baa3fa1b5, type: 3}
       propertyPath: possibleNextPoint.Array.size
@@ -2416,7 +2416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.5
+      value: 42.23
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2424,7 +2424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: 2692612753498393743, guid: 7bc2343ce74d87244bb9d11687cd854e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2489,7 +2489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: IsVisibleOnScreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445397134813179662, guid: 916314ff4ff079e47b6eecca226656df, type: 3}
       propertyPath: possibleNextPoint.Array.size
