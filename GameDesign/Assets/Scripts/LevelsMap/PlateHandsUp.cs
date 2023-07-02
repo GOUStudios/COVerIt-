@@ -58,7 +58,7 @@ public class PlateHandsUp : MonoBehaviour
     private void CheckClick(RaycastHit hit)
     {
         if (Input.GetMouseButtonDown(0) &&
-                    hit.collider.gameObject.CompareTag("LevelsPlate"))
+                    hit.collider.gameObject.layer == 10)
         {
             if(clickSound!= null) clickSound.Play();
 

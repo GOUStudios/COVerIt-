@@ -55,6 +55,7 @@ public class ScenesManager : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(sceneName);
         }
     }
@@ -87,7 +88,7 @@ public class ScenesManager : MonoBehaviour
             FadeToBlack(fadeCanvasGroup, fadeSpeed);
             yield return null;
         }
-
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
 
@@ -120,7 +121,7 @@ public class ScenesManager : MonoBehaviour
             FadeToBlack(fadeCanvasGroup, fadeSpeed);
             yield return null;
         }
-
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
         while (fadeCanvasGroup.alpha > 0f)

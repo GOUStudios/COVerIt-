@@ -20,9 +20,13 @@ public class BackgroundMusicMonoBehaviour : MonoBehaviour
         targetVolume = originalVolume;
         audioSource.volume = 0f;  // Start with the volume set to 0
 
-        audioSource.Play();
+        //if (SoundManager.Instance.musicStateRead())
+        //{
+            audioSource.Play();
 
-        FadeIn();
+            FadeIn();
+
+       // }
 
         //Invoke("FadeOut", fadeDuration);
     }

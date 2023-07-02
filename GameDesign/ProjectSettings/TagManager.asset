@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LevelsPlate
   - Masked
+  - Sound
+  - Music
   - Manager
   layers:
   - Default
@@ -18,7 +20,7 @@ TagManager:
   - ElectricityLayer
   - WrongHitLayer
   - HitLayer
-  - 
+  - LevelPlate
   - 
   - 
   - 

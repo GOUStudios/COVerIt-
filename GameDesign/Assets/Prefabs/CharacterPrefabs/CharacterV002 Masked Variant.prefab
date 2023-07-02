@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_Name
-      value: CharacterV002 Variant
+      value: CharacterV002 Masked Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3079419891072529929, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_TagString
