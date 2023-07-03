@@ -24,6 +24,7 @@ public class TimerUi : MonoBehaviour
     //Not necessary with the timer manager
     void Update()
     {
+        if (timeManager == null) return;
             timeRemaining = timeManager.TimeRemaining; // Decrease timer done in the manager
             DisplayTime(timeRemaining);
     }
