@@ -29,4 +29,8 @@ public class PauseKeyboardController : MonoBehaviour
             }
         }
     }
+    public void changeState()
+    {
+        FirstTimeClick = !FirstTimeClick;
+    }
 }
