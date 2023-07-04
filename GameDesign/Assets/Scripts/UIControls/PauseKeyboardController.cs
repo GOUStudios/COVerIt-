@@ -16,10 +16,17 @@ public class PauseKeyboardController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_Key))
         {
-            if (FirstTimeClick) m_FirstTimeAction?.Invoke();
-            else m_SecondTimeAction?.Invoke();
+            if (FirstTimeClick && TimerManagerMonoBehaviour.IsRunning)
+            {
+                m_FirstTimeAction?.Invoke();
+                FirstTimeClick = !FirstTimeClick;
+            }
 
-            FirstTimeClick = !FirstTimeClick;
+            else if (!FirstTimeClick && !TimerManagerMonoBehaviour.IsRunning)
+            {
+                m_SecondTimeAction?.Invoke();
+                FirstTimeClick = !FirstTimeClick;
+            }
         }
     }
 }
