@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: 48fa42a8314aca44595a76db8aecf5b9, type: 2}
   CustomerTypeToCheck: 3
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: a6a55e20035209344a85dcb45bba5cac, type: 2}
   CustomerTypeToCheck: 1
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: 5ad328ae15f5fcf41b3c2944ac22f56e, type: 2}
 --- !u!114 &4457490087243477268
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerOnce: 1
-  m_TriggerOncePerGameFile: 0
+  m_TriggerOncePerGameFile: 1
   m_useEnterinOrExitingHitBox: 0
   m_event: {fileID: 11400000, guid: b9b09543647d99e4e937466d36ff291c, type: 2}
   CustomerTypeToCheck: 0

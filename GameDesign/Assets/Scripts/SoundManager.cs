@@ -4,27 +4,40 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; private set; }
+    private static SoundManager _instance;
+    public static SoundManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject GO = new GameObject("SoundManager");
+                _instance = GO.AddComponent<SoundManager>();
+            }
+            return _instance;
+        }
+    }
+
 
     private bool musicState = true;
     private bool soundState = true;
 
     public delegate void EventSoundHandler();
-    
+
     public event EventSoundHandler SoundChangedEvent;
     public event EventSoundHandler MusicChangedEvent;
 
 
     private void Awake()
     {
-        
-        if (Instance == null)
+
+        if (_instance == null)
         {
             // Keep this object alive between all the scenes
             DontDestroyOnLoad(gameObject);
-            Instance = this;
+            _instance = this;
         }
-        else
+        else if (_instance != null && _instance != this)
         {
             // if exists another instance of SceneManager, destroy this one
             Destroy(gameObject);
@@ -46,7 +59,7 @@ public class SoundManager : MonoBehaviour
         Debug.Log("invoked music state change");
         musicState = !musicState;
         Debug.Log("music state: " + musicState);
-        MusicChangedEvent?.Invoke();      
+        MusicChangedEvent?.Invoke();
     }
 
     public void changeSoundState()
@@ -58,5 +71,5 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    
+
 }
