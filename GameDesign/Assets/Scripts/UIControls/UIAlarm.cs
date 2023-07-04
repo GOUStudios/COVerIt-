@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIAlarm : MonoBehaviour
 {
     private Image redBoundaries;
+    private AudioSource audioAlarm;
 
     public float minFrequency = 1.0f;
     public float maxFrequency = 10.0f;
@@ -23,6 +24,8 @@ public class UIAlarm : MonoBehaviour
         {
             Debug.LogError("Il riferimento all'oggetto Image non è stato assegnato!");
         }
+
+        audioAlarm= GetComponent<AudioSource>();
 
         var tempColor = redBoundaries.color;
         tempColor.a = 0f;
@@ -57,6 +60,7 @@ public class UIAlarm : MonoBehaviour
             elapsedTime = 0.0f;
             isBlinking = true;
         }
+        if(audioAlarm!= null) audioAlarm.Play(); 
     }
 
     public void StopBlink()
