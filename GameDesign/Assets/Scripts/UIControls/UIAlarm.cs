@@ -35,15 +35,15 @@ public class UIAlarm : MonoBehaviour
 
     private void Update()
     {
-        // Controlla se l'immagine deve iniziare a blinkare
+        
         if (isBlinking)
         {
             elapsedTime += Time.deltaTime;
 
-            // Calcola il valore alpha per il blink utilizzando la frequenza
+            
             float alpha = Mathf.PingPong(elapsedTime * frequency, 1.0f);
 
-            // Aggiorna il valore alpha dell'immagine
+            
             Color imageColor = redBoundaries.color;
             imageColor.a = alpha;
             redBoundaries.color = imageColor;
@@ -68,7 +68,7 @@ public class UIAlarm : MonoBehaviour
         Debug.Log("Stop blinking");
         isBlinking = false;
 
-        // Reimposta il valore alpha dell'immagine a 1
+   
         Color imageColor = redBoundaries.color;
         imageColor.a = 0.0f;
         redBoundaries.color = imageColor;
