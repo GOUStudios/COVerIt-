@@ -3960,6 +3960,7 @@ GameObject:
   - component: {fileID: 5050925481960829248}
   - component: {fileID: 1160183865082974820}
   - component: {fileID: 8739367369483261921}
+  - component: {fileID: 4498294890052782388}
   m_Layer: 5
   m_Name: UI
   m_TagString: Sound
@@ -4233,6 +4234,61 @@ MonoBehaviour:
   BeepStart: {fileID: 2930894163467527788}
   VictorySound: {fileID: 2766857443546521323}
   FailureSound: {fileID: 5219325439363271099}
+--- !u!114 &4498294890052782388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527159066423953546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e41ab9f21b3024c880805a45170066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstTimeAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1527159066423953649}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PauseTrigger
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_SecondTimeAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1527159066423953649}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: RestartTrigger
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_Key: 27
 --- !u!1 &1527159066429360864
 GameObject:
   m_ObjectHideFlags: 0
