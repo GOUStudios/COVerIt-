@@ -52,7 +52,7 @@ public class UIAlarm : MonoBehaviour
 
     public void StartBlink()
     {
-        Debug.Log("Event angry");
+        Debug.Log("Start blinking");
 
         if (!isBlinking)
         {
@@ -65,12 +65,15 @@ public class UIAlarm : MonoBehaviour
 
     public void StopBlink()
     {
+        Debug.Log("Stop blinking");
         isBlinking = false;
 
         // Reimposta il valore alpha dell'immagine a 1
         Color imageColor = redBoundaries.color;
-        imageColor.a = 1.0f;
+        imageColor.a = 0.0f;
         redBoundaries.color = imageColor;
+
+        if (audioAlarm != null) audioAlarm.Stop();
     }
 
 }

@@ -1470,6 +1470,10 @@ PrefabInstance:
       value: -152
       objectReference: {fileID: 0}
     - target: {fileID: 3167131004317263355, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_Name
+      value: RedAlarm
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167131004317263355, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

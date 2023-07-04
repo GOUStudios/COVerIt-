@@ -5395,6 +5395,7 @@ GameObject:
   - component: {fileID: 4608236402281928948}
   - component: {fileID: 4616393423180106841}
   - component: {fileID: 1273981148403260487}
+  - component: {fileID: 1166903294011230014}
   m_Layer: 2
   m_Name: Image
   m_TagString: Untagged
@@ -5598,6 +5599,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minFrequency: 1
   maxFrequency: 10
+--- !u!114 &1166903294011230014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167131004317263355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbad90f17597aa547a18024011475247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: 7a2e96403b0454e4dafb11eab5a2c9b6, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1273981148403260487}
+        m_TargetAssemblyTypeName: UIAlarm, Assembly-CSharp
+        m_MethodName: StopBlink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3638177907675061669
 GameObject:
   m_ObjectHideFlags: 0
