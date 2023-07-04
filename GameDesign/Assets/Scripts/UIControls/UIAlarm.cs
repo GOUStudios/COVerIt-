@@ -20,17 +20,21 @@ public class UIAlarm : MonoBehaviour
     {
         redBoundaries = GetComponent<Image>();
 
+
         if (redBoundaries == null)
         {
             Debug.LogError("Il riferimento all'oggetto Image non è stato assegnato!");
         }
 
         audioAlarm= GetComponent<AudioSource>();
+        audioAlarm.Stop();
 
         var tempColor = redBoundaries.color;
         tempColor.a = 0f;
         redBoundaries.color = tempColor;
 
+
+        BossAngerManager.OnAngryGameOver += StopBlink;
     }
 
     private void Update()
