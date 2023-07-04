@@ -9,6 +9,7 @@ public class PauseKeyboardController : MonoBehaviour
     [SerializeField] UnityEvent m_SecondTimeAction;
     [SerializeField] KeyCode m_Key;
 
+    Coroutine ongoingTask=null;
     private bool FirstTimeClick = true;
 
     // Update is called once per frame
@@ -16,21 +17,36 @@ public class PauseKeyboardController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_Key))
         {
-            if (FirstTimeClick && TimerManagerMonoBehaviour.IsRunning)
+            Debug.Log(m_Key +" was pressed");
+            if (FirstTimeClick && TimerManagerMonoBehaviour.IsRunning && ongoingTask==null)
             {
-                m_FirstTimeAction?.Invoke();
-                FirstTimeClick = !FirstTimeClick;
+                ongoingTask=StartCoroutine(OnFirstClickCoroutine());
             }
 
-            else if (!FirstTimeClick && !TimerManagerMonoBehaviour.IsRunning)
+            else if (!FirstTimeClick && !TimerManagerMonoBehaviour.IsRunning && ongoingTask==null)
             {
-                m_SecondTimeAction?.Invoke();
-                FirstTimeClick = !FirstTimeClick;
+                ongoingTask=StartCoroutine(OnSecondClick());
             }
         }
     }
     public void changeState()
     {
         FirstTimeClick = !FirstTimeClick;
+    }
+    IEnumerator OnFirstClickCoroutine()
+    {
+        Debug.Log("pausing");
+        m_FirstTimeAction?.Invoke();
+        FirstTimeClick = !FirstTimeClick;
+        yield return new WaitForSecondsRealtime(0.5f);
+        ongoingTask=null;
+    }
+    IEnumerator OnSecondClick()
+    {
+        Debug.Log("unpausing");
+        m_SecondTimeAction?.Invoke();
+        FirstTimeClick = !FirstTimeClick;
+        yield return new WaitForSecondsRealtime(0.5f);
+        ongoingTask=null;
     }
 }
