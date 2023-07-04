@@ -1842,8 +1842,47 @@ PrefabInstance:
       propertyPath: m_FirstTimeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1568813918}
+    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: changeState
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PauseKeyboardController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+--- !u!114 &1568813918 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4498294890052782388, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+  m_PrefabInstance: {fileID: 1568813917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e41ab9f21b3024c880805a45170066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1794548304
 PrefabInstance:
   m_ObjectHideFlags: 0
