@@ -108,7 +108,7 @@ MonoBehaviour:
   requiredClicks: 1
   clickTime: 0
   wearsMask: 0
-  pointValue: 20
+  pointValue: 40
   isFrozen: 0
   frozenTime: 3
   movementManager: {fileID: 7864013837679662276}

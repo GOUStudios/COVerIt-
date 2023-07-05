@@ -100,7 +100,7 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
     protected virtual void DodgeHitBehaviour()
     {
         if (SoundManager.Instance.soundStateRead()) audioSource.PlayOneShot(missHit, 0.7f);
-        PointsManager.Instance.TriggerEvent_IncrementPoints((int)(-75 * pointValue));
+        PointsManager.Instance.TriggerEvent_IncrementPoints((int)(-0.75 * pointValue));
         StartCoroutine(wrongHitCoroutine());
         StartCoroutine(DoTriggerAnimation("SmallHit"));
 

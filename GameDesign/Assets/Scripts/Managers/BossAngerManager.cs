@@ -52,6 +52,7 @@ public class BossAngerManager
         }
     }
 
+
     public void TriggerEvent_MissClicked()
     {
         if (isAngry == true)
@@ -108,5 +109,12 @@ public class BossAngerManager
             isAngry = false;
             angryCounter -= 1;
         }
+    }
+
+    public void reset()
+    {
+        angryCounter = 0;
+        gameOverCounter = 0;
+        isAngry = false;
     }
 }
