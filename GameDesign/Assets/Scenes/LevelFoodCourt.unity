@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2781,6 +2781,10 @@ PrefabInstance:
       propertyPath: spawnRatesArray.content.Array.data[4].m_Curve.Array.data[1].tangentMode
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 8433276083259680679, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
+      propertyPath: m_event
+      value: 
+      objectReference: {fileID: 11400000, guid: 34a51fd2946b0fa44907e21015ceaadc, type: 2}
     - target: {fileID: 8433276083259680679, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: m_TriggerOncePerGameFile
       value: 1
