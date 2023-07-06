@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 426553251}
   - component: {fileID: 426553250}
   - component: {fileID: 426553249}
+  - component: {fileID: 426553252}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -778,9 +779,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2011933663}
-        m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: QuitApplication
+      - m_Target: {fileID: 426553252}
+        m_TargetAssemblyTypeName: QuitApplication, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -828,6 +829,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426553247}
   m_CullTransparentMesh: 1
+--- !u!114 &426553252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426553247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf104113ba269b34e88d655f98793a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &455413522
 GameObject:
   m_ObjectHideFlags: 0
