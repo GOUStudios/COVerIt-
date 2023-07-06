@@ -29,10 +29,16 @@ public class ClickManager : MonoBehaviour
         TimerManagerMonoBehaviour.OnTimeStart += TimeResumeBehavior;
     }
 
+    void OnDestroy()
+    {
+        TimerManagerMonoBehaviour.OnTimePause -= TimePauseBehavior;
+        TimerManagerMonoBehaviour.OnTimeResume -= TimeResumeBehavior;
+        TimerManagerMonoBehaviour.OnTimeStart -= TimeResumeBehavior;
+    }
     // Update is called once per frame
     void Update()
     {
-        if(!isPaused)
+        if (!isPaused)
         {
             //The second condition checks if the pointer is clicking on an UI element
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
