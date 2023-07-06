@@ -29,7 +29,7 @@ public class VFXManager : MonoBehaviour
         if (_instance != null && _instance != this)
         {
             Destroy(this);
-            throw new System.Exception("An instance of VFXManager singleton already exists.");
+            // throw new System.Exception("An instance of VFXManager singleton already exists.");
         }
         else
         {
@@ -37,7 +37,9 @@ public class VFXManager : MonoBehaviour
         }
         if (smokePullingPool == null)
         {
-            Debug.LogError($"Missing Pulling pool in VFXManager {name}");
+            Debug.LogWarning($"Missing Pulling pool in VFXManager {name}");
+            smokePullingPool = new GameObject("smokePullingPull");
+            smokePullingPool.transform.SetParent(this.transform);
         }
     }
 
@@ -77,7 +79,7 @@ public class VFXManager : MonoBehaviour
             Debug.LogWarning($"Could not find VFX componenet in child {selectedChild.name}");
         }
 
-        if(selectedChild)
+        if (selectedChild)
         {
             selectedChild.SetParent(smokePullingPool.transform);
             selectedChild.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
