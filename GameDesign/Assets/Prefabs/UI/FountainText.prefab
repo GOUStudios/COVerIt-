@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8909023356397719202}
   - component: {fileID: 5184130650219157713}
   - component: {fileID: 387409798258092684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cinema
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4712486836022105352}
   - component: {fileID: 7643190732639155268}
   - component: {fileID: 7121598237410285488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7767824121642852892}
   - component: {fileID: 5811245996916745659}
   - component: {fileID: 5926019030944589695}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 7469181783316012198}
   - component: {fileID: 1940092572539094194}
   - component: {fileID: 8026808316347101773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 897695151003336333}
   - component: {fileID: 6894727082648849683}
   - component: {fileID: 4416495329700778028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,9 +433,9 @@ GameObject:
   - component: {fileID: 7663905868120349521}
   - component: {fileID: 6405679049103696916}
   - component: {fileID: 7695464533203215110}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FountainText
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7217696538500416721}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0.8751507, y: 1.0028945, z: 6.343476}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -459,7 +459,7 @@ Transform:
   - {fileID: 897695151003336333}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!114 &7785961833524415123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,8 +490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsPlateTag: LevelsPlate
   rotationSpeed: 5
-  specifiedRotation: {x: 0, y: 0, z: 0}
-  sceneName: 
+  specifiedRotation: {x: -50, y: 120, z: 0}
+  sceneName: Level1
 --- !u!114 &5599701769083706032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 0.8
-  heightTarget: 1.23
+  heightTarget: 1.35
 --- !u!114 &5595206832193127880
 MonoBehaviour:
   m_ObjectHideFlags: 0

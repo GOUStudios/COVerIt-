@@ -77,12 +77,20 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
         {
             if (spawnRates[t].Evaluate(timePercentage) >= p)
             {
-                toSpawnUnmasked.Add(t, baseCount);
+                int toAdd;
+                if (overrideProbability) toAdd = baseCount;
+                else toAdd = UnityEngine.Random.Range(0, baseCount) + 1;
+                toSpawnUnmasked.Add(t, toAdd);
             }
         }
 
         p = overrideProbability ? overridenProbability : UnityEngine.Random.Range(0f, 1.01f);
-        int spawnMasked = maskedSpawnRate.Evaluate(timePercentage) >= p ? baseCount : 0;
+        int spawnMasked = 0;
+        if(maskedSpawnRate.Evaluate(timePercentage) >= p)
+        {
+            if (overrideProbability) spawnMasked = baseCount;
+            else spawnMasked = UnityEngine.Random.Range(0, baseCount) + 1;
+        }
         var (spawnRequestWM, spawnRequestUnmasked) = leverManagerSingleton.RequestSpawn(spawnMasked, toSpawnUnmasked);
         // Debug.Log($"Received request answer with {spawnRequestWM} and {ObjectUtils.DictionaryToString(spawnRequestUnmasked)}");
 

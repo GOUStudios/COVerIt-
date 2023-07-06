@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6456212908397032294}
   - component: {fileID: 8281310310481334826}
   - component: {fileID: 8803395417131053534}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7159662560784427212}
   - component: {fileID: 6849612177901469375}
   - component: {fileID: 2134518793503460578}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cinema
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 9176317208783502024}
   - component: {fileID: 149631757134045916}
   - component: {fileID: 8618760501004047395}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 8301211918958134386}
   - component: {fileID: 5213690426730775509}
   - component: {fileID: 5387004759363191057}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 1480081584230127843}
   - component: {fileID: 5139156244556835709}
   - component: {fileID: 2717224986052539970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,12 +433,13 @@ GameObject:
   - component: {fileID: 380340183734675790}
   - component: {fileID: 1972978895936073574}
   - component: {fileID: 5342344782523879846}
+  - component: {fileID: 2464667696457287657}
   - component: {fileID: 6359220377422588144}
   - component: {fileID: 568338053142701088}
   - component: {fileID: 6007917579070347259}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CinemaPlate 1
-  m_TagString: LevelsPlate
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,7 +451,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8995208406052954815}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 9.13, y: 1.13, z: 0.23699427}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -458,7 +459,7 @@ Transform:
   - {fileID: 7159662560784427212}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!65 &7233349600577563731
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -503,7 +504,7 @@ MonoBehaviour:
   levelsPlateTag: LevelsPlate
   rotationSpeed: 5
   specifiedRotation: {x: -153, y: -20.5, z: 180}
-  sceneName: 
+  sceneName: LevelCinema
 --- !u!114 &5342344782523879846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +518,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 0.6
-  heightTarget: 1.23
+  heightTarget: 1.4
+--- !u!114 &2464667696457287657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8995208406052954815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b013297e0a7244af656898d43fe04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6359220377422588144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,4 +651,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ce886854fa7f140b291a68ab935be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelNumber: 0
+  LevelNumber: 2
