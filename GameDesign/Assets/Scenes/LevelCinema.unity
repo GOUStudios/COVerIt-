@@ -523,11 +523,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: maskedPercentages.content.Array.data[0]
-      value: 0.6
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: maskedPercentages.content.Array.data[2]
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 403509311560884271, guid: 97df92cc0e238604f913a7b8b3bb905a, type: 3}
       propertyPath: maskedPercentages.content.Array.data[3]
@@ -1321,10 +1321,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1527159065448334897, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 97.49
-      objectReference: {fileID: 0}
     - target: {fileID: 1527159065566065965, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: textLosts
       value: 
@@ -1569,6 +1565,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -54
       objectReference: {fileID: 0}
+    - target: {fileID: 4498294890052782388, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_FirstTimeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 698233593}
+    - target: {fileID: 4498294890052782388, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_FirstTimeAction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498294890052782388, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_FirstTimeAction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TimerManagerMonoBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498294890052782388, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_FirstTimeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5018133058636431591, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -113.99998
@@ -1584,10 +1596,6 @@ PrefabInstance:
     - target: {fileID: 6713323258529645508, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode

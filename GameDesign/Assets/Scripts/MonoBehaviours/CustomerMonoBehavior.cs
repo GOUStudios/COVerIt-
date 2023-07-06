@@ -116,7 +116,6 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
             clickCunt++;
             if (!wearsMask && clickCunt >= requiredClicks)
             {
-
                 onHitBehaviour();
             }
             else if (wearsMask)
@@ -135,6 +134,10 @@ public class CustomerMonoBehavior : MonoBehaviour, Clickable
         {
             if (taserManager.useTaser())
             {
+                if(wearsMask){
+                    PointsManager.Instance.TriggerEvent_IncrementPoints((int)(-0.75 * pointValue));
+                    ClickManager.Instance.onMissClickInvoke();
+                }
                 onFreezeBehaviour();
             }
         }

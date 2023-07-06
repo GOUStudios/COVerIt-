@@ -43,10 +43,9 @@ public class BatteryUI : MonoBehaviour
     void Update()
     {
         slider.value = taserManager.taserBatteryPercent;
-        
+
 
         if (battery1 == null || battery2 == null || battery3 == null) return;
-
         switch (slider.value)
         {
             case float n when n <= Threshold1 && n > Threshold2:
@@ -59,7 +58,7 @@ public class BatteryUI : MonoBehaviour
                 taserOff.enabled = false;
                 break;
 
-            case float n when n <= Threshold2 && n != 0:
+            case float n when n <= Threshold2 && n != 0 && n >= taserManager.taserCostPercent:
                 //Debug.Log("1 charges");
                 battery3.enabled = false;
                 battery2.enabled = false;
@@ -69,7 +68,7 @@ public class BatteryUI : MonoBehaviour
                 taserOff.enabled = false;
                 break;
 
-            case 0:
+            case float n when n < taserManager.taserCostPercent || n <= 0:
                 //Debug.Log("0 charges");
                 battery3.enabled = false;
                 battery2.enabled = false;

@@ -21,6 +21,13 @@ public class TaserManager
     //Taser variables
     public int taserBattery;
     public int taserCost = 20;
+    public float taserCostPercent
+    {
+        get
+        {
+            return ((float)taserCost / 100);
+        }
+    }
     public int taserMaxBattery { get; private set; }
     public int chargePerSecond = 2;
     public bool isReady = false;
