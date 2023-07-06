@@ -1039,18 +1039,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1527159065566065965, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
-      propertyPath: textLosts
-      value: 
-      objectReference: {fileID: 1246944965}
-    - target: {fileID: 1527159065566065965, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
-      propertyPath: textTotal
-      value: 
-      objectReference: {fileID: 1527008521}
-    - target: {fileID: 1527159065566065965, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
-      propertyPath: textPoints
-      value: 
-      objectReference: {fileID: 334281760}
     - target: {fileID: 1527159065651045939, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1067,10 +1055,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1527159065769521405, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1586219278}
     - target: {fileID: 1527159065769521405, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
