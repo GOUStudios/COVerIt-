@@ -122,6 +122,19 @@ MonoBehaviour:
   cough: {fileID: 8300000, guid: e1d09bd0b109e2844ba051b5f611b8dc, type: 3}
   HitButNotMasked: {fileID: 8300000, guid: 2f37fd46cb6f7af479e23ccc062f0f93, type: 3}
   timeToCatchTarget: 0.75
+--- !u!114 &2918357554694872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68471940300211544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConversionMode: 0
 --- !u!1 &425934075669869910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3433491166404937223, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}

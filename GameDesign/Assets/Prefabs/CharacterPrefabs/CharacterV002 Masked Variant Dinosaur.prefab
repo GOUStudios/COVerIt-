@@ -56,10 +56,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8893319330740400081, guid: e91347b2075b8be4b86f43e8e3c62d05, type: 3}
-      propertyPath: baseSpeed
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893319330740400081, guid: e91347b2075b8be4b86f43e8e3c62d05, type: 3}
       propertyPath: wearsMask
       value: 1
       objectReference: {fileID: 0}
