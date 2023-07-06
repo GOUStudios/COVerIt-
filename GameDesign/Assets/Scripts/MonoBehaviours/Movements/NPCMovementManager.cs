@@ -20,6 +20,11 @@ public class NPCMovementManager : MonoBehaviour
     private float TTL = 0f;
     public int visibleWaypointsReached;
 
+
+    public void SetTTL(float newValue)
+    {
+        TTL = newValue;
+    }
     void Start()
     {
         initialRadius = distanceThreshHoldToReachTarget;
