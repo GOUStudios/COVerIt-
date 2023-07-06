@@ -13,7 +13,6 @@ public class MovingState : State
     }
     public override void Enter()
     {
-        _moveManager.SetTTL(500f);
         _cmb.defaultLayer = "Default";
         VFXManager.Instance.changeLayer(_cmb.gameObject, _cmb.defaultLayer);
     }
