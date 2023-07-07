@@ -42,6 +42,11 @@ public class TimerManagerMonoBehaviour : MonoBehaviour
         BossAngerManager.OnAngryGameOver += StopTimer;
 
     }
+    void OnDestroy()
+    {
+        BossAngerManager.OnAngryGameOver -= StopTimer;
+
+    }
 
     // Update is called once per frame
     void Update()

@@ -75,6 +75,11 @@ public class PointsManager : MonoBehaviour
         StartCoroutine(IsReadyChecker());
     }
 
+    private void OnDestroy()
+    {
+        TimerManagerMonoBehaviour.OnTimeFinished -= TimesOverBehavior;
+    }
+
     private void TimesOverBehavior()
     {
         int numberStars = GetNumberStars();

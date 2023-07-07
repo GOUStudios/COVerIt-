@@ -8,6 +8,10 @@ public class OnGameOverHidder : MonoBehaviour
     {
         LevelSettingManager.OnGameOver += Hide;
     }
+    void OnDestroy()
+    {
+        LevelSettingManager.OnGameOver -= Hide;
+    }
     private void Hide()
     {
         gameObject.SetActive(false);
