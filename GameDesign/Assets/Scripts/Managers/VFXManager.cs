@@ -24,6 +24,12 @@ public class VFXManager : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        if (_instance == this)
+            _instance = null;
+    }
+
     void Awake()
     {
         if (_instance != null && _instance != this)

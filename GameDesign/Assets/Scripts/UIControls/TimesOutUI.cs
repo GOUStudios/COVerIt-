@@ -18,6 +18,11 @@ public class TimesOutUI : MonoBehaviour
         pointsManager = FindObjectOfType<PointsManager>();
 
     }
+    void OnDestroy()
+    {
+        TimerManagerMonoBehaviour.OnTimeFinished -= TimesOverBehavior;
+        BossAngerManager.OnAngryGameOver -= AngerGameOverBehavior;
+    }
 
     private void AngerGameOverBehavior()
     {
@@ -32,11 +37,11 @@ public class TimesOutUI : MonoBehaviour
     private void TimesOverBehavior()
     {
         if (endLevelAnimator == null) return;
-        
+
 
         pointsManager.GetEarnedPoints();
         //Set the right flag for the correct animation
-        if (pointsManager.pointsPercentage >= pointsManager.star1Threshold && 
+        if (pointsManager.pointsPercentage >= pointsManager.star1Threshold &&
             pointsManager.pointsPercentage < pointsManager.star2Threshold)
         {
             //1 star earned

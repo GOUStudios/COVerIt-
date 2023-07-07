@@ -90,10 +90,14 @@ public class BossAngerManager
         if (angryCounter >= _maxNumAngry && !isAngry)
         {
             isAngry = true;
-            gameOverCounter = 1;
+            gameOverCounter = 0;
         }
-
-        if (gameOverCounter >= _maxNumGameOver)
+        else if (gameOverCounter == 0 && isAngry) //Use to pass from angry to normal state
+        {
+            isAngry = false;
+            angryCounter -= 1;
+        }
+        else if (gameOverCounter >= _maxNumGameOver)
         {
             Debug.Log("GAME OVER");
             OnAngryGameOver?.Invoke();
@@ -103,12 +107,7 @@ public class BossAngerManager
             isAngry = false;*/
         }
 
-        //Use to pass from angry to normal state
-        if (gameOverCounter == 0 && isAngry)
-        {
-            isAngry = false;
-            angryCounter -= 1;
-        }
+        
     }
 
     public void reset()

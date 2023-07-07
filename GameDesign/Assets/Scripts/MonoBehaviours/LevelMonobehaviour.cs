@@ -79,6 +79,13 @@ public class LevelMonobehaviour : MonoBehaviour
 
     }
 
+
+    void OnDestroy()
+    {
+        TimerManagerMonoBehaviour.OnTimeFinished -= OnTimeFinished;
+        BossAngerManager.OnAngryGameOver -= OnTimeFinished;
+    }
+
     void Update()
     {
 

@@ -10,7 +10,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     [SerializeField] TimerManagerMonoBehaviour timerManager;
 
     [Header("Wave properties")]
-    [SerializeField] EnumDataContainer<AnimationCurve,CustomerTypes> spawnRatesArray;
+    [SerializeField] EnumDataContainer<AnimationCurve, CustomerTypes> spawnRatesArray;
     [Range(0.0f, 10f)]
     [SerializeField] int WaveMultiplier;
 
@@ -33,10 +33,10 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
     void Start()
     {
         leverManagerSingleton = LevelSettingManager.Instance;
-        if(timerManager == null)
+        if (timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
-            if(timerManager == null)
+            if (timerManager == null)
             {
                 Debug.LogError("Couldn't find timer manager");
             }
@@ -48,11 +48,16 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
         TimerManagerMonoBehaviour.OnWaveStart += OnWaveStart;
 
         var existingSpawners = FindObjectsOfType<SpawnerWaypoint>();
-        if(existingSpawners.Length > levelSpawners.Length)
+        if (existingSpawners.Length > levelSpawners.Length)
         {
             Debug.LogWarning("The SpawnerManager is not aware of all the spawners in the scene! Trying to fix...");
             levelSpawners = existingSpawners;
         }
+    }
+    void OnDestroy()
+    {
+        TimerManagerMonoBehaviour.OnWaveStart -= OnWaveStart;
+
     }
 
     // Update is called once per frame
@@ -86,7 +91,7 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
 
         p = overrideProbability ? overridenProbability : UnityEngine.Random.Range(0f, 1.01f);
         int spawnMasked = 0;
-        if(maskedSpawnRate.Evaluate(timePercentage) >= p)
+        if (maskedSpawnRate.Evaluate(timePercentage) >= p)
         {
             if (overrideProbability) spawnMasked = baseCount;
             else spawnMasked = UnityEngine.Random.Range(0, baseCount) + 1;
@@ -97,7 +102,8 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
         for (int i = 0; i < levelSpawners.Length/*toSpawnUnmasked.Length*/; i++)
         {
             Dictionary<CustomerTypes, int> toSpawn = new Dictionary<CustomerTypes, int>();
-            foreach (var t in spawnRequestUnmasked.Keys) {
+            foreach (var t in spawnRequestUnmasked.Keys)
+            {
                 var randomPartitions = RandomUtils.GetRandomPartitions(levelSpawners.Length, spawnRequestUnmasked[t]);
                 toSpawn.Add(t, randomPartitions[i]);
             }
@@ -108,6 +114,6 @@ public class SpawnerManagerMonoBehaviour : MonoBehaviour
 
     void OnWaveStart(int wavesRemaining)
     {
-        determineSpawn(wavesRemaining>0 ? WaveMultiplier*levelSpawners.Length : 999, wavesRemaining<2);
+        determineSpawn(wavesRemaining > 0 ? WaveMultiplier * levelSpawners.Length : 999, wavesRemaining < 2);
     }
 }
