@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+[RequireComponent(typeof(AudioSource))]
 public class ClickManager : MonoBehaviour
 {
     public delegate void ClickAction();
     public static event ClickAction OnCorrectlyClicked;
     public static event ClickAction OnMissClicked;
     private bool isPaused = true;
+
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip miss;
 
     private static ClickManager _instance;
     public static ClickManager Instance
@@ -61,12 +64,14 @@ public class ClickManager : MonoBehaviour
                     }
                     else
                     {
+                        audioSource.PlayOneShot(miss, 0.7f);
                         OnMissClicked?.Invoke();
                     }
 
                 }
                 else
                 {
+                    audioSource.PlayOneShot(miss, 0.7f);
                     OnMissClicked?.Invoke();
                 }
             }
@@ -97,6 +102,7 @@ public class ClickManager : MonoBehaviour
     }
     public void onMissClickInvoke()
     {
+        audioSource.PlayOneShot(miss, 0.7f);
         OnMissClicked?.Invoke();
     }
 
