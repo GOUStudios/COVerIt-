@@ -124,7 +124,8 @@ public class LevelMonobehaviour : MonoBehaviour
 
         Debug.Log("Ready to do the Countdown");
 
-        UIanimator.SetTrigger("TriggerPlay");
+        if (UIanimator != null)
+            UIanimator.SetTrigger("TriggerPlay");
 
         yield return new WaitForSecondsRealtime(5.30f); // Wait for the CountDown animation finish
 
