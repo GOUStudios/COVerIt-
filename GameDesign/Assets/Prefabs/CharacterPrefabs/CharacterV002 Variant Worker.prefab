@@ -75,6 +75,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3664b50885edc66438f489e5b21349df, type: 2}
+    - target: {fileID: 5146937234786379669, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: targetWayPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146937234786379669, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
+      propertyPath: distanceThreshHoldToReachTarget
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5266008818329827923, guid: c012df508f26a0d4ab52a96949f156dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
