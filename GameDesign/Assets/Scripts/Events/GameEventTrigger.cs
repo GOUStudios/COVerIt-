@@ -10,6 +10,7 @@ public abstract class GameEventTrigger : MonoBehaviour
     [SerializeField] protected bool m_useEnterinOrExitingHitBox = false;
     [SerializeField] protected GameEvent m_event;
     protected bool m_hasGameEvent = true;
+    public AudioSource bossMutter;
 
     protected abstract bool EventTriggerCondition(Collider other);
     protected virtual bool EventTriggerCondition()
@@ -19,6 +20,7 @@ public abstract class GameEventTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+
         if (!m_useEnterinOrExitingHitBox) return;
         TriggerEventViaCode(other);
 
@@ -31,6 +33,12 @@ public abstract class GameEventTrigger : MonoBehaviour
 
         if (EventTriggerCondition(other))
         {
+            Debug.LogError(PlayerPrefs.GetInt(m_event.name, 0));
+            if (!m_hasGameEventBeenTriggered && PlayerPrefs.GetInt(m_event.name, 0) != 1)
+            {
+                bossMutter = GetComponent<AudioSource>();
+                bossMutter.Play();
+            }
             m_event.Raise();
             m_hasGameEventBeenTriggered = true;
             if (m_TriggerOncePerGameFile) PlayerPrefs.SetInt(m_event.name, 1);
