@@ -102,7 +102,6 @@ public class ClickManager : MonoBehaviour
     }
     public void onMissClickInvoke()
     {
-        audioSource.PlayOneShot(miss, 0.7f);
         OnMissClicked?.Invoke();
     }
 
