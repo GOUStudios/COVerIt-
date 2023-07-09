@@ -24,8 +24,8 @@ public class SoundManager : MonoBehaviour
 
     public delegate void EventSoundHandler();
 
-    public event EventSoundHandler SoundChangedEvent;
-    public event EventSoundHandler MusicChangedEvent;
+    public static event EventSoundHandler SoundChangedEvent;
+    public static event EventSoundHandler MusicChangedEvent;
 
 
     private void Awake()
