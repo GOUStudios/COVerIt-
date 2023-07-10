@@ -27,6 +27,7 @@ public class ClickManager : MonoBehaviour
         if (_instance != null && _instance != this) Destroy(this);
         else if (_instance == null) _instance = this;
         else { Debug.LogWarning("Could not create instance of ClickManager"); }
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         TimerManagerMonoBehaviour.OnTimePause += TimePauseBehavior;
         TimerManagerMonoBehaviour.OnTimeResume += TimeResumeBehavior;
         TimerManagerMonoBehaviour.OnTimeStart += TimeResumeBehavior;
