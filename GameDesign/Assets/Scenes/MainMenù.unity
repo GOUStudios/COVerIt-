@@ -551,7 +551,7 @@ AudioSource:
   m_GameObject: {fileID: 172409387}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
+  OutputAudioMixerGroup: {fileID: -6708295236619017653, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
   m_audioClip: {fileID: 8300000, guid: e153c34f555d74f4daf7e6d2b738d208, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1140,7 +1140,7 @@ AudioSource:
   m_GameObject: {fileID: 455413522}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
+  OutputAudioMixerGroup: {fileID: -6620187425285600198, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7eee7f53c08a69b4b91a3da5cf9252ac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2137,6 +2137,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 790541119}
+        m_TargetAssemblyTypeName: UISoundState, Assembly-CSharp
+        m_MethodName: toggleAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &790541119
 MonoBehaviour:
@@ -2150,6 +2162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3ba7637317cf8428761a0665407e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
 --- !u!1 &793133155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,7 +2191,7 @@ AudioSource:
   m_GameObject: {fileID: 793133155}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
+  OutputAudioMixerGroup: {fileID: -6708295236619017653, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 150609a586abbf245b0f694eeb408d69, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
@@ -2289,7 +2302,7 @@ AudioSource:
   m_GameObject: {fileID: 793133155}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
+  OutputAudioMixerGroup: {fileID: -6620187425285600198, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9b48b4835c450ab41bfc520cacaf4c24, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.055
@@ -3247,6 +3260,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1029714539}
+        m_TargetAssemblyTypeName: UIMusicState, Assembly-CSharp
+        m_MethodName: toggleAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &1029714539
 MonoBehaviour:
@@ -3260,6 +3285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8332e69a130c7cc49b84340413719c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
 --- !u!1 &1057072089
 GameObject:
   m_ObjectHideFlags: 0
