@@ -38,7 +38,7 @@ public class GameEventListenerWithText : GameEventListener
         canvasHandler.addEventToQueue(this);
         yield return new WaitUntil(() => hasBeenCalled);
         bossMutter = GetComponent<AudioSource>();
-        bossMutter.Play();
+        bossMutter?.Play();
         raiseEvent();
     }
 }
