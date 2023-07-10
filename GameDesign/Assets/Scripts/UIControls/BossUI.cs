@@ -22,10 +22,10 @@ public class BossUI : MonoBehaviour
 
         slider = GetComponent<Slider>();
 
-        slider.onValueChanged.AddListener(delegate { OnSliderValueChanged(); });
+        //slider.onValueChanged.AddListener(delegate { OnSliderValueChanged(); });
     }
 
-    public void OnSliderValueChanged()
+    public void CheckAnger()
     {
         if (!BossAngerManager.Instance.isAngry)
         {
@@ -44,6 +44,7 @@ public class BossUI : MonoBehaviour
     {
         slider.value = 1-bossAngerManager.angerPercent;
         angerValue = bossAngerManager.angerPercent;
+        CheckAnger();
     }
 
 }
