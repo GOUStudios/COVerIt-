@@ -63,8 +63,9 @@ public class UIAlarm : MonoBehaviour
             frequency = Mathf.Lerp(minFrequency, maxFrequency, frequency);
             elapsedTime = 0.0f;
             isBlinking = true;
+            if (audioAlarm != null) audioAlarm.Play();
         }
-        if(audioAlarm!= null) audioAlarm.Play(); 
+       
     }
 
     public void StopBlink()

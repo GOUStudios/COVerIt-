@@ -1477,9 +1477,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3167131004317263355, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_TagString
+      value: Sound
+      objectReference: {fileID: 0}
     - target: {fileID: 4081837739242814365, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608236402281928948, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4616393423180106841, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: event
