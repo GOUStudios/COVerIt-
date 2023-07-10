@@ -19,6 +19,7 @@ public abstract class GameEventTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+
         if (!m_useEnterinOrExitingHitBox) return;
         TriggerEventViaCode(other);
 
