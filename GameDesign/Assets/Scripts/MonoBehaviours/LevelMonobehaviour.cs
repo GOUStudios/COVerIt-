@@ -15,12 +15,12 @@ public class LevelMonobehaviour : MonoBehaviour
     [SerializeField] float[] wavePercentages;
     [SerializeField] float waitTime;
     [SerializeField] int maskedCustomers = 0;
-    
+
     [SerializeField]
     public EnumDataContainer<int, CustomerTypes> unmaskedCustomers;
 
     [SerializeField]
-    public EnumDataContainer<GameObject,CustomerTypes> unmaskedPrefabs;
+    public EnumDataContainer<GameObject, CustomerTypes> unmaskedPrefabs;
     [SerializeField]
     public EnumDataContainer<GameObject, CustomerTypes> maskedPrefabs;
 
@@ -31,6 +31,9 @@ public class LevelMonobehaviour : MonoBehaviour
     Dictionary<CustomerTypes, GameObject> unmaskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, GameObject> maskedPrefabsDictionary = new Dictionary<CustomerTypes, GameObject>();
     Dictionary<CustomerTypes, float> maskedWeightsDictionary = new Dictionary<CustomerTypes, float>();
+
+
+
 
 
     public static bool TimeHasStarted { get; private set; }
@@ -46,7 +49,7 @@ public class LevelMonobehaviour : MonoBehaviour
         if (UIanimator == null) Debug.LogWarning("No UI animator Found");
 
 
-        if(timerManager == null)
+        if (timerManager == null)
         {
             timerManager = GetComponent<TimerManagerMonoBehaviour>();
             if (timerManager == null)
@@ -76,13 +79,20 @@ public class LevelMonobehaviour : MonoBehaviour
 
     }
 
+
+    void OnDestroy()
+    {
+        TimerManagerMonoBehaviour.OnTimeFinished -= OnTimeFinished;
+        BossAngerManager.OnAngryGameOver -= OnTimeFinished;
+    }
+
     void Update()
     {
 
         //Just update to be seen in the editor.
         //so whenever there are changes we see them
         maskedCustomers = manager.CustomersToBeSpawnedWM;
-        
+
         foreach (KeyValuePair<CustomerTypes, int> pair in manager.CustomersWithOutMask)
         {
             unmaskedCustomers[((int)pair.Key)] = pair.Value;
@@ -130,15 +140,16 @@ public class LevelMonobehaviour : MonoBehaviour
         yield return new WaitUntil(() => manager.SanityCheck() && isPointManagerReady() && isTaserManagerReady() && isBossManagerReady());
         Debug.Log("All managers are ready");
         StartCoroutine(waitLevel(waitTime));
-        
+
     }
     void OnTimeFinished()
     {
         Debug.Log("Time's over! Level finished");
         Time.timeScale = 1;
+        LevelSettingManager.invokeGameOverEvent();
     }
 
 
-    
+
 
 }

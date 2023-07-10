@@ -23,7 +23,7 @@ public class Frozen : State
 
     public override void Tik()
     {
-        if(_cmb.currentSpeed!=0)
+        if (_cmb.currentSpeed != 0)
             _cmb.changeSpeed(0f);
     }
 
@@ -32,6 +32,9 @@ public class Frozen : State
         _cmb.defaultLayer = "Default";
         VFXManager.Instance.changeLayer(_cmb.gameObject, _cmb.defaultLayer);
         _cmb.changeSpeed();
+        NPCMovementManager movManager = _cmb.GetComponent<NPCMovementManager>();
+        if (movManager != null)
+            movManager.SetTTL(500f);
         _animator.SetBool("Tazered", false);
 
     }

@@ -19,18 +19,18 @@ public abstract class GameEventTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+
         if (!m_useEnterinOrExitingHitBox) return;
-        TriggerEventViaCode();
+        TriggerEventViaCode(other);
 
     }
-
-    public void TriggerEventViaCode()
+    public void TriggerEventViaCode(Collider other)
     {
         if (!m_hasGameEvent) return;
         if (m_TriggerOncePerGameFile && PlayerPrefs.GetInt(m_event.name, 0) != 0) return;
         if (m_TriggerOnce && m_hasGameEventBeenTriggered) return;
 
-        if (EventTriggerCondition())
+        if (EventTriggerCondition(other))
         {
             m_event.Raise();
             m_hasGameEventBeenTriggered = true;
@@ -40,11 +40,15 @@ public abstract class GameEventTrigger : MonoBehaviour
         }
 
     }
+    public void TriggerEventViaCode()
+    {
+        TriggerEventViaCode(null);
+    }
 
 
     public void OnTriggerExit(Collider other)
     {
         if (m_useEnterinOrExitingHitBox) return;
-        TriggerEventViaCode();
+        TriggerEventViaCode(other);
     }
 }

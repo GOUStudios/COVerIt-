@@ -21,6 +21,8 @@ public class LevelSettingManager
     public static bool isSpawning { get; private set; }
     public static bool isReadyToSpawn { get; private set; }
 
+
+
     private int leftSpawnedWM;
     public Dictionary<CustomerTypes, int> leftCustomersWithOutMask;
     public Dictionary<CustomerTypes, float> MaskedWeights { get; private set; }
@@ -45,6 +47,13 @@ public class LevelSettingManager
     #endregion
 
     #region Events
+
+    public delegate void GameOverHandler();
+    public static GameOverHandler OnGameOver;
+    public static void invokeGameOverEvent()
+    {
+        OnGameOver?.Invoke();
+    }
 
     public (int, Dictionary<CustomerTypes, int>) RequestSpawn(int spawns, Dictionary<CustomerTypes, int> UnmaskedSpawns)
     {

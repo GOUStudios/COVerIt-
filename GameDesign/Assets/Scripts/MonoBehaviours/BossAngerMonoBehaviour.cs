@@ -24,6 +24,11 @@ public class BossAngerMonoBehaviour : MonoBehaviour
         ClickManager.OnCorrectlyClicked += TriggerEvent_CorrectlyClicked;
         ClickManager.OnMissClicked += TriggerEvent_MissClicked;
     }
+    void OnDestroy()
+    {
+        ClickManager.OnCorrectlyClicked -= TriggerEvent_CorrectlyClicked;
+        ClickManager.OnMissClicked -= TriggerEvent_MissClicked;
+    }
 
     void TriggerEvent_CorrectlyClicked()
     {

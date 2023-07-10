@@ -8,7 +8,7 @@ public class VFXManager : MonoBehaviour
 
     [SerializeField] GameObject smokePullingPool;
 
-    private static VFXManager _instance;
+    private static VFXManager _instance = null;
 
 
     public static VFXManager Instance
@@ -17,19 +17,33 @@ public class VFXManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                GameObject go = new GameObject();
-                _instance = go.AddComponent<VFXManager>();
+
+
+                _instance = FindObjectOfType<VFXManager>();
+                if (_instance == null)
+                {
+                    GameObject go = new GameObject("NewVFXManager");
+                    _instance = go.AddComponent<VFXManager>();
+                }
+
             }
             return _instance;
         }
+    }
+
+    void OnDestroy()
+    {
+        if (_instance == this)
+            _instance = null;
     }
 
     void Awake()
     {
         if (_instance != null && _instance != this)
         {
+            Debug.Log("there is already a VFXManager");
             Destroy(this);
-            throw new System.Exception("An instance of VFXManager singleton already exists.");
+            // throw new System.Exception("An instance of VFXManager singleton already exists.");
         }
         else
         {
@@ -37,7 +51,9 @@ public class VFXManager : MonoBehaviour
         }
         if (smokePullingPool == null)
         {
-            Debug.LogError($"Missing Pulling pool in VFXManager {name}");
+            Debug.LogWarning($"Missing Pulling pool in VFXManager {name}");
+            smokePullingPool = new GameObject("smokePullingPull");
+            smokePullingPool.transform.SetParent(this.transform);
         }
     }
 
@@ -77,7 +93,7 @@ public class VFXManager : MonoBehaviour
             Debug.LogWarning($"Could not find VFX componenet in child {selectedChild.name}");
         }
 
-        if(selectedChild)
+        if (selectedChild)
         {
             selectedChild.SetParent(smokePullingPool.transform);
             selectedChild.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0f, 0f, 0f));

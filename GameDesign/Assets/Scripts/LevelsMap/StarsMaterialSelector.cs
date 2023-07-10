@@ -10,8 +10,13 @@ public class StarsMaterialSelector : MonoBehaviour
     [SerializeField] private GameObject star2;
     [SerializeField] private GameObject star3;
 
+    private PlateHandsUp plateInfo;
+
     private void Awake()
     {
+        plateInfo = GetComponent<PlateHandsUp>();
+        if (plateInfo == null)
+            Debug.LogError("Error, a plate is missing the Plate Hands Up script");
         if (CheckCondition() != 0)
         {
             SetMaterial(CheckCondition());
@@ -23,7 +28,7 @@ public class StarsMaterialSelector : MonoBehaviour
     private int CheckCondition()
     {
 
-        return PlayerPrefs.GetInt($"Stars{gameObject.name}");
+        return PlayerPrefs.GetInt($"Stars{plateInfo.sceneName}");
 
     }
 

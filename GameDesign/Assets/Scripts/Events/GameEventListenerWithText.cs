@@ -14,6 +14,8 @@ public class GameEventListenerWithText : GameEventListener
 
     [ReadOnly]public bool hasBeenCalled = false;
 
+    public AudioSource bossMutter;
+
     void Awake()
     {
         if (TextMeshProUGUI == null) Debug.LogError("Missing Reference to TextMeshComponent");
@@ -35,6 +37,8 @@ public class GameEventListenerWithText : GameEventListener
         hasBeenCalled = false;
         canvasHandler.addEventToQueue(this);
         yield return new WaitUntil(() => hasBeenCalled);
+        bossMutter = GetComponent<AudioSource>();
+        bossMutter?.Play();
         raiseEvent();
     }
 }

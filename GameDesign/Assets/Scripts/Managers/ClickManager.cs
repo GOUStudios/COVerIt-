@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+[RequireComponent(typeof(AudioSource))]
 public class ClickManager : MonoBehaviour
 {
     public delegate void ClickAction();
     public static event ClickAction OnCorrectlyClicked;
     public static event ClickAction OnMissClicked;
     private bool isPaused = true;
+
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip miss;
 
     private static ClickManager _instance;
     public static ClickManager Instance
@@ -24,15 +27,22 @@ public class ClickManager : MonoBehaviour
         if (_instance != null && _instance != this) Destroy(this);
         else if (_instance == null) _instance = this;
         else { Debug.LogWarning("Could not create instance of ClickManager"); }
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         TimerManagerMonoBehaviour.OnTimePause += TimePauseBehavior;
         TimerManagerMonoBehaviour.OnTimeResume += TimeResumeBehavior;
         TimerManagerMonoBehaviour.OnTimeStart += TimeResumeBehavior;
     }
 
+    void OnDestroy()
+    {
+        TimerManagerMonoBehaviour.OnTimePause -= TimePauseBehavior;
+        TimerManagerMonoBehaviour.OnTimeResume -= TimeResumeBehavior;
+        TimerManagerMonoBehaviour.OnTimeStart -= TimeResumeBehavior;
+    }
     // Update is called once per frame
     void Update()
     {
-        if(!isPaused)
+        if (!isPaused)
         {
             //The second condition checks if the pointer is clicking on an UI element
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
@@ -55,12 +65,14 @@ public class ClickManager : MonoBehaviour
                     }
                     else
                     {
+                        audioSource.PlayOneShot(miss, 0.7f);
                         OnMissClicked?.Invoke();
                     }
 
                 }
                 else
                 {
+                    audioSource.PlayOneShot(miss, 0.7f);
                     OnMissClicked?.Invoke();
                 }
             }
