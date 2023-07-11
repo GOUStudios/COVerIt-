@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 1159913553}
   - component: {fileID: 1159913552}
   - component: {fileID: 1159913551}
+  - component: {fileID: 1159913555}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -552,6 +553,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 39.2, y: 151.6, z: 0}
+--- !u!95 &1159913555
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159913550}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9705b39dea18ab24c9681463dca158f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1774484587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1092,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3745292461438616968, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
+      propertyPath: specifiedRotation.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745292461438616968, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
+      propertyPath: specifiedRotation.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745292461438616968, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
+      propertyPath: specifiedRotation.z
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 7217696538500416721, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_Name
       value: Level1
@@ -1084,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.74
+      value: 10.82
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1096,19 +1130,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6773891
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.20283997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6773891
+      value: 0.9579729
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.20283997
+      value: 0.28685904
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1116,7 +1150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8025898795068956267, guid: da79aac2eaa49cf4195e977fa7c6418a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1344,6 +1378,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -6620187425285600198, guid: 0e6d6e412f9e0c34e980bb19c273215e, type: 2}
+    - target: {fileID: 1972978895936073574, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
+      propertyPath: specifiedRotation.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8619527734354556933, guid: 066df0b5d83cafb4381558c8ce0ed596, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1448,6 +1486,10 @@ PrefabInstance:
     - target: {fileID: 917840963895612096, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834890448040859528, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
+      propertyPath: specifiedRotation.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6553496287196896486, guid: e1d572cf7517a1d47b8825f9a87cceee, type: 3}
       propertyPath: OutputAudioMixerGroup
