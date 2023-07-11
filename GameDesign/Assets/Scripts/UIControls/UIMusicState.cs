@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 
 public class UIMusicState : MonoBehaviour
 {
-    private Toggle toggle;
+    [SerializeField] private Toggle toggle;
     [SerializeField] AudioMixer audioMixer;
 
 
@@ -24,7 +24,10 @@ public class UIMusicState : MonoBehaviour
 
         if (audioMixer.GetFloat("VolumeMusic", out vol))
         {
-            toggle.isOn = vol <= -60f;
+            toggle.isOn = vol <= -10f;
+
+            if (toggle.isOn) audioMixer?.SetFloat("VolumeMusic", -80f);
+            else audioMixer?.SetFloat("VolumeMusic", 0);
         }
 
         if (SoundManager.Instance != null)
@@ -49,7 +52,11 @@ public class UIMusicState : MonoBehaviour
         if (audioMixer.GetFloat("VolumeMusic", out vol))
         {
             if (toggle == null) toggle = GetComponent<Toggle>();
-            toggle.isOn = vol <= -60.0f;
+
+            toggle.isOn = vol <= -10.0f;
+
+            if (toggle.isOn) audioMixer?.SetFloat("VolumeMusic", -80f);
+            else audioMixer?.SetFloat("VolumeMusic", 0);
         }
     }
 
