@@ -875,8 +875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccbec989c5e9dd42a2af500c7369e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1092053644}
-  miss: {fileID: 8300000, guid: efeb9f1b299ba854996befe0fd71a864, type: 3}
 --- !u!82 &1092053644
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1153,6 +1151,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1273981148403260487, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: maxFrequency
+      value: 66.63
+      objectReference: {fileID: 0}
     - target: {fileID: 1527159065843174645, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1281,6 +1283,10 @@ PrefabInstance:
       propertyPath: m_SecondTimeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 8433276083259680678}
+    - target: {fileID: 4608236402281928948, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8286009120448020926, guid: d63f72804718c5348a3bfdd858906e41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 

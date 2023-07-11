@@ -12,7 +12,7 @@ public class UIAlarm : MonoBehaviour
     public float maxFrequency = 10.0f;
 
     private bool isBlinking = false;
-    private float frequency = 0.5f;
+    private float frequency = 2.5f;
     private float elapsedTime = 0.0f;
 
 
