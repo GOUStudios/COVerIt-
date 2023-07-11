@@ -12,13 +12,14 @@ public class UISoundState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (toggle == null)
+            toggle = GetComponent<Toggle>();
 
-        toggle = GetComponent<Toggle>();
         float vol;
 
         if (audioMixer.GetFloat("VolumeVFX", out vol))
         {
-            toggle.isOn = vol == -80f;
+            toggle.isOn = vol <= -60.0f;
         }
 
 
@@ -38,6 +39,17 @@ public class UISoundState : MonoBehaviour
             }
         }
     }
+    void Awake()
+    {
+        float vol;
+
+        if (audioMixer.GetFloat("VolumeVFX", out vol))
+        {
+            if (toggle == null) toggle = GetComponent<Toggle>();
+            toggle.isOn = vol <= -60.0f;
+        }
+    }
+
 
     private void OnDestroy()
     {
